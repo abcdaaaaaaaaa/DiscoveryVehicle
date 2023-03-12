@@ -2,9 +2,8 @@
 #include "ESPAsyncWebServer.h"
 #include <HTTPClient.h>
 #define pot    analogRead(A2)
-#define pot2    analogRead(A3)
-const char* ssid = "Anık";
-const char* password = "Genius6976";
+const char* ssid = "****";
+const char* password = "****";
 //Your IP address or domain name with URL path
 const char* serverNameaverage = "http://192.168.1.1:85/averagecpm";
 const char* serverNamesd = "http://192.168.1.1:85/sdcpm";
@@ -19,8 +18,6 @@ LiquidCrystal_I2C LCD_I2C_0x27(0x27, 16, 2);
 int x;
 int y;
 int potset;
-int potservo;
-char* poting;
 char* potnormal;
 char* kontrol;
 String averageCPM;
@@ -53,18 +50,13 @@ void setup() {
     server.on("/pot", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", String(potnormal).c_str());
   });
-    server.on("/poting", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", String(poting).c_str());
-  });
   server.begin();
 }
 
 void loop() {
   potset= map(pot, 0, 1023, 0, 255);
-  potservo = map(pot2, 0, 1023, 0, 180);
   vitesayar();
   kontrolayar();
-  potservoayar();
    x = analogRead(A1);
    y = analogRead(A0);
   unsigned long currentMillis = millis();
@@ -139,34 +131,6 @@ if(x >= 600 && x <= 1023) {
     kontrol = "5";
 }
 }
-void potservoayar(){
-if (potservo == 0){
-  poting = "0"; 
-}
-else if(potservo <= 30) {
-  poting = "1";
-}
-else if(potservo <= 60){
-  poting = "2";
-}
-else if(potservo <= 90){
-  poting = "3";
-}
-else if(potservo <= 120){
-  poting = "4";
-}
-else if(potservo <= 150){
-  poting = "5";
-}
-else if(potservo < 150){
-  poting = "6";
-}
-else {
-  poting = "3";
-}
-}
-
-
 
 String httpGETRequest(const char* serverName) {
   WiFiClient client;
