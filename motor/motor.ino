@@ -4,11 +4,9 @@
 #include "Wire.h"
 #include "I2Cdev.h"
 #include "MPU6050.h"
-#include <Servo.h>
 
-Servo myservo;
-const char* ssid = "Anık";
-const char* password = "Genius6976";
+const char* ssid = "****";
+const char* password = "*****";
 String xox;
 String conse;
 const int IN2=D5; 
@@ -25,8 +23,7 @@ int16_t gx, gy, gz;
 int motor_value;
 int gyro_value;
 const char* serverNamexxx = "http://192.168.1.3/xxx";
-const char* serverNamepoting = "http://192.168.1.3/poting";
-const char* serverNamepot = "http://192.168.1.3/poting";
+const char* serverNamepot = "http://192.168.1.3/pot";
 
 int minimum;
 int maximum;
@@ -44,7 +41,6 @@ void setup(){
 }
 void loop(){
   vites();
-  servo();
 mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 gyro_value = map(ax, 0, 17000, minimum,maximum);
 motor_value = abs(gyro_value);
@@ -139,33 +135,6 @@ void vites(){
       maximum = 255;
       }
     }
-void servo(){
-  conse = httpGETRequest(serverNamepoting);
-if (conse == "0"){
- myservo.write(0);   
-}
-else if (conse == "1"){
- myservo.write(30);   
-}
-else if (conse == "2"){
- myservo.write(60);     
-}
-else if (conse == "3"){
-  myservo.write(90);       
-}
-else if (conse == "4"){
-  myservo.write(120);       
-}
-else if (conse == "5"){
-  myservo.write(150);        
-}
-else if(conse == "6"){
-  myservo.write(180);  
-}
-else{
-  myservo.write(90);        
-}
-}
 
  String httpGETRequest(const char* serverName) {
   WiFiClient client;
