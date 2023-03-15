@@ -29,6 +29,10 @@ int minimum;
 int maximum;
 void setup(){
   WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi..");
+  }
   Wire.begin();
   mpu.initialize();
   pinMode(IN2,OUTPUT);
@@ -37,7 +41,6 @@ void setup(){
   pinMode(IN4,OUTPUT);
   pinMode(IN3,OUTPUT);
   pinMode(ENB,OUTPUT);
-  myservo.attach(D8);
 }
 void loop(){
   vites();
