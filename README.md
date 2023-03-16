@@ -1,5 +1,5 @@
 # Chernobyl-2.0 Dahili Özellikler:
-// (US) Uydu Sistemli
+// (US) : Uydu Sistemli //
 1-60fps Yapay Zeka Tabanlı Veri Kamerası
 2-Çizgi Takip Sistemi
 3-Yön Tanıma Sistmemi
