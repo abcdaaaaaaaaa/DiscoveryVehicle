@@ -8,7 +8,6 @@
 const char* ssid = "****";
 const char* password = "*****";
 String xox;
-String conse;
 const int IN2=D5; 
 const int IN1=D4;
 const int ENA=D2;
