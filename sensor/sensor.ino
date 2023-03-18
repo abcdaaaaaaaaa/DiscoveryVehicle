@@ -5,7 +5,6 @@
 
 IPAddress local_IP(192,168,1,1); 
 
-
 #define         Board                    ("ESP-32")
 #define         Pin2                      analogRead(A2)  
 #define         Pin3                      analogRead(A3)  
