@@ -3,7 +3,7 @@
 #include <MQUnifiedsensor.h>
 #include <HTTPClient.h>
 
-IPAddress local_IP(192, 168, 1, 2);
+IPAddress local_IP(192, 168, 1, 1);
 IPAddress gateway(255, 255, 0, 0);
 IPAddress subnet(255, 255, 0, 0);
 
