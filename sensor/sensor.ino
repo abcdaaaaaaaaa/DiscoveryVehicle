@@ -2,10 +2,6 @@
 #include "ESPAsyncWebServer.h"
 #include <MQUnifiedsensor.h>
 #include <HTTPClient.h>
-#include "Wire.h"
-#include "I2Cdev.h"
-#include "MPU6050.h"
-
 
 IPAddress local_IP(192,168,1,1); 
 
