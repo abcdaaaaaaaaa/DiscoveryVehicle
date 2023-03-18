@@ -26,8 +26,8 @@ MQUnifiedsensor MQ4(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin4, Type);
 MQUnifiedsensor MQ135(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin135, Type);
 
 // Set your access point network credentials
-const char* ssid = "A.Mert iPhone'u";
-const char* password = "murti2000?!";
+const char* ssid = "***";
+const char* password = "***";
 
 WiFiServer server2(80);
 String header;
