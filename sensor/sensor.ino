@@ -3,7 +3,9 @@
 #include <MQUnifiedsensor.h>
 #include <HTTPClient.h>
 
-IPAddress local_IP(192,168,1,1); 
+IPAddress local_IP(192, 168, 1, 2);
+IPAddress gateway(255, 255, 0, 0);
+IPAddress subnet(255, 255, 0, 0);
 
 #define         Board                    ("ESP-32")
 #define         Pin2                      analogRead(A2)  
@@ -24,8 +26,8 @@ MQUnifiedsensor MQ4(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin4, Type);
 MQUnifiedsensor MQ135(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin135, Type);
 
 // Set your access point network credentials
-const char* ssid = "***";
-const char* password = "***";
+const char* ssid = "A.Mert iPhone'u";
+const char* password = "murti2000?!";
 
 WiFiServer server2(80);
 String header;
@@ -64,6 +66,7 @@ void setup(){
   Serial.begin(115200);
   Serial.println();
   
+
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
