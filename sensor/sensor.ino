@@ -31,8 +31,6 @@ const char* password = NULL;
 WiFiServer server2(80);
 String header;
 
-int minimum;
-int maximum;
 unsigned long counts; //variable for GM Tube events
 unsigned long previousMillis; //variable for measuring time
 float averageCPM;
