@@ -1,0 +1,16 @@
+body {
+ background-image: url("derin.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+} 
+.button {
+display: inline-block;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+color: #ffffff;
+background-color: #4ed0ac;
+border-radius: 6px;
+outline: none;
+}
