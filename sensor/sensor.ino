@@ -169,7 +169,7 @@ client.println("<!DOCTYPE html><html>");
 client.println("<html><head>");
 client.println("<meta charset='utf-8'>");
 client.println("<meta name='viewport' content='width=device-width,initial-scale=1'>");
-client.println("<link rel='shortcut icon' href='https://imgur.com/a/qodMVY0'>");
+client.println("<link rel='shortcut icon' href='https://i.imgur.com/oWxfXWj.jpeg'>");
 client.println("<title>Chernobyl</title>");
 client.println("<style>");
 client.println("body {");
