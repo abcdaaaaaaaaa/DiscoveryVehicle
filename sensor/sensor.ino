@@ -214,6 +214,7 @@ client.println("<tr><td><font color='yellow'>Radioactivite:</td><td><span class=
 client.println("Avg: " + String(averageCPM) + " +/- " + String(sdCPM));
 client.println("ArrayVal: " + String(CPMArray[currentCPM]));
 client.println("</body></html>");
+delay(2000);
 break;
           }
           }
