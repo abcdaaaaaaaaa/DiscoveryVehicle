@@ -1,4 +1,4 @@
-#include <WiFi.h>
+#include <ESP8266WiFi.h>
 #include "ESPAsyncWebServer.h"
 #include <HTTPClient.h>
 #include "Wire.h"
@@ -8,12 +8,12 @@
 const char* ssid = "****";
 const char* password = "*****";
 String xox;
-const int IN2=D5; 
-const int IN1=D4;
-const int ENA=D2;
-const int IN4=D7;
-const int IN3=D6;
-const int ENB=D3;
+const int IN2=2; 
+const int IN1=4;
+const int ENA=3;
+const int IN4=7;
+const int IN3=8;
+const int ENB=5;
 
 MPU6050 mpu;
 int16_t ax, ay, az;
@@ -32,6 +32,8 @@ void setup(){
     delay(1000);
     Serial.println("Connecting to WiFi..");
   }
+ Serial.println(WiFi.localIP());
+
   Wire.begin();
   mpu.initialize();
   pinMode(IN2,OUTPUT);
@@ -102,7 +104,7 @@ void vites(){
   xox = httpGETRequest(serverNamepot);
       if (xox == "X"){
       minimum = 10;
-      maximum = 60; 
+      maximum = 60; //update
       }
       else if (xox == "A"){
       minimum = 0;
