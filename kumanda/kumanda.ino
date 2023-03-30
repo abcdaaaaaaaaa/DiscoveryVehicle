@@ -5,9 +5,10 @@
 const char* ssid = "****";
 const char* password = "****";
 //Your IP address or domain name with URL path
-const char* serverNameaverage = "http://192.168.1.1:85/averagecpm";
-const char* serverNamesd = "http://192.168.1.1:85/sdcpm";
-const char* serverNamearray = "http://192.168.1.1:85/cpmarray";
+const char* serverNameaverage = "http://192.168.1.1/averagecpm";
+const char* serverNamesd = "http://192.168.1.1/sdcpm";
+const char* serverNamearray = "http://192.168.1.1/cpmarray";
+const char* serverNamepixy = "http://192.168.4.1/pixy";
 
 AsyncWebServer server(80);
 
