@@ -114,6 +114,7 @@ else {
     analogWrite(ENB,0);
     }
   }
+  break;
  case 1:
   float turn = pixyCheck();
 if(turn> -deadZone && turn < deadZone){
@@ -144,7 +145,8 @@ else {
    digitalWrite(IN3,LOW);
    analogWrite(ENB,70); 
 }
-delay(1);  
+ delay(1);  
+ break;
 }
 void vites(){
   xox = httpGETRequest(serverNamepot);
