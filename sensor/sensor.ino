@@ -26,8 +26,8 @@ MQUnifiedsensor MQ4(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin4, Type);
 MQUnifiedsensor MQ135(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin135, Type);
 
 // Set your access point network credentials
-const char* ssid = "***";
-const char* password = "***";
+const char* ssid = "A.Mert iPhone'u";
+const char* password = "murti2000?!";
 
 WiFiServer server2(80);
 String header;
@@ -41,7 +41,12 @@ float calcCPM;
 float CPMArray[100];
 #define LOG_PERIOD 30000
 
-AsyncWebServer server(85);
+AsyncWebServer server(80);
+
+const char index_html[] PROGMEM = R"rawliteral(
+<!DOCTYPE HTML><html>
+<html><head></head><body><img src="192.168.1.2:81/stream"></body></html>
+)rawliteral";
 void setup(){
   MQ2.init();
   MQ2.setRegressionMethod(1);
@@ -92,6 +97,10 @@ if(!WiFi.config(local_IP, gateway, subnet)) {
   server.on("/cpmarray", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", String(CPMArray[currentCPM]).c_str());
   });
+  server.on("/camera", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", index_html);
+  });
+
   // Start server
   server.begin();
   server2.begin();
@@ -100,7 +109,7 @@ if(!WiFi.config(local_IP, gateway, subnet)) {
 void loop(){
   
 radyoactivite();
-  ///*
+
   MQ2.update();
   MQ3.update();
   MQ4.update();
@@ -145,6 +154,9 @@ radyoactivite();
 
   MQ135.setA(34.668); MQ135.setB(-3.369); // Aceton
   float Aceton = MQ135.readSensor(); 
+
+  delay(100);
+  
   WiFiClient client = server2.available();                                 
 
   if(client)                                                              
@@ -159,8 +171,7 @@ radyoactivite();
         if (c == '\n')                                                    
         {                                                                 
           if(currentLine.length() == 0)                                   
-          {     
-           
+          {         
 client.println("HTTP/1.1 200 OK");
 client.println("Content-type:text/html");
 client.println("Connection: close");
@@ -169,7 +180,7 @@ client.println("<!DOCTYPE html><html>");
 client.println("<html><head>");
 client.println("<meta charset='utf-8'>");
 client.println("<meta name='viewport' content='width=device-width,initial-scale=1'>");
-client.println("<link rel='shortcut icon' href='https://i.imgur.com/oWxfXWj.jpeg'>");
+client.println("<link rel='shortcut icon' href='https://imgur.com/a/qodMVY0'>");
 client.println("<title>Chernobyl</title>");
 client.println("<style>");
 client.println("body {");
@@ -214,7 +225,7 @@ client.println("<tr><td><font color='yellow'>Radioactivite:</td><td><span class=
 client.println("Avg: " + String(averageCPM) + " +/- " + String(sdCPM));
 client.println("ArrayVal: " + String(CPMArray[currentCPM]));
 client.println("</body></html>");
-delay(2000);
+delay(2110);
 break;
           }
           }
