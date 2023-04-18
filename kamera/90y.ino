@@ -1,6 +1,6 @@
 #include <WiFi.h>
-const char* ssid      = "Chernobyl";          
-const char* password  = NULL;
+const char* ssid      = "XXXXX";          
+const char* password  = "XXXXX";
 
 IPAddress local_IP(192, 168, 1, 2);
 IPAddress gateway(255, 255, 0, 0);
