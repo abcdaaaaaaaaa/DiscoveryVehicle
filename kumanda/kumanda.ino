@@ -1,47 +1,44 @@
-#include <WiFi.h>
+#include "WiFi.h"
 #include "ESPAsyncWebServer.h"
 #include <HTTPClient.h>
+#include <Wire.h>
+#include "LiquidCrystal_I2C.h"
+
+IPAddress apip(192,168,1,1);
+IPAddress gateway(192,168,1,1);
+IPAddress subnet(255,255,255,0);
+
 #define pot    analogRead(A2)
-const char* ssid = "****";
-const char* password = "****";
-//Your IP address or domain name with URL path
-const char* serverNameaverage = "http://192.168.1.1/averagecpm";
-const char* serverNamesd = "http://192.168.1.1/sdcpm";
-const char* serverNamearray = "http://192.168.1.1/cpmarray";
-const char* serverNamepixy = "http://192.168.4.1/pixy";
+#define pot2   analogRead(A3)
+
+const char* ssid = "Chernobyl";
+const char* password = NULL;
+
+const char* serverNamepixy = "http://192.168.1.2/pixy";
+const char* serverNameData = "http://192.168.1.3/data";
+const char* serverNameStg = "http://192.168.1.3/stg";
+const char* serverNamedist = "http://192.168.1.3/dist";
+const char* serverNametemp = "http://192.168.1.3/temp";
 
 AsyncWebServer server(80);
 
-#include <Wire.h>
-#include "LiquidCrystal_I2C.h"
 LiquidCrystal_I2C LCD_I2C_0x27(0x27, 16, 2);
 
-int x;
-int y;
-int potset;
-char* potnormal;
 char* kontrol;
-String averageCPM;
-String sdCPM;
-String CPMArray;
-
-unsigned long previousMillis = 0;
-const long interval = 100; 
-IPAddress local_IP(192, 168, 1, 3);
+char* potnormal;
+char* potnormal2;
+int x, y, potset, potset2;
+String Data, Stg, dist, tempa, pixytime;
 
 void setup() {
   Serial.begin(115200);
 
-  
-  WiFi.begin(ssid, password);
-  Serial.println("Connecting");
-  while(WiFi.status() != WL_CONNECTED) { 
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Connected to WiFi network with IP Address: ");
-  Serial.println(WiFi.localIP());
+  WiFi.config(apip, gateway, subnet);
+    Serial.println("\n[*] Creating AP");
+    WiFi.mode(WIFI_AP);
+    WiFi.softAP(ssid, password);
+    Serial.print("[+] AP Created with IP Gateway ");
+    Serial.println(WiFi.softAPIP());
   LCD_I2C_0x27.init();
   LCD_I2C_0x27.backlight();
   LCD_I2C_0x27.clear();
@@ -51,43 +48,52 @@ void setup() {
     server.on("/pot", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", String(potnormal).c_str());
   });
+    server.on("/servo", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(potnormal2).c_str());
+  });
   server.begin();
 }
 
 void loop() {
   potset= map(pot, 0, 1023, 0, 255);
+  potset2= map(pot2, 0, 1023, 0, 255);
   vitesayar();
   kontrolayar();
+  lidarayar();
    x = analogRead(A1);
    y = analogRead(A0);
-  unsigned long currentMillis = millis();
-  
-  if(currentMillis - previousMillis >= interval) {
-     // Check WiFi connection status
+   
     if(WiFi.status()== WL_CONNECTED ){ 
-      averageCPM = httpGETRequest(serverNameaverage);
-      sdCPM = httpGETRequest(serverNamesd);
-      CPMArray = httpGETRequest(serverNamearray);
-    LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
-    LCD_I2C_0x27.print("Avg:");
-    LCD_I2C_0x27.print(averageCPM);
-    LCD_I2C_0x27.setCursor(1 - 1, 2 - 1);
-    LCD_I2C_0x27.print("Arrayval:");
-    LCD_I2C_0x27.print(sdCPM);
-    LCD_I2C_0x27.setCursor(10 - 1, 1 - 1);
-    LCD_I2C_0x27.print("+/-"); 
-    LCD_I2C_0x27.print(CPMArray);
-    LCD_I2C_0x27.print(potnormal);
-     
+      Data = httpGETRequest(serverNameData);
+      Stg = httpGETRequest(serverNameStg);
+      pixytime = httpGETRequest(serverNamepixy);
+      dist = httpGETRequest(serverNamedist);
+      tempa = httpGETRequest(serverNametemp);
       
-      // save the last HTTP GET Request
-      previousMillis = currentMillis;
+    LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
+    LCD_I2C_0x27.print("Data:");
+    LCD_I2C_0x27.print(Data);
+    LCD_I2C_0x27.setCursor(10 - 1, 1 - 1);
+    LCD_I2C_0x27.print("Stg:");
+    LCD_I2C_0x27.print(Stg);
+    LCD_I2C_0x27.setCursor(1 - 1, 2 - 1);
+    LCD_I2C_0x27.print(potnormal2); 
+    LCD_I2C_0x27.print(":");
+    LCD_I2C_0x27.print(dist);
+    LCD_I2C_0x27.print("cm"); 
+    LCD_I2C_0x27.setCursor(10 - 1, 2 - 1);
+    LCD_I2C_0x27.print(tempa);
+    LCD_I2C_0x27.print("C"); 
+    LCD_I2C_0x27.setCursor(15 - 1, 2 - 1);
+    LCD_I2C_0x27.print(potnormal);
+    LCD_I2C_0x27.setCursor(16 - 1, 2 - 1);
+    LCD_I2C_0x27.print(pixytime);    
     }
     else {
       Serial.println("WiFi Disconnected");
     }
   }
-}
+
 void vitesayar(){
   if (potset <= 32){
     potnormal = "X";
@@ -131,6 +137,32 @@ if(x >= 0 && x <= 450) {
 if(x >= 600 && x <= 1023) {
     kontrol = "5";
 }
+}
+void lidarayar(){
+  if (potset2 <= 32){
+    potnormal2 = "L1";
+  }
+  else if (potset2 <= 64){
+    potnormal2 = "L2";
+  }
+  else if (potset2 <= 96){
+     potnormal2 = "L3";
+  }
+  else if (potset2 <= 128){
+     potnormal2 = "AA";
+  }
+  else if (potset2 <= 160) {
+    potnormal2 = "R3";
+  }
+  else if (potset2 <= 192){
+     potnormal2 = "R2";
+  }
+  else if (potset2 <= 224){
+     potnormal2 = "R1";
+  }
+  else {
+    potnormal2 = "OT";
+  }  
 }
 
 String httpGETRequest(const char* serverName) {
