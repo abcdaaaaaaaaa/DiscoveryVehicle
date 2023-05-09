@@ -113,7 +113,6 @@ else {
     digitalWrite(IN3,LOW);
     analogWrite(ENB,0);
     }
-  }
   break;
  case 1:
   float turn = pixyCheck();
@@ -147,7 +146,16 @@ else {
 }
  delay(1);  
  break;
-}
+default:
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN1,LOW);
+    analogWrite(ENA,0);
+    digitalWrite(IN4,LOW);
+    digitalWrite(IN3,LOW);
+    analogWrite(ENB,0);
+  break;
+    }
+  }
 void vites(){
   xox = httpGETRequest(serverNamepot);
       if (xox == "X"){
