@@ -5,10 +5,15 @@
 #include "I2Cdev.h"
 #include "MPU6050.h"
 #include <SPI.h>
-#include <Pixy.h>
+#include <Pixy2.h>
 
-const char* ssid = "****";
-const char* password = "*****";
+IPAddress local_IP(192, 168, 1, 2);
+IPAddress gateway(255, 255, 0, 0);
+IPAddress subnet(255, 255, 0, 0);
+
+const char* ssid = "Chernobyl";
+const char* password = NULL;
+
 String xox;
 const int IN2=2; 
 const int IN1=4;
@@ -17,7 +22,7 @@ const int IN4=7;
 const int IN3=8;
 const int ENB=5;
 
-Pixy pixy;
+Pixy2 pixy;
 
 float deadZone = 0.15;
 int baseSpeed = 130;
@@ -32,12 +37,16 @@ int16_t gx, gy, gz;
 
 int motor_value;
 int gyro_value;
-const char* serverNamexxx = "http://192.168.1.3/xxx";
-const char* serverNamepot = "http://192.168.1.3/pot";
+const char* serverNamexxx = "http://192.168.1.1/xxx";
+const char* serverNamepot = "http://192.168.1.1/pot";
 
 int minimum;
 int maximum;
+
+AsyncWebServer server(80);
+
 void setup(){
+  WiFi.config(local_IP, gateway, subnet);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
@@ -54,6 +63,12 @@ void setup(){
   pinMode(IN3,OUTPUT);
   pinMode(ENB,OUTPUT);
   pixy.init();
+
+  server.on("/pixy", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(pixy.ccc.numBlocks).c_str());
+  });
+  
+  server.begin();
 }
 void loop(){
   vites();
