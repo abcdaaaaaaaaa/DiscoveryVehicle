@@ -62,7 +62,6 @@ void loop() {
    x = analogRead(A1);
    y = analogRead(A0);
    
-    if(WiFi.status()== WL_CONNECTED ){ 
       Data = httpGETRequest(serverNameData);
       Stg = httpGETRequest(serverNameStg);
       pixytime = httpGETRequest(serverNamepixy);
@@ -87,10 +86,7 @@ void loop() {
     LCD_I2C_0x27.print(potnormal);
     LCD_I2C_0x27.setCursor(16 - 1, 2 - 1);
     LCD_I2C_0x27.print(pixytime);    
-    }
-    else {
-      Serial.println("WiFi Disconnected");
-    }
+    
   }
 
 void vitesayar(){
