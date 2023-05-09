@@ -32,8 +32,7 @@ String Data, Stg, dist, tempa, pixytime;
 
 void setup() {
   Serial.begin(115200);
-
-  WiFi.config(apip, gateway, subnet);
+    WiFi.softAPConfig(apip, gateway, subnet);
     Serial.println("\n[*] Creating AP");
     WiFi.mode(WIFI_AP);
     WiFi.softAP(ssid, password);
