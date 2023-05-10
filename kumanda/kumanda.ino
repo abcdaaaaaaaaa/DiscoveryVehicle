@@ -71,7 +71,7 @@ void loop() {
     LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
     LCD_I2C_0x27.print("Data:");
     LCD_I2C_0x27.print(Data);
-    LCD_I2C_0x27.setCursor(10 - 1, 1 - 1);
+    LCD_I2C_0x27.setCursor(9 - 1, 1 - 1);
     LCD_I2C_0x27.print("Stg:");
     LCD_I2C_0x27.print(Stg);
     LCD_I2C_0x27.setCursor(1 - 1, 2 - 1);
