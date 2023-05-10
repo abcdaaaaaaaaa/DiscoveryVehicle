@@ -1,11 +1,13 @@
 #include <ESP8266WiFi.h>
+#include <ESP8266HTTPClient.h>
 #include "ESPAsyncWebServer.h"
-#include <HTTPClient.h>
+#include <ESPAsyncTCP.h>
 #include "Wire.h"
 #include "I2Cdev.h"
 #include "MPU6050.h"
 #include <SPI.h>
 #include <Pixy2.h>
+
 
 IPAddress local_IP(192, 168, 1, 2);
 IPAddress gateway(255, 255, 0, 0);
@@ -74,6 +76,7 @@ void loop(){
   vites();
 switch(now) { 
   case 0:
+ {
 mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 gyro_value = map(ax, 0, 17000, minimum,maximum);
 motor_value = abs(gyro_value);
@@ -128,8 +131,10 @@ else {
     digitalWrite(IN3,LOW);
     analogWrite(ENB,0);
     }
+ }
   break;
  case 1:
+{
   float turn = pixyCheck();
 if(turn> -deadZone && turn < deadZone){
  turn = 0;
@@ -159,15 +164,18 @@ else {
    digitalWrite(IN3,LOW);
    analogWrite(ENB,70); 
 }
- delay(1);  
+ delay(1); 
+} 
  break;
 default:
+{
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,LOW);
     analogWrite(ENA,0);
     digitalWrite(IN4,LOW);
     digitalWrite(IN3,LOW);
     analogWrite(ENB,0);
+}
   break;
     }
   }
@@ -224,15 +232,15 @@ float pixyCheck() {
  int j;
  uint16_t blocks;
  char buf[32];
- blocks = pixy.getBlocks();
+ blocks = pixy.ccc.numBlocks;
 
  if(blocks)
  {
-   signature = pixy.blocks[0].signature;
-   height = pixy.blocks[0].height;
-   width = pixy.blocks[0].width;
-   x = pixy.blocks[0].x;
-   y = pixy.blocks[0].y;
+   signature = pixy.ccc.blocks[0].m_signature;
+   height = pixy.ccc.blocks[0].m_height;
+   width = pixy.ccc.blocks[0].m_width;
+   x = pixy.ccc.blocks[0].m_x;
+   y = pixy.ccc.blocks[0].m_y;
    cx = (x + (width / 2));
    cy = (y + (height / 2));
    cx = mapfloat(cx, 0, 320, -1, 1);
