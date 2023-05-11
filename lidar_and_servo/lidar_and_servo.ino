@@ -4,6 +4,7 @@
 #include <Deneyap_Servo.h>
 #include <TFMPlus.h> 
 
+#define specialsensor (A0)analogReead
 Servo myservo;  
 const char* serverNameservoplay = "http://192.168.1.1/servo";
 String servoplay;
@@ -26,7 +27,10 @@ myservo.attach(D2);
 myservo.write(90);
 
   delay(2000);
-
+     server.on("/data", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(specialsensor).c_str());
+  });
+tfmP.getData( tfDist, tfFlux, tfTemp)
   if( tfmP.getData( tfDist, tfFlux, tfTemp)) // Get data from the device.
   {
     server.on("/dist", HTTP_GET, [](AsyncWebServerRequest *request){
