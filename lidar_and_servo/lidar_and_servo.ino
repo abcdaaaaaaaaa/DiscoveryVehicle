@@ -1,7 +1,7 @@
-#include <ESP8266WiFi.h>
-#include <ESP8266HTTPClient.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
 #include "ESPAsyncWebServer.h"
-#include <Servo.h>
+#include <Deneyap_Servo.h>
 #include <TFMPlus.h> 
 
 Servo myservo;  
@@ -22,7 +22,7 @@ AsyncWebServer server(80);
 void setup() {
   Serial.begin(115200);
   delay(20);              
-myservo.attach(3);  
+myservo.attach(D2);  
 myservo.write(90);
 
   delay(2000);
