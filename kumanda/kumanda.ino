@@ -117,20 +117,25 @@ void vitesayar(){
 }
 
 void kontrolayar(){
-if(y >= 400 && y <= 600) {
-    kontrol = "1";
+if(x != 0 && x != 8191) {
+kontrol = "1";
+//Serial.println("Dur");
 }
-if(y >= 800 && y <= 1023) {
-    kontrol = "2";
+if(x == 8191) {
+kontrol = "2";
+//Serial.println("İleri");
 }
-if(y >= 0 && y <= 450) {
-    kontrol = "3";
+if(x == 0) {
+kontrol = "3";
+//Serial.println("Geri");
 }
-if(x >= 0 && x <= 450) {
-    kontrol = "4";
+if(y == 0) {
+kontrol = "4";
+//Serial.println("Sol");
 }
-if(x >= 600 && x <= 1023) {
-    kontrol = "5";
+if(y == 8191) {
+kontrol = "5";
+//Serial.println("Sağ");
 }
 }
 void lidarayar(){
