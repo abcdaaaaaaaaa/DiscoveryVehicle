@@ -54,8 +54,8 @@ void setup() {
 }
 
 void loop() {
-  potset= map(pot, 0, 1023, 0, 255);
-  potset2= map(pot2, 0, 1023, 0, 255);
+  potset= pot / 32;
+  potset2= pot2 / 32;
   vitesayar();
   kontrolayar();
   lidarayar();
@@ -69,9 +69,9 @@ void loop() {
       tempa = httpGETRequest(serverNametemp);
       
     LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
-    LCD_I2C_0x27.print("Data:");
+    LCD_I2C_0x27.print("DWH:");
     LCD_I2C_0x27.print(Data);
-    LCD_I2C_0x27.setCursor(10 - 1, 1 - 1);
+    LCD_I2C_0x27.setCursor(9 - 1, 1 - 1);
     LCD_I2C_0x27.print(potnormal2); 
     LCD_I2C_0x27.print(":");
     LCD_I2C_0x27.print(dist);
@@ -79,7 +79,7 @@ void loop() {
     LCD_I2C_0x27.setCursor(1 - 1, 2 - 1);
     LCD_I2C_0x27.print("Stg:");
     LCD_I2C_0x27.print(Stg);
-    LCD_I2C_0x27.setCursor(10 - 1, 2 - 1);
+    LCD_I2C_0x27.setCursor(11 - 1, 2 - 1);
     LCD_I2C_0x27.print(tempa);
     LCD_I2C_0x27.print("C"); 
     LCD_I2C_0x27.setCursor(15 - 1, 2 - 1);
