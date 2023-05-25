@@ -23,6 +23,9 @@ const int ENA=3;
 const int IN4=7;
 const int IN3=8;
 const int ENB=5;
+const int solled=0;
+const int sagled=12;
+const int onled=1;
 
 Pixy2 pixy;
 
@@ -64,6 +67,9 @@ void setup(){
   pinMode(IN4,OUTPUT);
   pinMode(IN3,OUTPUT);
   pinMode(ENB,OUTPUT);
+  pinMode(onled,OUTPUT);
+  pinMode(sagled,OUTPUT);
+  pinMode(solled,OUTPUT);
   pixy.init();
 
   server.on("/pixy", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -72,6 +78,7 @@ void setup(){
   
   server.begin();
 }
+
 void loop(){
   vites();
 switch(now) { 
@@ -97,6 +104,7 @@ if (httpGETRequest(serverNamexxx) == "2"){
     digitalWrite(IN4,LOW);
     digitalWrite(IN3,HIGH);
     analogWrite(ENB,motor_value);
+    digitalWrite(onled,1);
     }
 if (httpGETRequest(serverNamexxx) == "3"){
     digitalWrite(IN2,HIGH);
@@ -105,6 +113,8 @@ if (httpGETRequest(serverNamexxx) == "3"){
     digitalWrite(IN4,HIGH);
     digitalWrite(IN3,LOW);
     analogWrite(ENB,motor_value);
+    digitalWrite(solled,1);
+    digitalWrite(sagled,1);
 }
 if (httpGETRequest(serverNamexxx) == "4"){
     digitalWrite(IN2,LOW);
@@ -113,6 +123,7 @@ if (httpGETRequest(serverNamexxx) == "4"){
     digitalWrite(IN4,HIGH);
     digitalWrite(IN3,LOW);
     analogWrite(ENB,motor_value);
+    digitalWrite(solled,1);
 }
 if (httpGETRequest(serverNamexxx) == "5"){
     digitalWrite(IN2,HIGH);
@@ -121,6 +132,8 @@ if (httpGETRequest(serverNamexxx) == "5"){
     digitalWrite(IN4,LOW);
     digitalWrite(IN3,HIGH);
     analogWrite(ENB,motor_value);
+    digitalWrite(sagled,1);
+
     }
 }       
 else {
@@ -131,6 +144,7 @@ else {
     digitalWrite(IN3,LOW);
     analogWrite(ENB,0);
     }
+ delay(1); 
  }
   break;
  case 1:
@@ -146,7 +160,9 @@ if (turn < 0) {
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
    analogWrite(ENB,170); 
-
+   digitalWrite(sagled,1);
+   digitalWrite(onled,1);
+   digitalWrite(solled,1);
 }
 else if (turn > 0) {
    digitalWrite(IN2,HIGH); 
@@ -155,6 +171,9 @@ else if (turn > 0) {
    digitalWrite(IN4,LOW);
    digitalWrite(IN3,HIGH);
    analogWrite(ENB,80); 
+   digitalWrite(sagled,1);
+   digitalWrite(onled,1);
+   digitalWrite(solled,1);
 }
 else {
    digitalWrite(IN2,HIGH); 
@@ -163,6 +182,9 @@ else {
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
    analogWrite(ENB,70); 
+   digitalWrite(sagled,1);
+   digitalWrite(onled,1);
+   digitalWrite(solled,1);
 }
  delay(1); 
 } 
@@ -178,6 +200,9 @@ default:
 }
   break;
     }
+    digitalWrite(sagled,0);
+    digitalWrite(onled,0);
+    digitalWrite(solled,0);
   }
 void vites(){
   xox = httpGETRequest(serverNamepot);
