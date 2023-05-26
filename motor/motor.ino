@@ -234,7 +234,7 @@ void vites(){
       if (xox == "X"){
         now = 1;
       }
-      if (xox == "L"){
+      else if (xox == "L"){
         now = 2;
       }
       else if (xox == "A"){
