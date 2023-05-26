@@ -8,6 +8,7 @@
 Servo myservo;  
 const char* serverNameservoplay = "http://192.168.1.1/servo";
 String servoplay, result;
+float left, right;
 
 IPAddress local_IP(192, 168, 1, 3);
 IPAddress gateway(255, 255, 0, 0);
@@ -41,6 +42,9 @@ tfmP.getData( tfDist, tfFlux, tfTemp)
   });
     server.on("/temp", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", String(tfTemp).c_str());
+  });
+    server.on("/lih", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(result).c_str());
   });
   }
   else                  // If the command fails...
@@ -112,9 +116,11 @@ else{
 result = "L1";
 delay(300);
 myservo.write(0);
+tfmP.getData( tfDist, tfFlux, tfTemp);
 left = tfDist;
 delay(300);
 myservo.write(180);
+tfmP.getData( tfDist, tfFlux, tfTemp);
 right = tfDist;
 if (left < right){
 result = "L5"
