@@ -8,7 +8,7 @@
 Servo myservo;  
 const char* serverNameservoplay = "http://192.168.1.1/servo";
 String servoplay;
-
+float result;
 IPAddress local_IP(192, 168, 1, 3);
 IPAddress gateway(255, 255, 0, 0);
 IPAddress subnet(255, 255, 0, 0);
@@ -51,9 +51,8 @@ tfmP.getData( tfDist, tfFlux, tfTemp)
 }
 
 void loop() {
-  delay(20);  
+delay(20);  
 servodon();
-   
 }
 
 void servodon(){
@@ -104,7 +103,7 @@ delay(100);
 myservo.write(90); 
 }
 else if (servoplay == "MV"){
-  
+result  
 }
 else {
 delay(20); 
