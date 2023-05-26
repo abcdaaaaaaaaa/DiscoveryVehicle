@@ -182,12 +182,12 @@ if (httpGETRequest(serverNamexxx) == "L1"){
     digitalWrite(IN3,LOW);
     analogWrite(ENB,0);
     }
-if (httpGETRequest(serverNamexxx) == "L3"){
-    digitalWrite(IN2,HIGH);
-    digitalWrite(IN1,LOW);
+if (httpGETRequest(serverNamexxx) == "L2"){
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN1,HIGH);
     analogWrite(ENA,motor_value);
-    digitalWrite(IN4,HIGH);
-    digitalWrite(IN3,LOW);
+    digitalWrite(IN4,LOW);
+    digitalWrite(IN3,HIGH);
     analogWrite(ENB,motor_value);
     }
 if (httpGETRequest(serverNamexxx) == "L4"){
