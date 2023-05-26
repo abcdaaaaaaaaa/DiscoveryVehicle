@@ -19,6 +19,7 @@ const char* serverNameData = "http://192.168.1.3/data";
 const char* serverNameStg = "http://192.168.1.3/stg";
 const char* serverNamedist = "http://192.168.1.3/dist";
 const char* serverNametemp = "http://192.168.1.3/temp";
+const char* serverNamelih = "http://192.168.1.3/lih";
 
 AsyncWebServer server(80);
 
@@ -28,6 +29,7 @@ char* kontrol;
 char* potnormal;
 char* potnormal2;
 int x, y, potset, potset2;
+int hello = 0;
 String Data, Stg, dist, tempa, pixytime;
 
 void setup() {
@@ -67,7 +69,8 @@ void loop() {
       pixytime = httpGETRequest(serverNamepixy);
       dist = httpGETRequest(serverNamedist);
       tempa = httpGETRequest(serverNametemp);
-      
+      lih = httpGETRequest(serverNamelih);
+  
     LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
     LCD_I2C_0x27.print("DWH:");
     LCD_I2C_0x27.print(Data);
@@ -111,12 +114,18 @@ void vitesayar(){
   else if (potset <= 224){
      potnormal = "F";
   }
+  else if(potset == 255){
+     potnormal = "L";   
+  }
   else {
     potnormal = "G";
   }
 }
 
 void kontrolayar(){
+  switch(hello){
+  case 0: 
+  {
 if(x != 0 && x != 8191) {
 kontrol = "1";
 //Serial.println("Dur");
@@ -137,34 +146,73 @@ if(y == 8191) {
 kontrol = "5";
 //Serial.println("Sağ");
 }
+ }
+ break;
+case 1:
+{
+kontrol = lih;
 }
+ break;
+default::
+if(x != 0 && x != 8191) {
+kontrol = "1";
+//Serial.println("Dur");
+}
+if(x == 8191) {
+kontrol = "2";
+//Serial.println("İleri");
+}
+if(x == 0) {
+kontrol = "3";
+//Serial.println("Geri");
+}
+if(y == 0) {
+kontrol = "4";
+//Serial.println("Sol");
+}
+if(y == 8191) {
+kontrol = "5";
+//Serial.println("Sağ");
+}
+ break;
+}
+} 
 void lidarayar(){
   if (potset2 <= 32){
     potnormal2 = "L1";
+     hello = 0;
   }
   else if (potset2 <= 64){
     potnormal2 = "L2";
+     hello = 0;
   }
   else if (potset2 <= 96){
      potnormal2 = "L3";
+     hello = 0;
   }
   else if (potset2 <= 128){
      potnormal2 = "AA";
+     hello = 0;
   }
   else if (potset2 <= 160) {
     potnormal2 = "R3";
+     hello = 0;
   }
   else if (potset2 <= 192){
      potnormal2 = "R2";
+     hello = 0;
   }
   else if (potset2 <= 224){
      potnormal2 = "R1";
+     hello = 0;
   }
   else if (potset2 == 255){
      potnormal2 = "MV";
+     hello = 1;
   }
   else {
     potnormal2 = "OT";
+     hello = 0;
   }  
 }
 
