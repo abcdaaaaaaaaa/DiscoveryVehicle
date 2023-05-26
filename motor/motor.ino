@@ -40,8 +40,10 @@ int16_t gx, gy, gz;
 
 int motor_value;
 int gyro_value;
+
 const char* serverNamexxx = "http://192.168.1.1/xxx";
 const char* serverNamepot = "http://192.168.1.1/pot";
+const char* serverNamelih = "http://192.168.1.3/lih";
 
 int minimum;
 int maximum;
@@ -233,7 +235,7 @@ default:
   }
 void vites(){
   xox = httpGETRequest(serverNamepot);
-   xox2 = httpGETRequest("http://192.168.1.3/lih");
+   xox2 = httpGETRequest(serverNamelih);
       if (xox2 == "MV"){
         now = 2;
       }
