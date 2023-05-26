@@ -16,7 +16,7 @@ IPAddress subnet(255, 255, 0, 0);
 const char* ssid = "Chernobyl";
 const char* password = NULL;
 
-String xox;
+String xox, xox2;
 const int IN2=2; 
 const int IN1=4;
 const int ENA=3;
@@ -232,10 +232,11 @@ default:
   }
 void vites(){
   xox = httpGETRequest(serverNamepot);
+   xox2 = httpGETRequest("http://192.168.1.3/lih");
       if (xox == "X"){
         now = 1;
       }
-      else if (xox == "L"){
+      else if (xox2 == "MV"){
         now = 2;
       }
       else if (xox == "A"){
