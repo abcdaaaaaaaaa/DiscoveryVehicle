@@ -20,12 +20,10 @@ String xox;
 const int IN2=2; 
 const int IN1=4;
 const int ENA=3;
-const int IN4=7;
-const int IN3=8;
+const int IN4=12;
+const int IN3=13;
 const int ENB=5;
-const int solled=0;
-const int sagled=12;
-const int onled=1;
+
 
 Pixy2 pixy;
 
@@ -68,9 +66,6 @@ void setup(){
   pinMode(IN4,OUTPUT);
   pinMode(IN3,OUTPUT);
   pinMode(ENB,OUTPUT);
-  pinMode(onled,OUTPUT);
-  pinMode(sagled,OUTPUT);
-  pinMode(solled,OUTPUT);
   pixy.init();
 
   server.on("/pixy", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -105,7 +100,6 @@ if (httpGETRequest(serverNamexxx) == "2"){
     digitalWrite(IN4,LOW);
     digitalWrite(IN3,HIGH);
     analogWrite(ENB,motor_value);
-    digitalWrite(onled,1);
     }
 if (httpGETRequest(serverNamexxx) == "3"){
     digitalWrite(IN2,HIGH);
@@ -114,9 +108,7 @@ if (httpGETRequest(serverNamexxx) == "3"){
     digitalWrite(IN4,HIGH);
     digitalWrite(IN3,LOW);
     analogWrite(ENB,motor_value);
-    digitalWrite(solled,1);
-    digitalWrite(sagled,1);
-}
+    }
 if (httpGETRequest(serverNamexxx) == "4"){
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,HIGH);
@@ -124,8 +116,7 @@ if (httpGETRequest(serverNamexxx) == "4"){
     digitalWrite(IN4,HIGH);
     digitalWrite(IN3,LOW);
     analogWrite(ENB,motor_value);
-    digitalWrite(solled,1);
-}
+    }
 if (httpGETRequest(serverNamexxx) == "5"){
     digitalWrite(IN2,HIGH);
     digitalWrite(IN1,LOW);
@@ -133,8 +124,6 @@ if (httpGETRequest(serverNamexxx) == "5"){
     digitalWrite(IN4,LOW);
     digitalWrite(IN3,HIGH);
     analogWrite(ENB,motor_value);
-    digitalWrite(sagled,1);
-
     }
 }       
 else {
@@ -161,9 +150,6 @@ if (turn < 0) {
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
    analogWrite(ENB,170); 
-   digitalWrite(sagled,1);
-   digitalWrite(onled,1);
-   digitalWrite(solled,1);
 }
 else if (turn > 0) {
    digitalWrite(IN2,HIGH); 
@@ -172,9 +158,6 @@ else if (turn > 0) {
    digitalWrite(IN4,LOW);
    digitalWrite(IN3,HIGH);
    analogWrite(ENB,80); 
-   digitalWrite(sagled,1);
-   digitalWrite(onled,1);
-   digitalWrite(solled,1);
 }
 else {
    digitalWrite(IN2,HIGH); 
@@ -183,13 +166,56 @@ else {
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
    analogWrite(ENB,70); 
-   digitalWrite(sagled,1);
-   digitalWrite(onled,1);
-   digitalWrite(solled,1);
 }
  delay(1); 
 } 
  break;
+case 2:
+{
+    if(WiFi.status()== WL_CONNECTED ){ 
+if (httpGETRequest(serverNamexxx) == "L1"){
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN1,LOW);
+    analogWrite(ENA,0);
+    digitalWrite(IN4,LOW);
+    digitalWrite(IN3,LOW);
+    analogWrite(ENB,0);
+    }
+if (httpGETRequest(serverNamexxx) == "L3"){
+    digitalWrite(IN2,HIGH);
+    digitalWrite(IN1,LOW);
+    analogWrite(ENA,motor_value);
+    digitalWrite(IN4,HIGH);
+    digitalWrite(IN3,LOW);
+    analogWrite(ENB,motor_value);
+    }
+if (httpGETRequest(serverNamexxx) == "L4"){
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN1,HIGH);
+    analogWrite(ENA,motor_value);
+    digitalWrite(IN4,HIGH);
+    digitalWrite(IN3,LOW);
+    analogWrite(ENB,motor_value);
+    }
+if (httpGETRequest(serverNamexxx) == "L5"){
+    digitalWrite(IN2,HIGH);
+    digitalWrite(IN1,LOW);
+    analogWrite(ENA,motor_value);
+    digitalWrite(IN4,LOW);
+    digitalWrite(IN3,HIGH);
+    analogWrite(ENB,motor_value);
+    }
+}       
+else {
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN1,LOW);
+    analogWrite(ENA,0);
+    digitalWrite(IN4,LOW);
+    digitalWrite(IN3,LOW);
+    analogWrite(ENB,0);
+    }
+ delay(1);   
+}
 default:
 {
     digitalWrite(IN2,LOW);
@@ -201,14 +227,15 @@ default:
 }
   break;
     }
-    digitalWrite(sagled,0);
-    digitalWrite(onled,0);
-    digitalWrite(solled,0);
+    delay(1);
   }
 void vites(){
   xox = httpGETRequest(serverNamepot);
       if (xox == "X"){
         now = 1;
+      }
+      if (xox == "L"){
+        now = 2;
       }
       else if (xox == "A"){
       minimum = 0;
