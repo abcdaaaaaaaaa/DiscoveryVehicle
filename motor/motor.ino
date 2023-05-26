@@ -233,11 +233,11 @@ default:
 void vites(){
   xox = httpGETRequest(serverNamepot);
    xox2 = httpGETRequest("http://192.168.1.3/lih");
-      if (xox == "X"){
-        now = 1;
-      }
-      else if (xox2 == "MV"){
+      if (xox2 == "MV"){
         now = 2;
+      }
+      else if (xox == "X"){
+        now = 1;
       }
       else if (xox == "A"){
       minimum = 0;
