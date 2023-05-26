@@ -49,8 +49,9 @@ int maximum;
 AsyncWebServer server(80);
 
 void setup(){
-   Serial.begin(115200);
+  Serial.begin(115200);
   WiFi.config(local_IP, gateway, subnet);
+  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
