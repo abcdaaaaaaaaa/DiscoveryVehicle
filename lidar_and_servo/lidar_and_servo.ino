@@ -7,8 +7,8 @@
 #define specialsensor (A0)analogRead
 Servo myservo;  
 const char* serverNameservoplay = "http://192.168.1.1/servo";
-String servoplay;
-float result;
+String servoplay, result;
+
 IPAddress local_IP(192, 168, 1, 3);
 IPAddress gateway(255, 255, 0, 0);
 IPAddress subnet(255, 255, 0, 0);
@@ -103,7 +103,27 @@ delay(100);
 myservo.write(90); 
 }
 else if (servoplay == "MV"){
-result  
+myservo.write(90); 
+tfmP.getData( tfDist, tfFlux, tfTemp);
+if(tfDist > 30){
+result = "L2";
+}
+else{
+result = "L1";
+delay(300);
+myservo.write(0);
+left = tfDist;
+delay(300);
+myservo.write(180);
+right = tfDist;
+if (left < right){
+result = "L5"
+}
+else if(right < left){
+result = "L4" 
+}
+delay(100);
+}
 }
 else {
 delay(20); 
