@@ -4,7 +4,7 @@
 #include <Deneyap_Servo.h>
 #include <TFMPlus.h> 
 
-#define specialsensor (A0)analogReead
+#define specialsensor (A0)analogRead
 Servo myservo;  
 const char* serverNameservoplay = "http://192.168.1.1/servo";
 String servoplay;
@@ -100,6 +100,11 @@ delay(5000);
 myservo.write(150); 
 delay(5000);
 myservo.write(180);  
+delay(100);
+myservo.write(90); 
+}
+else if (servoplay == "MV"){
+  
 }
 else {
 delay(20); 
