@@ -187,26 +187,26 @@ if (httpGETRequest(serverNamexxx) == "L1"){
 if (httpGETRequest(serverNamexxx) == "L2"){
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,HIGH);
-    analogWrite(ENA,motor_value);
+    analogWrite(ENA,200);
     digitalWrite(IN4,LOW);
     digitalWrite(IN3,HIGH);
-    analogWrite(ENB,motor_value);
+    analogWrite(ENB,200);
     }
 if (httpGETRequest(serverNamexxx) == "L4"){
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,HIGH);
-    analogWrite(ENA,motor_value);
+    analogWrite(ENA,200);
     digitalWrite(IN4,HIGH);
     digitalWrite(IN3,LOW);
-    analogWrite(ENB,motor_value);
+    analogWrite(ENB,200);
     }
 if (httpGETRequest(serverNamexxx) == "L5"){
     digitalWrite(IN2,HIGH);
     digitalWrite(IN1,LOW);
-    analogWrite(ENA,motor_value);
+    analogWrite(ENA,200);
     digitalWrite(IN4,LOW);
     digitalWrite(IN3,HIGH);
-    analogWrite(ENB,motor_value);
+    analogWrite(ENB,200);
     }
 }       
 else {
