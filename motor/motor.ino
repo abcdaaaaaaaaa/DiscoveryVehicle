@@ -43,7 +43,7 @@ int gyro_value;
 
 const char* serverNamexxx = "http://192.168.1.1/xxx";
 const char* serverNamepot = "http://192.168.1.1/pot";
-const char* serverNamelih = "http://192.168.1.3/lih";
+const char* serverNamelih = "http://192.168.1.1/servo";
 
 int minimum;
 int maximum;
