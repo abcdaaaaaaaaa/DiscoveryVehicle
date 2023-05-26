@@ -114,9 +114,6 @@ void vitesayar(){
   else if (potset <= 224){
      potnormal = "F";
   }
-  else if(potset == 255){
-     potnormal = "L";   
-  }
   else {
     potnormal = "G";
   }
