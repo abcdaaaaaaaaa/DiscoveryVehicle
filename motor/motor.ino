@@ -216,6 +216,7 @@ else {
     }
  delay(1);   
 }
+ break;
 default:
 {
     digitalWrite(IN2,LOW);
