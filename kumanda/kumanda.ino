@@ -160,6 +160,9 @@ void lidarayar(){
   else if (potset2 <= 224){
      potnormal2 = "R1";
   }
+  else if (potset2 == 255){
+     potnormal2 = "MV";
+  }
   else {
     potnormal2 = "OT";
   }  
