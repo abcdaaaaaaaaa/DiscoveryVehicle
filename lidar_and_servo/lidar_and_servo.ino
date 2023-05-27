@@ -1,6 +1,6 @@
-#include <WiFi.h>
-#include <HTTPClient.h>
+#include "WiFi.h"
 #include "ESPAsyncWebServer.h"
+#include <HTTPClient.h>
 #include <Deneyap_Servo.h>
 #include <TFMPlus.h> 
 
@@ -10,6 +10,10 @@ const char* serverNameservoplay = "http://192.168.1.1/servo";
 const char* serverNamexxx = "http://192.168.1.1/xxx";
 String servoplay, result, kontrol;
 float left, right;
+
+int sagled = D3;
+int solled = D4;
+int onled = D5;
 
 IPAddress local_IP(192, 168, 1, 3);
 IPAddress gateway(255, 255, 0, 0);
