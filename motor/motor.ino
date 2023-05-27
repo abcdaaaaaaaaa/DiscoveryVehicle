@@ -80,6 +80,7 @@ void setup(){
 
 void loop(){
   vites();
+ delay(300);
 switch(now) { 
   case 0:
  {
