@@ -4,7 +4,7 @@
 #include <Deneyap_Servo.h>
 #include <TFMPlus.h> 
 
-#define specialsensor (A0)analogRead
+#define specialsensor (A2)analogRead
 Servo myservo;  
 const char* serverNameservoplay = "http://192.168.1.1/servo";
 const char* serverNamexxx = "http://192.168.1.1/xxx";
@@ -14,6 +14,9 @@ float left, right;
 int sagled = D3;
 int solled = D4;
 int onled = D5;
+
+const char* ssid = "Chernobyl";
+const char* password = NULL;
 
 IPAddress local_IP(192, 168, 1, 3);
 IPAddress gateway(255, 255, 0, 0);
@@ -28,15 +31,22 @@ AsyncWebServer server(80);
 
 void setup() {
   Serial.begin(115200);
+  WiFi.config(local_IP, gateway, subnet);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi..");
+  }
+ Serial.println(WiFi.localIP());
   delay(20);              
 myservo.attach(D2);  
 myservo.write(90);
-
   delay(2000);
      server.on("/data", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", String(specialsensor).c_str());
   });
-tfmP.getData( tfDist, tfFlux, tfTemp)
+tfmP.getData( tfDist, tfFlux, tfTemp);
   if( tfmP.getData( tfDist, tfFlux, tfTemp)) // Get data from the device.
   {
     server.on("/dist", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -52,7 +62,7 @@ tfmP.getData( tfDist, tfFlux, tfTemp)
     request->send_P(200, "text/plain", String(result).c_str());
   });
   }
-  else                  // If the command fails...
+  else                 
   {
     tfmP.printFrame();  // display the error and HEX dataa
   }
