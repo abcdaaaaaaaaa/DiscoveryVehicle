@@ -7,7 +7,8 @@
 #define specialsensor (A0)analogRead
 Servo myservo;  
 const char* serverNameservoplay = "http://192.168.1.1/servo";
-String servoplay, result;
+const char* serverNamexxx = "http://192.168.1.1/xxx";
+String servoplay, result, kontrol;
 float left, right;
 
 IPAddress local_IP(192, 168, 1, 3);
@@ -55,6 +56,9 @@ tfmP.getData( tfDist, tfFlux, tfTemp)
 }
 
 void loop() {
+digitalWrite(solled,LOW);
+digitalWrite(sagled,LOW);
+digitalWrite(onled,LOW);
 delay(20);  
 servodon();
 }
@@ -136,7 +140,49 @@ delay(20);
 myservo.write(90);  
 }
 }
+void ledyak(){
+kontrol = httpGETRequest(serverNamexxx);
+    if(WiFi.status()== WL_CONNECTED ){ 
+if (kontrol == "1"){
+    Serial.println("ledyakma");
+    digitalWrite(solled,LOW);
+    digitalWrite(sagled,LOW);
+    digitalWrite(onled,LOW);
 
+    }
+if (kontrol == "2"){
+    Serial.println("onledyak");  
+    digitalWrite(onled,HIGH);
+    digitalWrite(solled,LOW);
+    digitalWrite(sagled,LOW);
+    }
+if (kontrol == "3"){
+    Serial.println("arkaledyak");  
+    digitalWrite(onled,LOW);
+    digitalWrite(solled,HIGH);
+    digitalWrite(sagled,HIGH);
+    }
+if (kontrol == "4"){
+    Serial.println("Solledyak");  
+    digitalWrite(onled,LOW);
+    digitalWrite(solled,HIGH);
+    digitalWrite(sagled,LOW);
+    }
+if (kontrol == "5"){
+    Serial.println("Sağledyak");  
+    digitalWrite(onled,LOW);
+    digitalWrite(solled,LOW);
+    digitalWrite(sagled,HIGH);
+    }
+}       
+else {
+    Serial.println("ledyakma");
+    digitalWrite(onled,LOW);
+    digitalWrite(solled,LOW);
+    digitalWrite(sagled,LOW);
+    }
+ delay(1); 
+}
 String httpGETRequest(const char* serverName) {
   WiFiClient client;
   HTTPClient http;
