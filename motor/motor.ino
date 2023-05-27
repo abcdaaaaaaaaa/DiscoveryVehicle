@@ -89,6 +89,7 @@ motor_value = abs(gyro_value);
      // Check WiFi connection status
     if(WiFi.status()== WL_CONNECTED ){ 
 if (httpGETRequest(serverNamexxx) == "1"){
+    Serial.println("Dur");
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,LOW);
     analogWrite(ENA,0);
@@ -97,6 +98,7 @@ if (httpGETRequest(serverNamexxx) == "1"){
     analogWrite(ENB,0);
     }
 if (httpGETRequest(serverNamexxx) == "2"){
+    Serial.println("İleri");  
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,HIGH);
     analogWrite(ENA,motor_value);
@@ -105,6 +107,7 @@ if (httpGETRequest(serverNamexxx) == "2"){
     analogWrite(ENB,motor_value);
     }
 if (httpGETRequest(serverNamexxx) == "3"){
+    Serial.println("Geri");  
     digitalWrite(IN2,HIGH);
     digitalWrite(IN1,LOW);
     analogWrite(ENA,motor_value);
@@ -113,6 +116,7 @@ if (httpGETRequest(serverNamexxx) == "3"){
     analogWrite(ENB,motor_value);
     }
 if (httpGETRequest(serverNamexxx) == "4"){
+    Serial.println("Sol");  
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,HIGH);
     analogWrite(ENA,motor_value);
@@ -121,6 +125,7 @@ if (httpGETRequest(serverNamexxx) == "4"){
     analogWrite(ENB,motor_value);
     }
 if (httpGETRequest(serverNamexxx) == "5"){
+    Serial.println("Sağ");  
     digitalWrite(IN2,HIGH);
     digitalWrite(IN1,LOW);
     analogWrite(ENA,motor_value);
@@ -130,6 +135,7 @@ if (httpGETRequest(serverNamexxx) == "5"){
     }
 }       
 else {
+    Serial.println("Dur");
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,LOW);
     analogWrite(ENA,0);
@@ -142,6 +148,7 @@ else {
   break;
  case 1:
 {
+  Serial.println("pixy nesne takip modu");  
   float turn = pixyCheck();
 if(turn> -deadZone && turn < deadZone){
  turn = 0;
@@ -176,6 +183,7 @@ else {
 case 2:
 {
     if(WiFi.status()== WL_CONNECTED ){ 
+   Serial.println("lidar algoritması");  
 if (httpGETRequest(serverNamexxx) == "L1"){
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,LOW);
@@ -236,6 +244,10 @@ default:
 void vites(){
   xox = httpGETRequest(serverNamepot);
    xox2 = httpGETRequest(serverNamelih);
+  Serial.println("ilk vites:");
+  Serial.print(xox);
+  Serial.println("ikinci vites:");
+  Serial.print(xox2);
       if (xox2 == "MV"){
         now = 2;
       }
