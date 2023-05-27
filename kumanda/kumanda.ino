@@ -30,7 +30,7 @@ char* potnormal;
 char* potnormal2;
 int x, y, potset, potset2;
 int hello = 0;
-String Data, Stg, dist, tempa, pixytime;
+String Data, Stg, dist, tempa, lih, pixytime;
 
 void setup() {
   Serial.begin(115200);
@@ -69,7 +69,6 @@ void loop() {
       pixytime = httpGETRequest(serverNamepixy);
       dist = httpGETRequest(serverNamedist);
       tempa = httpGETRequest(serverNametemp);
-      lih = httpGETRequest(serverNamelih);
   
     LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
     LCD_I2C_0x27.print("DWH:");
@@ -147,10 +146,26 @@ kontrol = "5";
  break;
 case 1:
 {
-kontrol = lih;
+lih = httpGETRequest(serverNamelih);
+if(lih == "L1") {
+kontrol = "L1";
+//Serial.println("Dur");
+}
+if(lih == "L2") {
+kontrol = "L2";
+//Serial.println("İleri");
+if(lih == "L4") {
+kontrol = "L4";
+//Serial.println("Geri");
+}
+if(lih == "L5") {
+kontrol = "L5";
+//Serial.println("Sol");
+}
+}
 }
  break;
-default::
+default:
 if(x != 0 && x != 8191) {
 kontrol = "1";
 //Serial.println("Dur");
