@@ -245,9 +245,9 @@ void vites(){
   xox = httpGETRequest(serverNamepot);
    xox2 = httpGETRequest(serverNamelih);
   Serial.println("ilk vites:");
-  Serial.print(xox);
+  Serial.println(xox);
   Serial.println("ikinci vites:");
-  Serial.print(xox2);
+  Serial.println(xox2);
       if (xox2 == "MV"){
         now = 2;
       }
