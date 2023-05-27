@@ -162,7 +162,6 @@ if (kontrol == "1"){
     digitalWrite(solled,LOW);
     digitalWrite(sagled,LOW);
     digitalWrite(onled,LOW);
-
     }
 if (kontrol == "2"){
     Serial.println("onledyak");  
