@@ -61,8 +61,8 @@ void loop() {
   vitesayar();
   kontrolayar();
   lidarayar();
-   x = analogRead(36);
-   y = analogRead(39);
+   x = analogRead(32);
+   y = analogRead(33);
    
       Data = httpGETRequest(serverNameData);
       Stg = httpGETRequest(serverNameStg);
