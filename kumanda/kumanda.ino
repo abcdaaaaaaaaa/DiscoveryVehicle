@@ -8,8 +8,8 @@ IPAddress apip(192,168,1,1);
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 
-#define pot    analogRead(A2)
-#define pot2   analogRead(A3)
+#define pot    analogRead(34)
+#define pot2   analogRead(35)
 
 const char* ssid = "Chernobyl";
 const char* password = NULL;
@@ -56,13 +56,13 @@ void setup() {
 }
 
 void loop() {
-  potset= pot / 32;
-  potset2= pot2 / 32;
+  potset = pot / 16;
+  potset2 = pot2 / 16;
   vitesayar();
   kontrolayar();
   lidarayar();
-   x = analogRead(A1);
-   y = analogRead(A0);
+   x = analogRead(36);
+   y = analogRead(39);
    
       Data = httpGETRequest(serverNameData);
       Stg = httpGETRequest(serverNameStg);
