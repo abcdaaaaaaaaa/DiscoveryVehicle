@@ -122,25 +122,25 @@ void kontrolayar(){
   switch(hello){
   case 0: 
   {
-if(x != 0 && x != 8191) {
-kontrol = "1";
-//Serial.println("Dur");
+if(y >= 1600 && y <= 2400) {
+    kontrol = "1";
+ //Serial.println("Dur");
 }
-if(x == 8191) {
-kontrol = "2";
-//Serial.println("İleri");
+if(y >= 3200 && y <= 4095) {
+    kontrol = "2";
+ //Serial.println("İleri");
 }
-if(x == 0) {
-kontrol = "3";
-//Serial.println("Geri");
+if(y >= 0 && y <= 1800) {
+    kontrol = "3";
+ //Serial.println("Geri");
 }
-if(y == 0) {
-kontrol = "4";
-//Serial.println("Sol");
+if(x >= 0 && x <= 1800) {
+    kontrol = "4";
+ //Serial.println("Sol");
 }
-if(y == 8191) {
-kontrol = "5";
-//Serial.println("Sağ");
+if(x >= 2400 && x <= 4095) {
+    kontrol = "5";
+ //Serial.println("Sağ");
 }
  }
  break;
@@ -166,25 +166,25 @@ kontrol = "L5";
 }
  break;
 default:
-if(x != 0 && x != 8191) {
-kontrol = "1";
-//Serial.println("Dur");
+if(y >= 1600 && y <= 2400) {
+    kontrol = "1";
+ //Serial.println("Dur");
 }
-if(x == 8191) {
-kontrol = "2";
-//Serial.println("İleri");
+if(y >= 3200 && y <= 4095) {
+    kontrol = "2";
+ //Serial.println("İleri");
 }
-if(x == 0) {
-kontrol = "3";
-//Serial.println("Geri");
+if(y >= 0 && y <= 1800) {
+    kontrol = "3";
+ //Serial.println("Geri");
 }
-if(y == 0) {
-kontrol = "4";
-//Serial.println("Sol");
+if(x >= 0 && x <= 1800) {
+    kontrol = "4";
+ //Serial.println("Sol");
 }
-if(y == 8191) {
-kontrol = "5";
-//Serial.println("Sağ");
+if(x >= 2400 && x <= 4095) {
+    kontrol = "5";
+ //Serial.println("Sağ");
 }
  break;
 }
