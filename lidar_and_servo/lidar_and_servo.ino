@@ -4,7 +4,6 @@
 #include <Deneyap_Servo.h>
 #include <TFMPlus.h> 
 
-#define specialsensor (A2)analogRead
 Servo myservo;  
 const char* serverNameservoplay = "http://192.168.1.1/servo";
 const char* serverNamexxx = "http://192.168.1.1/xxx";
@@ -14,6 +13,7 @@ float left, right;
 int sagled = D3;
 int solled = D4;
 int onled = D5;
+int specialsensor = (A2)analogRead / 8;
 
 const char* ssid = "Chernobyl";
 const char* password = NULL;
@@ -127,10 +127,9 @@ myservo.write(90);
 else if (servoplay == "MV"){
 myservo.write(90); 
 tfmP.getData( tfDist, tfFlux, tfTemp);
-if(tfDist > 30){
-result = "L2";
-}
-else{
+while (tfDist > 30) {
+ result = "L2";
+  }
 result = "L1";
 delay(300);
 myservo.write(0);
@@ -147,7 +146,7 @@ else if(right < left){
 result = "L4" 
 }
 delay(100);
-}
+
 }
 else {
 delay(20); 
