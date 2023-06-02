@@ -56,6 +56,7 @@ void setup() {
 }
 
 void loop() {
+  delay(10);
   potset = pot / 16;
   potset2 = pot2 / 16;
   vitesayar();
@@ -73,13 +74,12 @@ void loop() {
     LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
     LCD_I2C_0x27.print("DWH:");
     LCD_I2C_0x27.print(Data);
-    LCD_I2C_0x27.setCursor(9 - 1, 1 - 1);
+    LCD_I2C_0x27.setCursor(10 - 1, 1 - 1);
     LCD_I2C_0x27.print(potnormal2); 
     LCD_I2C_0x27.print(":");
     LCD_I2C_0x27.print(dist);
-    LCD_I2C_0x27.print("cm"); 
     LCD_I2C_0x27.setCursor(1 - 1, 2 - 1);
-    LCD_I2C_0x27.print("Stg:");
+    LCD_I2C_0x27.print("Ang:");
     LCD_I2C_0x27.print(Stg);
     LCD_I2C_0x27.setCursor(11 - 1, 2 - 1);
     LCD_I2C_0x27.print(tempa);
