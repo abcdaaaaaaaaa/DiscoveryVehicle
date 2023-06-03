@@ -56,7 +56,7 @@ void setup() {
 }
 
 void loop() {
-  delay(10);
+  delay(2000);
   potset = pot / 16;
   potset2 = pot2 / 16;
   vitesayar();
@@ -87,8 +87,9 @@ void loop() {
     LCD_I2C_0x27.setCursor(15 - 1, 2 - 1);
     LCD_I2C_0x27.print(potnormal);
     LCD_I2C_0x27.setCursor(16 - 1, 2 - 1);
-    LCD_I2C_0x27.print(pixytime);    
-    
+    LCD_I2C_0x27.print(pixytime);   
+     
+   Serial.println("Dongu bitti"); 
   }
 
 void vitesayar(){
@@ -124,23 +125,23 @@ void kontrolayar(){
   {
 if(y >= 1600 && y <= 2400 && x >= 1600 && x <= 2400) {
     kontrol = "1";
- // Serial.println("Dur");
+  Serial.println("Dur");
 }
 else if(y >= 3200 && y <= 4095) {
     kontrol = "2";
- // Serial.println("İleri");
+  Serial.println("İleri");
 }
 else if(y >= 0 && y <= 1800) {
     kontrol = "3";
- // Serial.println("Geri");
+  Serial.println("Geri");
 }
 else if(x >= 0 && x <= 1800) {
     kontrol = "4";
- // Serial.println("Sol");
+  Serial.println("Sol");
 }
 else if(x >= 2400 && x <= 4095) {
     kontrol = "5";
- // Serial.println("Sağ");
+  Serial.println("Sağ");
 }
  }
  break;
@@ -168,23 +169,23 @@ kontrol = "L5";
 default:
 if(y >= 1600 && y <= 2400 && x >= 1600 && x <= 2400) {
     kontrol = "1";
- // Serial.println("Dur");
+  Serial.println("Dur");
 }
 else if(y >= 3200 && y <= 4095) {
     kontrol = "2";
- // Serial.println("İleri");
+  Serial.println("İleri");
 }
 else if(y >= 0 && y <= 1800) {
     kontrol = "3";
- // Serial.println("Geri");
+  Serial.println("Geri");
 }
 else if(x >= 0 && x <= 1800) {
     kontrol = "4";
- // Serial.println("Sol");
+  Serial.println("Sol");
 }
 else if(x >= 2400 && x <= 4095) {
     kontrol = "5";
-// Serial.println("Sağ");
+ Serial.println("Sağ");
 }
  break;
 }
