@@ -62,8 +62,8 @@ void loop() {
   vitesayar();
   kontrolayar();
   lidarayar();
-   x = analogRead(32);
-   y = analogRead(33);
+   x = analogRead(32); //Ury
+   y = analogRead(33);  //Urx
    
       Data = httpGETRequest(serverNameData);
       Stg = httpGETRequest(serverNameStg);
@@ -122,25 +122,25 @@ void kontrolayar(){
   switch(hello){
   case 0: 
   {
-if(y >= 1600 && y <= 2400) {
+if(y >= 1600 && y <= 2400 && x >= 1600 && x <= 2400) {
     kontrol = "1";
- //Serial.println("Dur");
+ // Serial.println("Dur");
 }
-if(y >= 3200 && y <= 4095) {
+else if(y >= 3200 && y <= 4095) {
     kontrol = "2";
- //Serial.println("İleri");
+ // Serial.println("İleri");
 }
-if(y >= 0 && y <= 1800) {
+else if(y >= 0 && y <= 1800) {
     kontrol = "3";
- //Serial.println("Geri");
+ // Serial.println("Geri");
 }
-if(x >= 0 && x <= 1800) {
+else if(x >= 0 && x <= 1800) {
     kontrol = "4";
- //Serial.println("Sol");
+ // Serial.println("Sol");
 }
-if(x >= 2400 && x <= 4095) {
+else if(x >= 2400 && x <= 4095) {
     kontrol = "5";
- //Serial.println("Sağ");
+ // Serial.println("Sağ");
 }
  }
  break;
@@ -166,25 +166,25 @@ kontrol = "L5";
 }
  break;
 default:
-if(y >= 1600 && y <= 2400) {
+if(y >= 1600 && y <= 2400 && x >= 1600 && x <= 2400) {
     kontrol = "1";
- //Serial.println("Dur");
+ // Serial.println("Dur");
 }
-if(y >= 3200 && y <= 4095) {
+else if(y >= 3200 && y <= 4095) {
     kontrol = "2";
- //Serial.println("İleri");
+ // Serial.println("İleri");
 }
-if(y >= 0 && y <= 1800) {
+else if(y >= 0 && y <= 1800) {
     kontrol = "3";
- //Serial.println("Geri");
+ // Serial.println("Geri");
 }
-if(x >= 0 && x <= 1800) {
+else if(x >= 0 && x <= 1800) {
     kontrol = "4";
- //Serial.println("Sol");
+ // Serial.println("Sol");
 }
-if(x >= 2400 && x <= 4095) {
+else if(x >= 2400 && x <= 4095) {
     kontrol = "5";
- //Serial.println("Sağ");
+// Serial.println("Sağ");
 }
  break;
 }
