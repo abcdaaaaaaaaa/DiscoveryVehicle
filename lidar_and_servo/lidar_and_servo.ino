@@ -13,7 +13,7 @@ float left, right;
 int sagled = D3;
 int solled = D4;
 int onled = D5;
-int specialsensor = (A2)analogRead / 8;
+int specialsensor = (A2)analogRead ;
 
 const char* ssid = "Chernobyl";
 const char* password = NULL;
@@ -64,7 +64,19 @@ tfmP.getData( tfDist, tfFlux, tfTemp);
   }
   else                 
   {
-    tfmP.printFrame();  // display the error and HEX dataa
+    tfmP.printFrame();  
+        server.on("/dist", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(tfDist).c_str());
+  });
+    server.on("/stg", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(tfFlux).c_str());
+  });
+    server.on("/temp", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(tfTemp).c_str());
+  });
+    server.on("/lih", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(result).c_str());
+  });
   }
   server.begin();
 }
@@ -73,7 +85,7 @@ void loop() {
 digitalWrite(solled,LOW);
 digitalWrite(sagled,LOW);
 digitalWrite(onled,LOW);
-delay(20);  
+delay(5);  
 servodon();
 }
 
@@ -127,7 +139,7 @@ myservo.write(90);
 else if (servoplay == "MV"){
 myservo.write(90); 
 tfmP.getData( tfDist, tfFlux, tfTemp);
-while (tfDist > 30) {
+while (tfDist > 30 && WiFi.status()== WL_CONNECTED && servoplay == "MV") {
  result = "L2";
   }
 result = "L1";
@@ -139,18 +151,20 @@ delay(300);
 myservo.write(180);
 tfmP.getData( tfDist, tfFlux, tfTemp);
 right = tfDist;
-if (left < right){
-result = "L5"
+if (left < right && right > 30){
+result = "L5";
 }
-else if(right < left){
-result = "L4" 
+else if(right < left && left > 30 || right == left && left > 30){
+result = "L4"; 
 }
 delay(100);
-
 }
 else {
 delay(20); 
 myservo.write(90);  
+tfmP.getData( tfDist, tfFlux, tfTemp);
+while (tfDist < 30 && WiFi.status()== WL_CONNECTED && servoplay == "MV"){
+result = "L3";  
 }
 }
 void ledyak(){
