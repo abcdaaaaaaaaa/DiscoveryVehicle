@@ -157,11 +157,11 @@ kontrol = "L2";
 //Serial.println("İleri");
 if(lih == "L4") {
 kontrol = "L4";
-//Serial.println("Geri");
+//Serial.println("Sol");
 }
 if(lih == "L5") {
 kontrol = "L5";
-//Serial.println("Sol");
+//Serial.println("Sağ");
 }
 }
 }
