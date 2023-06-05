@@ -1,5 +1,5 @@
 #include "WiFi.h"
-#include "ESPAsyncWebServer.h"
+#include "ESPAsyncWebSrv.h"
 #include <HTTPClient.h>
 #include <Deneyap_Servo.h>
 #include <TFMPlus.h> 
@@ -8,12 +8,13 @@ Servo myservo;
 const char* serverNameservoplay = "http://192.168.1.1/servo";
 const char* serverNamexxx = "http://192.168.1.1/xxx";
 String servoplay, result, kontrol;
-float left, right;
+int left, right, minileft, miniright;
 
-int sagled = D3;
-int solled = D4;
-int onled = D5;
-int specialsensor = (A2)analogRead ;
+#define sagled  D3
+#define solled  D4
+#define onled   D5
+
+int specialsensor = analogRead(A2);
 
 const char* ssid = "Chernobyl";
 const char* password = NULL;
@@ -120,22 +121,10 @@ delay(20);
 myservo.write(180);   
 }
 else if (servoplay == "OT"){
-myservo.write(0);  
-delay(5000);  
-myservo.write(30); 
-delay(5000); 
-myservo.write(60);  
-delay(5000);  
-myservo.write(90); 
-delay(5000);  
-myservo.write(120);  
-delay(5000);  
-myservo.write(150); 
-delay(5000);
-myservo.write(180);  
-delay(100);
-myservo.write(90); 
-}
+for(int i=10;i<=170;i=i+5){  
+myservo.write(i);    
+   }
+   }
 else if (servoplay == "MV"){
 myservo.write(90); 
 tfmP.getData( tfDist, tfFlux, tfTemp);
@@ -143,28 +132,55 @@ while (tfDist > 30 && WiFi.status()== WL_CONNECTED && servoplay == "MV") {
  result = "L2";
   }
 result = "L1";
+tfmP.getData( tfDist, tfFlux, tfTemp);
 delay(300);
 myservo.write(0);
-tfmP.getData( tfDist, tfFlux, tfTemp);
 left = tfDist;
-delay(300);
+myservo.write(45);
+minileft = tfDist;
+myservo.write(135);
+miniright = tfDist;
 myservo.write(180);
-tfmP.getData( tfDist, tfFlux, tfTemp);
 right = tfDist;
-if (left < right && right > 30){
+tfmP.getData( tfDist, tfFlux, tfTemp);
+if (left && minileft && miniright && right < 30){
+// 2 kere geri git
+result = "L3";
+delay(10);
+result = "L3";
+delay(10);
+result = "L1";
+}
+else if(left >= minileft && miniright && right){
+//sola dön
+result = "L4";
+delay(10);
+result = "L1";
+}
+else if(right >= minileft && miniright && left){
+//sağa dön
 result = "L5";
+delay(10);
+result = "L1";
 }
-else if(right < left && left > 30 || right == left && left > 30){
-result = "L4"; 
+else if(miniright >= minileft && right && left){
+//hafif sağa dön
+result = "L55";
+delay(10);
+result = "L1";
 }
-delay(100);
+else if(minileft >= miniright && right && left){
+//hafif sola dön  
+result = "L45";
+delay(10);
+result = "L1";
 }
 else {
+result = "L1";
 delay(20); 
 myservo.write(90);  
-tfmP.getData( tfDist, tfFlux, tfTemp);
-while (tfDist < 30 && WiFi.status()== WL_CONNECTED && servoplay == "MV"){
-result = "L3";  
+}
+delay(10);
 }
 }
 void ledyak(){
