@@ -186,6 +186,7 @@ case 2:
     if(WiFi.status()== WL_CONNECTED ){ 
    Serial.println("lidar algoritması");  
 if (httpGETRequest(serverNamexxx) == "L1"){
+  //Dur
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,LOW);
     analogWrite(ENA,0);
@@ -194,6 +195,7 @@ if (httpGETRequest(serverNamexxx) == "L1"){
     analogWrite(ENB,0);
     }
 if (httpGETRequest(serverNamexxx) == "L2"){
+  //İleri
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,HIGH);
     analogWrite(ENA,200);
@@ -201,7 +203,17 @@ if (httpGETRequest(serverNamexxx) == "L2"){
     digitalWrite(IN3,HIGH);
     analogWrite(ENB,200);
     }
+if (httpGETRequest(serverNamexxx) == "L3"){
+  //Geri
+    digitalWrite(IN2,HIGH);
+    digitalWrite(IN1,LOW);
+    analogWrite(ENA,200);
+    digitalWrite(IN4,HIGH);
+    digitalWrite(IN3,LOW);
+    analogWrite(ENB,200);
+    }
 if (httpGETRequest(serverNamexxx) == "L4"){
+  //Sol
     digitalWrite(IN2,LOW);
     digitalWrite(IN1,HIGH);
     analogWrite(ENA,200);
@@ -209,10 +221,29 @@ if (httpGETRequest(serverNamexxx) == "L4"){
     digitalWrite(IN3,LOW);
     analogWrite(ENB,200);
     }
+if (httpGETRequest(serverNamexxx) == "L45"){
+  // HAFİF Sol
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN1,HIGH);
+    analogWrite(ENA,200);
+    digitalWrite(IN4,HIGH);
+    digitalWrite(IN3,LOW);
+    analogWrite(ENB,100);
+    }
 if (httpGETRequest(serverNamexxx) == "L5"){
+  //Sağ
     digitalWrite(IN2,HIGH);
     digitalWrite(IN1,LOW);
     analogWrite(ENA,200);
+    digitalWrite(IN4,LOW);
+    digitalWrite(IN3,HIGH);
+    analogWrite(ENB,200);
+    }
+if (httpGETRequest(serverNamexxx) == "L55"){
+  //HAFİF Sağ
+    digitalWrite(IN2,HIGH);
+    digitalWrite(IN1,LOW);
+    analogWrite(ENA,100);
     digitalWrite(IN4,LOW);
     digitalWrite(IN3,HIGH);
     analogWrite(ENB,200);
