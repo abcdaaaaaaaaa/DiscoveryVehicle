@@ -56,7 +56,6 @@ void setup() {
 }
 
 void loop() {
-  delay(2000);
   potset = pot / 16;
   potset2 = pot2 / 16;
   vitesayar();
@@ -88,31 +87,29 @@ void loop() {
     LCD_I2C_0x27.print(potnormal);
     LCD_I2C_0x27.setCursor(16 - 1, 2 - 1);
     LCD_I2C_0x27.print(pixytime);   
-     
-   Serial.println("Dongu bitti"); 
   }
 
 void vitesayar(){
   if (potset <= 32){
-    potnormal = "X";
-  }
-  else if (potset <= 64){
     potnormal = "A";
   }
-  else if (potset <= 96){
+  else if (potset <= 64){
      potnormal = "B";
   }
-  else if (potset <= 128){
+  else if (potset <= 96){
      potnormal = "C";
   }
-  else if (potset <= 160) {
+  else if (potset <= 128) {
     potnormal = "D";
   }
-  else if (potset <= 192){
+  else if (potset <= 160){
      potnormal = "E";
   }
-  else if (potset <= 224){
+  else if (potset <= 192){
      potnormal = "F";
+  }
+  else if (potset <= 224){
+    potnormal = "X";
   }
   else {
     potnormal = "G";
