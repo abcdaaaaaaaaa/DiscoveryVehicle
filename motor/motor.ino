@@ -285,27 +285,27 @@ void vites(){
         now = 1;
       }
       else if (xox == "A"){
-      minimum = 50;
+      minimum = 75;
       maximum = 100;
       now = 0;
      }
       else if (xox == "B"){
-      minimum = 50;
+      minimum = 75;
       maximum = 150;
       now = 0;
       }
       else if (xox == "C"){
-      minimum = 50;
+      minimum = 75;
       maximum = 200;
       now = 0;
       }
       else if (xox == "D"){
-      minimum = 50;
+      minimum = 75;
       maximum = 255;
       now = 0;
       }
       else if (xox == "E"){
-      minimum = 50;
+      minimum = 75;
       maximum = 255;
       now = 0;
       }
@@ -320,7 +320,7 @@ void vites(){
       now = 0;
       }
       else{
-      minimum = 50;
+      minimum = 75;
       maximum = 255;
       now = 0;
       }
