@@ -83,7 +83,7 @@ switch(now) {
   case 0:
  {
 mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
-gyro_value = map(ax, 0, 17000, minimum,maximum);
+gyro_value = map(ax, -17000, 17000, minimum,maximum);
 motor_value = abs(gyro_value);
      // Check WiFi connection status
     if(WiFi.status()== WL_CONNECTED ){ 
