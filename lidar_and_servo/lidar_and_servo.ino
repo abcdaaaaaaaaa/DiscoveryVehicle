@@ -123,11 +123,11 @@ myservo.write(180);
 else if (servoplay == "OT"){
   for (int i = 0; i <= 180; i++) {  
     myservo.write(i);                   
-    delay(14);
+    delay(27);
   }
   for (int i = 180; i >= 0; i--) {  
     myservo.write(i);     
-    delay(14);
+    delay(27);
   }
    }
 else if (servoplay == "MV"){
