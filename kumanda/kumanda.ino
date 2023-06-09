@@ -8,8 +8,8 @@ IPAddress apip(192,168,1,1);
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 
-#define pot    analogRead(34)
-#define pot2   analogRead(35)
+#define pot    analogRead(A3)
+#define pot2   analogRead(A2)
 
 const char* ssid = "Chernobyl";
 const char* password = NULL;
@@ -56,13 +56,13 @@ void setup() {
 }
 
 void loop() {
-  potset = pot / 16;
-  potset2 = pot2 / 16;
+  potset = pot / 32;
+  potset2 = pot2 / 32;
   vitesayar();
   kontrolayar();
   lidarayar();
-   x = analogRead(32); //Ury
-   y = analogRead(33);  //Urx
+   x = analogRead(A0); //Ury
+   y = analogRead(A1);  //Urx
    
       Data = httpGETRequest(serverNameData);
       Stg = httpGETRequest(serverNameStg);
@@ -120,25 +120,29 @@ void kontrolayar(){
   switch(hello){
   case 0: 
   {
-if(y >= 1600 && y <= 2400 && x >= 1600 && x <= 2400) {
+if(y >= 3200 && y <= 4800 && x >= 3200 && x <= 4800) {
     kontrol = "1";
   Serial.println("Dur");
 }
-else if(y >= 3200 && y <= 4095) {
+else if(y >= 6400 && y <= 8191) {
     kontrol = "2";
   Serial.println("İleri");
 }
-else if(y >= 0 && y <= 1800) {
+else if(y >= 0 && y <= 3600) {
     kontrol = "3";
   Serial.println("Geri");
 }
-else if(x >= 0 && x <= 1800) {
+else if(x >= 0 && x <= 3600) {
     kontrol = "4";
   Serial.println("Sol");
 }
-else if(x >= 2400 && x <= 4095) {
+else if(x >= 6400 && x <= 8191) {
     kontrol = "5";
   Serial.println("Sağ");
+}
+else{
+    kontrol = "1";
+  Serial.println("Dur");
 }
  }
  break;
@@ -164,25 +168,29 @@ kontrol = "L5";
 }
  break;
 default:
-if(y >= 1600 && y <= 2400 && x >= 1600 && x <= 2400) {
+if(y >= 3200 && y <= 4800 && x >= 3200 && x <= 4800) {
     kontrol = "1";
   Serial.println("Dur");
 }
-else if(y >= 3200 && y <= 4095) {
+else if(y >= 6400 && y <= 8191) {
     kontrol = "2";
   Serial.println("İleri");
 }
-else if(y >= 0 && y <= 1800) {
+else if(y >= 0 && y <= 3600) {
     kontrol = "3";
   Serial.println("Geri");
 }
-else if(x >= 0 && x <= 1800) {
+else if(x >= 0 && x <= 3600) {
     kontrol = "4";
   Serial.println("Sol");
 }
-else if(x >= 2400 && x <= 4095) {
+else if(x >= 6400 && x <= 8191) {
     kontrol = "5";
- Serial.println("Sağ");
+  Serial.println("Sağ");
+}
+else{
+    kontrol = "1";
+  Serial.println("Dur");
 }
  break;
 }
