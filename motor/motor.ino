@@ -1,7 +1,6 @@
-#include <ESP8266WiFi.h>
-#include <ESP8266HTTPClient.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
 #include "ESPAsyncWebServer.h"
-#include <ESPAsyncTCP.h>
 #include "Wire.h"
 #include "I2Cdev.h" 
 #include "MPU6050.h"
@@ -17,12 +16,12 @@ const char* ssid = "Chernobyl";
 const char* password = NULL;
 
 String xox, xox2;
-const int IN2=2; 
-const int IN1=4;
-const int ENA=3;
-const int IN4=12;
-const int IN3=13;
-const int ENB=5;
+const int IN2=12; 
+const int IN1=13;
+const int ENA=14;
+const int IN4=25;
+const int IN3=26;
+const int ENB=27;
 
 
 Pixy2 pixy;
