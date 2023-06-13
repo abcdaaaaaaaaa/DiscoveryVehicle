@@ -5,7 +5,7 @@
 #include "I2Cdev.h" 
 #include "MPU6050.h"
 #include <SPI.h>
-#include <Pixy2.h>
+#include <Pixy2SPI_SS.h>
 
 
 IPAddress local_IP(192, 168, 1, 2);
@@ -24,7 +24,7 @@ const int IN3=26;
 const int ENB=27;
 
 
-Pixy2 pixy;
+Pixy2SPI_SS pixy;
 
 float deadZone = 0.15;
 int baseSpeed = 130;
