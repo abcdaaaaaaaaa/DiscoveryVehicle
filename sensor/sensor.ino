@@ -10,6 +10,7 @@
 #define         Pin4                      analogRead(A4)  
 #define         Pin135                    analogRead(A5)  
 #define         SpaceData                 analogRead(A1)
+#define         SpaceData2                analogRead(A0)
 #define         rxPin                     digitalRead(D0)
 #define         txPin                     digitalRead(D1)
 
@@ -29,7 +30,7 @@ MQUnifiedsensor MQ135(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin135, Typ
 unsigned long counts, previousMillis; 
 float averageCPM, sdCPM, calcCPM, CPMArray[100];
 String latitude, longitude;
-int currentCPM;
+int currentCPM, MQ2A, MQ3A, MQ4A, MQ135A, Data1, Data2;
 
 #define LOG_PERIOD 30000
 HardwareSerial neogps(1);
@@ -134,6 +135,34 @@ void loop() {
   MQ135.setA(34.668); MQ135.setB(-3.369); // Aceton
   float Aceton = MQ135.readSensor(); 
 
+if (Pin2 == 0){
+   MQ2A = 0;  
+}
+else{
+   MQ2A = map(Pin2,0,8191,300,10000);
+}
+if (Pin3 == 0){
+   MQ3A = 0;  
+}
+else{  
+   MQ3A = map(Pin3,0,8191,25,500);
+}
+if (Pin4 == 0){
+   MQ4A = 0;   
+}
+else{
+   MQ4A = map(Pin4,0,8191,300,10000);
+}
+if (Pin135 == 0){
+   MQ135A = 0;   
+} 
+else{
+   MQ135A = map(Pin135,0,8191,10,1000);
+}
+   Data1 = map(SpaceData,0,8191,0,100);
+   Data2 = map(SpaceData2,0,8191,0,100);
+
+
   if ((millis() - lastTime) > timerDelay) {
 
     ThingSpeak.setField(1, Alcohol);
@@ -141,7 +170,7 @@ void loop() {
     ThingSpeak.setField(3, Hexane);
     ThingSpeak.setField(4, CH4);
     ThingSpeak.setField(5, smoke);
-    ThingSpeak.setField(6,  CO2);
+    ThingSpeak.setField(6, CO2);
     ThingSpeak.setField(7, Toluen);
     ThingSpeak.setField(8, NH4);
   int a = ThingSpeak.writeFields(hello1, myWriteAPIKey1);
@@ -150,16 +179,19 @@ void loop() {
     ThingSpeak.setField(3, Propane);
     ThingSpeak.setField(4, CO);
     ThingSpeak.setField(5, H2);
-    ThingSpeak.setField(6, (Pin135 / 8,191));
-    ThingSpeak.setField(7, (SpaceData / 8,191));
+    ThingSpeak.setField(6, MQ135A);
+    ThingSpeak.setField(7, Data1);
+    ThingSpeak.setField(8, Data2);
   int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
     ThingSpeak.setField(1, averageCPM);
     ThingSpeak.setField(2, sdCPM);
     ThingSpeak.setField(3, CPMArray[currentCPM]);
     ThingSpeak.setField(4, latitude);
     ThingSpeak.setField(5, longitude);
+    ThingSpeak.setField(6, MQ2A);    
+    ThingSpeak.setField(7, MQ3A);    
+    ThingSpeak.setField(8, MQ4A);    
   int c = ThingSpeak.writeFields(hello3, myWriteAPIKey3);
-
  
     lastTime = millis();
   }
