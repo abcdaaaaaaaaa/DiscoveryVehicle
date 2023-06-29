@@ -5,7 +5,7 @@ const barchart = new Chart(ctx, {
      labels: ['Alcohol', 'Benzene', 'Hexane', 'CH4', 'Smoke', 'CO2', 'Toluen', 'NH4', 'Aceton', 'LPG', 'Propane', 'CO', 'H2', 'Air'],
       datasets: [{
         label: 'Air Quality',
-        data: [10, 6, 10, 18, 9, 13, 19, 29, 36, 47, 95, 188, 17, 16],
+        data: [10, 6, 10, 18, 9, 13, 19, 29, 36, 47, 95, 188, 17, 219],
         backgroundColor: [
           'rgba(255, 26, 104, 0.2)',
           'rgba(255, 26, 104, 0.2)',
