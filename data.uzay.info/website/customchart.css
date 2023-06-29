@@ -35,33 +35,39 @@
 	 }	 
 
      .create{
-	  width: 276px;
-	  height: 145px; 
-	  position: relative;
+	  width: 300px;
+	  height: 186px; 
+	  position: absolute;
       background-image: url("minispace.png");
 	 }
 	 
      .bigcreate{
 	  width: 300px;
 	  height: 445px; 
-	  position: fixed;
+	  position: absolute;
       left: 965px; 
 	 }
 	 
      .spacecreate1{
-	  left: 203px;
-	  top: 8px;
+	  left: 201px;
+	  top: 3px;
 	  position: absolute;
 	 }	 
 
      .spacecreate2{
-	  left: 203px;
-	  top: 54px;
+	  left: 201px;
+	  top: 45px;
 	  position: absolute;
 	 }	
 
      .spacecreate3{
-	  left: 203px;
-	  top: 100px;
+	  left: 201px;
+	  top: 84px;
 	  position: absolute;
 	 }		 
+	 
+     .spacecreate4{
+	  left: 184px;
+	  top: 144px;
+	  position: absolute;
+	 }	
