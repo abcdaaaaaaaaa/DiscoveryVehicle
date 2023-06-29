@@ -38,6 +38,9 @@ include_once 'newhello.php';
 <div class="spacecreate3">
 <font color="white" size=6><?php echo $value17; ?></font>
 </div>
+<div class="spacecreate4">
+<font color="white" size=3><?php echo $lat; ?> <?php echo $lng; ?></font>
+</div>
 		 </div>
 
 </div>
