@@ -13,8 +13,7 @@ int left, right, minileft, miniright;
 #define sagled  D3
 #define solled  D4
 #define onled   D5
-
-int specialsensor = analogRead(A2);
+#define specialsensor  analogRead(A2);
 
 const char* ssid = "Chernobyl";
 const char* password = NULL;
@@ -95,39 +94,49 @@ servoplay = httpGETRequest(serverNameservoplay);
 if (servoplay == "L1"){
 delay(20); 
 myservo.write(0);   
+tfmP.getData( tfDist, tfFlux, tfTemp);
 }
 else if (servoplay == "L2"){
 delay(20); 
 myservo.write(30);   
+tfmP.getData( tfDist, tfFlux, tfTemp);
 }
 else if (servoplay == "L3"){
 delay(20); 
-myservo.write(60);   
+myservo.write(60);  
+tfmP.getData( tfDist, tfFlux, tfTemp); 
 }
 else if (servoplay == "AA"){
 delay(20); 
 myservo.write(90);  
+tfmP.getData( tfDist, tfFlux, tfTemp);
 }
 else if (servoplay == "R3"){
 delay(20); 
 myservo.write(120);  
+tfmP.getData( tfDist, tfFlux, tfTemp);
 }
 else if (servoplay == "R2"){
 delay(20); 
 myservo.write(150);   
+tfmP.getData( tfDist, tfFlux, tfTemp);
 }
 else if (servoplay == "R1"){
 delay(20); 
 myservo.write(180);   
+tfmP.getData( tfDist, tfFlux, tfTemp);
 }
 else if (servoplay == "OT"){
   for (int i = 0; i <= 180; i++) {  
     myservo.write(i);                   
     delay(27);
+tfmP.getData( tfDist, tfFlux, tfTemp);
   }
   for (int i = 180; i >= 0; i--) {  
     myservo.write(i);     
     delay(27);
+tfmP.getData( tfDist, tfFlux, tfTemp);
+
   }
    }
 else if (servoplay == "MV"){
