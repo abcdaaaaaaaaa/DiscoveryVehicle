@@ -78,7 +78,7 @@ break;
 case (2):
 {
 normal();
-MQ.MQ135calibrate();
+MQ.MQ2calibrate();
 value1 = MQ.MQ2DataH2();
 value2 = MQ.MQ2DataH2();
 value3 = MQ.MQ2DataLPG();
@@ -91,6 +91,7 @@ break;
 case (3):
 {
 normal();
+MQ.MQ3calibrate();
 value1 = MQ.MQ3DataLPG();
 value2 = MQ.MQ3DataCH4();
 value3 = MQ.MQ3DataCO();
@@ -103,6 +104,7 @@ break;
 case (4):
 {
 normal();
+MQ.MQ4calibrate();
 value1 = MQ.MQ4DataLPG();
 value2 = MQ.MQ4DataCH4();
 value3 = MQ.MQ4DataCO();
@@ -115,6 +117,7 @@ break;
 case (5):
 {
 normal();
+MQ.MQ5calibrate();
 value1 = MQ.MQ5DataH2();
 value2 = MQ.MQ5DataLPG();
 value3 = MQ.MQ5DataCH4();
@@ -127,6 +130,7 @@ break;
 case (6):
 {
 normal();
+MQ.MQ6calibrate();
 value1 = MQ.MQ6DataH2();
 value2 = MQ.MQ6DataLPG();
 value3 = MQ.MQ6DataCH4();
@@ -139,6 +143,7 @@ break;
 case (7):
 {
 normal();
+MQ.MQ7calibrate();
 value1 = MQ.MQ7DataH2();
 value2 = MQ.MQ7DataLPG();
 value3 = MQ.MQ7DataCH4();
@@ -151,6 +156,7 @@ break;
 case (8):
 {
 normal();
+MQ.MQ8calibrate();
 value1 = MQ.MQ8DataH2();
 value2 = MQ.MQ8DataLPG();
 value3 = MQ.MQ8DataCH4();
@@ -163,6 +169,7 @@ break;
 case (9):
 {
 normal();
+MQ.MQ9calibrate();
 value1 = MQ.MQ9DataLPG();
 value2 = MQ.MQ9DataCH4();
 value3 = MQ.MQ9DataCO();
@@ -176,6 +183,7 @@ tm1637.display(3,1);
 tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
+MQ.MQ131calibrate();
 value1 = MQ.MQ131DataNOx();
 value1 = MQ.MQ131DataCL2();
 value1 = MQ.MQ131DataO3();
@@ -189,6 +197,7 @@ tm1637.display(3,6);
 tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
+MQ.MQ136calibrate();
 value1 = MQ.MQ136DataH2S();
 value1 = MQ.MQ136DataNH4();
 value1 = MQ.MQ136DataCO();
@@ -201,6 +210,7 @@ tm1637.display(3,10);
 tm1637.display(2,3);
 tm1637.display(1,0);
 tm1637.display(0,3);
+MQ.MQ303Acalibrate();
 value1 = MQ.MQ303ADataIso();
 value1 = MQ.MQ303ADataHyd();
 value1 = MQ.MQ303ADataEthanol();
@@ -214,6 +224,7 @@ tm1637.display(3,10);
 tm1637.display(2,9);
 tm1637.display(1,0);
 tm1637.display(0,3);
+MQ.MQ309Acalibrate();
 value1 = MQ.MQ309ADataH2();
 value1 = MQ.MQ309ADataCH4();
 value1 = MQ.MQ309ADataCO();
