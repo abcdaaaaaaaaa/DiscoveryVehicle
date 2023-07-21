@@ -138,5 +138,10 @@ const barchart = new Chart(ctx, {
 	  });
 
 </script>
+<script>
+setTimeout(() => {
+  window.location.reload(true);
+}, 18000)
+</script>
   </body>
 </html>
