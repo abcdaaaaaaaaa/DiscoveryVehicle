@@ -10,7 +10,6 @@
                     var field5Values = [];
                     var field6Values = [];	
                     var field7Values = [];	
-                    var field8Values = [];									
                     var timestamps = [];
 
                     $.each(data.feeds, function(index, feed) {
@@ -21,7 +20,6 @@
 						field5Values.push(feed.field5);
 						field6Values.push(feed.field6);
 						field7Values.push(feed.field7);
-						field7Values.push(feed.field8);
 						timestamps.push(feed.created_at);
 					});
         
@@ -31,8 +29,7 @@
  let toplam12 = parseInt(field4Values);   
  let toplam13 = parseInt(field5Values);   
  let toplam14 = parseInt(field6Values);
- let toplam18 = parseInt(field7Values);
- let toplam19 = parseInt(field8Values);
+ let toplam15 = parseInt(field7Values);
 
    
 document.cookie = "value9="+toplam9;
@@ -41,8 +38,7 @@ document.cookie = "value11="+toplam11;
 document.cookie = "value12="+toplam12;
 document.cookie = "value13="+toplam13;
 document.cookie = "value14="+toplam14;
-document.cookie = "value18="+toplam18;
-document.cookie = "value19="+toplam19;
+document.cookie = "value15="+toplam15;
 
 
 console.log(toplam9);
@@ -51,8 +47,7 @@ console.log(toplam11);
 console.log(toplam12);
 console.log(toplam13);
 console.log(toplam14);
-console.log(toplam18);
-console.log(toplam19);
+console.log(toplam15);
                 });
 
 
