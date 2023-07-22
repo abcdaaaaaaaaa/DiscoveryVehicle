@@ -23,7 +23,7 @@
         $value8 = $_COOKIE["value8"];
 
 if($value8 == 1){
-
+}
 $sql = "INSERT INTO SensorData (Alcohol, Benzene, Hexane, CH4,  Smoke, CO2, Toluen, NH4, Aceton, LPG, Propane, CO, H2, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, MQ135, MQ2, MQ3, MQ4, lat, lng)
         VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value8 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
         
