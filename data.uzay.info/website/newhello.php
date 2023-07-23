@@ -12,7 +12,7 @@
         $value5 = $_COOKIE["value5"];
         $value6 = $_COOKIE["value6"];
         $value7 = $_COOKIE["value7"];
-        $value8 = $_COOKIE["value8"];
+        $char1  = $_COOKIE["value8"];
         $value9 = $_COOKIE["value9"];
         $value10 = $_COOKIE["value10"];
         $value11 = $_COOKIE["value11"];
