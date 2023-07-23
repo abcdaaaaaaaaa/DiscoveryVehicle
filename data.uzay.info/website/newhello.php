@@ -21,12 +21,94 @@
         $value14 = $_COOKIE["value14"];
         $value15 = $_COOKIE["value15"];
 
-if($value8 == 1){
-$sql = "INSERT INTO SensorData (CO, Alcohol, CO2, Toluen,  NH4, Aceton, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value8 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "'')";
-}
+switch ( $char1 ) {
 
-        
+case 1 :
+  
+$sql = "INSERT INTO MQ135 (CO, Alcohol, CO2, Toluen,  NH4, Aceton, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 2 :
+  
+$sql = "INSERT INTO MQ2 (H2, LPG, CO, Alcohol, Propane, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "',  '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 3 :
+  
+$sql = "INSERT INTO MQ3 (LPG, CH4, CO, Alcohol, Benzene, Hexane, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 4 :
+  
+$sql = "INSERT INTO MQ4 (LPG, CH4, CO, Alcohol, Smoke, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 5 :
+  
+$sql = "INSERT INTO MQ5 (H2, LPG, CH4, CO,  Alcohol, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 6 :
+  
+$sql = "INSERT INTO MQ6 (H2, LPG, CH4, CO,  Alcohol, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 7 :
+  
+$sql = "INSERT INTO MQ7 (H2, LPG, CH4, CO,  Alcohol, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 8 :
+  
+$sql = "INSERT INTO MQ8 (H2, LPG, CH4, CO,  Alcohol, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 9 :
+  
+$sql = "INSERT INTO MQ9 (LPG, CH4, CO, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 10 :
+  
+$sql = "INSERT INTO MQ131 (NOx, CL2, O3, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 11 :
+  
+$sql = "INSERT INTO MQ136 (H2S, NH4, CO, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 12 :
+  
+$sql = "INSERT INTO MQ303A (Isobutane, Hydrogen, Ethanol, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+case 13 :
+  
+$sql = "INSERT INTO MQ309A (H2, CH4, CO, Alcohol, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+default:
+  
+$sql = "INSERT INTO MQ135 (CO, Alcohol, CO2, Toluen,  NH4, Aceton, Air, Avg1, sdCPM, Arrayval, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "')";
+break;
+
+}
+ 
         if ($conn->query($sql) === TRUE) {
         } 
         else {
