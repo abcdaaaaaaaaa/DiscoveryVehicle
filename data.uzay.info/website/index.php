@@ -14,11 +14,11 @@ include_once 'newhello.php';
   <body>
     <div class="container">
 	     <div class="chart">
-        <canvas id="barchart" width="500" height="500"></canvas>
+        <canvas id="barchart" width="450" height="500"></canvas>
          </div> 
 		 <div class="solorta">
 	     <div class="chart">
-        <canvas id="myChart2"  width="450" height="500"></canvas>
+        <canvas id="myChart2"  width="500" height="500"></canvas>
          </div> 
 		 </div>
 
@@ -39,7 +39,7 @@ include_once 'newhello.php';
 <font color="white" size=6><?php echo $value11; ?></font>
 </div>
 <div class="spacecreate4">
-<font color="white" size=3><?php echo $value14; ?> <?php echo $value15; ?></font>
+<font color="white" size=3><?php echo $value12; ?> <?php echo $value13; ?></font>
 </div>
 </div>
 
@@ -55,7 +55,7 @@ let toplam4 = (<?php echo $value4; ?>);
 let toplam5 = (<?php echo $value5; ?>);
 let toplam6 = (<?php echo $value6; ?>);
 let toplam7 = (<?php echo $value7; ?>);
-let toplam8 = (<?php echo $value8; ?>);
+let toplam8 = (<?php echo $value16; ?>);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
 <script src="../datacolor.js"></script>
