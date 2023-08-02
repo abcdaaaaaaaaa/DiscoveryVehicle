@@ -1,77 +1,58 @@
 #include "WiFi.h"
 #include "ThingSpeak.h"
-#include <MQUnifiedsensor.h>
+#include "TM1637.h"
+#include <MQSpaceData.h>
 #include <TinyGPS++.h>
 
+#define Rload             (10)
+#define ADC_BIT_RESU      (13)
+#define Voltage           (3.3) 
+#define space1            (A0)
+#define space2            (A1)
 
-#define         Board                    ("ESP-32")
-#define         Pin2                      analogRead(A2)  
-#define         Pin3                      analogRead(A3)  
-#define         Pin4                      analogRead(A4)  
-#define         Pin135                    analogRead(A5)  
-#define         SpaceData                 analogRead(A1)
-#define         SpaceData2                analogRead(A0)
-#define         rxPin                     digitalRead(D0)
-#define         txPin                     digitalRead(D1)
+#define Avg1        (true)
+#define SdCPM1      (true)
+#define Arrayval1   (true)
+#define LOG_PERIOD1 (30000)
+#define GeigerPin1  (D2)
 
-#define         RatioMQ2CleanAir          (9.83)
-#define         RatioMQ3CleanAir          (60) //RS / R0 = 60 ppm 
-#define         RatioMQ4CleanAir          (4.4) //RS / R0 = 4.4 ppm 
-#define         RatioMQ135CleanAir        (3.6) //RS / R0 = 3.6 ppm 
-#define         ADC_Bit_Resolution        (13) // 10 bit ADC 
-#define         Voltage_Resolution        (3.3) // Volt resolution to calc the voltage
-#define         Type                      ("ESP-32") //Board used
+#define CLK (D3)
+#define DIO (D4)
 
-MQUnifiedsensor MQ2(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin2, Type);
-MQUnifiedsensor MQ3(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin3, Type);
-MQUnifiedsensor MQ4(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin4, Type);
-MQUnifiedsensor MQ135(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin135, Type);
+TM1637 tm1637(CLK,DIO);
 
-unsigned long counts, previousMillis; 
-float averageCPM, sdCPM, calcCPM, CPMArray[100];
-String latitude, longitude;
-int currentCPM, MQ2A, MQ3A, MQ4A, MQ135A, Data1, Data2;
+MQSpaceData MQ(1, Voltage, ADC_BIT_RESU, Rload, space1);
+MQSpaceData other(1, Voltage, ADC_BIT_RESU, Rload, space2);
+GeigerCounterPin Radyoactivite(Avg1, SdCPM1, Arrayval1, LOG_PERIOD1, GeigerPin1);
 
-#define LOG_PERIOD 30000
 HardwareSerial neogps(1);
 TinyGPSPlus gps;
+
+int sec;
+float value1, value2, value3, value4, value5, value6, value7;
+String latitude, longitude;
 
 const char* ssid = "REPLACE_WITH_YOUR_SSID";  
 const char* password = "REPLACE_WITH_YOUR_PASSWORD";  
 WiFiClient  client;
 
-unsigned long hello3 = 3;
 unsigned long hello2 = 2;
 unsigned long hello1 = 1;
 
 const char * myWriteAPIKey1 = "J2UEIZSZTC5568NM";
 const char * myWriteAPIKey2 = "ZVZ3UYIV4PTYA6XP";
-const char * myWriteAPIKey3 = "0HSEW6FQ65NWH2EP";
 
 unsigned long lastTime = 0;
 unsigned long timerDelay = 15000;
 
 void setup() {
-  MQ2.init();
-  MQ2.setRegressionMethod(1);
-  MQ2.setR0(1.82);
-  MQ3.init();
-  MQ3.setRegressionMethod(1); //_PPM =  a*ratio^b
-  MQ3.setR0(0.45);
-  MQ4.init();
-  MQ4.setRegressionMethod(1); //_PPM =  a*ratio^b
-  MQ4.setR0(14.23);
-  MQ135.init();
-  MQ135.setRegressionMethod(1); //_PPM =  a*ratio^b
-  MQ135.setR0(9.03); 
-  counts = 0;
-  currentCPM = 0;
-  averageCPM = 0;
-  sdCPM = 0;
-  calcCPM = 0;
-  pinMode(D8, INPUT);
-  attachInterrupt(digitalPinToInterrupt(D8), impulse, FALLING);  
+
   Serial.begin(115200);  
+  MQ.begin();
+  other.begin();
+  Radyoactivite.begin();
+  tm1637.init();
+  tm1637.set(BRIGHT_TYPICAL);
   WiFi.mode(WIFI_STA);  Serial.println("Connecting to WiFi ");
   WiFi.begin(ssid, password);
   while(WiFi.status() != WL_CONNECTED) { 
@@ -87,145 +68,202 @@ void setup() {
 }
 
 void loop() {
-
- radyoactivite();
-
-  MQ2.update();
-  MQ3.update();
-  MQ4.update();
-  MQ135.update(); 
-
-  
-  MQ2.setA(574.25); MQ2.setB(-2.222);  // LPG
-  float LPG = MQ2.readSensor(); 
-  
-  MQ2.setA( 987.99); MQ2.setB(-2.162); // H2
-  float H2 = MQ135.readSensor(); 
-  
-  MQ2.setA(658.71); MQ2.setB(-2.168); //Propane
-  float Propane = MQ2.readSensor(); 
-  
-  MQ3.setA(0.3934); MQ3.setB(-1.504); //Alcohol
-  float Alcohol = MQ3.readSensor(); 
-
-  MQ3.setA(4.8387); MQ3.setB(-2.68); //Benzene
-  float Benzene = MQ3.readSensor(); 
-  
-  MQ3.setA(7585.3); MQ3.setB(-2.849); //Hexane
-  float Hexane = MQ3.readSensor(); 
-
-  MQ4.setA(1012.7); MQ4.setB(-2.786); //CH4
-  float CH4 = MQ4.readSensor(); 
-
-  MQ4.setA(30000000); MQ4.setB(-8.308); //smoke 
-  float smoke = MQ4.readSensor(); 
-
-  MQ135.setA(605.18); MQ135.setB(-3.937); //CO
-  float CO = MQ135.readSensor(); 
-  
-  MQ135.setA(110.47); MQ135.setB(-2.862); //CO2
-  float CO2 = MQ135.readSensor(); 
-
-  MQ135.setA(44.947); MQ135.setB(-3.445); //Toulen
-  float Toluen = MQ135.readSensor(); 
-  
-  MQ135.setA(102.2 ); MQ135.setB(-2.473); //NH4
-  float NH4 = MQ135.readSensor(); 
-
-  MQ135.setA(34.668); MQ135.setB(-3.369); // Aceton
-  float Aceton = MQ135.readSensor(); 
-
-if (Pin2 == 0){
-   MQ2A = 0;  
+sec = map(analogRead(27),0,8191,1,13);
+switch(sec){
+case (1):
+{
+MQ135doing();
 }
-else{
-   MQ2A = map(Pin2,0,8191,300,10000);
+break;
+case (2):
+{
+normal();
+MQ.MQ2calibrate();
+value1 = MQ.MQ2DataH2();
+value2 = MQ.MQ2DataH2();
+value3 = MQ.MQ2DataLPG();
+value4 = MQ.MQ2DataCO();
+value5 = MQ.MQ2DataAlcohol();
+value6 = MQ.MQ2DataPropane();  
+value7 = MQ.MQ2DataAir();
 }
-if (Pin3 == 0){
-   MQ3A = 0;  
+break;
+case (3):
+{
+normal();
+MQ.MQ3calibrate();
+value1 = MQ.MQ3DataLPG();
+value2 = MQ.MQ3DataCH4();
+value3 = MQ.MQ3DataCO();
+value4 = MQ.MQ3DataAlcohol();
+value5 = MQ.MQ3DataBenzene();
+value6 = MQ.MQ3DataHexane();  
+value7 = MQ.MQ3DataAir();
 }
-else{  
-   MQ3A = map(Pin3,0,8191,25,500);
+break;
+case (4):
+{
+normal();
+MQ.MQ4calibrate();
+value1 = MQ.MQ4DataLPG();
+value2 = MQ.MQ4DataCH4();
+value3 = MQ.MQ4DataCO();
+value4 = MQ.MQ4DataAlcohol();
+value5 = MQ.MQ4DataSmoke();
+value6 = MQ.MQ4DataAir();
+value7 = 0; 
 }
-if (Pin4 == 0){
-   MQ4A = 0;   
+break;
+case (5):
+{
+normal();
+MQ.MQ5calibrate();
+value1 = MQ.MQ5DataH2();
+value2 = MQ.MQ5DataLPG();
+value3 = MQ.MQ5DataCH4();
+value4 = MQ.MQ5DataCO();
+value5 = MQ.MQ5DataAlcohol();
+value6 = MQ.MQ5DataAir();
+value7 = 0;
 }
-else{
-   MQ4A = map(Pin4,0,8191,300,10000);
+break;
+case (6):
+{
+normal();
+MQ.MQ6calibrate();
+value1 = MQ.MQ6DataH2();
+value2 = MQ.MQ6DataLPG();
+value3 = MQ.MQ6DataCH4();
+value4 = MQ.MQ6DataCO();
+value5 = MQ.MQ6DataAlcohol();
+value6 = MQ.MQ6DataAir();
+value7 = 0;
 }
-if (Pin135 == 0){
-   MQ135A = 0;   
-} 
-else{
-   MQ135A = map(Pin135,0,8191,10,1000);
+break;
+case (7):
+{
+normal();
+MQ.MQ7calibrate();
+value1 = MQ.MQ7DataH2();
+value2 = MQ.MQ7DataLPG();
+value3 = MQ.MQ7DataCH4();
+value4 = MQ.MQ7DataCO();
+value5 = MQ.MQ7DataAlcohol();
+value6 = MQ.MQ7DataAir();
+value7 = 0;
 }
-   Data1 = map(SpaceData,0,8191,0,100);
-   Data2 = map(SpaceData2,0,8191,0,100);
+break;
+case (8):
+{
+normal();
+MQ.MQ8calibrate();
+value1 = MQ.MQ8DataH2();
+value2 = MQ.MQ8DataLPG();
+value3 = MQ.MQ8DataCH4();
+value4 = MQ.MQ8DataCO();
+value5 = MQ.MQ8DataAlcohol();
+value6 = MQ.MQ8DataAir();
+value7 = 0;
+}
+break;
+case (9):
+{
+normal();
+MQ.MQ9calibrate();
+value1 = MQ.MQ9DataLPG();
+value2 = MQ.MQ9DataCH4();
+value3 = MQ.MQ9DataCO();
+value4 = MQ.MQ9DataAir();
+value5 = value6 = value7 = 0;
+}
+break;
+case (10):
+{
+tm1637.display(3,1);
+tm1637.display(2,3);
+tm1637.display(1,1);
+tm1637.display(0,0);
+MQ.MQ131calibrate();
+value1 = MQ.MQ131DataNOx();
+value1 = MQ.MQ131DataCL2();
+value1 = MQ.MQ131DataO3();
+value4 = MQ.MQ131DataAir();
+value5 = value6 = value7 = 0;
+}
+break;
+case (11):
+{
+tm1637.display(3,6);
+tm1637.display(2,3);
+tm1637.display(1,1);
+tm1637.display(0,0);
+MQ.MQ136calibrate();
+value1 = MQ.MQ136DataH2S();
+value1 = MQ.MQ136DataNH4();
+value1 = MQ.MQ136DataCO();
+value4 = value5 = value6 = value7 = 0;
+}
+break;
+case (12):
+{
+tm1637.display(3,10);
+tm1637.display(2,3);
+tm1637.display(1,0);
+tm1637.display(0,3);
+MQ.MQ303Acalibrate();
+value1 = MQ.MQ303ADataIso();
+value1 = MQ.MQ303ADataHyd();
+value1 = MQ.MQ303ADataEthanol();
+value4 = MQ.MQ303ADataAir();
+value5 = value6 = value7 = 0;
+}
+break;
+case (13):
+{
+tm1637.display(3,10);
+tm1637.display(2,9);
+tm1637.display(1,0);
+tm1637.display(0,3);
+MQ.MQ309Acalibrate();
+value1 = MQ.MQ309ADataH2();
+value1 = MQ.MQ309ADataCH4();
+value1 = MQ.MQ309ADataCO();
+value1 = MQ.MQ309ADataAlcohol();
+value5 = MQ.MQ309ADataAir();
+value6 = value7 = 0;
 
+}
+break;
+default:
+{
+MQ135doing();
+}
+break;
+}
+
+Radyoactivite.radyoactivite();
 
   if ((millis() - lastTime) > timerDelay) {
 
-    ThingSpeak.setField(1, Alcohol);
-    ThingSpeak.setField(2, Benzene);
-    ThingSpeak.setField(3, Hexane);
-    ThingSpeak.setField(4, CH4);
-    ThingSpeak.setField(5, smoke);
-    ThingSpeak.setField(6, CO2);
-    ThingSpeak.setField(7, Toluen);
-    ThingSpeak.setField(8, NH4);
+    ThingSpeak.setField(1, value1);
+    ThingSpeak.setField(2, value2);
+    ThingSpeak.setField(3, value3);
+    ThingSpeak.setField(4, value4);
+    ThingSpeak.setField(5, value5);
+    ThingSpeak.setField(6, value6);
+    ThingSpeak.setField(7, value7);
   int a = ThingSpeak.writeFields(hello1, myWriteAPIKey1);
-    ThingSpeak.setField(1, Aceton);
-    ThingSpeak.setField(2, LPG);
-    ThingSpeak.setField(3, Propane);
-    ThingSpeak.setField(4, CO);
-    ThingSpeak.setField(5, H2);
-    ThingSpeak.setField(6, MQ135A);
-    ThingSpeak.setField(7, Data1);
-    ThingSpeak.setField(8, Data2);
-  int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
-    ThingSpeak.setField(1, averageCPM);
+    ThingSpeak.setField(1, Avg);
     ThingSpeak.setField(2, sdCPM);
-    ThingSpeak.setField(3, CPMArray[currentCPM]);
+    ThingSpeak.setField(3, Arrayval);
     ThingSpeak.setField(4, latitude);
     ThingSpeak.setField(5, longitude);
-    ThingSpeak.setField(6, MQ2A);    
-    ThingSpeak.setField(7, MQ3A);    
-    ThingSpeak.setField(8, MQ4A);    
-  int c = ThingSpeak.writeFields(hello3, myWriteAPIKey3);
+    ThingSpeak.setField(6, MQ.MQData100());    
+    ThingSpeak.setField(7, other.MQData100());    
+    ThingSpeak.setField(8, sec);
+  int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
  
     lastTime = millis();
-  }
-}
-void impulse() {
-  counts++;
-}
-
-float outputSieverts(float x)  {
-  float y = x * 0.0057;
-  return y;
-}
-    
-void radyoactivite(){  
-unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis > LOG_PERIOD) {
-    previousMillis = currentMillis;
-    CPMArray[currentCPM] = counts * 2;
-
-    counts = 0;
-    averageCPM = 0;
-    sdCPM = 0;
-    //calc avg and sd
-    for (int x=0;x<currentCPM+1;x++)  {
-      averageCPM = averageCPM + CPMArray[x];
-    }
-    averageCPM = averageCPM / (currentCPM + 1);
-    for (int x=0;x<currentCPM+1;x++)  {
-      sdCPM = sdCPM + sq(CPMArray[x] - averageCPM);
-    }
-    sdCPM = sqrt(sdCPM / currentCPM) / sqrt(currentCPM+1);
-
-    //Serial.println("Avg: " + String(averageCPM) + " +/- " + String(sdCPM) + "  ArrayVal: " + String(CPMArray[currentCPM]));
-    currentCPM = currentCPM + 1;
   }
 }
 
@@ -246,9 +284,31 @@ int sendGpsToServer()
   if(true){
     newData = false;
      
-    latitude = String(gps.location.lat(), 6); 
+    latitude  = String(gps.location.lat(), 6); 
     longitude = String(gps.location.lng(), 6); 
 
   }
    
+}
+
+void normal(){
+tm1637.display(3,sec);
+tm1637.display(2,sec);
+tm1637.display(1,sec);
+tm1637.display(0,sec);
+}
+
+void MQ135doing(){
+tm1637.display(3,5);
+tm1637.display(2,3);
+tm1637.display(1,1);
+tm1637.display(0,0);
+MQ.MQ135calibrate();
+value1 = MQ.MQ135DataCO();
+value2 = MQ.MQ135DataAlcohol();
+value3 = MQ.MQ135DataCO2();
+value4 = MQ.MQ135DataToluen();
+value5 = MQ.MQ135DataNH4();
+value6 = MQ.MQ135DataAceton();
+value7 = MQ.MQ135DataAir();
 }
