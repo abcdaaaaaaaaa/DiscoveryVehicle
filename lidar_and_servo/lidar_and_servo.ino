@@ -10,10 +10,7 @@ const char* serverNamexxx = "http://192.168.1.1/xxx";
 String servoplay, result, kontrol;
 int left, right, minileft, miniright;
 
-#define sagled  D3
-#define solled  D4
-#define onled   D5
-#define specialsensor  analogRead(A2);
+
 
 const char* ssid = "Chernobyl";
 const char* password = NULL;
@@ -197,48 +194,7 @@ myservo.write(90);
 delay(10);
 }
 }
-void ledyak(){
-kontrol = httpGETRequest(serverNamexxx);
-    if(WiFi.status()== WL_CONNECTED ){ 
-if (kontrol == "1"){
-    Serial.println("ledyakma");
-    digitalWrite(solled,LOW);
-    digitalWrite(sagled,LOW);
-    digitalWrite(onled,LOW);
-    }
-if (kontrol == "2"){
-    Serial.println("onledyak");  
-    digitalWrite(onled,HIGH);
-    digitalWrite(solled,LOW);
-    digitalWrite(sagled,LOW);
-    }
-if (kontrol == "3"){
-    Serial.println("arkaledyak");  
-    digitalWrite(onled,LOW);
-    digitalWrite(solled,HIGH);
-    digitalWrite(sagled,HIGH);
-    }
-if (kontrol == "4"){
-    Serial.println("Solledyak");  
-    digitalWrite(onled,LOW);
-    digitalWrite(solled,HIGH);
-    digitalWrite(sagled,LOW);
-    }
-if (kontrol == "5"){
-    Serial.println("Sağledyak");  
-    digitalWrite(onled,LOW);
-    digitalWrite(solled,LOW);
-    digitalWrite(sagled,HIGH);
-    }
-}       
-else {
-    Serial.println("ledyakma");
-    digitalWrite(onled,LOW);
-    digitalWrite(solled,LOW);
-    digitalWrite(sagled,LOW);
-    }
- delay(1); 
-}
+
 String httpGETRequest(const char* serverName) {
   WiFiClient client;
   HTTPClient http;
