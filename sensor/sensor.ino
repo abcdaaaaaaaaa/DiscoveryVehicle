@@ -6,7 +6,6 @@
 
 #define Rload             (10)
 #define ADC_BIT_RESU      (13)
-#define Voltage           (3.3) 
 #define space1            (A0)
 #define space2            (A1)
 
@@ -21,15 +20,15 @@
 
 TM1637 tm1637(CLK,DIO);
 
-MQSpaceData MQ(1, Voltage, ADC_BIT_RESU, Rload, space1);
-MQSpaceData other(1, Voltage, ADC_BIT_RESU, Rload, space2);
+MQSpaceData MQ(ADC_BIT_RESU, Rload, space1);
+MQSpaceData other(ADC_BIT_RESU, Rload, space2);
 GeigerCounterPin Radyoactivite(Avg1, SdCPM1, Arrayval1, LOG_PERIOD1, GeigerPin1);
 
 HardwareSerial neogps(1);
 TinyGPSPlus gps;
 
-int sec;
-float value1, value2, value3, value4, value5, value6, value7;
+
+int value1, value2, value3, value4, value5, value6, value7, sec;
 String latitude, longitude;
 
 const char* ssid = "REPLACE_WITH_YOUR_SSID";  
@@ -284,9 +283,8 @@ int sendGpsToServer()
   if(true){
     newData = false;
      
-    latitude  = String(gps.location.lat(), 6); 
-    longitude = String(gps.location.lng(), 6); 
-
+    latitude  = String((gps.location.lat(), 6)*(pow(10,6))); 
+    longitude = String((gps.location.lng(), 6)*(pow(10,6))); 
   }
    
 }
