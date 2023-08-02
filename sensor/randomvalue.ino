@@ -14,8 +14,8 @@ const char * myWriteAPIKey2 = "ZVZ3UYIV4PTYA6XP";
 unsigned long lastTime = 0;
 unsigned long timerDelay = 15000;
 
-String number12 = "40032287";
-String number13 = "35220634";
+const long int number12 = 40032287;
+const long int number13 = 35220634;
 int x;
 
 void setup() {
