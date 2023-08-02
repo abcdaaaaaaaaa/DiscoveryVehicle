@@ -1,4 +1,4 @@
-        $(document).ready(function() {
+       $(document).ready(function() {
             function getData() {
                 var url ="https://api.thingspeak.com/channels/2169907/fields/1,2,3,4,5,6,7,8.json?api_key=AL0IDSI4FU59TFXT&results=1";
 
