@@ -241,6 +241,7 @@ break;
 }
 
 Radyoactivite.radyoactivite();
+sendGpsToServer();
 
   if ((millis() - lastTime) > timerDelay) {
 
@@ -266,7 +267,7 @@ Radyoactivite.radyoactivite();
   }
 }
 
-int sendGpsToServer()
+void sendGpsToServer()
 {
   boolean newData = false;
   for (unsigned long start = millis(); millis() - start < 2000;){
