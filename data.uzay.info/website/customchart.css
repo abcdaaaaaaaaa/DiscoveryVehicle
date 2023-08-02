@@ -3,6 +3,7 @@
         padding: 0;
         box-sizing: border-box;
       }
+
       body{
        background-image: url("hello1.png");
         background-repeat: no-repeat;
@@ -25,7 +26,7 @@
 	 
      .solorta{
     position: absolute;
-    left: 502px;
+    left: 448px;
 
 	 }
 	 
