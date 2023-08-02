@@ -45,8 +45,8 @@ int number10 = random(10,101);
 int number11 = random(10,101);
 int number12 = random(10,101);
 int number13 = random(10,101);
-float number14 = 40.032287;
-float number15 = 35.220634;
+String number14 = 40.032287;
+String number15 = 35.220634;
 int number16 = random(10,101);
   if ((millis() - lastTime) > timerDelay) {
     Serial.println("döngü basladi");
