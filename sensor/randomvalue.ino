@@ -14,6 +14,10 @@ const char * myWriteAPIKey2 = "ZVZ3UYIV4PTYA6XP";
 unsigned long lastTime = 0;
 unsigned long timerDelay = 15000;
 
+String number12 = "40032287";
+String number13 = "35220634";
+int x;
+
 void setup() {
 
   WiFi.begin(ssid, password);
@@ -27,27 +31,27 @@ void setup() {
   Serial.println(WiFi.localIP());
   
   ThingSpeak.begin(client);  
-
+  x = 10;
 }
 
 void loop() {
 
-int number1 = random(10,101);
-int number2 = random(10,101);
-int number3 = random(10,101);
-int number4 = random(10,101);
-int number5 = random(10,101);
-int number6 = random(10,101);
-int number7 = random(10,101);
+int number1 = random(x,101);
+int number2 = random(x,101);
+int number3 = random(x,101);
+int number4 = random(x,101);
+int number5 = random(x,101);
+int number6 = random(x,101);
+int number7 = random(x,101);
 int number8 = random(1,14);
-int number9 = random(10,101);
-int number10 = random(10,101);
-int number11 = random(10,101);
-int number12 = random(10,101);
-int number13 = random(10,101);
-String number14 = 40.032287;
-String number15 = 35.220634;
-int number16 = random(10,101);
+int number9 = random(x,101);
+int number10 = random(x,101);
+int number11 = random(x,101);
+int number14 = random(x,101);
+int number15 = random(x,101);
+int number16 = random(x,101);
+x = x + 5;
+if(x == 100)(x = 10);
   if ((millis() - lastTime) > timerDelay) {
     Serial.println("döngü basladi");
     ThingSpeak.setField(1, number1);
