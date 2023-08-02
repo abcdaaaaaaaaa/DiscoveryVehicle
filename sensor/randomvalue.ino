@@ -21,6 +21,7 @@ void setup() {
     delay(500);
     Serial.print(".");
   }
+  Serial.begin(115200);
   Serial.println("");
   Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
@@ -44,10 +45,11 @@ int number10 = random(10,101);
 int number11 = random(10,101);
 int number12 = random(10,101);
 int number13 = random(10,101);
-int number14 = random(10,101);
-int number15 = random(10,101);
+float number14 = 40.032287;
+float number15 = 35.220634;
 int number16 = random(10,101);
   if ((millis() - lastTime) > timerDelay) {
+    Serial.println("döngü basladi");
     ThingSpeak.setField(1, number1);
     ThingSpeak.setField(2, number2);
     ThingSpeak.setField(3, number3);
@@ -66,7 +68,7 @@ int number16 = random(10,101);
     ThingSpeak.setField(7, number15);
     ThingSpeak.setField(8, number8);
   int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
- 
+     Serial.println("döngü biti");
     lastTime = millis();
   }
 }
