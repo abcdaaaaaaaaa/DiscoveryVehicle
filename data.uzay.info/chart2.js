@@ -1,15 +1,15 @@
         $(document).ready(function() {
             function getData() {
-                var url ="https://api.thingspeak.com/channels/2195036/fields/6,7.json?api_key=DG5Q1OBE0MW2GDTF&results=5";
+                var url ="https://api.thingspeak.com/channels/2195036/fields/4,5.json?api_key=DG5Q1OBE0MW2GDTF&results=5";
 
                 $.getJSON(url, function(data) {
-                    var field1Values = [];
-                    var field2Values = [];
+                    var field4Values = [];
+                    var field5Values = [];
                     var timestamps = [];
 
                     $.each(data.feeds, function(index, feed) {
-						field1Values.push(feed.field6);
-						field2Values.push(feed.field7);
+						field4Values.push(feed.field4);
+						field5Values.push(feed.field5);
 						timestamps.push(feed.created_at);
 					});
                     //dealing the the graph
@@ -21,14 +21,14 @@
                             labels:timestamps,
                             datasets:[{
                                 label: 'SpaceData1%',
-                                data: field1Values,
+                                data: field4Values,
                                 backgroundColor: red(0.2),
                                 borderColor:  red(1),
                                 borderWidth: 1
                             },
                             {
                                 label: 'SpaceData2%',
-                                data: field2Values,
+                                data: field5Values,
                                 backgroundColor: blue(0.2),
                                 borderColor:  blue(1),
                                 borderWidth: 1                                
