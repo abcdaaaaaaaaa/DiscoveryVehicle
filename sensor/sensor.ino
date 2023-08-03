@@ -257,10 +257,10 @@ sendGpsToServer();
     ThingSpeak.setField(1, Avg);
     ThingSpeak.setField(2, sdCPM);
     ThingSpeak.setField(3, Arrayval);
-    ThingSpeak.setField(4, MQ.MQData100());    
-    ThingSpeak.setField(5, other.MQData100());    
-    ThingSpeak.setField(6, latitude);
-    ThingSpeak.setField(7, longitude);
+    ThingSpeak.setField(4, latitude);
+    ThingSpeak.setField(5, longitude);
+    ThingSpeak.setField(6, MQ.MQData100());    
+    ThingSpeak.setField(7, other.MQData100());    
     int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
  
     lastTime = millis();
