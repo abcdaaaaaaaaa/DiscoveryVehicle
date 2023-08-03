@@ -55,7 +55,7 @@ let toplam4 = (<?php echo $value4; ?>);
 let toplam5 = (<?php echo $value5; ?>);
 let toplam6 = (<?php echo $value6; ?>);
 let toplam7 = (<?php echo $value7; ?>);
-let toplam8 = (<?php echo $value16; ?>);
+let toplam8 = (<?php echo $char1; ?>);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
 <script src="../datacolor.js"></script>
