@@ -254,9 +254,9 @@ sendGpsToServer();
     ThingSpeak.setField(7, value7);
     ThingSpeak.setField(8, sec);
   int a = ThingSpeak.writeFields(hello1, myWriteAPIKey1);
-    ThingSpeak.setField(1, Radyoactivite.usvhr);
-    ThingSpeak.setField(2, Radyoactivite.Avg); // 10 +/- 11
-    ThingSpeak.setField(3, Radyoactivite.sdCPM); // 10 +/- 11
+    ThingSpeak.setField(1, Radyoactivite.usvhr*100);
+    ThingSpeak.setField(2, Radyoactivite.Avg*100); // 10 +/- 11
+    ThingSpeak.setField(3, Radyoactivite.sdCPM*100); // 10 +/- 11
     ThingSpeak.setField(4, Radyoactivite.count);    
     ThingSpeak.setField(5, MQ.MQData100());    
     ThingSpeak.setField(6, other.MQData100());    
