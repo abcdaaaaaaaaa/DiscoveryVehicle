@@ -21,8 +21,8 @@ const char * myWriteAPIKey2 = "ZVZ3UYIV4PTYA6XP";
 unsigned long lastTime = 0;
 unsigned long timerDelay = 15000;
 
-const long int number14 = 40032287;
-const long int number15 = 35220634;
+const long int number15 = 40032287;
+const long int number16 = 35220634;
 int x, sec;
 
 void setup() {
@@ -59,6 +59,7 @@ int number10 = random(x,101);
 int number11 = random(x,101);
 int number12 = random(x,101);
 int number13 = random(x,101);
+int number14 = random(x,101);
 x = x + 5;
 if(x == 100)(x = 10);
   if ((millis() - lastTime) > timerDelay) {
@@ -79,6 +80,7 @@ if(x == 100)(x = 10);
     ThingSpeak.setField(5, number13);
     ThingSpeak.setField(6, number14);
     ThingSpeak.setField(7, number15);
+    ThingSpeak.setField(8, number16);
   int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
      Serial.println("döngü biti");
     lastTime = millis();
