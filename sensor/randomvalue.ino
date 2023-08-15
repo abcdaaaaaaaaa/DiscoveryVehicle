@@ -1,12 +1,5 @@
 #include <WiFi.h>
 #include "ThingSpeak.h"
-#include "TM1637.h"
-
-
-#define CLK 2
-#define DIO 4
-TM1637 tm1637(CLK,DIO);
-
 
 const char* ssid = "Wokwi-GUEST";  
 const char* password = "";  
@@ -23,12 +16,9 @@ unsigned long timerDelay = 15000;
 
 const long int number15 = 40032287;
 const long int number16 = 35220634;
-int x, sec;
+int x;
 
 void setup() {
-tm1637.init();
-tm1637.set(BRIGHT_TYPICAL);
-
   WiFi.begin(ssid, password);
   while(WiFi.status() != WL_CONNECTED) { 
     delay(500);
@@ -44,8 +34,6 @@ tm1637.set(BRIGHT_TYPICAL);
 }
 
 void loop() {
-sec = map(analogRead(27),0,4095,1,13);
-
 int number1 = random(x,101);
 int number2 = random(x,101);
 int number3 = random(x,101);
@@ -53,7 +41,7 @@ int number4 = random(x,101);
 int number5 = random(x,101);
 int number6 = random(x,101);
 int number7 = random(x,101);
-int number8 = sec;
+int number8 = random(1,14);
 int number9 = random(x,101);
 int number10 = random(x,101);
 int number11 = random(x,101);
@@ -85,103 +73,4 @@ if(x == 100)(x = 10);
      Serial.println("döngü biti");
     lastTime = millis();
   }
-switch(sec){
-case (1):
-{
-tm1637.display(3,5);
-tm1637.display(2,3);
-tm1637.display(1,1);
-tm1637.display(0,0);
 }
-break;
-case (2):
-{
-normal();
-}
-break;
-case (3):
-{
-normal();
-}
-break;
-case (4):
-{
-normal();
-}
-break;
-case (5):
-{
-normal();
-}
-break;
-case (6):
-{
-normal();
-}
-break;
-case (7):
-{
-normal();
-}
-break;
-case (8):
-{
-normal();
-}
-break;
-case (9):
-{
-normal();
-}
-break;
-case (10):
-{
-tm1637.display(3,1);
-tm1637.display(2,3);
-tm1637.display(1,1);
-tm1637.display(0,0);
-}
-break;
-case (11):
-{
-tm1637.display(3,6);
-tm1637.display(2,3);
-tm1637.display(1,1);
-tm1637.display(0,0);
-}
-break;
-case (12):
-{
-tm1637.display(3,10);
-tm1637.display(2,3);
-tm1637.display(1,0);
-tm1637.display(0,3);
-}
-break;
-case (13):
-{
-tm1637.display(3,10);
-tm1637.display(2,9);
-tm1637.display(1,0);
-tm1637.display(0,3);
-}
-break;
-default:
-{
-tm1637.display(3,5);
-tm1637.display(2,3);
-tm1637.display(1,1);
-tm1637.display(0,0);  
-}
-break;
-}
-
-}
-
-void normal(){
-tm1637.display(3,sec);
-tm1637.display(2,sec);
-tm1637.display(1,sec);
-tm1637.display(0,sec);
-}
-// https://wokwi.com/projects/373061179681216513
