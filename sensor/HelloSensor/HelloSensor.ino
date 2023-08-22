@@ -54,8 +54,8 @@ unsigned long int hello1 = 1;
 static const char * myWriteAPIKey1 = "J2UEIZSZTC5568NM";
 static const char * myWriteAPIKey2 = "ZVZ3UYIV4PTYA6XP";
 static const char * myWriteAPIKey3 = "0HSEW6FQ65NWH2EP";
-static const char * myWriteAPIKey4 = "ZVZ3UYIV4PTYA6XP";
-static const char * myWriteAPIKey5 = "ZVZ3UYIV4PTYA6XP";
+static const char * myWriteAPIKey4 = "JCBZHB1KUX0Y09LX";
+static const char * myWriteAPIKey5 = "QP8J57RU9BY9NAVE";
 
 unsigned long int lastTime = 0;
 unsigned long int timerDelay = 14500;
