@@ -30,7 +30,7 @@ HardwareSerial neogps(1);
 TinyGPSPlus gps;
 Servo myservo;
 
-int value1, value2, value3, value4, value5, value6, value7, sec, Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180, MaxAngle,  
+int value1, value2, value3, value4, value5, value6, value7, sec, Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180, maxAngle,  
 Green0, Green30, Green60, Green90, Green120, Green150, Green180, Temp0, Temp30, Temp60, Temp90, Temp120, Temp150, Temp180, Average;
 String latitude, longitude;
 
