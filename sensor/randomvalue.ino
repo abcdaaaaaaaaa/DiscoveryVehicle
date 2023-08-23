@@ -22,7 +22,7 @@ unsigned long timerDelay = 14500;
 
 const long int number15 = 40032287;
 const long int number16 = 35220634;
-int x, Average, MaxAngle;
+int x, Average, maxAngle;
 
 void setup() {
   WiFi.begin(ssid, password);
