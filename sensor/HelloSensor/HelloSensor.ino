@@ -30,7 +30,7 @@ HardwareSerial neogps(1);
 TinyGPSPlus gps;
 Servo myservo;
 
-int value1, value2, value3, value4, value5, value6, value7, sec, Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180,  
+int value1, value2, value3, value4, value5, value6, value7, sec, Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180, MaxAngle,  
 Green0, Green30, Green60, Green90, Green120, Green150, Green180, Temp0, Temp30, Temp60, Temp90, Temp120, Temp150, Temp180, Average;
 String latitude, longitude;
 
@@ -298,21 +298,13 @@ break;
         delay(0.5);        
     }
     
-Average = (Angle0 + Angle30 + Angle60 + Angle90 + Angle120 + Angle150 + Angle180)/7;
-if (Average < ( Angle0 or Angle30 or Angle60 or Angle90 or Angle120 or Angle150 or Angle180)) {
-if(Angle0 >= (Angle30 and Angle60 and Angle90 and Angle120 and Angle150 and Angle180))(Average=Angle0);
-else if(Angle30 >= (Angle60 and Angle90 and Angle120 and Angle150 and Angle180))(Average=Angle30);
-else if(Angle60 >= (Angle90 and Angle120 and Angle150 and Angle180))(Average=Angle60);
-else if(Angle90 >= (Angle120 and Angle150 and Angle180))(Average=Angle90);
-else if(Angle120 >= (Angle150 and Angle180))(Average=Angle120);
-else if(Angle150 >= (Angle180))(Average=Angle150);
-else(Average=Angle180);
-}
+Average = (Angle0 + Angle30 + Angle60 + Angle90 + Angle120 + Angle150 + Angle180)/3.5;
+int angles[] = {Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180};
+for (int i = 0; i < 7; i++) {if (angles[i] > maxAngle) (maxAngle = angles[i]);}
+if (Average < maxAngle)(Average = maxAngle);
 
 Radyoactivite.radyoactivite();
 sendGpsToServer();
-
-
 
   if ((millis() - lastTime) > timerDelay) {
 
