@@ -77,13 +77,13 @@ int Temp120 = random(-10,61);
 int Temp150 = random(-10,61);
 int Temp180 = random(-10,61);
 
-int Green0 = random(0,256);
-int Green30 = random(0,256);
-int Green60 = random(0,256);
-int Green90 = random(0,256);
-int Green120 = random(0,256);
-int Green150 = random(0,256);
-int Green180 = random(0,256);
+int Green0 = random(0,65536);
+int Green30 = random(0,65536);
+int Green60 = random(0,65536);
+int Green90 = random(0,65536);
+int Green120 = random(0,65536);
+int Green150 = random(0,65536);
+int Green180 = random(0,65536);
 
   if ((millis() - lastTime) > timerDelay) {
     Serial.println("döngü basladi");
