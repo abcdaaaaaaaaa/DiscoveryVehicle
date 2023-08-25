@@ -302,17 +302,17 @@ void vites(){
       now = 0;
       }
       else if (xox == "E"){
-      minimum = 75;
+      minimum = 100;
       maximum = 255;
       now = 0;
       }
       else if (xox == "F"){
-      minimum = 95;
+      minimum = 125;
       maximum = 255;
       now = 0;
       }
       else if (xox == "G"){
-      minimum = 145;
+      minimum = 150;
       maximum = 255;
       now = 0;
       }
