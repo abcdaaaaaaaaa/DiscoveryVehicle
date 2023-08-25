@@ -278,10 +278,7 @@ void vites(){
   Serial.println(xox); 
   Serial.println("ikinci vites:");
   Serial.println(xox2);
-      if (xox2 == "MV"){
-        now = 2;
-      }
-      else if (xox == "X"){
+       if (xox == "X"){
         now = 1;
       }
       else if (xox == "A"){
