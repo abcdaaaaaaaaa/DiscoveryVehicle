@@ -15,7 +15,7 @@ IPAddress subnet(255, 255, 0, 0);
 const char* ssid = "Chernobyl";
 const char* password = NULL;
 
-String xox, xox2;
+String xox;
 const int IN2=12; 
 const int IN1=13;
 const int ENA=14;
@@ -42,7 +42,6 @@ int gyro_value;
 
 const char* serverNamexxx = "http://192.168.1.1/xxx";
 const char* serverNamepot = "http://192.168.1.1/pot";
-const char* serverNamelih = "http://192.168.1.1/servo";
 
 int minimum;
 int maximum;
@@ -73,12 +72,21 @@ void setup(){
   server.on("/pixy", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", String(pixy.ccc.numBlocks).c_str());
   });
+
+  server.on("/data1", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(analogRead(2)).c_str());
+  });
+
+  server.on("/data2", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(analogRead(4)).c_str());
+  });
   
   server.begin();
 }
 
 void loop(){
   vites();
+  
 switch(now) { 
   case 0:
  {
@@ -87,6 +95,7 @@ gyro_value = map(ax, -17000, 17000, minimum,maximum);
 motor_value = abs(gyro_value);
      // Check WiFi connection status
     if(WiFi.status()== WL_CONNECTED ){ 
+      
 if (httpGETRequest(serverNamexxx) == "1"){
     Serial.println("Dur");
     digitalWrite(IN2,LOW);
@@ -96,6 +105,7 @@ if (httpGETRequest(serverNamexxx) == "1"){
     digitalWrite(IN3,LOW);
     analogWrite(ENB,0);
     }
+    
 if (httpGETRequest(serverNamexxx) == "2"){
     Serial.println("İleri");  
     digitalWrite(IN2,LOW);
@@ -105,6 +115,7 @@ if (httpGETRequest(serverNamexxx) == "2"){
     digitalWrite(IN3,HIGH);
     analogWrite(ENB,motor_value);
     }
+    
 if (httpGETRequest(serverNamexxx) == "3"){
     Serial.println("Geri");  
     digitalWrite(IN2,HIGH);
@@ -114,6 +125,7 @@ if (httpGETRequest(serverNamexxx) == "3"){
     digitalWrite(IN3,LOW);
     analogWrite(ENB,motor_value);
     }
+    
 if (httpGETRequest(serverNamexxx) == "4"){
     Serial.println("Sol");  
     digitalWrite(IN2,LOW);
@@ -123,6 +135,7 @@ if (httpGETRequest(serverNamexxx) == "4"){
     digitalWrite(IN3,LOW);
     analogWrite(ENB,motor_value);
     }
+    
 if (httpGETRequest(serverNamexxx) == "5"){
     Serial.println("Sağ");  
     digitalWrite(IN2,HIGH);
@@ -145,13 +158,15 @@ else {
  delay(1); 
  }
   break;
+  
  case 1:
 {
-  Serial.println("pixy nesne takip modu");  
+  Serial.println("pixy nesne takip modu:");  
   float turn = pixyCheck();
 if(turn> -deadZone && turn < deadZone){
  turn = 0;
 }
+
 if (turn < 0) {
    digitalWrite(IN2,LOW); 
    digitalWrite(IN1,HIGH);
@@ -160,6 +175,7 @@ if (turn < 0) {
    digitalWrite(IN3,LOW);
    analogWrite(ENB,170); 
 }
+
 else if (turn > 0) {
    digitalWrite(IN2,HIGH); 
    digitalWrite(IN1,LOW);
@@ -168,6 +184,7 @@ else if (turn > 0) {
    digitalWrite(IN3,HIGH);
    analogWrite(ENB,80); 
 }
+
 else {
    digitalWrite(IN2,HIGH); 
    digitalWrite(IN1,LOW);
@@ -179,85 +196,7 @@ else {
  delay(1); 
 } 
  break;
-case 2:
-{
-    if(WiFi.status()== WL_CONNECTED ){ 
-   Serial.println("lidar algoritması");  
-if (httpGETRequest(serverNamexxx) == "L1"){
-  //Dur
-    digitalWrite(IN2,LOW);
-    digitalWrite(IN1,LOW);
-    analogWrite(ENA,0);
-    digitalWrite(IN4,LOW);
-    digitalWrite(IN3,LOW);
-    analogWrite(ENB,0);
-    }
-if (httpGETRequest(serverNamexxx) == "L2"){
-  //İleri
-    digitalWrite(IN2,LOW);
-    digitalWrite(IN1,HIGH);
-    analogWrite(ENA,200);
-    digitalWrite(IN4,LOW);
-    digitalWrite(IN3,HIGH);
-    analogWrite(ENB,200);
-    }
-if (httpGETRequest(serverNamexxx) == "L3"){
-  //Geri
-    digitalWrite(IN2,HIGH);
-    digitalWrite(IN1,LOW);
-    analogWrite(ENA,200);
-    digitalWrite(IN4,HIGH);
-    digitalWrite(IN3,LOW);
-    analogWrite(ENB,200);
-    }
-if (httpGETRequest(serverNamexxx) == "L4"){
-  //Sol
-    digitalWrite(IN2,LOW);
-    digitalWrite(IN1,HIGH);
-    analogWrite(ENA,200);
-    digitalWrite(IN4,HIGH);
-    digitalWrite(IN3,LOW);
-    analogWrite(ENB,200);
-    }
-if (httpGETRequest(serverNamexxx) == "L45"){
-  // HAFİF Sol
-    digitalWrite(IN2,LOW);
-    digitalWrite(IN1,HIGH);
-    analogWrite(ENA,200);
-    digitalWrite(IN4,HIGH);
-    digitalWrite(IN3,LOW);
-    analogWrite(ENB,100);
-    }
-if (httpGETRequest(serverNamexxx) == "L5"){
-  //Sağ
-    digitalWrite(IN2,HIGH);
-    digitalWrite(IN1,LOW);
-    analogWrite(ENA,200);
-    digitalWrite(IN4,LOW);
-    digitalWrite(IN3,HIGH);
-    analogWrite(ENB,200);
-    }
-if (httpGETRequest(serverNamexxx) == "L55"){
-  //HAFİF Sağ
-    digitalWrite(IN2,HIGH);
-    digitalWrite(IN1,LOW);
-    analogWrite(ENA,100);
-    digitalWrite(IN4,LOW);
-    digitalWrite(IN3,HIGH);
-    analogWrite(ENB,200);
-    }
-}       
-else {
-    digitalWrite(IN2,LOW);
-    digitalWrite(IN1,LOW);
-    analogWrite(ENA,0);
-    digitalWrite(IN4,LOW);
-    digitalWrite(IN3,LOW);
-    analogWrite(ENB,0);
-    }
- delay(1);   
-}
- break;
+ 
 default:
 {
     digitalWrite(IN2,LOW);
@@ -268,16 +207,12 @@ default:
     analogWrite(ENB,0);
 }
   break;
-    }
-    delay(1);
-  }
+}
+}
 void vites(){
   xox = httpGETRequest(serverNamepot);
-  xox2 = httpGETRequest(serverNamelih);
-  Serial.println("ilk vites:");
+  Serial.println("vites:");
   Serial.println(xox); 
-  Serial.println("ikinci vites:");
-  Serial.println(xox2);
        if (xox == "X"){
         now = 1;
       }
@@ -321,7 +256,7 @@ void vites(){
       maximum = 255;
       now = 0;
       }
-    }
+}
 
 
 float pixyCheck() {
@@ -345,6 +280,7 @@ float pixyCheck() {
    area = width * height;
 
 }
+
 else {
   cont += 1;
 if (cont == 100) {
