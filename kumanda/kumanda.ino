@@ -8,18 +8,14 @@ IPAddress apip(192,168,1,1);
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 
-#define pot    analogRead(A3)
-#define pot2   analogRead(A2)
+#define pot    analogRead(A2)
 
 const char* ssid = "Chernobyl";
 const char* password = NULL;
 
 const char* serverNamepixy = "http://192.168.1.2/pixy";
-const char* serverNameData = "http://192.168.1.3/data";
-const char* serverNameStg = "http://192.168.1.3/stg";
-const char* serverNamedist = "http://192.168.1.3/dist";
-const char* serverNametemp = "http://192.168.1.3/temp";
-const char* serverNamelih = "http://192.168.1.3/lih";
+const char* serverNameData1 = "http://192.168.1.2/data1";
+const char* serverNameData2 = "http://192.168.1.2/data2";
 
 AsyncWebServer server(80);
 
@@ -27,10 +23,8 @@ LiquidCrystal_I2C LCD_I2C_0x27(0x27, 16, 2);
 
 char* kontrol;
 char* potnormal;
-char* potnormal2;
-int x, y, potset, potset2;
-int hello = 0;
-String Data, Stg, dist, tempa, lih, pixytime;
+int x, y, potset;
+String Data1, Data2, pixytime;
 
 void setup() {
   Serial.begin(115200);
@@ -49,77 +43,47 @@ void setup() {
     server.on("/pot", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", String(potnormal).c_str());
   });
-    server.on("/servo", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", String(potnormal2).c_str());
-  });
+
   server.begin();
 }
 
 void loop() {
-  potset = pot / 32;
-  potset2 = pot2 / 32;
+  potset = map(pot,0,8191,1,8);
   vitesayar();
   kontrolayar();
-  lidarayar();
-   x = analogRead(A0); //Ury
+   x = analogRead(A0);  //Ury
    y = analogRead(A1);  //Urx
    
-      Data = httpGETRequest(serverNameData);
-      Stg = httpGETRequest(serverNameStg);
+      Data1 = httpGETRequest(serverNameData1);
+      Data2 = httpGETRequest(serverNameData2);
       pixytime = httpGETRequest(serverNamepixy);
-      dist = httpGETRequest(serverNamedist);
-      tempa = httpGETRequest(serverNametemp);
   
     LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
-    LCD_I2C_0x27.print("DWH:");
-    LCD_I2C_0x27.print(Data);
-    LCD_I2C_0x27.setCursor(10 - 1, 1 - 1);
-    LCD_I2C_0x27.print(potnormal2); 
-    LCD_I2C_0x27.print(":");
-    LCD_I2C_0x27.print(dist);
-    LCD_I2C_0x27.setCursor(1 - 1, 2 - 1);
-    LCD_I2C_0x27.print("Ang:");
-    LCD_I2C_0x27.print(Stg);
-    LCD_I2C_0x27.setCursor(11 - 1, 2 - 1);
-    LCD_I2C_0x27.print(tempa);
-    LCD_I2C_0x27.print("C"); 
-    LCD_I2C_0x27.setCursor(15 - 1, 2 - 1);
-    LCD_I2C_0x27.print(potnormal);
-    LCD_I2C_0x27.setCursor(16 - 1, 2 - 1);
+    LCD_I2C_0x27.print("MQ-X: %");
+    LCD_I2C_0x27.print(Data1);
+    LCD_I2C_0x27.setCursor(15 - 1, 1 - 1);
+    LCD_I2C_0x27.print(potnormal);     
     LCD_I2C_0x27.print(pixytime);   
+    LCD_I2C_0x27.setCursor(1 - 2, 1 - 1);
+    LCD_I2C_0x27.print("Data: %");
+    LCD_I2C_0x27.print(Data2);
   }
 
 void vitesayar(){
-  if (potset <= 32){
-    potnormal = "A";
-  }
-  else if (potset <= 64){
-     potnormal = "B";
-  }
-  else if (potset <= 96){
-     potnormal = "C";
-  }
-  else if (potset <= 128) {
-    potnormal = "D";
-  }
-  else if (potset <= 160){
-     potnormal = "E";
-  }
-  else if (potset <= 192){
-     potnormal = "F";
-  }
-  else if (potset <= 224){
-    potnormal = "X";
-  }
-  else {
-    potnormal = "G";
-  }
+switch(potset){
+case 1: potnormal = "A"; break;
+case 2: potnormal = "B"; break;
+case 3: potnormal = "C"; break;
+case 4: potnormal = "D"; break;
+case 5: potnormal = "E"; break;
+case 6: potnormal = "F"; break;
+case 7: potnormal = "G"; break;
+case 8: potnormal = "X"; break;
+default: potnormal = "D"; break;
+}
 }
 
 void kontrolayar(){
-  switch(hello){
-  case 0: 
-  {
 if(y >= 3200 && y <= 4800 && x >= 3200 && x <= 4800) {
     kontrol = "1";
   Serial.println("Dur");
@@ -144,96 +108,8 @@ else{
     kontrol = "1";
   Serial.println("Dur");
 }
- }
- break;
-case 1:
-{
-lih = httpGETRequest(serverNamelih);
-if(lih == "L1") {
-kontrol = "L1";
-//Serial.println("Dur");
 }
-if(lih == "L2") {
-kontrol = "L2";
-//Serial.println("İleri");
-if(lih == "L4") {
-kontrol = "L4";
-//Serial.println("Sol");
-}
-if(lih == "L5") {
-kontrol = "L5";
-//Serial.println("Sağ");
-}
-}
-}
- break;
-default:
-if(y >= 3200 && y <= 4800 && x >= 3200 && x <= 4800) {
-    kontrol = "1";
-  Serial.println("Dur");
-}
-else if(y >= 6400 && y <= 8191) {
-    kontrol = "2";
-  Serial.println("İleri");
-}
-else if(y >= 0 && y <= 3600) {
-    kontrol = "3";
-  Serial.println("Geri");
-}
-else if(x >= 0 && x <= 3600) {
-    kontrol = "4";
-  Serial.println("Sol");
-}
-else if(x >= 6400 && x <= 8191) {
-    kontrol = "5";
-  Serial.println("Sağ");
-}
-else{
-    kontrol = "1";
-  Serial.println("Dur");
-}
- break;
-}
-} 
-void lidarayar(){
-  if (potset2 <= 32){
-    potnormal2 = "L1";
-     hello = 0;
-  }
-  else if (potset2 <= 64){
-    potnormal2 = "L2";
-     hello = 0;
-  }
-  else if (potset2 <= 96){
-     potnormal2 = "L3";
-     hello = 0;
-  }
-  else if (potset2 <= 128){
-     potnormal2 = "AA";
-     hello = 0;
-  }
-  else if (potset2 <= 160) {
-    potnormal2 = "R3";
-     hello = 0;
-  }
-  else if (potset2 <= 192){
-     potnormal2 = "R2";
-     hello = 0;
-  }
-  else if (potset2 <= 224){
-     potnormal2 = "R1";
-     hello = 0;
-  }
-  else if (potset2 == 255){
-     potnormal2 = "MV";
-     hello = 1;
-  }
-  else {
-    potnormal2 = "OT";
-     hello = 0;
-  }  
-}
-
+ 
 String httpGETRequest(const char* serverName) {
   WiFiClient client;
   HTTPClient http;
