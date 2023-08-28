@@ -2,5 +2,5 @@
 *.sql linguist-language=sql
 *.sql text
 *.htaccess linguist-detectable=true
-*.htaccess linguist-language=Apache Conf
+*.htaccess linguist-language=ApacheConf
 *.htaccess text
