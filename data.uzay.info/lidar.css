@@ -17,8 +17,8 @@ body {
 }
 
 .blue-rectangle {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     background-color: #3498db;
     position: absolute;
     left: calc(50%);
@@ -33,7 +33,7 @@ body {
 .left-long-rectangle30
  {
     width: 30px;
-    height: 150px;
+    height: 30px;
     position: relative;
     transition: left 0.3s ease-in-out, right 0.3s ease-in-out;
 }
@@ -41,7 +41,7 @@ body {
 .forward-long-rectangle,
 .forward-long-rectangle60,
 .forward-long-rectangle120 {
-    width: 150px;
+    width: 30px;
     height: 30px;
     background-color: #e74c3c;
     position: relative;
