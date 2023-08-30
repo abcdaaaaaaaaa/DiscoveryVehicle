@@ -1,25 +1,25 @@
         const screenWidth = window.innerWidth / 2;
         const screenHeight = window.innerHeight;
         
-        const LeftrectanglePosition = Math.round(Angle0/Average * screenWidth) - 105 + "px";
+        const LeftrectanglePosition = Math.round(Angle0/Average * screenWidth) - 45 + "px";
         document.documentElement.style.setProperty('--LeftrectanglePosition', LeftrectanglePosition);
 
-        const LeftrectanglePosition30 = Math.round(Angle30/Average * screenWidth) + 105  + "px";
+        const LeftrectanglePosition30 = Math.round(Angle30/Average * screenWidth) + 45  + "px";
         document.documentElement.style.setProperty('--LeftrectanglePosition30', LeftrectanglePosition30);     
         
-        const ForwardrectanglePosition60 = Math.round(Angle60/Average * screenHeight) - 60 + "px";
+        const ForwardrectanglePosition60 = Math.round(Angle60/Average * screenHeight) - 30 + "px";
         document.documentElement.style.setProperty('--ForwardrectanglePosition60', ForwardrectanglePosition60);
         
-        const ForwardrectanglePosition = Math.round(Angle90/Average * screenHeight) - 60  + "px";
+        const ForwardrectanglePosition = Math.round(Angle90/Average * screenHeight) - 30 + "px";
         document.documentElement.style.setProperty('--ForwardrectanglePosition', ForwardrectanglePosition);
         
-        const ForwardrectanglePosition120 = Math.round(Angle120/Average * screenHeight) - 60 + "px";
+        const ForwardrectanglePosition120 = Math.round(Angle120/Average * screenHeight) - 30 + "px";
         document.documentElement.style.setProperty('--ForwardrectanglePosition120', ForwardrectanglePosition120);
         
-        const RightrectanglePosition30 = Math.round(Angle150/Average * screenWidth) + 105  + "px";
+        const RightrectanglePosition30 = Math.round(Angle150/Average * screenWidth) + 45  + "px";
         document.documentElement.style.setProperty('--RightrectanglePosition30', RightrectanglePosition30);
         
-        const RightrectanglePosition = Math.round(Angle180/Average * screenWidth) - 105 + "px";
+        const RightrectanglePosition = Math.round(Angle180/Average * screenWidth) - 45 + "px";
         document.documentElement.style.setProperty('--RightrectanglePosition', RightrectanglePosition);
         
         const angle = 30;
