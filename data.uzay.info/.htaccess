@@ -3,6 +3,7 @@ AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
 RewriteRule ^example$ example.html [L,NC]
 RewriteRule ^examplelidar$ lidar.html [L,NC]
 RewriteRule ^lidar$ lidar.php [L,NC]
+ErrorDocument 404 https://data.uzay.info
 
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteCond %{HTTPS} off
