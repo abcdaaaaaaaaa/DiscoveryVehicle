@@ -1,1 +1,1 @@
-<img width="344" alt="ROVER" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/0cefe0a7-3055-4f8d-bd53-aee73bc55db2">
+<img width="195" alt="finalplan" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/e2371c87-bef4-437e-a2bd-7b1aaa4b38fd">
