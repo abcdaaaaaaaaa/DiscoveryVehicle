@@ -10,7 +10,7 @@ IPAddress subnet(255,255,255,0);
 
 #define pot    analogRead(A2)
 
-const char* ssid = "Chernobyl";
+const char* ssid = "HelloSensor";
 const char* password = NULL;
 
 const char* serverNamepixy = "http://192.168.1.2/pixy";
