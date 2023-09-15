@@ -12,7 +12,7 @@ IPAddress local_IP(192, 168, 1, 2);
 IPAddress gateway(255, 255, 0, 0);
 IPAddress subnet(255, 255, 0, 0);
 
-const char* ssid = "Chernobyl";
+const char* ssid = "HelloSensor";
 const char* password = NULL;
 
 String xox;
