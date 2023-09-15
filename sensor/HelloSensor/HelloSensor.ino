@@ -41,8 +41,8 @@ int16_t  tfDist = 0;
 int16_t  tfFlux = 0;  
 int16_t  tfTemp = 0;  
 
-const char* ssid = "REPLACE_WITH_YOUR_SSID";  
-const char* password = "REPLACE_WITH_YOUR_PASSWORD";  
+const char* ssid = "VINNWiFi_80B6";  
+const char* password = "92030887";  
 WiFiClient  client;
 
 unsigned long int hello5 = 5;
