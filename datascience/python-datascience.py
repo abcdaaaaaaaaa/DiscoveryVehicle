@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import csv
+import numpy as np
+from scipy.stats import linregress
 
 SensorModel = input("Enter the model of the MQ Gas sensor like 'MQ-303A': ")
 SensorData = SensorModel + " " + "Datasheet"
@@ -15,14 +17,14 @@ dy = []
 ey = []
 fy = []
 
+plt.figure(facecolor='white')
+plt.gca().set_facecolor('white')
 plt.xlabel(SensorXscale)
 plt.ylabel(SensorYscale)
 plt.title(SensorData)
 
 def generate_sequence(depth):
     return list(range(0, depth+1))
-
-#depth = int(input("How many different time intervals would you like to examine your sensor? "))-1
 
 with open('../datascience/csv/{}.csv'.format(SensorModel), 'r') as file:
     depth = len(list(csv.reader(file))) - 2
@@ -212,5 +214,21 @@ match(SensorModel):
              ay.append(int(row['SpaceData']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
         plt.scatter(sequence, ay, label='SpaceData', color='#0000FF', marker='o')
+
+
+# Verileri depolamak için boş bir liste tanımlayın
+x_values = sequence  # X ekseni, zaman aralığı gibi
+y_values = y  # Grafiği çizmek istediğiniz veri
+
+# Regresyon analizi yapın
+slope, intercept, r_value, p_value, std_err = linregress(x_values, y_values)
+
+# Regresyon çizgisinin denklemi
+line = f'Y = {slope:.2f}X + {intercept:.2f}'
+
+# Grafiği çizin
+plt.plot(x_values, y_values, 'o', label='Data', color='#6600ff')
+plt.plot(x_values, slope * np.array(x_values) + intercept, color='#6600ff', label=f'Regression: {line}')
+
 plt.legend()
 plt.show()
