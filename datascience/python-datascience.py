@@ -214,19 +214,24 @@ match(SensorModel):
              ay.append(int(row['SpaceData']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
         plt.scatter(sequence, ay, label='SpaceData', color='#0000FF', marker='o')
+    case 'GeigerCounter':
+        plt.ylim(0.1, 10)
+        plt.ylabel("usV/hr calculation for Geiger Counter")
+        with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
+           csv_reader = csv.DictReader(file)
+           for row in csv_reader:
+             y.append(int(row['usV/hr']))
+        plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
 
 
-# Verileri depolamak için boş bir liste tanımlayın
-x_values = sequence  # X ekseni, zaman aralığı gibi
-y_values = y  # Grafiği çizmek istediğiniz veri
+x_values = sequence  
+y_values = y  
 
-# Regresyon analizi yapın
+
 slope, intercept, r_value, p_value, std_err = linregress(x_values, y_values)
 
-# Regresyon çizgisinin denklemi
 line = f'Y = {slope:.2f}X + {intercept:.2f}'
 
-# Grafiği çizin
 plt.plot(x_values, y_values, 'o', label='Data', color='#6600ff')
 plt.plot(x_values, slope * np.array(x_values) + intercept, color='#6600ff', label=f'Regression: {line}')
 
