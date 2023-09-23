@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function (event) {
   var baseHost = document.location.origin
-  var streamUrl = baseHost + ':81'
+  var streamUrl = baseHost 
 
   const hide = el => {
     el.classList.add('hidden')
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   const detect = document.getElementById('face_detect')
   const recognize = document.getElementById('face_recognize')
   const framesize = document.getElementById('framesize')
-  
+
   framesize.onchange = () => {
     updateConfig(framesize)
     if (framesize.value > 5) {
@@ -221,4 +221,4 @@ document.addEventListener('DOMContentLoaded', function (event) {
       disable(enrollButton)
     }
   }
-})			
+})
