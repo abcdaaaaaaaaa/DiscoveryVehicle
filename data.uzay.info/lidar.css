@@ -17,8 +17,8 @@ body {
 }
 
 .blue-rectangle {
-    width: 90px;
-    height: 90px;
+    width: 30px;
+    height: 30px;
     background-color: #3498db;
     position: absolute;
     left: calc(50%);
