@@ -214,7 +214,7 @@ match(SensorModel):
              ay.append(int(row['SpaceData']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
         plt.scatter(sequence, ay, label='SpaceData', color='#0000FF', marker='o')
-    case 'GeigerCounter10':
+    case 'GeigerCounter-low':
         plt.ylim(0.1, 10)
         plt.ylabel("usV/hr calculation for Geiger Counter")
         with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
@@ -222,7 +222,7 @@ match(SensorModel):
            for row in csv_reader:
              y.append(int(row['usV/hr']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
-    case 'GeigerCounter100':
+    case 'GeigerCounter-normal':
         plt.ylim(10, 100)
         plt.ylabel("usV/hr calculation for Geiger Counter")
         with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
@@ -230,7 +230,7 @@ match(SensorModel):
            for row in csv_reader:
              y.append(int(row['usV/hr']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
-    case 'GeigerCounter1000':
+    case 'GeigerCounter-high':
         plt.ylim(100, 1000)
         plt.ylabel("usV/hr calculation for Geiger Counter")
         with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
