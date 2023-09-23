@@ -8,35 +8,43 @@ IPAddress apip(192,168,1,1);
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 
-#define pot    analogRead(A2)
-
 const char* ssid = "HelloSensor";
 const char* password = NULL;
 
 const char* serverNamepixy = "http://192.168.1.2/pixy";
 const char* serverNameData1 = "http://192.168.1.2/data1";
 const char* serverNameData2 = "http://192.168.1.2/data2";
+const char* serverNameRPM = "http://192.168.1.2/rpm";
 
 AsyncWebServer server(80);
 
 LiquidCrystal_I2C LCD_I2C_0x27(0x27, 16, 2);
 
+#define button1 digitalRead(32)
+#define button2 digitalRead(33)
+
 char* kontrol;
 char* potnormal;
-int x, y, potset;
-String Data1, Data2, pixytime;
+int x, y, result1, result2;
+String Data1, Data2, pixytime, RPM, mod;
 
 void setup() {
   Serial.begin(115200);
+  pinMode(34,INPUT);
+  pinMode(35,INPUT);
+  pinMode(32,INPUT_PULLUP);
+  pinMode(33,INPUT_PULLUP);
     WiFi.softAPConfig(apip, gateway, subnet);
     Serial.println("\n[*] Creating AP");
     WiFi.mode(WIFI_AP);
     WiFi.softAP(ssid, password);
     Serial.print("[+] AP Created with IP Gateway ");
     Serial.println(WiFi.softAPIP());
+
   LCD_I2C_0x27.init();
   LCD_I2C_0x27.backlight();
   LCD_I2C_0x27.clear();
+  
     server.on("/xxx", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/plain", String(kontrol).c_str());
   });
@@ -48,66 +56,73 @@ void setup() {
 }
 
 void loop() {
-  potset = map(pot,0,8191,1,8);
+  
+   x = map(analogRead(34),0,4095,0,10); //Ury->34 // BUTTON->33
+   y = map(analogRead(35),0,4095,0,10); //Urx->35 // BUTTON->32
+   
+  if (button1 == 0){delay(250); result1++;}
+  if (result1 == 2)(result1 = 0);
+
+  if (button2 == 0){delay(250); result2++;}
+  if (result2 == 7)(result2 = 0);
+
+  modayar();
   vitesayar();
   kontrolayar();
-   x = analogRead(A0);  //Ury
-   y = analogRead(A1);  //Urx
    
       Data1 = httpGETRequest(serverNameData1);
       Data2 = httpGETRequest(serverNameData2);
       pixytime = httpGETRequest(serverNamepixy);
+      RPM = httpGETRequest(serverNameRPM);
   
     LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
-    LCD_I2C_0x27.print("MQ-X: %");
+    LCD_I2C_0x27.print("MQ: %");
     LCD_I2C_0x27.print(Data1);
-    LCD_I2C_0x27.setCursor(15 - 1, 1 - 1);
-    LCD_I2C_0x27.print(potnormal);     
-    LCD_I2C_0x27.print(pixytime);   
-    LCD_I2C_0x27.setCursor(1 - 2, 1 - 1);
-    LCD_I2C_0x27.print("Data: %");
+    LCD_I2C_0x27.setCursor(11 - 1, 1 - 1);
+    LCD_I2C_0x27.print(RPM); 
+    LCD_I2C_0x27.print("RPM");
+    LCD_I2C_0x27.setCursor(1 - 1, 2 - 1);
+    LCD_I2C_0x27.print("SD: %");
     LCD_I2C_0x27.print(Data2);
+    LCD_I2C_0x27.setCursor(11 - 1, 2 - 1);
+    LCD_I2C_0x27.print(mod);
+    LCD_I2C_0x27.setCursor(15 - 1, 2 - 1);
+    LCD_I2C_0x27.print(potnormal); 
+    LCD_I2C_0x27.print(pixytime);
   }
+  
+void modayar(){
+switch(result1){
+case 0: mod = "CON"; break;
+case 1: mod = "DPL"; break;
+default: mod = "CON"; break;
+}
+}
 
 void vitesayar(){
-switch(potset){
-case 1: potnormal = "A"; break;
-case 2: potnormal = "B"; break;
-case 3: potnormal = "C"; break;
-case 4: potnormal = "D"; break;
-case 5: potnormal = "E"; break;
-case 6: potnormal = "F"; break;
-case 7: potnormal = "G"; break;
-case 8: potnormal = "X"; break;
+if (mod == "CON"){
+switch(result2){
+case 0: potnormal = "A"; break;
+case 1: potnormal = "B"; break;
+case 2: potnormal = "C"; break;
+case 3: potnormal = "D"; break;
+case 4: potnormal = "E"; break;
+case 5: potnormal = "F"; break;
+case 6: potnormal = "G"; break;
 default: potnormal = "D"; break;
 }
 }
+else if (mod == "DPL")(potnormal = "X");
+else(potnormal = "D");
+}
 
 void kontrolayar(){
-if(y >= 3200 && y <= 4800 && x >= 3200 && x <= 4800) {
-    kontrol = "1";
-  Serial.println("Dur");
-}
-else if(y >= 6400 && y <= 8191) {
-    kontrol = "2";
-  Serial.println("İleri");
-}
-else if(y >= 0 && y <= 3600) {
-    kontrol = "3";
-  Serial.println("Geri");
-}
-else if(x >= 0 && x <= 3600) {
-    kontrol = "4";
-  Serial.println("Sol");
-}
-else if(x >= 6400 && x <= 8191) {
-    kontrol = "5";
-  Serial.println("Sağ");
-}
-else{
-    kontrol = "1";
-  Serial.println("Dur");
-}
+if(y >= 4 && y <= 6 && x >= 4 && x <= 6)(kontrol = "1");
+else if(y >= 7 && y <= 10)(kontrol = "2"); 
+else if(y >= 0 && y <= 3)(kontrol = "3");
+else if(x >= 0 && x <= 3)(kontrol = "4");
+else if(x >= 7 && x <= 10)(kontrol = "5");
+else(kontrol = "1");
 }
  
 String httpGETRequest(const char* serverName) {
