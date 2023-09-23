@@ -23,28 +23,21 @@ const int IN4=25;
 const int IN3=26;
 const int ENB=27;
 
-
 Pixy2SPI_SS pixy;
 
 float deadZone = 0.15;
 int baseSpeed = 130;
 int now = 0;
 int cont = 0;
-int signature, x, y, width, height;
+int signature, x, y, width, height, rpm, veri1, veri2, motor_value, gyro_value, minimum, maximum;
 float cx, cy, area;
 
 MPU6050 mpu;
 int16_t ax, ay, az;
 int16_t gx, gy, gz;
 
-int motor_value;
-int gyro_value;
-
 const char* serverNamexxx = "http://192.168.1.1/xxx";
 const char* serverNamepot = "http://192.168.1.1/pot";
-
-int minimum;
-int maximum;
 
 AsyncWebServer server(80);
 
@@ -74,25 +67,35 @@ void setup(){
   });
 
   server.on("/data1", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", String(analogRead(2)).c_str());
+    request->send_P(200, "text/plain", String(veri1).c_str());
   });
 
   server.on("/data2", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", String(analogRead(4)).c_str());
+    request->send_P(200, "text/plain", String(veri2).c_str());
+  });
+
+  server.on("/rpm", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(rpm).c_str());
   });
   
   server.begin();
 }
 
 void loop(){
-  vites();
+  veri1 = map(analogRead(2),0,4095,0,100);
+  veri2 = map(analogRead(4),0,4095,0,100);
   
+  xox = httpGETRequest(serverNamepot);    
+  if (xox == "X")(now = 1);
+  else (now = 0);        
 switch(now) { 
   case 0:
  {
+vites();
 mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
-gyro_value = map(ax, -17000, 17000, minimum,maximum);
+gyro_value = map(ax, -17000, 17000, minimum, maximum);
 motor_value = abs(gyro_value);
+rpm = map(motor_value, 0, 255, 0, 500);
      // Check WiFi connection status
     if(WiFi.status()== WL_CONNECTED ){ 
       
@@ -161,7 +164,7 @@ else {
   
  case 1:
 {
-  Serial.println("pixy nesne takip modu:");  
+  Serial.println("pixy yapay zeka modu:");  
   float turn = pixyCheck();
 if(turn> -deadZone && turn < deadZone){
  turn = 0;
@@ -174,6 +177,7 @@ if (turn < 0) {
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
    analogWrite(ENB,170); 
+   rpm = 177;
 }
 
 else if (turn > 0) {
@@ -183,6 +187,7 @@ else if (turn > 0) {
    digitalWrite(IN4,LOW);
    digitalWrite(IN3,HIGH);
    analogWrite(ENB,80); 
+   rpm = 177;
 }
 
 else {
@@ -192,6 +197,7 @@ else {
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
    analogWrite(ENB,70); 
+   rpm = 70;
 }
  delay(1); 
 } 
@@ -205,59 +211,47 @@ default:
     digitalWrite(IN4,LOW);
     digitalWrite(IN3,LOW);
     analogWrite(ENB,0);
+    rpm = 0;
 }
   break;
 }
 }
+
 void vites(){
-  xox = httpGETRequest(serverNamepot);
-  Serial.println("vites:");
-  Serial.println(xox); 
-       if (xox == "X"){
-        now = 1;
-      }
-      else if (xox == "A"){
-      minimum = 75;
+      if (xox == "A"){  // 98.04 RPM // (196.08+/-49.02)
+      minimum = 25;
       maximum = 100;
-      now = 0;
      }
-      else if (xox == "B"){
-      minimum = 75;
+      else if (xox == "B"){ // 122.55 RPM // (294.12+/-49.02)
+      minimum = 25;
       maximum = 150;
-      now = 0;
       }
-      else if (xox == "C"){
-      minimum = 75;
+      else if (xox == "C"){ // 147.06 RPM // (392.16+/-49.02)
+      minimum = 25;
       maximum = 200;
-      now = 0;
       }
       else if (xox == "D"){
-      minimum = 75;
+      minimum = 25;  // 171.57 RPM // (500+/-49.02)
       maximum = 255;
-      now = 0;
       }
       else if (xox == "E"){
-      minimum = 100;
+      minimum = 65;   // 204.90 RPM // (500+/-127.45)
       maximum = 255;
-      now = 0;
       }
       else if (xox == "F"){
-      minimum = 125;
+      minimum = 105; // 237.25 RPM // (500+/-205.88)
       maximum = 255;
-      now = 0;
       }
       else if (xox == "G"){
-      minimum = 150;
+      minimum = 145; // 269.61 RPM (500+/-282.35)
       maximum = 255;
-      now = 0;
       }
       else{
-      minimum = 75;
+      minimum = 25;
       maximum = 255;
       now = 0;
       }
 }
-
 
 float pixyCheck() {
  static int i = 0;
@@ -278,7 +272,6 @@ float pixyCheck() {
    cx = mapfloat(cx, 0, 320, -1, 1);
    cy = mapfloat(cy, 0, 200, 1, -1);
    area = width * height;
-
 }
 
 else {
