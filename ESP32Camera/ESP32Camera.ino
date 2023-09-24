@@ -1,4 +1,4 @@
-#include "WiFi.h"
+#include <WiFi.h>
 
 const char* ssid = "VINNWiFi_80B6";  
 const char* password = "92030887";  
@@ -7,14 +7,13 @@ IPAddress local_IP(192, 168, 1, 2);
 IPAddress gateway(255, 255, 0, 0);
 IPAddress subnet(255, 255, 0, 0);
 
-void cameraInit(void);
-void startCameraServer();
-
 void setup() {
   Serial.begin(115200);  
   Serial.setDebugOutput(true);
   Serial.println();
 
+  WiFi.config(local_IP, gateway, subnet);
+  
   cameraInit();  
 
   WiFi.begin(ssid, password);  
@@ -27,12 +26,13 @@ void setup() {
   Serial.println("Wi-Fi Connected!");
 
   startCameraServer();  
+  
   Serial.print("Camera is ready! to connect 'http://");  
   Serial.print(WiFi.localIP());                           
   Serial.println("' adresse");
 }
 
-void loop() {delay(1000);}
+void loop(){delay(1000);}
 
 /*
 void cameraInit(void) {
