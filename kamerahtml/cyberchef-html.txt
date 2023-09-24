@@ -424,7 +424,7 @@
         <script>
 document.addEventListener('DOMContentLoaded', function (event) {
   var baseHost = document.location.origin
-  var streamUrl = baseHost 
+  var streamUrl = baseHost + ':81'
 
   const hide = el => {
     el.classList.add('hidden')
