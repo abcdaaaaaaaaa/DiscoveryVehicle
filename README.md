@@ -1,1 +1,1 @@
-<img width="350" alt="finalplan" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/e2371c87-bef4-437e-a2bd-7b1aaa4b38fd">
+<img width="162" alt="kesifaraci" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/92ad6d66-d91b-44aa-b859-976bf9e95945">
