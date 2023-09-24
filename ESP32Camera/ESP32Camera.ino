@@ -1,5 +1,4 @@
 #include "WiFi.h"
-#include "esp_camera.h"
 
 const char* ssid = "VINNWiFi_80B6";  
 const char* password = "92030887";  
@@ -35,6 +34,7 @@ void setup() {
 
 void loop() {delay(1000);}
 
+/*
 void cameraInit(void) {
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
@@ -94,3 +94,4 @@ void cameraInit(void) {
   // Drop down frame size for higher initial frame rate
   s->set_framesize(s, FRAMESIZE_QVGA);
 }
+*/
