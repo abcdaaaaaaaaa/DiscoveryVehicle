@@ -242,7 +242,6 @@ match(SensorModel):
 x_values = sequence  
 y_values = y  
 
-
 slope, intercept, r_value, p_value, std_err = linregress(x_values, y_values)
 
 line = f'Y = {slope:.2f}X + {intercept:.2f}'
