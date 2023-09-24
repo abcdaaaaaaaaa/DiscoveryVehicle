@@ -165,7 +165,7 @@ static int run_face_recognition(dl_matrix3du_t *image_matrix, box_array_t *net_b
                 Serial.printf("Enrolling Face ID: %d\n", id_list.tail);
             }
             Serial.printf("Enrolling Face ID: %d sample %d\n", id_list.tail, ENROLL_CONFIRM_TIMES - left_sample_face);
-            rgb_printf(image_matrix, FACE_COLOR_CYAN, "Kimlik[%u] Ornek[%u]", id_list.tail, ENROLL_CONFIRM_TIMES - left_sample_face);
+            rgb_printf(image_matrix, FACE_COLOR_CYAN, "Identity[%u] Example[%u]", id_list.tail, ENROLL_CONFIRM_TIMES - left_sample_face);
             if (left_sample_face == 0){
                 is_enrolling = 0;
                 Serial.printf("Enrolled Face ID: %d\n", id_list.tail);
@@ -174,10 +174,10 @@ static int run_face_recognition(dl_matrix3du_t *image_matrix, box_array_t *net_b
             matched_id = recognize_face(&id_list, aligned_face);
             if (matched_id >= 0) {
                 Serial.printf("Match Face ID: %u\n", matched_id);
-                rgb_printf(image_matrix, FACE_COLOR_GREEN, "Kayitli kisi %u", matched_id);
+                rgb_printf(image_matrix, FACE_COLOR_GREEN, "Registered Person %u", matched_id);
             } else {
                 Serial.println("No Match Found");
-                rgb_print(image_matrix, FACE_COLOR_RED, "Izinsiz giris!");
+                rgb_print(image_matrix, FACE_COLOR_RED, "Unauthorized Entry");
                 matched_id = -1;
             }
         }
@@ -471,11 +471,10 @@ static esp_err_t cmd_handler(httpd_req_t *req){
     int val = atoi(value);
     sensor_t * s = esp_camera_sensor_get();
     int res = 0;
-    
+
     if(!strcmp(variable, "framesize")) {
         if(s->pixformat == PIXFORMAT_JPEG) res = s->set_framesize(s, (framesize_t)val);
     }
-  
     else if(!strcmp(variable, "face_detect")) {
         detection_enabled = val;
         if(!detection_enabled) {
@@ -493,7 +492,6 @@ static esp_err_t cmd_handler(httpd_req_t *req){
         res = -1;
     }
 
-
     if(res){
         return httpd_resp_send_500(req);
     }
@@ -508,7 +506,6 @@ static esp_err_t status_handler(httpd_req_t *req){
     sensor_t * s = esp_camera_sensor_get();
     char * p = json_response;
     *p++ = '{';
-
     p+=sprintf(p, "\"framesize\":%u,", s->status.framesize);
     p+=sprintf(p, "\"face_detect\":%u,", detection_enabled);
     p+=sprintf(p, "\"face_enroll\":%u,", is_enrolling);
@@ -526,7 +523,7 @@ static esp_err_t index_handler(httpd_req_t *req){
     sensor_t * s = esp_camera_sensor_get();    
     return httpd_resp_send(req, (const char *)index_ov2640_html_gz, index_ov2640_html_gz_len);
 }
-#if defined (ARDUINO_DYDK)
+
 void startCameraServer(){
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
 
@@ -599,4 +596,3 @@ void startCameraServer(){
         httpd_register_uri_handler(stream_httpd, &stream_uri);
     }
 }
-#endif
