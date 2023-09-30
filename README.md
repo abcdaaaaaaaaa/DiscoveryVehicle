@@ -14,7 +14,7 @@
 
 ### Data Science with Python
 
-### AI Based Webcam With Esp32 Camera
+### AI Based Webcam with Esp32 Camera
 
 ### Saving Featured Images with Opencv
 
