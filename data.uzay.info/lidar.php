@@ -43,7 +43,7 @@ const rgb180 = "<?php echo $rgb180; ?>";
 <script>
 setTimeout(() => {
   window.location.reload(true);
-}, 18000)
+}, 20000)
 </script>
 </body>
 </html>
