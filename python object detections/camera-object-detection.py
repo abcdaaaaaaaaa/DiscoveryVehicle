@@ -2,7 +2,7 @@ import cv2
 import pyautogui
 from time import sleep
 
-x = input("type the png name you want: ")+'.png'
+x = input("How would you like to name your AI-composited image?: ")+'.png'
 sleep(5)
 img = pyautogui.screenshot()
 img.save(x)
