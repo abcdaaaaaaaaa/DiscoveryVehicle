@@ -4,7 +4,7 @@
 
 ### Discovery Vehicle Photo
 
-### Nuclear and Chemical Data Calculation System 
+### Nuclear and Chemical Data Calculation System
 
 ### 2D Lidar Scale
 
