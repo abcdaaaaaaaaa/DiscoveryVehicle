@@ -2,7 +2,7 @@ import cv2
 import pyautogui
 from time import sleep
 
-x = input("write your png name:")+'.png'
+x = input("type the png name you want: ")+'.png'
 sleep(5)
 img = pyautogui.screenshot()
 img.save(x)
