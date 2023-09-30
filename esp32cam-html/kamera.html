@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="shortcut icon" href="https://data.uzay.info/esp32kamera.ico">
+        <title>OV2640 Camera</title>
+        <link rel="stylesheet" href="kamera.css">
+    </head>
+    <body>
+        <section class="main">                        
+            <div id="logo">
+                <label for="nav-toggle-cb" id="nav-toggle">&#9776;&nbsp;&nbsp;Camera Settings</label>
+            </div>
+            <div id="content">
+                <div id="sidebar">
+                    <input type="checkbox" id="nav-toggle-cb" checked="checked">
+                    <nav id="menu">
+                        <div class="input-group" id="framesize-group">
+                            <label for="framesize">Resulation</label>
+                            <select id="framesize" class="default-action">
+                                <option value="10">UXGA(1600x1200)</option>
+                                <option value="9">SXGA(1280x1024)</option>
+                                <option value="8">XGA(1024x768)</option>
+                                <option value="7">SVGA(800x600)</option>
+                                <option value="6">VGA(640x480)</option>
+                                <option value="5" selected="selected">CIF(400x296)</option>
+                                <option value="4">QVGA(320x240)</option>
+                                <option value="3">HQVGA(240x176)</option>
+                                <option value="0">QQVGA(160x120)</option>
+                            </select>
+                        </div>                                            
+                        <div class="input-group hidden" id="awb_gain-group">
+                            <label for="awb_gain">AWB Gain</label>
+                            <div class="switch">
+                                <input id="awb_gain" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="awb_gain"></label>
+                            </div>
+                        </div>                        
+                        <div class="input-group hidden" id="aec-group">
+                            <label for="aec">AEC SENSOR</label>
+                            <div class="switch">
+                                <input id="aec" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="aec"></label>
+                            </div>
+                        </div>                     
+                         <div class="input-group hidden" id="agc-group">
+                            <label for="agc">AGC</label>
+                            <div class="switch">
+                                <input id="agc" type="checkbox" class="default-action" checked="checked">
+                                <label class="slider" for="agc"></label>
+                            </div>
+                        </div>                        
+                                      
+                        <div class="input-group" id="face_detect-group">
+                            <label for="face_detect">Face Detect</label>
+                            <div class="switch">
+                                <input id="face_detect" type="checkbox" class="default-action">
+                                <label class="slider" for="face_detect"></label>
+                            </div>
+                        </div>
+                        <div class="input-group" id="face_recognize-group">
+                            <label for="face_recognize">Face Recognize</label>
+                            <div class="switch">
+                                <input id="face_recognize" type="checkbox" class="default-action">
+                                <label class="slider" for="face_recognize"></label>
+                            </div>
+                        </div>
+                        <section id="buttons">
+                            <button id="get-still">Get Still</button>
+                            <button id="toggle-stream">Start Stream</button>
+                            <button id="face_enroll" class="disabled" disabled="disabled">Save Face</button>
+                        </section>
+                    </nav>
+                </div>
+                <figure>
+                    <div id="stream-container" class="image-container hidden">
+                        <div class="close" id="close-stream">×</div>
+                        <img id="stream" src="">
+                    </div>
+                </figure>
+            </div>
+        </section>
+        <script src="kamera.js"></script>		
+    </body>
+</html>
