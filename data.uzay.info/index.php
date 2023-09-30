@@ -9,7 +9,7 @@ include_once 'newhello.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="shortcut icon" href="../bluespace.png">
    <link rel="stylesheet" href="../customchart.css">
-  <title>Chernobyl</title>
+  <title>Nuclear and Chemical Data Calculation System</title>
   </head>
   <body>
     <div class="container">
