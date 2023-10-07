@@ -16,7 +16,7 @@
 #define LOG_PERIOD1 (30000)
 #define GeigerPin1  (27)
 
-#define CLK (2)
+#define CLK (18)
 #define DIO (15)
 
 TM1637 tm1637(CLK,DIO);
