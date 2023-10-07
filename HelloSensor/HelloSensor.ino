@@ -402,7 +402,7 @@ value7 = MQ.MQ135DataAir();
 
 // GPS : [GND --> GND] [TX --> D4] [RX --> D2] [VCC --> 3.3V]
 // Geiger Counter: [PIN --> D27] [GND --> GND] [VCC --> 5V]
-// TfLuna Lidar: [VCC --> 5V] [SDA --> D24] [SCL --> D22] [GND --> GND] [I2C --> GND] 
+// TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND] 
 // MQ-?: [PIN --> D12] [GND --> GND] [VCC --> 3.3V]
 // Other Sensor: [PIN --> D14] [GND --> GND] [VCC --> 3.3V]
 // Potentiometer: [PIN --> D13] [GND --> GND] [VCC --> 3.3V]
