@@ -247,11 +247,11 @@ void vites(){
       maximum = 255;
       }
       else if (xox == "G"){
-      minimum = 145;  // 269.61 RPM (500+/-282.35)
+      minimum = 145;  // 269.61 RPM // (500+/-282.35)
       maximum = 255;
       }
       else if (xox == "H"){  
-      minimum = "255";  // 269.61 RPM (500+/-500) 
+      minimum = "255";  // 269.61 RPM // (500+/-500) 
       maximum = "255";
       }
       else{
