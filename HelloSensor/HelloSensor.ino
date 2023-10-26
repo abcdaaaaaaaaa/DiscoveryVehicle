@@ -7,7 +7,6 @@
 #include "TM1637.h"
 #include "HelloSensor.h"
 
-
 #define Rload         (10)
 #define ADC_BIT_RESU  (12)
 #define space1        (12)
@@ -26,12 +25,14 @@ HelloSensor MQ(ADC_BIT_RESU, Rload, space1);
 HelloSensor other(ADC_BIT_RESU, Rload, space2);
 GeigerCounterPin Radyoactivite(GeigerPin1,LOG_PERIOD1);
 
-HardwareSerial neogps(1);
+HardwareSerial neogps(1); 
 TinyGPSPlus gps;
 Servo myservo;
 
 int value1, value2, value3, value4, value5, value6, value7, sec, Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180, maxAngle,  
 Green0, Green30, Green60, Green90, Green120, Green150, Green180, Temp0, Temp30, Temp60, Temp90, Temp120, Temp150, Temp180, Average;
+int lidcontrol, gpscontrol = 0;
+
 String latitude, longitude;
 
 int16_t  tfAddr = TFL_DEF_ADR;   
@@ -41,8 +42,8 @@ int16_t  tfDist = 0;
 int16_t  tfFlux = 0;  
 int16_t  tfTemp = 0;  
 
-const char* ssid = "VINNWiFi_80B6";  
-const char* password = "92030887";  
+const char* ssid = "REPLACE_WİTH_YOUR_SSID";  // VINNWiFi_80B6
+const char* password = "REPLACE_WİTH_YOUR_PASSWORD"; // 92030887
 WiFiClient  client;
 
 unsigned long int hello5 = 5;
@@ -58,10 +59,9 @@ static const char * myWriteAPIKey4 = "JCBZHB1KUX0Y09LX";
 static const char * myWriteAPIKey5 = "QP8J57RU9BY9NAVE";
 
 unsigned long int lastTime = 0;
-unsigned long int timerDelay = 14500;
+unsigned long int timerDelay = 15000;
 
 void setup() {
-
   Serial.begin(115200);  
   MQ.begin();
   other.begin();
@@ -69,6 +69,7 @@ void setup() {
   tm1637.init();
   tm1637.set(BRIGHT_TYPICAL);
   myservo.attach(26);
+  neogps.begin(9600, SERIAL_8N1, 4, 2); 
   Wire.begin();
   WiFi.mode(WIFI_STA);  Serial.println("Connecting to WiFi ");
   WiFi.begin(ssid, password);
@@ -253,12 +254,13 @@ value6 = value7 = 0;
 break;
 default:
 {
+sec = 1;
 MQ135doing();
 }
 break;
 }
 
-    if( tflI2C.getData( tfDist, tfFlux, tfTemp, tfAddr))
+    if(tflI2C.getData( tfDist, tfFlux, tfTemp, tfAddr))
     {
         tfTemp = int16_t( tfTemp / 100);
         myservo.write(0);
@@ -295,17 +297,28 @@ break;
         Angle180 = tfDist;   
         Green180 = tfFlux;
         Temp180 = tfTemp;
-        delay(0.5);        
-    }
-    
+        delay(0.5);   
+        lidcontrol = 1;
 Average = (Angle0 + Angle30 + Angle60 + Angle90 + Angle120 + Angle150 + Angle180)/3.5;
 int angles[] = {Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180};
 for (int i = 0; i < 7; i++) {if (angles[i] > maxAngle) (maxAngle = angles[i]);}
 if (Average < maxAngle)(Average = maxAngle);
+    
+    }
 
 Radyoactivite.radyoactivite();
-sendGpsToServer();
 
+  if (neogps.available()) {
+    char c = neogps.read();
+    if (gps.encode(c)) {
+      if (gps.location.isValid()) {
+       latitude  = (gps.location.lat(), 6) * pow(10,6); 
+       longitude = (gps.location.lng(), 6) * pow(10,6); 
+       gpscontrol = 1;
+      }
+    }
+  }
+  
   if ((millis() - lastTime) > timerDelay) {
 
     ThingSpeak.setField(1, value1);
@@ -322,10 +335,13 @@ sendGpsToServer();
     ThingSpeak.setField(3, Radyoactivite.sdCPM*100); // 10 +/- 11
     ThingSpeak.setField(4, Radyoactivite.count);    
     ThingSpeak.setField(5, MQ.MQData100());    
-    ThingSpeak.setField(6, other.MQData100());    
+    ThingSpeak.setField(6, other.MQData100());   
+    if (gpscontrol == 1){ 
     ThingSpeak.setField(7, latitude);
     ThingSpeak.setField(8, longitude);
+    }
     int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
+    if (lidcontrol == 1){ 
     ThingSpeak.setField(1, Green0);
     ThingSpeak.setField(2, Green30);
     ThingSpeak.setField(3, Green60);
@@ -351,31 +367,11 @@ sendGpsToServer();
     ThingSpeak.setField(6, Temp150);
     ThingSpeak.setField(7, Temp180);
   int e = ThingSpeak.writeFields(hello5, myWriteAPIKey5);
-    lastTime = millis();
-  }
-}
-
-void sendGpsToServer()
-{
-  boolean newData = false;
-  for (unsigned long start = millis(); millis() - start < 2000;){
-    while(neogps.available()){
-      if(gps.encode(neogps.read())){
-        if(gps.location.isValid() == 1){
-          newData = true;
-          break;
-        }
-      }
     }
+    lastTime = millis();
+    gpscontrol = 0;
+    lidcontrol = 0;
   }
-
-  if(true){
-    newData = false;
-     
-    latitude  = String((gps.location.lat(), 6)*(pow(10,6))); 
-    longitude = String((gps.location.lng(), 6)*(pow(10,6))); 
-  }
-   
 }
 
 void normal(){
@@ -403,8 +399,8 @@ value7 = MQ.MQ135DataAir();
 // GPS : [GND --> GND] [TX --> D4] [RX --> D2] [VCC --> 3.3V]
 // Geiger Counter: [PIN --> D27] [GND --> GND] [VCC --> 5V]
 // TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND] 
-// MQ-?: [PIN --> D12] [GND --> GND] [VCC --> 3.3V]
+// MQ-X: [PIN --> D12] [GND --> GND] [VCC --> 3.3V]
 // Other Sensor: [PIN --> D14] [GND --> GND] [VCC --> 3.3V]
 // Potentiometer: [PIN --> D13] [GND --> GND] [VCC --> 3.3V]
-// TM1637: [CLK --> D2] [DIO --> D15] [VCC --> 5V] [GND --> GND]
+// TM1637: [CLK --> D18] [DIO --> D15] [VCC --> 5V] [GND --> GND]
 // Servo: [PIN --> D26] [VCC --> 5V] [GND --> GND]
