@@ -64,7 +64,7 @@ void loop() {
   if (result1 == 2)(result1 = 0);
 
   if (button2 == 0){delay(250); result2++;}
-  if (result2 == 7)(result2 = 0);
+  if (result2 == 9)(result2 = 0);
 
   modayar();
   vitesayar();
@@ -102,13 +102,15 @@ default: mod = "CON"; break;
 void vitesayar(){
 if (mod == "CON"){
 switch(result2){
-case 0: potnormal = "A"; break;
-case 1: potnormal = "B"; break;
-case 2: potnormal = "C"; break;
-case 3: potnormal = "D"; break;
-case 4: potnormal = "E"; break;
-case 5: potnormal = "F"; break;
-case 6: potnormal = "G"; break;
+case 0: potnormal = "D"; break;
+case 1: potnormal = "L"; break;
+case 2: potnormal = "A"; break;
+case 3: potnormal = "B"; break;
+case 4: potnormal = "C"; break;
+case 5: potnormal = "E"; break;
+case 6: potnormal = "F"; break;
+case 7: potnormal = "G"; break;
+case 8: potnormal = "H"; break;
 default: potnormal = "D"; break;
 }
 }
