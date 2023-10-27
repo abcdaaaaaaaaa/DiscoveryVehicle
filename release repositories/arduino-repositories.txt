@@ -1,0 +1,3 @@
+TFLI2C --> v0.1.1
+ThingSpeak --> v1.5.0
+Grove 4-Digit Display --> v1.0.0
