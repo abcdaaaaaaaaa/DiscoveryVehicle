@@ -1,0 +1,2 @@
+https://raw.githubusercontent.com/deneyapkart/deneyapkart-arduino-core/master/package_deneyapkart_index.json --> v1.3.4
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json --> v2.0.6
