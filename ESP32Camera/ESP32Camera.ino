@@ -1,7 +1,7 @@
 #include <WiFi.h>
 
-const char* ssid = "VINNWiFi_80B6";  
-const char* password = "92030887";  
+const char* ssid = "REPLACE_WİTH_YOUR_SSID";  
+const char* password = "REPLACE_WİTH_YOUR_PASSWORD";  
 
 IPAddress local_IP(192, 168, 1, 2);
 IPAddress gateway(255, 255, 0, 0);
