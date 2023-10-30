@@ -15,6 +15,8 @@
 ### Real-time Object Tracking With Artificial Intelligence-based Pixy2
 
 ### Data Science with Python
+<img width="720" alt="datascience" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/d6439b73-ee74-4140-9100-aa303dd8b76c">
+
 
 ### AI Based Webcam with Esp32 Camera
 
