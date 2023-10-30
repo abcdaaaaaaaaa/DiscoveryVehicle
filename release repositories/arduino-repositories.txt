@@ -4,4 +4,5 @@ Grove 4-Digit Display --> v1.0.0
 ESP32Servo --> v0.13.0
 TinyGPSPlus --> v1.0.3
 ESPAsyncWebSrv --> v1.2.6 
+HTTPClient --> v2.2.0
 Pixy2 -> Pixy2Setup (We changed the codes to be compatible with esp32)
