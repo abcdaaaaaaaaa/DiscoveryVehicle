@@ -5,9 +5,11 @@
 ### Discovery Vehicle
 
 ### Nuclear and Chemical Data Calculation System
-<img width="721" alt="bigdata" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/fc2e4fd0-6868-4907-ab95-b6ff1d7b3b36">
+<img width="720" alt="bigdata" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/fc2e4fd0-6868-4907-ab95-b6ff1d7b3b36">
+
 ### 2D Lidar Scale
-<img width="960" alt="2dlidarscale" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/9b123345-9932-44bc-af44-0e9858a89bcf">
+<img width="720" alt="2dlidarscale" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/9b123345-9932-44bc-af44-0e9858a89bcf">
+
 ### Saving Values to the Database with Plug-Unplug Feature
 
 ### Real-time Object Tracking With Artificial Intelligence-based Pixy2
