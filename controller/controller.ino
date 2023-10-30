@@ -1,7 +1,6 @@
 #include <WiFi.h>
 #include <ESPAsyncWebSrv.h>
 #include <HTTPClient.h>
-#include <Wire.h>
 #include "LiquidCrystal_I2C.h"
 
 IPAddress apip(192,168,1,1);
