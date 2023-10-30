@@ -19,6 +19,7 @@
 
 
 ### AI Based Webcam with Esp32 Camera
+<img width="720" alt="esp32ai" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/a44a0b84-0909-45e3-adcf-0d674814b419">
 
 ### Saving Featured Images with Opencv
 
