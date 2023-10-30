@@ -1,12 +1,10 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
-#include "ESPAsyncWebServer.h"
+#include <ESPAsyncWebSrv.h>
 #include "Wire.h"
 #include "I2Cdev.h" 
 #include "MPU6050.h"
-#include <SPI.h>
 #include <Pixy2SPI_SS.h>
-
 
 IPAddress local_IP(192, 168, 1, 2);
 IPAddress gateway(255, 255, 0, 0);
@@ -251,8 +249,8 @@ void vites(){
       maximum = 255;
       }
       else if (xox == "H"){  
-      minimum = "255";  // 269.61 RPM // (500+/-500) 
-      maximum = "255";
+      minimum = 255;  // 269.61 RPM // (500+/-500) 
+      maximum = 255;
       }
       else{
       minimum = 25;
