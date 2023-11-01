@@ -3,15 +3,10 @@ AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
 RewriteRule ^example$ example.html [L,NC]
 RewriteRule ^examplelidar$ lidar.html [L,NC]
 RewriteRule ^lidar$ lidar.php [L,NC]
+RewriteRule ^mysql - [F,L]
 ErrorDocument 404 https://data.uzay.info
+ErrorDocument 403 https://data.uzay.info
 
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
-
-# php -- BEGIN cPanel-generated handler, do not edit
-# “ea-php74” paketini varsayılan “PHP” programlama dili olarak ayarlayın.
-<IfModule mime_module>
-  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
-</IfModule>
-# php -- END cPanel-generated handler, do not edit
