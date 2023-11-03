@@ -4,7 +4,7 @@
 
 ### Discovery Vehicle
 
-### Nuclear and Chemical Data Calculation System with Plug-UnPlug System
+### Nuclear and Chemical Data Calculation System with Plug-Unplug Systematics
 <img width="720" alt="DataCalculationSystem" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/f2089218-0115-4b09-9225-12beb93f028e">
 
 ### 2D Lidar Scale
