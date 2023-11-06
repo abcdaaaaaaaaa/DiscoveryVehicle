@@ -4,7 +4,7 @@
 #include "LiquidCrystal_I2C.h"
 
 IPAddress apip(192,168,1,1);
-IPAddress gateway(192,168,1,1);
+IPAddress gateway(255,255,255,1);
 IPAddress subnet(255,255,255,0);
 
 const char* ssid = "HelloSensor";
