@@ -22,5 +22,8 @@ For Control
 L298N Motor Driver
 MPU6050
 For Controller
+Joystick x2 
+2x16 Lcd Screen
 For Adjustable System
 10K Potantiometer x2 (for Sensor and for pixy2&&mpu6050$$control) 
+TM1637 Led Display Module
