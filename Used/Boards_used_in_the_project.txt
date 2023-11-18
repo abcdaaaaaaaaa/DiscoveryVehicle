@@ -1,0 +1,2 @@
+ESP32-IO x2 (for controller and sensor system)
+Deneyap Kart 1A (for esp32camera)
