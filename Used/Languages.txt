@@ -1,0 +1,12 @@
+C++
+C
+Python
+HTML
+CSS
+Javascript
+PHP
+SQL
+Jupyter Notebook
+Apache Conf
+Shell
+YAML
