@@ -1,0 +1,7 @@
+train: ../data/train/images/
+
+val: ../data/val/images/
+
+nc: 15
+
+names: [ 'Plutonium', 'Radioactive waste', 'Ammonia', 'Hydrochloric acid', 'Sulfuric acid', 'LPG ', 'Carbon monoxide', 'Methane', 'Particulate matter', 'Nitrogen dioxide', 'Sulfur dioxide', 'Dog', 'Cat', 'Bird', 'Reptiles' ]

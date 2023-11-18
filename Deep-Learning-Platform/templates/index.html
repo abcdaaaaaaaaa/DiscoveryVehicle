@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Based MRI Reading System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+   <link rel="shortcut icon" href="{{ url_for('static', filename='bluespace.png') }}">
+</head>
+<body>
+    <div class="container">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file[]" multiple>
+            <input type="text" name="zip_name" placeholder="Enter ZIP file name">
+            <input type="submit" value="Upload">
+            <a href="/delete" class="button">Delete</a>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
