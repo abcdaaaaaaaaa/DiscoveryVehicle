@@ -7,6 +7,6 @@ Javascript
 PHP
 SQL
 Jupyter Notebook
-Apache Conf
+Apache Configuration
 Shell
 YAML
