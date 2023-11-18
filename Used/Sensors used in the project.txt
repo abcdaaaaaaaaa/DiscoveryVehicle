@@ -17,7 +17,10 @@ Portable Handle Geiger Counter 0.01 μSv/h DIY Kit Nuclear Radiation Detector wi
 For Camera
 Deneyap Kamera (for cam data)
 Pixy2 Camera (for ai (machine learning) conrol system)
-For Controller
+For Control
 37MM 500 RPM Geared DC MOTOR x2
-
-
+L298N Motor Driver
+MPU6050
+For Controller
+For Adjustable System
+10K Potantiometer x2 (for Sensor and for pixy2&&mpu6050$$control) 
