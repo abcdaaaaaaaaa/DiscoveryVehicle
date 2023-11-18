@@ -4,3 +4,6 @@
 *.htaccess linguist-detectable=true
 *.htaccess linguist-language=ApacheConf
 *.htaccess text
+*.yaml linguist-detectable=true
+*.yaml linguist-language=YAML
+*.yaml text
