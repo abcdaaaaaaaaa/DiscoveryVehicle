@@ -13,7 +13,10 @@ def print_gas_table(gas_data):
 
 MQ_Model = input("please define your MQ model like MQ-303A: ")
 
-gas_data = {}  
+gas_data = {}
+
+x = float(input(f"define max ppm concentrate point of the graph for {MQ_Model} (x value): "))
+x0 = float(input(f"define min ppm concentrate for {MQ_Model} (x0 value): "))
 
 while True:
     Gas = input("name of the gas like LPG (type 'stop' to exit): ")
@@ -23,8 +26,6 @@ while True:
 
     y0 = float(input(f"define first reference point of the graph for {Gas} (y0 value): "))
     y = float(input(f"define final reference point of the graph for {Gas}  (y value): "))
-    x = float(input(f"define max ppm concentrate point of the graph for {Gas} (x value): "))
-    x0 = float(input(f"define min ppm concentrate for {Gas} (x0 value): "))
     AverageY = float(input(f"define your y value at medium ppm concentration for {Gas} (AverageY value): "))
 
     a = valueA(y, y0, x, x0)
