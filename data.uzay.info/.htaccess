@@ -5,6 +5,7 @@ RewriteRule ^examplelidar$ lidar.html [L,NC]
 RewriteRule ^lidar$ lidar.php [L,NC]
 RewriteRule ^mysql - [F,L]
 ErrorDocument 404 https://data.uzay.info
+ErrorDocument 403 https://data.uzay.info
 
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteCond %{HTTPS} off
