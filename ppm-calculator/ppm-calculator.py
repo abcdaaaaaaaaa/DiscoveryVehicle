@@ -11,22 +11,31 @@ def print_gas_table(gas_data):
     for gas, (a, b) in gas_data.items():
         print(f"{gas.ljust(7)}| {str(a).ljust(8)}| {str(b).ljust(7)}")
 
-MQ_Model = input("please define your MQ model like MQ-303A: ")
+MQ_Model = input("Please define your MQ model like MQ-303A: ")
+
+# Sorgulama için 'con' değişkeni
+con = input("Does your sensor detect the same concentration range for all gases? (yes/no): ")
+
+# x ve x0 değerlerini bir defa al
+if con.lower() == 'yes':
+    x = float(input(f"Define max ppm concentrate point of the graph for {MQ_Model} (x value): "))
+    x0 = float(input(f"Define min ppm concentrate for {MQ_Model} (x0 value): "))
 
 gas_data = {}
 
-x = float(input(f"define max ppm concentrate point of the graph for {MQ_Model} (x value): "))
-x0 = float(input(f"define min ppm concentrate for {MQ_Model} (x0 value): "))
-
 while True:
-    Gas = input("name of the gas like LPG (type 'stop' to exit): ")
+    Gas = input("Name of the gas like LPG (type 'stop' to exit): ")
 
     if Gas == 'stop':
         break
 
-    y0 = float(input(f"define first reference point of the graph for {Gas} (y0 value): "))
-    y = float(input(f"define final reference point of the graph for {Gas}  (y value): "))
-    AverageY = float(input(f"define your y value at medium ppm concentration for {Gas} (AverageY value): "))
+    if con.lower() == 'no':
+        x = float(input(f"Define max ppm concentrate point of the graph for {Gas} (x value): "))
+        x0 = float(input(f"Define min ppm concentrate for {Gas} (x0 value): "))
+
+    y0 = float(input(f"Define first reference point of the graph for {Gas} (y0 value): "))
+    y = float(input(f"Define final reference point of the graph for {Gas}  (y value): "))
+    AverageY = float(input(f"Define your y value at medium ppm concentration for {Gas} (AverageY value): "))
 
     a = valueA(y, y0, x, x0)
     b = valueB(y, AverageY, x, x0)
