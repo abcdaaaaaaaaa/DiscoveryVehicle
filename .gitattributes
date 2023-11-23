@@ -7,3 +7,5 @@
 *.yaml linguist-detectable=true
 *.yaml linguist-language=YAML
 *.yaml text
+*ESP32Camera/app_httpd.cpp linguist-detectable=false
+*Deep-Learning-Platform/detect.py linguist-detectable=false
