@@ -1,18 +1,24 @@
 #include <WiFi.h>
+#include "esp_camera.h"
+
+// "Tools->Partition Scheme->Huge APP"
 
 const char* ssid = "REPLACE_WİTH_YOUR_SSID";  
 const char* password = "REPLACE_WİTH_YOUR_PASSWORD";  
 
-IPAddress local_IP(192, 168, 1, 2);
+void cameraInit(void);
+void startCameraServer();
+
+IPAddress local_IP(170, 20, 10, 2);
 IPAddress gateway(255, 255, 0, 0);
-IPAddress subnet(255, 255, 0, 0);
+IPAddress subnet(255, 255, 0, 1);
 
 void setup() {
   Serial.begin(115200);  
   Serial.setDebugOutput(true);
   Serial.println();
 
-  WiFi.config(local_IP, gateway, subnet);
+//  WiFi.config(local_IP, gateway, subnet);
   
   cameraInit();  
 
@@ -25,6 +31,8 @@ void setup() {
   Serial.println("");
   Serial.println("Wi-Fi Connected!");
 
+  delay(100);
+
   startCameraServer();  
   
   Serial.print("Camera is ready! to connect 'http://");  
@@ -32,9 +40,8 @@ void setup() {
   Serial.println("' adresse");
 }
 
-void loop(){delay(1000);}
+void loop() {delay(10000);}
 
-/*
 void cameraInit(void) {
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
@@ -64,7 +71,7 @@ void cameraInit(void) {
   config.jpeg_quality = 12;
   config.fb_count = 1;
 
-  //init with high specs to pre-allocate larger buffers                     for larger pre-allocated frame buffer.
+  //init with high specs to pre-allocate larger buffers for larger pre-allocated frame buffer.
   if (config.pixel_format == PIXFORMAT_JPEG) {
     if (psramFound()) {
       config.jpeg_quality = 10;
@@ -94,4 +101,3 @@ void cameraInit(void) {
   // Drop down frame size for higher initial frame rate
   s->set_framesize(s, FRAMESIZE_QVGA);
 }
-*/
