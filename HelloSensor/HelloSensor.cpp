@@ -57,9 +57,9 @@ float HelloSensor::MQ309ADataAir(){return map(analogRead(_pin),1,(_bitadc),30,30
 
 float HelloSensor::MQ2DataH2(){_va = 987.99;_vb = -2.162;return readValue();}
 float HelloSensor::MQ2DataLPG(){_va = 574.25;_vb = -2.222; return readValue();}
-float HelloSensor::MQ2DataCO(){_va = 36974;_vb = -3.109;return readValue();}
+float HelloSensor::MQ2DataCO(){_va = 19.176;_vb = -3.109;return readValue();}
 float HelloSensor::MQ2DataAlcohol(){_va = 3616.1;_vb = -2.675;return readValue();}
-float HelloSensor::MQ2DataPropane(){_va = 658.71;_vb = -2.168;return readValue();}
+float HelloSensor::MQ2DataPropane(){_va = 19.176;_vb = -0.4578;return readValue();}
 
 //**************************************MQ-3**************************************\\
 
