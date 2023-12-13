@@ -31,8 +31,9 @@
 
 ### Saving Featured Images with Opencv
 
-### DeepLearning with yolov7
+### Regressions for MQ Gas Sensors
 
+### Deep-Learning with yolov7
 
 
 
