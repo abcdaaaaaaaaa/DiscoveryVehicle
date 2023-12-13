@@ -32,6 +32,8 @@
 ### Saving Featured Images with Opencv
 
 ### Regressions for MQ Gas Sensors
+### Regressions for MQ-5
+<img width="720" alt="MQ5curve" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/2bfeb128-b105-40c3-85fa-321736d6e3f9">
 
 ### Deep-Learning with yolov7
 
