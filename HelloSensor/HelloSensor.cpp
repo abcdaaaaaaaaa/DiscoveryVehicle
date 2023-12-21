@@ -26,12 +26,13 @@ void HelloSensor::MQ9calibrate(){_R0 = 2.816;}
 void HelloSensor::MQ131calibrate(){_R0 = 0.67;}
 void HelloSensor::MQ135calibrate(){_R0 = 8.2809;}
 void HelloSensor::MQ136calibrate(){_R0 = 7.5;}
+void HelloSensor::MQ137calibrate(){_R0 = 7.5;}
 void HelloSensor::MQ303Acalibrate(){_R0 = 27;}
 void HelloSensor::MQ309Acalibrate(){_R0 = 2.458;}
 
 float HelloSensor::readValue()
 {
-  _RS = ((_Rload/(analogRead(_pin)*(1/_bitadc)))-(_Rload));
+  _RS = ((47/(analogRead(_pin)*(1/12)))-(47));
   _ratio = ( _RS / _R0);
  return pow(_ratio,_vb)*_va;
 }
@@ -50,6 +51,7 @@ float HelloSensor::MQ9DataAir(){return map(analogRead(_pin),1,(_bitadc),10,10000
 float HelloSensor::MQ131DataAir(){return map(analogRead(_pin),1,(_bitadc),5,100);}
 float HelloSensor::MQ135DataAir(){return map(analogRead(_pin),1,(_bitadc),10,1000);}
 float HelloSensor::MQ136DataAir(){return map(analogRead(_pin),1,(_bitadc),10,200);}
+float HelloSensor::MQ137DataAir(){return map(analogRead(_pin),1,(_bitadc),10,1000);}
 float HelloSensor::MQ303ADataAir(){return map(analogRead(_pin),1,(_bitadc),10,10000);}
 float HelloSensor::MQ309ADataAir(){return map(analogRead(_pin),1,(_bitadc),30,3000);}
 
@@ -132,6 +134,12 @@ float HelloSensor::MQ135DataNH4(){_va = 102.2;_vb = -2.473;return readValue();}
 float HelloSensor::MQ135DataAceton(){_va = 34.668;_vb = -3.369; return readValue();}
 
 //**************************************MQ-136**************************************\\
+
+float HelloSensor::MQ136DataH2S(){_va = 36.737;_vb = -3.536;return readValue();}
+float HelloSensor::MQ136DataNH4(){_va = 98.551;_vb = -2.475;return readValue();}
+float HelloSensor::MQ136DataCO(){_va = 503.34;_vb = -3.774;return readValue();}
+
+//**************************************MQ-137**************************************\\
 
 float HelloSensor::MQ136DataH2S(){_va = 36.737;_vb = -3.536;return readValue();}
 float HelloSensor::MQ136DataNH4(){_va = 98.551;_vb = -2.475;return readValue();}
