@@ -104,7 +104,7 @@ value4 = MQ.MQ2DataAlcohol();
 value5 = MQ.MQ2DataPropane();
 value6 = MQ.MQ2DataCH4(); 
 value7 = MQ.MQ2Datasmoke();
-// mq.mq2dataair
+// value8 = MQ.MQ2DataAir();
 }
 break;
 case (3):
