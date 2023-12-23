@@ -204,8 +204,8 @@ tm1637.display(1,1);
 tm1637.display(0,0);
 MQ.MQ131calibrate();
 value1 = MQ.MQ131DataNOx();
-value1 = MQ.MQ131DataCL2();
-value1 = MQ.MQ131DataO3();
+value2 = MQ.MQ131DataCL2();
+value3 = MQ.MQ131DataO3();
 value4 = MQ.MQ131DataAir();
 value5 = value6 = value7 = 0;
 }
@@ -218,9 +218,10 @@ tm1637.display(1,1);
 tm1637.display(0,0);
 MQ.MQ136calibrate();
 value1 = MQ.MQ136DataH2S();
-value1 = MQ.MQ136DataNH4();
-value1 = MQ.MQ136DataCO();
-value4 = value5 = value6 = value7 = 0;
+value2 = MQ.MQ136DataNH4();
+value3 = MQ.MQ136DataCO();
+value4 = MQ.MQ136DataAir();
+value5 = value6 = value7 = 0;
 }
 break;
 case (12):
@@ -231,9 +232,10 @@ tm1637.display(1,1);
 tm1637.display(0,0);
 MQ.MQ137calibrate();
 value1 = MQ.MQ137DataCO();
-value1 = MQ.MQ137DataEthanol();
-value1 = MQ.MQ137DataNH3();
-value4 = value5 = value6 = value7 = 0;
+value2 = MQ.MQ137DataEthanol();
+value3 = MQ.MQ137DataNH3();
+value4 = MQ.MQ137DataAir();
+value5 = value6 = value7 = 0;
 }
 break;
 case (13):
@@ -244,8 +246,8 @@ tm1637.display(1,0);
 tm1637.display(0,3);
 MQ.MQ303Acalibrate();
 value1 = MQ.MQ303ADataIso();
-value1 = MQ.MQ303ADataHyd();
-value1 = MQ.MQ303ADataEthanol();
+value2 = MQ.MQ303ADataHyd();
+value3 = MQ.MQ303ADataEthanol();
 value4 = MQ.MQ303ADataAir();
 value5 = value6 = value7 = 0;
 }
@@ -258,9 +260,9 @@ tm1637.display(1,0);
 tm1637.display(0,3);
 MQ.MQ309Acalibrate();
 value1 = MQ.MQ309ADataH2();
-value1 = MQ.MQ309ADataCH4();
-value1 = MQ.MQ309ADataCO();
-value1 = MQ.MQ309ADataAlcohol();
+value2 = MQ.MQ309ADataCH4();
+value3 = MQ.MQ309ADataCO();
+value4 = MQ.MQ309ADataAlcohol();
 value5 = MQ.MQ309ADataAir();
 value6 = value7 = 0;
 }
