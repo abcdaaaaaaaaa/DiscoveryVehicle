@@ -40,7 +40,7 @@ float HelloSensor::readValue()
 //**************************************ppm Value**************************************
 
 int HelloSensor::MQData100(){return map(analogRead(_pin),0,(_bitadc),0,100);}
-int HelloSensor::MQ2DataAir(){return map(analogRead(_pin),1,(_bitadc),200,10000);}
+//int HelloSensor::MQ2DataAir(){return map(analogRead(_pin),1,(_bitadc),200,10000);}
 int HelloSensor::MQ3DataAir(){return map(analogRead(_pin),1,(_bitadc),25,500);}
 int HelloSensor::MQ4DataAir(){return map(analogRead(_pin),1,(_bitadc),200,10000);}
 int HelloSensor::MQ5DataAir(){return map(analogRead(_pin),1,(_bitadc),200,10000);}
