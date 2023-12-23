@@ -18,7 +18,7 @@ static const char * myWriteAPIKey4 = "JCBZHB1KUX0Y09LX";
 static const char * myWriteAPIKey5 = "QP8J57RU9BY9NAVE";
 
 unsigned long lastTime = 0;
-unsigned long timerDelay = 14500;
+unsigned long timerDelay = 15000;
 
 const long int number15 = 40032287;
 const long int number16 = 35220634;
