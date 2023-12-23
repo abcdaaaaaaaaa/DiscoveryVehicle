@@ -7,7 +7,7 @@
 #include "TM1637.h"
 #include "HelloSensor.h"
 
-#define Rload         (10)
+#define Rload         (47)
 #define ADC_BIT_RESU  (12)
 #define space1        (12)
 #define space2        (14)
@@ -98,12 +98,13 @@ case (2):
 normal();
 MQ.MQ2calibrate();
 value1 = MQ.MQ2DataH2();
-value2 = MQ.MQ2DataH2();
-value3 = MQ.MQ2DataLPG();
-value4 = MQ.MQ2DataCO();
-value5 = MQ.MQ2DataAlcohol();
-value6 = MQ.MQ2DataPropane();  
-value7 = MQ.MQ2DataAir();
+value2 = MQ.MQ2DataLPG();
+value3 = MQ.MQ2DataCO();
+value4 = MQ.MQ2DataAlcohol();
+value5 = MQ.MQ2DataPropane();
+value6 = MQ.MQ2DataCH4(); 
+value7 = MQ.MQ2Datasmoke();
+// mq.mq2dataair
 }
 break;
 case (3):
@@ -123,13 +124,13 @@ case (4):
 {
 normal();
 MQ.MQ4calibrate();
-value1 = MQ.MQ4DataLPG();
-value2 = MQ.MQ4DataCH4();
-value3 = MQ.MQ4DataCO();
-value4 = MQ.MQ4DataAlcohol();
-value5 = MQ.MQ4DataSmoke();
-value6 = MQ.MQ4DataAir();
-value7 = 0; 
+value1 = MQ.MQ4DataH2();
+value2 = MQ.MQ4DataLPG();
+value3 = MQ.MQ4DataCH4();
+value4 = MQ.MQ4DataCO();
+value5 = MQ.MQ4DataAlcohol();
+value6 = MQ.MQ4DataSmoke();
+value7 = MQ.MQ4DataAir(); 
 }
 break;
 case (5):
@@ -224,6 +225,19 @@ value4 = value5 = value6 = value7 = 0;
 break;
 case (12):
 {
+tm1637.display(3,7);
+tm1637.display(2,3);
+tm1637.display(1,1);
+tm1637.display(0,0);
+MQ.MQ137calibrate();
+value1 = MQ.MQ137DataCO();
+value1 = MQ.MQ137DataEthanol();
+value1 = MQ.MQ137DataNH3();
+value4 = value5 = value6 = value7 = 0;
+}
+break;
+case (13):
+{
 tm1637.display(3,10);
 tm1637.display(2,3);
 tm1637.display(1,0);
@@ -236,7 +250,7 @@ value4 = MQ.MQ303ADataAir();
 value5 = value6 = value7 = 0;
 }
 break;
-case (13):
+case (14):
 {
 tm1637.display(3,10);
 tm1637.display(2,9);
@@ -249,7 +263,6 @@ value1 = MQ.MQ309ADataCO();
 value1 = MQ.MQ309ADataAlcohol();
 value5 = MQ.MQ309ADataAir();
 value6 = value7 = 0;
-
 }
 break;
 default:
