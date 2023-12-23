@@ -33,7 +33,7 @@ class HelloSensor
   void MQ309Acalibrate();
   int MQData100();
   float readValue();
-  int MQ2DataAir();
+  //int MQ2DataAir();
   int MQ3DataAir();
   int MQ4DataAir();
   int MQ5DataAir();
