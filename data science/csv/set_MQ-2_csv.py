@@ -35,7 +35,7 @@ while True:
     data_number += 1
 
 with open('MQ-2.csv', mode, newline='') as file:
-    fieldnames = ['Data', 'H2', 'LPG', 'CO', 'Alcohol', 'Propane']
+    fieldnames = ['Data', 'H2', 'LPG', 'CO', 'Alcohol', 'Propane', 'CH4', 'Smoke']
     writer = csv.DictWriter(file, fieldnames=fieldnames)
     
     if mode == 'w':
