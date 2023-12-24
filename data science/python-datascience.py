@@ -16,6 +16,7 @@ cy = []
 dy = []
 ey = []
 fy = []
+gy = []
 
 plt.figure(facecolor='white')
 plt.gca().set_facecolor('white')
@@ -73,18 +74,22 @@ match(SensorModel):
         with open('../datascience/csv/MQ-2.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
-             y.append(int(row['Data']))
+             y.append(int(row['Data'])*10)
              ay.append(int(row['H2']))
              by.append(int(row['LPG']))
              cy.append(int(row['CO']))
              dy.append(int(row['Alcohol']))
              ey.append(int(row['Propane']))
+             fy.append(int(row['CH4']))
+             gy.append(int(row['Smoke']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
         plt.scatter(sequence, ay, label='H2', color='#0000FF', marker='o')
         plt.scatter(sequence, by, label='LPG', color='#000e44', marker='o')
         plt.scatter(sequence, cy, label='CO', color='#87CEEB', marker='o')
         plt.scatter(sequence, dy, label='Alcohol', color='#ADD8E6', marker='o')
         plt.scatter(sequence, ey, label='Propane', color='#007FFF', marker='o')
+        plt.scatter(sequence, fy, label='CH4', color='#40E0D0', marker='o')
+        plt.scatter(sequence, ey, label='Smoke', color='#40e0b0', marker='o')
     case 'MQ-3':
         plt.ylim(25, 500)
         with open('../datascience/csv/MQ-3.csv', 'r') as file:
