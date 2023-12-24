@@ -7,6 +7,7 @@ mode = input("Do you want to (a)dd data or (w)rite data to a new file? (a/w): ")
 while True:
     print(f"Data {data_number}:")
     data = input("Data: ")
+    h2 = input("H2: ")
     lpg = input("LPG: ")
     ch4 = input("CH4: ")
     co = input("CO: ")
@@ -15,6 +16,7 @@ while True:
 
     data_entry = {
         'Data': data,
+        'H2' : h2,
         'LPG': lpg,
         'CH4': ch4,
         'CO': co,
@@ -31,7 +33,7 @@ while True:
     data_number += 1
 
 with open('MQ-4.csv', mode, newline='') as file:
-    fieldnames = ['Data', 'LPG', 'CH4', 'CO', 'Alcohol', 'Smoke']
+    fieldnames = ['Data', 'H2', 'LPG', 'CH4', 'CO', 'Alcohol', 'Smoke']
     writer = csv.DictWriter(file, fieldnames=fieldnames)
     
     if mode == 'w':
