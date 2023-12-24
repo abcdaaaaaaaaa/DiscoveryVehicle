@@ -45,7 +45,8 @@ class HelloSensor
   int MQ135DataAir();
   int MQ136DataAir();
   int MQ137DataAir();
-  float MQ303ADataAir();
+  //float MQ303ADataAir();
+  int MQ303ADataAir();
   int MQ309ADataAir();
   float MQ2DataH2();
   float MQ2DataLPG();
