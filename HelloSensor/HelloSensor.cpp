@@ -52,7 +52,8 @@ int HelloSensor::MQ131DataAir(){return map(analogRead(_pin),1,(_bitadc),5,100);}
 int HelloSensor::MQ135DataAir(){return map(analogRead(_pin),1,(_bitadc),10,200);}
 int HelloSensor::MQ136DataAir(){return map(analogRead(_pin),1,(_bitadc),10,200);}
 int HelloSensor::MQ137DataAir(){return map(analogRead(_pin),1,(_bitadc),10,200);}
-float HelloSensor::MQ303ADataAir(){return (map(analogRead(_pin),1,(_bitadc),12,345))/10;}
+int HelloSensor::MQ303ADataAir(){return (map(analogRead(_pin),1,(_bitadc),12,345));}
+//float HelloSensor::MQ303ADataAir(){return (map(analogRead(_pin),1,(_bitadc),12,345))/10;}
 int HelloSensor::MQ309ADataAir(){return map(analogRead(_pin),1,(_bitadc),160,260);}
 
 //**************************************MQ-2**************************************
@@ -75,6 +76,7 @@ CH4    | 20.7074 | -0.36
 smoke  | 26.4698 | -0.3876
 CO     | 28.024  | -0.3182
  */
+
 //**************************************MQ-3**************************************
 
 float HelloSensor::MQ3DataAlcohol(){_va = 0.5565;_vb = -0.6333;return readValue();}
