@@ -51,7 +51,7 @@ def RealTime(file):
 
 match(SensorModel):
     case 'MQ-135':
-        plt.ylim(10, 1000)
+        plt.ylim(0, 200)
         with open('../datascience/csv/MQ-135.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
@@ -70,7 +70,7 @@ match(SensorModel):
         plt.scatter(sequence, ey, label='NH4', color='#007FFF', marker='o')
         plt.scatter(sequence, fy, label='Aceton', color='#40E0D0', marker='o')
     case 'MQ-2':
-        plt.ylim(300, 10000)
+        plt.ylim(0, 10000)
         with open('../datascience/csv/MQ-2.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
@@ -91,7 +91,7 @@ match(SensorModel):
         plt.scatter(sequence, fy, label='CH4', color='#40E0D0', marker='o')
         plt.scatter(sequence, ey, label='Smoke', color='#40e0b0', marker='o')
     case 'MQ-3':
-        plt.ylim(25, 500)
+        plt.ylim(0, 500)
         with open('../datascience/csv/MQ-3.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
@@ -110,7 +110,7 @@ match(SensorModel):
         plt.scatter(sequence, ey, label='Benzene', color='#007FFF', marker='o')
         plt.scatter(sequence, fy, label='Hexane', color='#40E0D0', marker='o')
     case 'MQ-4':
-        plt.ylim(300, 10000)
+        plt.ylim(0, 10000)
         with open('../datascience/csv/MQ-4.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
@@ -127,23 +127,23 @@ match(SensorModel):
         plt.scatter(sequence, dy, label='Alcohol', color='#ADD8E6', marker='o')
         plt.scatter(sequence, ey, label='Smoke', color='#007FFF', marker='o')
     case 'MQ-5':
-        plt.ylim(200, 10000)
+        plt.ylim(0, 10000)
         with open('../datascience/csv/MQ-5.csv', 'r') as file:
            RealTime(file)
     case 'MQ-6':
-        plt.ylim(300, 10000)
+        plt.ylim(0, 10000)
         with open('../datascience/csv/MQ-6.csv', 'r') as file:
            RealTime(file)
     case 'MQ-7':
-        plt.ylim(10, 10000)
+        plt.ylim(0, 4000)
         with open('../datascience/csv/MQ-7.csv', 'r') as file:
            RealTime(file)
     case 'MQ-8':
-        plt.ylim(10, 10000)
+        plt.ylim(0, 10000)
         with open('../datascience/csv/MQ-8.csv', 'r') as file:
            RealTime(file)
     case 'MQ-9':
-        plt.ylim(10, 10000)
+        plt.ylim(0, 10000)
         with open('../datascience/csv/MQ-9.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
@@ -156,7 +156,7 @@ match(SensorModel):
         plt.scatter(sequence, by, label='CH4', color='#000e44', marker='o')
         plt.scatter(sequence, cy, label='CO', color='#87CEEB', marker='o')
     case 'MQ-131':
-        plt.ylim(5, 100)
+        plt.ylim(0, 100)
         with open('../datascience/csv/MQ-131.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
@@ -169,7 +169,7 @@ match(SensorModel):
         plt.scatter(sequence, by, label='CL2', color='#000e44', marker='o')
         plt.scatter(sequence, cy, label='O3', color='#87CEEB', marker='o')
     case 'MQ-136':
-        plt.ylim(10, 200)
+        plt.ylim(0, 200)
         with open('../datascience/csv/MQ-136.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
@@ -182,7 +182,7 @@ match(SensorModel):
         plt.scatter(sequence, by, label='NH4', color='#000e44', marker='o')
         plt.scatter(sequence, cy, label='CO', color='#87CEEB', marker='o')
     case 'MQ-303A':
-        plt.ylim(10, 10000)
+        plt.ylim(0, 10000)
         with open('../datascience/csv/MQ-303A.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
@@ -196,7 +196,7 @@ match(SensorModel):
         plt.scatter(sequence, cy, label='Ethanol', color='#87CEEB', marker='o')
 
     case 'MQ-309A':
-        plt.ylim(30, 3000)
+        plt.ylim(30, 7000)
         with open('../datascience/csv/MQ-309A.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
