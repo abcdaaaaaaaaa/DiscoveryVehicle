@@ -74,7 +74,7 @@ match(SensorModel):
         with open('../datascience/csv/MQ-2.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
-             y.append(int(row['Data'])*10)
+             y.append(int(row['Data']))
              ay.append(int(row['H2']))
              by.append(int(row['LPG']))
              cy.append(int(row['CO']))
@@ -89,7 +89,7 @@ match(SensorModel):
         plt.scatter(sequence, dy, label='Alcohol', color='#ADD8E6', marker='o')
         plt.scatter(sequence, ey, label='Propane', color='#007FFF', marker='o')
         plt.scatter(sequence, fy, label='CH4', color='#40E0D0', marker='o')
-        plt.scatter(sequence, ey, label='Smoke', color='#40e0b0', marker='o')
+        plt.scatter(sequence, ey, label='Smoke', color='#40E0B0', marker='o')
     case 'MQ-3':
         plt.ylim(0, 500)
         with open('../datascience/csv/MQ-3.csv', 'r') as file:
@@ -181,6 +181,19 @@ match(SensorModel):
         plt.scatter(sequence, ay, label='H2S', color='#0000FF', marker='o')
         plt.scatter(sequence, by, label='NH4', color='#000e44', marker='o')
         plt.scatter(sequence, cy, label='CO', color='#87CEEB', marker='o')
+    case 'MQ-137':
+        plt.ylim(0, 200)
+        with open('../datascience/csv/MQ-137.csv', 'r') as file:
+           csv_reader = csv.DictReader(file)
+           for row in csv_reader:
+             y.append(int(row['Data']))
+             by.append(int(row['CO']))
+             cy.append(int(row['Ethanol']))
+             dy.append(int(row['NH3']))
+        plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
+        plt.scatter(sequence, ay, label='CO', color='#0000FF', marker='o')
+        plt.scatter(sequence, by, label='Ethanol', color='#000e44', marker='o')
+        plt.scatter(sequence, cy, label='NH3', color='#87CEEB', marker='o')
     case 'MQ-303A':
         plt.ylim(0, 10000)
         with open('../datascience/csv/MQ-303A.csv', 'r') as file:
