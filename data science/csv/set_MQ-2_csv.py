@@ -12,6 +12,8 @@ while True:
     co = input("CO: ")
     alcohol = input("Alcohol: ")
     propane = input("Propane: ")
+    ch4 = input("CH4: ")
+    smoke = input("Smoke: ")
 
     data_entry = {
         'Data': data,
@@ -19,7 +21,9 @@ while True:
         'LPG': lpg,
         'CO': co,
         'Alcohol': alcohol,
-        'Propane': propane
+        'Propane': propane,
+        'CH4': ch4,
+        'Smoke': smoke
     }
 
     data_list.append(data_entry)
