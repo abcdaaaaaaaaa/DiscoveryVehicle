@@ -26,7 +26,7 @@ while True:
 
     data_number += 1
 
-with open('MQ-135.csv', mode, newline='') as file:
+with open('MQ-137.csv', mode, newline='') as file:
     fieldnames = ['Data', 'CO', 'Ethanol', 'NH3']
     writer = csv.DictWriter(file, fieldnames=fieldnames)
     
