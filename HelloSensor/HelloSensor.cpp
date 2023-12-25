@@ -13,27 +13,19 @@ void HelloSensor::begin()
   pinMode(_pin,INPUT);
 }
 
-//**************************************Ready Calibration**************************************
+void HelloSensor::RSRoMQAir(float RSRo)
+{
+ _Ro = RSRo;
+}
 
-void HelloSensor::MQ2calibrate(){_R0 = 2.74;}
-void HelloSensor::MQ3calibrate(){_R0 = 0.45;}
-void HelloSensor::MQ4calibrate(){_R0 = 6.14;}
-void HelloSensor::MQ5calibrate(){_R0 = 4.16;}
-void HelloSensor::MQ6calibrate(){_R0 = 2.71;}
-void HelloSensor::MQ7calibrate(){_R0 = 0.98;}
-void HelloSensor::MQ8calibrate(){_R0 = 0.386;}
-void HelloSensor::MQ9calibrate(){_R0 = 2.816;}
-void HelloSensor::MQ131calibrate(){_R0 = 0.67;}
-void HelloSensor::MQ135calibrate(){_R0 = 8.2809;}
-void HelloSensor::MQ136calibrate(){_R0 = 7.5;}
-void HelloSensor::MQ137calibrate(){_R0 = 7.5;}
-void HelloSensor::MQ303Acalibrate(){_R0 = 27;}
-void HelloSensor::MQ309Acalibrate(){_R0 = 2.458;}
+void HelloSensor::dangerousPer(float per)
+{
+ _percentile = per;
+}
 
 float HelloSensor::readValue()
 {
-  _RS = ((_Rload/(analogRead(_pin)*(1/_bitadc)))-(_Rload));
-  _ratio = ( _RS / _R0);
+ _ratio = (_Rload*_bitadc/analogRead(_pin)-_Rload)/(_Rload*100/_percentile-_Rload)*_Ro;
  return pow(_ratio,_vb)*_va;
 }
 
