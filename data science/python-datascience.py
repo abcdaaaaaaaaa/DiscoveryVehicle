@@ -27,7 +27,7 @@ plt.title(SensorData)
 def generate_sequence(depth):
     return list(range(0, depth+1))
 
-with open('../datascience/csv/{}.csv'.format(SensorModel), 'r') as file:
+with open('../DataScience/csv/{}.csv'.format(SensorModel), 'r') as file:
     depth = len(list(csv.reader(file))) - 2
     
 sequence = generate_sequence(depth)
@@ -52,7 +52,7 @@ def RealTime(file):
 match(SensorModel):
     case 'MQ-135':
         plt.ylim(0, 200)
-        with open('../datascience/csv/MQ-135.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-135.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
@@ -71,7 +71,7 @@ match(SensorModel):
         plt.scatter(sequence, fy, label='Aceton', color='#40E0D0', marker='o')
     case 'MQ-2':
         plt.ylim(0, 10000)
-        with open('../datascience/csv/MQ-2.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-2.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
@@ -92,7 +92,7 @@ match(SensorModel):
         plt.scatter(sequence, ey, label='Smoke', color='#40E0B0', marker='o')
     case 'MQ-3':
         plt.ylim(0, 500)
-        with open('../datascience/csv/MQ-3.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-3.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
@@ -111,7 +111,7 @@ match(SensorModel):
         plt.scatter(sequence, fy, label='Hexane', color='#40E0D0', marker='o')
     case 'MQ-4':
         plt.ylim(0, 10000)
-        with open('../datascience/csv/MQ-4.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-4.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
@@ -130,23 +130,23 @@ match(SensorModel):
         plt.scatter(sequence, ey, label='Smoke', color='#40E0D0', marker='o')
     case 'MQ-5':
         plt.ylim(0, 10000)
-        with open('../datascience/csv/MQ-5.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-5.csv', 'r') as file:
            RealTime(file)
     case 'MQ-6':
         plt.ylim(0, 10000)
-        with open('../datascience/csv/MQ-6.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-6.csv', 'r') as file:
            RealTime(file)
     case 'MQ-7':
         plt.ylim(0, 4000)
-        with open('../datascience/csv/MQ-7.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-7.csv', 'r') as file:
            RealTime(file)
     case 'MQ-8':
         plt.ylim(0, 10000)
-        with open('../datascience/csv/MQ-8.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-8.csv', 'r') as file:
            RealTime(file)
     case 'MQ-9':
         plt.ylim(0, 10000)
-        with open('../datascience/csv/MQ-9.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-9.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
@@ -159,7 +159,7 @@ match(SensorModel):
         plt.scatter(sequence, cy, label='CO', color='#87CEEB', marker='o')
     case 'MQ-131':
         plt.ylim(0, 100)
-        with open('../datascience/csv/MQ-131.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-131.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
@@ -172,7 +172,7 @@ match(SensorModel):
         plt.scatter(sequence, cy, label='O3', color='#87CEEB', marker='o')
     case 'MQ-136':
         plt.ylim(0, 200)
-        with open('../datascience/csv/MQ-136.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-136.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
@@ -185,7 +185,7 @@ match(SensorModel):
         plt.scatter(sequence, cy, label='CO', color='#87CEEB', marker='o')
     case 'MQ-137':
         plt.ylim(0, 200)
-        with open('../datascience/csv/MQ-137.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-137.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
@@ -193,12 +193,12 @@ match(SensorModel):
              cy.append(int(row['Ethanol']))
              dy.append(int(row['NH3']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
-        plt.scatter(sequence, ay, label='CO', color='#0000FF', marker='o')
-        plt.scatter(sequence, by, label='Ethanol', color='#000e44', marker='o')
-        plt.scatter(sequence, cy, label='NH3', color='#87CEEB', marker='o')
+        plt.scatter(sequence, by, label='CO', color='#0000FF', marker='o')
+        plt.scatter(sequence, cy, label='Ethanol', color='#000e44', marker='o')
+        plt.scatter(sequence, dy, label='NH3', color='#87CEEB', marker='o')
     case 'MQ-303A':
         plt.ylim(0, 10000)
-        with open('../datascience/csv/MQ-303A.csv', 'r') as file:
+        with open('../DataScience/csv/MQ-303A.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
@@ -211,8 +211,8 @@ match(SensorModel):
         plt.scatter(sequence, cy, label='Ethanol', color='#87CEEB', marker='o')
 
     case 'MQ-309A':
-        plt.ylim(30, 7000)
-        with open('../datascience/csv/MQ-309A.csv', 'r') as file:
+        plt.ylim(0, 7000)
+        with open('../DataScience/csv/MQ-309A.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
