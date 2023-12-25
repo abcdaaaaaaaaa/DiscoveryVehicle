@@ -60,6 +60,8 @@ static const char * myWriteAPIKey5 = "QP8J57RU9BY9NAVE";
 
 unsigned long int lastTime = 0;
 unsigned long int timerDelay = 15000;
+//unsigned long int lastTimeLid = 0;
+//unsigned long int timerDelayLid = 15000;
 
 void setup() {
   Serial.begin(115200);  
@@ -86,7 +88,7 @@ void setup() {
 }
 
 void loop() {
-sec = map(analogRead(13),0,8191,1,13);
+sec = map(analogRead(13),0,4096,1,14);
 switch(sec){
 case (1):
 {
@@ -96,13 +98,20 @@ break;
 case (2):
 {
 normal();
-MQ.MQ2calibrate();
+MQ.RSRoMQAir(9.55);
+MQ.dangerousPer(50); // There is no stele limit in this gas, so we define it as 50% on all sensors. 
 value1 = MQ.MQ2DataH2();
+MQ.dangerousPer(10);
 value2 = MQ.MQ2DataLPG();
+MQ.dangerousPer(2);
 value3 = MQ.MQ2DataCO();
+MQ.dangerousPer(10);
 value4 = MQ.MQ2DataAlcohol();
+MQ.dangerousPer(10);
 value5 = MQ.MQ2DataPropane();
+MQ.dangerousPer(10);
 value6 = MQ.MQ2DataCH4(); 
+MQ.dangerousPer(0.02);
 value7 = MQ.MQ2Datasmoke();
 // value8 = MQ.MQ2DataAir();
 }
@@ -110,12 +119,18 @@ break;
 case (3):
 {
 normal();
-MQ.MQ3calibrate();
+MQ.RSRoMQAir(60.53);
+MQ.dangerousPer(100);
 value1 = MQ.MQ3DataLPG();
+MQ.dangerousPer(100);
 value2 = MQ.MQ3DataCH4();
+MQ.dangerousPer(40);
 value3 = MQ.MQ3DataCO();
+MQ.dangerousPer(100);
 value4 = MQ.MQ3DataAlcohol();
+MQ.dangerousPer(1);
 value5 = MQ.MQ3DataBenzene();
+MQ.dangerousPer(10);
 value6 = MQ.MQ3DataHexane();  
 value7 = MQ.MQ3DataAir();
 }
@@ -123,12 +138,18 @@ break;
 case (4):
 {
 normal();
-MQ.MQ4calibrate();
+MQ.RSRoMQAir(4.4);
+MQ.dangerousPer(50);
 value1 = MQ.MQ4DataH2();
+MQ.dangerousPer(10);
 value2 = MQ.MQ4DataLPG();
+MQ.dangerousPer(10);
 value3 = MQ.MQ4DataCH4();
+MQ.dangerousPer(2);
 value4 = MQ.MQ4DataCO();
+MQ.dangerousPer(10);
 value5 = MQ.MQ4DataAlcohol();
+MQ.dangerousPer(0.02);
 value6 = MQ.MQ4DataSmoke();
 value7 = MQ.MQ4DataAir(); 
 }
@@ -136,11 +157,16 @@ break;
 case (5):
 {
 normal();
-MQ.MQ5calibrate();
+MQ.RSRoMQAir(6.5);
+MQ.dangerousPer(50);
 value1 = MQ.MQ5DataH2();
+MQ.dangerousPer(10);
 value2 = MQ.MQ5DataLPG();
+MQ.dangerousPer(10);
 value3 = MQ.MQ5DataCH4();
+MQ.dangerousPer(2);
 value4 = MQ.MQ5DataCO();
+MQ.dangerousPer(10);
 value5 = MQ.MQ5DataAlcohol();
 value6 = MQ.MQ5DataAir();
 value7 = 0;
@@ -149,11 +175,16 @@ break;
 case (6):
 {
 normal();
-MQ.MQ6calibrate();
+MQ.RSRoMQAir(10);
+MQ.dangerousPer(50);
 value1 = MQ.MQ6DataH2();
+MQ.dangerousPer(10);
 value2 = MQ.MQ6DataLPG();
+MQ.dangerousPer(10);
 value3 = MQ.MQ6DataCH4();
+MQ.dangerousPer(2);
 value4 = MQ.MQ6DataCO();
+MQ.dangerousPer(10);
 value5 = MQ.MQ6DataAlcohol();
 value6 = MQ.MQ6DataAir();
 value7 = 0;
@@ -162,11 +193,16 @@ break;
 case (7):
 {
 normal();
-MQ.MQ7calibrate();
+MQ.RSRoMQAir(26);
+MQ.dangerousPer(50);
 value1 = MQ.MQ7DataH2();
+MQ.dangerousPer(25);
 value2 = MQ.MQ7DataLPG();
+MQ.dangerousPer(25);
 value3 = MQ.MQ7DataCH4();
+MQ.dangerousPer(5);
 value4 = MQ.MQ7DataCO();
+MQ.dangerousPer(25);
 value5 = MQ.MQ7DataAlcohol();
 value6 = MQ.MQ7DataAir();
 value7 = 0;
@@ -175,11 +211,16 @@ break;
 case (8):
 {
 normal();
-MQ.MQ8calibrate();
+MQ.RSRoMQAir(70);
+MQ.dangerousPer(50);
 value1 = MQ.MQ8DataH2();
+MQ.dangerousPer(10);
 value2 = MQ.MQ8DataLPG();
+MQ.dangerousPer(10);
 value3 = MQ.MQ8DataCH4();
+MQ.dangerousPer(2);
 value4 = MQ.MQ8DataCO();
+MQ.dangerousPer(10);
 value5 = MQ.MQ8DataAlcohol();
 value6 = MQ.MQ8DataAir();
 value7 = 0;
@@ -188,9 +229,12 @@ break;
 case (9):
 {
 normal();
-MQ.MQ9calibrate();
+MQ.RSRoMQAir(9.7);
+MQ.dangerousPer(10);
 value1 = MQ.MQ9DataLPG();
+MQ.dangerousPer(10);
 value2 = MQ.MQ9DataCH4();
+MQ.dangerousPer(2);
 value3 = MQ.MQ9DataCO();
 value4 = MQ.MQ9DataAir();
 value5 = value6 = value7 = 0;
@@ -202,9 +246,12 @@ tm1637.display(3,1);
 tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
-MQ.MQ131calibrate();
+MQ.RSRoMQAir(12);
+MQ.dangerousPer(5);
 value1 = MQ.MQ131DataNOx();
+MQ.dangerousPer(1);
 value2 = MQ.MQ131DataCL2();
+MQ.dangerousPer(0.3);
 value3 = MQ.MQ131DataO3();
 value4 = MQ.MQ131DataAir();
 value5 = value6 = value7 = 0;
@@ -216,9 +263,12 @@ tm1637.display(3,6);
 tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
-MQ.MQ136calibrate();
+MQ.RSRoMQAir(3.54);
+MQ.dangerousPer(2.5);
 value1 = MQ.MQ136DataH2S();
+MQ.dangerousPer(17.5);
 value2 = MQ.MQ136DataNH4();
+MQ.dangerousPer(100);
 value3 = MQ.MQ136DataCO();
 value4 = MQ.MQ136DataAir();
 value5 = value6 = value7 = 0;
@@ -230,9 +280,12 @@ tm1637.display(3,7);
 tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
-MQ.MQ137calibrate();
+MQ.RSRoMQAir(3.54);
+MQ.dangerousPer(17.5);
 value1 = MQ.MQ137DataCO();
+MQ.dangerousPer(100);
 value2 = MQ.MQ137DataEthanol();
+MQ.dangerousPer(17.5);
 value3 = MQ.MQ137DataNH3();
 value4 = MQ.MQ137DataAir();
 value5 = value6 = value7 = 0;
@@ -244,9 +297,12 @@ tm1637.display(3,10);
 tm1637.display(2,3);
 tm1637.display(1,0);
 tm1637.display(0,3);
-MQ.MQ303Acalibrate();
+MQ.RSRoMQAir(1);
+MQ.dangerousPer(10);
 value1 = MQ.MQ303ADataIso();
+MQ.dangerousPer(50);
 value2 = MQ.MQ303ADataHyd();
+MQ.dangerousPer(10);
 value3 = MQ.MQ303ADataEthanol();
 value4 = MQ.MQ303ADataAir();
 value5 = value6 = value7 = 0;
@@ -258,10 +314,14 @@ tm1637.display(3,10);
 tm1637.display(2,9);
 tm1637.display(1,0);
 tm1637.display(0,3);
-MQ.MQ309Acalibrate();
+MQ.RSRoMQAir(11);
+MQ.dangerousPer(50);
 value1 = MQ.MQ309ADataH2();
+MQ.dangerousPer(14.2587);
 value2 = MQ.MQ309ADataCH4();
+MQ.dangerousPer(0.01); //different datasheet this value will 20
 value3 = MQ.MQ309ADataCO();
+MQ.dangerousPer(0.01);
 value4 = MQ.MQ309ADataAlcohol();
 value5 = MQ.MQ309ADataAir();
 value6 = value7 = 0;
@@ -401,12 +461,18 @@ tm1637.display(3,5);
 tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
-MQ.MQ135calibrate();
+MQ.RSRoMQAir(3.6);
+MQ.dangerousPer(100);
 value1 = MQ.MQ135DataCO();
+MQ.dangerousPer(100);
 value2 = MQ.MQ135DataAlcohol();
+MQ.dangerousPer(100);
 value3 = MQ.MQ135DataCO2();
+MQ.dangerousPer(75);
 value4 = MQ.MQ135DataToluen();
+MQ.dangerousPer(17.5);
 value5 = MQ.MQ135DataNH4();
+MQ.dangerousPer(100);
 value6 = MQ.MQ135DataAceton();
 value7 = MQ.MQ135DataAir();
 }
