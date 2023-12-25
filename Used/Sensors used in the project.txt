@@ -7,11 +7,13 @@ MQ-6
 MQ-7
 MQ-8
 MQ-9
-MQ-131
+MQ131
 MQ-135
 MQ-136
-MQ-303A
-MQ-309A
+MQ-137
+MQ303A
+MQ309A
++22kΩ resistance
 For Radioactivity
 Portable Handle Geiger Counter 0.01 μSv/h DIY Kit Nuclear Radiation Detector with Miller GM Tube Gamma Beta Ray Suit for Arduino
 For Camera
@@ -25,5 +27,5 @@ For Controller
 Joystick x2 
 2x16 Lcd Screen
 For Adjustable System
-10K Potantiometer x2 (for Sensor and for pixy2&&mpu6050$$control) 
+20K Potantiometer 
 TM1637 Led Display Module
