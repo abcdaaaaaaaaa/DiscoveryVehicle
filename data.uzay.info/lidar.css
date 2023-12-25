@@ -1,0 +1,88 @@
+body {
+    background-image: url("hello1.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blue-rectangle {
+    width: 30px;
+    height: 30px;
+    background-color: #3498db;
+    position: absolute;
+    left: calc(50%);
+    right: calc(50%);
+    transform: translate(-50%);
+    z-index: -1;
+}
+
+.right-long-rectangle,
+.right-long-rectangle30,
+.left-long-rectangle,
+.left-long-rectangle30
+ {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    transition: left 0.3s ease-in-out, right 0.3s ease-in-out;
+}
+
+.forward-long-rectangle,
+.forward-long-rectangle60,
+.forward-long-rectangle120 {
+    width: 30px;
+    height: 30px;
+    background-color: #e74c3c;
+    position: relative;
+    transition: top 0.3s ease-in-out;    
+}
+
+.right-long-rectangle {
+    left: var(--RightrectanglePosition);
+    background-color: var(--rgb180);
+}
+
+.right-long-rectangle30 {
+    left: var(--RightrectanglePosition30);
+    bottom: var(--Blue150);
+    background-color: var(--rgb150);
+}
+
+.left-long-rectangle {
+    right: var(--LeftrectanglePosition);
+    background-color: var(--rgb0);
+}
+
+.left-long-rectangle30 {
+    right: var(--LeftrectanglePosition30);
+    bottom: var(--Blue30);
+    background-color: var(--rgb30);
+}
+
+.forward-long-rectangle {
+    bottom: var(--ForwardrectanglePosition);
+    background-color: var(--rgb90);
+}
+
+.forward-long-rectangle60 {
+    right: var(--Blue60);
+    bottom: var(--ForwardrectanglePosition60);
+    background-color: var(--rgb60);
+}
+
+.forward-long-rectangle120 {
+    left: var(--Blue120);
+    bottom: var(--ForwardrectanglePosition120);
+    background-color: var(--rgb120);
+}
