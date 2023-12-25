@@ -60,8 +60,6 @@ static const char * myWriteAPIKey5 = "QP8J57RU9BY9NAVE";
 
 unsigned long int lastTime = 0;
 unsigned long int timerDelay = 15000;
-//unsigned long int lastTimeLid = 0;
-//unsigned long int timerDelayLid = 15000;
 
 void setup() {
   Serial.begin(115200);  
@@ -98,7 +96,7 @@ break;
 case (2):
 {
 normal();
-MQ.RSRoMQAir(9.55);
+MQ.RSRoMQAir(9.8);
 MQ.dangerousPer(50); // There is no stele limit in this gas, so we define it as 50% on all sensors. 
 value1 = MQ.MQ2DataH2();
 MQ.dangerousPer(10);
