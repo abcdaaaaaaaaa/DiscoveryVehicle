@@ -7,30 +7,18 @@ class HelloSensor
 {
   private:
   float _ratio;
+  float _percentile;
   int _bitadc;
   float _Rload;
   byte _pin;
-  float _R0;
-  float _RS;
+  float _Ro;
   float _va;
   float _vb;
   public:
   HelloSensor(int bitadc, float Rload, byte pin);
   void begin();
-  void MQ2calibrate();
-  void MQ3calibrate();
-  void MQ4calibrate();
-  void MQ5calibrate();
-  void MQ6calibrate();
-  void MQ7calibrate();
-  void MQ8calibrate();
-  void MQ9calibrate();
-  void MQ131calibrate();
-  void MQ135calibrate();
-  void MQ136calibrate();
-  void MQ137calibrate();
-  void MQ303Acalibrate();
-  void MQ309Acalibrate();
+  void dangerousPer(float per);
+  void RSRoMQAir(float RSRo);
   int MQData100();
   float readValue();
   //int MQ2DataAir();
