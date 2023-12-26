@@ -11,7 +11,7 @@ class HelloSensor
   int _bitadc;
   float _Rload;
   byte _pin;
-  float _Ro;
+  float _RSRo;
   float _va;
   float _vb;
   public:
