@@ -317,9 +317,9 @@ MQ.dangerousPer(50);
 value1 = MQ.MQ309ADataH2();
 MQ.dangerousPer(14.2587);
 value2 = MQ.MQ309ADataCH4();
-MQ.dangerousPer(10); //different datasheet this value will 20
+MQ.dangerousPer(5); //different datasheet this value will 20
 value3 = MQ.MQ309ADataCO();
-MQ.dangerousPer(10);
+MQ.dangerousPer(5);
 value4 = MQ.MQ309ADataAlcohol();
 value5 = MQ.MQ309ADataAir();
 value6 = value7 = 0;
