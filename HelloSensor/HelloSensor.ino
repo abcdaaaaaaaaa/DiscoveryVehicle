@@ -97,7 +97,7 @@ case (2):
 {
 normal();
 MQ.RSRoMQAir(9.8);
-MQ.dangerousPer(50); // There is no stele limit in this gas, so we define it as 50% on all sensors. 
+MQ.dangerousPer(10); 
 value1 = MQ.MQ2DataH2();
 MQ.dangerousPer(10);
 value2 = MQ.MQ2DataLPG();
@@ -126,7 +126,7 @@ MQ.dangerousPer(40);
 value3 = MQ.MQ3DataCO();
 MQ.dangerousPer(90);
 value4 = MQ.MQ3DataAlcohol();
-MQ.dangerousPer(1);
+MQ.dangerousPer(0.02);
 value5 = MQ.MQ3DataBenzene();
 MQ.dangerousPer(10);
 value6 = MQ.MQ3DataHexane();  
@@ -137,7 +137,7 @@ case (4):
 {
 normal();
 MQ.RSRoMQAir(4.4);
-MQ.dangerousPer(50);
+MQ.dangerousPer(10);
 value1 = MQ.MQ4DataH2();
 MQ.dangerousPer(10);
 value2 = MQ.MQ4DataLPG();
@@ -156,7 +156,7 @@ case (5):
 {
 normal();
 MQ.RSRoMQAir(6.5);
-MQ.dangerousPer(50);
+MQ.dangerousPer(10);
 value1 = MQ.MQ5DataH2();
 MQ.dangerousPer(10);
 value2 = MQ.MQ5DataLPG();
@@ -174,7 +174,7 @@ case (6):
 {
 normal();
 MQ.RSRoMQAir(10);
-MQ.dangerousPer(50);
+MQ.dangerousPer(10);
 value1 = MQ.MQ6DataH2();
 MQ.dangerousPer(10);
 value2 = MQ.MQ6DataLPG();
@@ -192,7 +192,7 @@ case (7):
 {
 normal();
 MQ.RSRoMQAir(26);
-MQ.dangerousPer(50);
+MQ.dangerousPer(25);
 value1 = MQ.MQ7DataH2();
 MQ.dangerousPer(25);
 value2 = MQ.MQ7DataLPG();
@@ -210,7 +210,7 @@ case (8):
 {
 normal();
 MQ.RSRoMQAir(70);
-MQ.dangerousPer(50);
+MQ.dangerousPer(10);
 value1 = MQ.MQ8DataH2();
 MQ.dangerousPer(10);
 value2 = MQ.MQ8DataLPG();
@@ -298,7 +298,7 @@ tm1637.display(0,3);
 MQ.RSRoMQAir(1);
 MQ.dangerousPer(10);
 value1 = MQ.MQ303ADataIso();
-MQ.dangerousPer(50);
+MQ.dangerousPer(10);
 value2 = MQ.MQ303ADataHyd();
 MQ.dangerousPer(10);
 value3 = MQ.MQ303ADataEthanol();
@@ -313,14 +313,18 @@ tm1637.display(2,9);
 tm1637.display(1,0);
 tm1637.display(0,3);
 MQ.RSRoMQAir(11);
-MQ.dangerousPer(50);
+MQ.dangerousPer(14.2587);
 value1 = MQ.MQ309ADataH2();
 MQ.dangerousPer(14.2587);
 value2 = MQ.MQ309ADataCH4();
-MQ.dangerousPer(5); //different datasheet this value will 20
+MQ.dangerousPer(0.01); //different datasheet this value will 20
 value3 = MQ.MQ309ADataCO();
-MQ.dangerousPer(5);
+MQ.dangerousPer(0.01);
 value4 = MQ.MQ309ADataAlcohol();
+if (value1 > 7000)(value1 = 7000);
+if (value2 > 7000)(value2 = 7000);
+if (value3 > 7000)(value3 = 7000);
+if (value4 > 7000)(value4 = 7000);
 value5 = MQ.MQ309ADataAir();
 value6 = value7 = 0;
 }
