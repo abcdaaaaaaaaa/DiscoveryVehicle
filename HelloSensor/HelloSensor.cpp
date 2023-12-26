@@ -15,7 +15,7 @@ void HelloSensor::begin()
 
 void HelloSensor::RSRoMQAir(float RSRo)
 {
- _Ro = RSRo;
+ _RSRo = RSRo;
 }
 
 void HelloSensor::dangerousPer(float per)
@@ -25,7 +25,7 @@ void HelloSensor::dangerousPer(float per)
 
 float HelloSensor::readValue()
 {
- _ratio = (_Rload*_bitadc/analogRead(_pin)-_Rload)/(_Rload*100/_percentile-_Rload)*_Ro;
+ _ratio = (_Rload*_bitadc/analogRead(_pin)-_Rload)/(_Rload*100/_percentile-_Rload)*_RSRo;
  return pow(_ratio,_vb)*_va;
 }
 
