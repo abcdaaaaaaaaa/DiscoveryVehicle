@@ -2,7 +2,7 @@ RSRoMQAir = int(input("Define your MQAir RS/Ro: ")) # RS/Ro VALUE
 
 """
 ---RS/Ro VALUE---
-MQ-2: 9.55
+MQ-2: 9.8
 MQ-3: 60.53
 MQ-4: 4.4
 MQ-5: 6.5
