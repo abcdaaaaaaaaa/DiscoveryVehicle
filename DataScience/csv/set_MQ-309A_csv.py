@@ -11,13 +11,18 @@ while True:
     ch4 = input("CH4: ")
     co = input("CO: ")
     alcohol = input("Alcohol: ")
+    LC = input("LowCO: ")
+    SH = input("SecondH2: ")
 
     data_entry = {
         'Data': data,
         'H2': h2,
         'CH4': ch4,
         'CO': co,
-        'Alcohol': alcohol
+        'Alcohol': alcohol,
+        'LowCO': LC,
+        'SecondH2': SH
+
     }
 
     data_list.append(data_entry)
@@ -29,7 +34,7 @@ while True:
     data_number += 1
 
 with open('MQ-309A.csv', mode, newline='') as file:
-    fieldnames = ['Data', 'H2', 'CH4', 'CO', 'Alcohol']
+    fieldnames = ['Data', 'H2', 'CH4', 'CO', 'Alcohol', 'LowCO', 'SecondH2']
     writer = csv.DictWriter(file, fieldnames=fieldnames)
     
     if mode == 'w':
