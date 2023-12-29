@@ -119,7 +119,7 @@ break;
 
 case 14:
 not = 'MQ-309A'; 
-return ['H2', 'CH4', 'CO', 'Alcohol', 'Air']
+return ['H2', 'CH4', 'CO', 'Alcohol', 'LowCO', 'SecondH2', 'Air']
 break;
 
 default:
