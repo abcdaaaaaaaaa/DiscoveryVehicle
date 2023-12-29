@@ -12,7 +12,7 @@
 <img width="720" alt="2d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/05bd9a6a-a161-4b1d-8352-50ed33bea459">
 
 ### Saving Values to the Database with Plug-Unplug Feature
-<img width="720" alt="sqldata" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/14d96c27-8e1e-4730-b428-4db59c089cbd">
+<img width="720" alt="sqlfordata" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/abafc524-1340-465d-ba4b-f3179d9aaf2d">
 
 ### SQL for MQ-135
 <img width="720" alt="sqlmq135" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/6c2cebf4-0374-407e-ad1d-11fa5e66ecd4">
