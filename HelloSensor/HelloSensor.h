@@ -14,6 +14,14 @@ class HelloSensor
   float _RSRo;
   float _va;
   float _vb;
+  float limitValue10000(float Sensorvalue);
+  float limitValue7000(float Sensorvalue);
+  float limitValue4000(float Sensorvalue);
+  float limitValue3000(float Sensorvalue);
+  float limitValue1000(float Sensorvalue);
+  float limitValue500(float Sensorvalue);
+  float limitValue200(float Sensorvalue);
+  float limitValue100(float Sensorvalue);
   public:
   HelloSensor(int bitadc, float Rload, byte pin);
   void begin();
@@ -100,6 +108,8 @@ class HelloSensor
   float MQ309ADataCH4();
   float MQ309ADataCO();
   float MQ309ADataAlcohol();
+  float MQ309ADataLowCO();
+  float MQ309ADataSecondH2();
 };
 
 class GeigerCounterPin
