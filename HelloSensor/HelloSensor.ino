@@ -317,16 +317,15 @@ MQ.dangerousPer(14.2587);
 value1 = MQ.MQ309ADataH2();
 MQ.dangerousPer(14.2587);
 value2 = MQ.MQ309ADataCH4();
-MQ.dangerousPer(0.01); //different datasheet this value will 20
+MQ.dangerousPer(0.01); 
 value3 = MQ.MQ309ADataCO();
 MQ.dangerousPer(0.01);
 value4 = MQ.MQ309ADataAlcohol();
-if (value1 > 7000)(value1 = 7000);
-if (value2 > 7000)(value2 = 7000);
-if (value3 > 7000)(value3 = 7000);
-if (value4 > 7000)(value4 = 7000);
-value5 = MQ.MQ309ADataAir();
-value6 = value7 = 0;
+MQ.dangerousPer(20); 
+value5 = MQ.MQ309ADataLowCO();
+MQ.dangerousPer(0.01);
+value6 = MQ.MQ309ADataSecondH2();
+value7 = MQ.MQ309ADataAir();
 }
 break;
 default:
