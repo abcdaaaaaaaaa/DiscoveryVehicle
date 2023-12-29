@@ -32,20 +32,20 @@ void setup() {
 }
 
 void loop() {
-int number1 = random(x,101);
-int number2 = random(x,101);
-int number3 = random(x,101);
-int number4 = random(x,101);
-int number5 = random(x,101);
-int number6 = random(x,101);
-int number7 = random(x,101);
-int number8 = x
-int number9 = random(x,101);
-int number10 = random(x,101);
-int number11 = random(x,101);
-int number12 = random(x,101);
-int number13 = random(x,101);
-int number14 = random(x,101);
+int number1 = 10;
+int number2 = 20;
+int number3 = 30;
+int number4 = 40;
+int number5 = 50;
+int number6 = 60;
+int number7 = 70;
+int number8 = x;
+int number9 = 90;
+int number10 = 100;
+int number11 = 110;
+int number12 = 120;
+int number13 = 130;
+int number14 = 140;
   if ((millis() - lastTime) > timerDelay) {
     x = x + 1;
     Serial.println("döngü basladi");
@@ -64,8 +64,6 @@ int number14 = random(x,101);
     ThingSpeak.setField(4, number12);
     ThingSpeak.setField(5, number13);
     ThingSpeak.setField(6, number14);
-    ThingSpeak.setField(7, number15);
-    ThingSpeak.setField(8, number16);
   int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
      Serial.println("döngü biti");
     lastTime = millis();
