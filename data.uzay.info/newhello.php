@@ -104,8 +104,8 @@ break;
 
 case 14 :
   
-$sql = "INSERT INTO MQ309A (H2, CH4, CO, Alcohol, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ309A (H2, CH4, CO, Alcohol, LowCO, SecondH2, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 default:
