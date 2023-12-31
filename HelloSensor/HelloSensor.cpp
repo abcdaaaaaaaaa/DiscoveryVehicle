@@ -188,8 +188,8 @@ CO     | 126.605 | -0.1173
 
 //**************************************MQ-9**************************************
 
-float HelloSensor::MQ9DataCO(){_va = 17.3985;_vb = -0.4504;return limitValue10000(readValue());}
-float HelloSensor::MQ9DataLPG(){_va = 24.918;_vb = -0.4695;return limitValue1000(readValue());}
+float HelloSensor::MQ9DataCO(){_va = 17.3985;_vb = -0.4504;return limitValue1000(readValue());}
+float HelloSensor::MQ9DataLPG(){_va = 24.918;_vb = -0.4695;return limitValue10000(readValue());}
 float HelloSensor::MQ9DataCH4(){_va = 21.8247;_vb = -0.3663;return limitValue10000(readValue());}
 
 /*
