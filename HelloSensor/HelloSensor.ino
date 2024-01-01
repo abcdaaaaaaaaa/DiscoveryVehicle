@@ -71,6 +71,7 @@ void setup() {
   myservo.attach(26);
   neogps.begin(9600, SERIAL_8N1, 4, 2); 
   Wire.begin();
+  delay(8000);
   WiFi.mode(WIFI_STA);  Serial.println("Connecting to WiFi ");
   WiFi.begin(ssid, password);
   while(WiFi.status() != WL_CONNECTED) { 
