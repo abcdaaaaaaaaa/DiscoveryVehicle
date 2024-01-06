@@ -109,7 +109,7 @@ break;
 
 case 12:
 not = 'MQ-137'; 
-return ['Isobutane', 'Hydrogen', 'Ethanol',  'Air']
+return ['CO', 'Ethanol', 'NH3',  'Air']
 break;
 
 case 13:
