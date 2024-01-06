@@ -113,12 +113,12 @@ return ['CO', 'Ethanol', 'NH3',  'Air']
 break;
 
 case 13:
-not = 'MQ-303A'; 
+not = 'MQ303A'; 
 return ['Isobutane', 'Hydrogen', 'Ethanol',  'Air']
 break;
 
 case 14:
-not = 'MQ-309A'; 
+not = 'MQ309A'; 
 return ['H2', 'CH4', 'CO', 'Alcohol', 'LowCO', 'SecondH2', 'Air']
 break;
 
