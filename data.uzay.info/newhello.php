@@ -33,7 +33,7 @@ break;
 case 2 :
   
 $sql = "INSERT INTO MQ2 (H2, LPG, CO, Alcohol, Propane, CH4, Smoke, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . 98*$value13+200 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . (98*$value13+200) . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 3 :
