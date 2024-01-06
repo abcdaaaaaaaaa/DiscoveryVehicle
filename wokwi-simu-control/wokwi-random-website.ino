@@ -67,6 +67,6 @@ int number14 = 140;
   int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
      Serial.println("döngü biti");
     lastTime = millis();
-    if(x == 15)(x = 0);
+    if(x == 15)(x = 1);
   }
 }
