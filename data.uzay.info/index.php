@@ -63,7 +63,6 @@ const toplam8 = (<?php echo $char1; ?>);
 <script>
   const ctx = document.getElementById('barchart').getContext('2d');
   const barchart = new Chart(ctx,hello('bar'));    
-  console.log(hello());
   const ctx2 = document.getElementById('doughnut').getContext('2d');
   const doughnut = new Chart(ctx2,hello('doughnut'));    
 </script>
