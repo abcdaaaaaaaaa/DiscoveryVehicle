@@ -134,7 +134,7 @@ let bl = mylist().length;
 function hello(dot){
 return{
 type: dot,
- data : {
+data : {
 labels: mylist(),
 datasets: [{
 label:  not,
