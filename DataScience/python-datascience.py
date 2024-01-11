@@ -244,7 +244,7 @@ match(SensorModel):
         with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
-             y.append(int(row['usV/hr']))
+             y.append(int(row['Data']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
     case 'GeigerCounter-normal':
         plt.ylim(10, 100)
@@ -252,7 +252,7 @@ match(SensorModel):
         with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
-             y.append(int(row['usV/hr']))
+             y.append(int(row['Data']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
     case 'GeigerCounter-high':
         plt.ylim(100, 1000)
@@ -260,7 +260,7 @@ match(SensorModel):
         with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
-             y.append(int(row['usV/hr']))
+             y.append(int(row['Data']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
 
 x_values = sequence  
