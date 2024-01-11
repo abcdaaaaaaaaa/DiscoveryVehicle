@@ -9,7 +9,7 @@ while True:
     usvhr = input("usV/hr: ")
 
     data_entry = {
-        'usV/hr': usvhr,
+        'Data': usvhr,
     }
 
     data_list.append(data_entry)
@@ -21,7 +21,7 @@ while True:
     data_number += 1
 
 with open('GeigerCounter.csv', mode, newline='') as file:
-    fieldnames = ['usV/hr']
+    fieldnames = ['Data']
     writer = csv.DictWriter(file, fieldnames=fieldnames)
 
     if mode == 'w':
