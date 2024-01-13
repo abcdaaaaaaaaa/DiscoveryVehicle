@@ -3,10 +3,21 @@ import csv
 import numpy as np
 from scipy.stats import linregress
 
-SensorModel = input("Enter the model of the MQ Gas sensor like MQ-303A: ")
-SensorData = SensorModel + " " + "Datasheet"
-SensorYscale = "ppm values for " + SensorModel
-SensorXscale = "Scaling time for " + SensorModel
+hello = int(input("Would you prefer to focus on Radioactivity or ppm values for Gas Sensors or Percentile for Data (1/2/3): "))
+match(hello):
+    case 1:
+        SensorModel  = 'GeigerCounter'
+        SensorYscale = "usv/hr calculation for Geiger Counter"
+    case 2:
+        SensorModel  = input("Enter the model of the MQ Gas sensor like MQ-303A: ")
+        SensorYscale = "ppm values for " + SensorModel
+    case 3:
+        SensorModel  = 'SpaceData'
+        SensorYscale = "Percentile for SpaceData"        
+
+SensorData = SensorModel + " " + "Datasheet"      
+SensorXscale = "Scaling time for " + SensorModel     
+
 
 y = []
 
@@ -235,43 +246,41 @@ match(SensorModel):
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
-             ay.append(int(row['SpaceData']))
         plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
-        plt.scatter(sequence, ay, label='SpaceData', color='#0000FF', marker='o')
-    case 'GeigerCounter-low':
-        plt.ylim(0.1, 10)
-        plt.ylabel("usV/hr calculation for Geiger Counter")
-        with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
+    case 'GeigerCounter':
+      user_choice = int(input("Low mode, Medium mode, or High mode? (1/2/3): "))
+      match(user_choice):
+        case 1:
+         plt.ylim(0.1, 10)
+         with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
-        plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
-    case 'GeigerCounter-normal':
-        plt.ylim(10, 100)
-        plt.ylabel("usV/hr calculation for Geiger Counter")
-        with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
+         plt.scatter(sequence, y, label='usv/hr', color='#000080', marker='o')
+        case 2:
+         plt.ylim(10, 100)
+         with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
-        plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
-    case 'GeigerCounter-high':
-        plt.ylim(100, 1000)
-        plt.ylabel("usV/hr calculation for Geiger Counter")
-        with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
+         plt.scatter(sequence, y, label='usv/hr', color='#000080', marker='o')
+        case 3:
+         plt.ylim(100, 1000)
+         with open('../datascience/csv/GeigerCounter.csv', 'r') as file:
            csv_reader = csv.DictReader(file)
            for row in csv_reader:
              y.append(int(row['Data']))
-        plt.scatter(sequence, y, label=SensorModel, color='#000080', marker='o')
+         plt.scatter(sequence, y, label='usv/hr', color='#000080', marker='o')
 
-x_values = sequence  
-y_values = y  
+# x_values = sequence  
+# y_values = y  
 
-slope, intercept, r_value, p_value, std_err = linregress(x_values, y_values)
+slope, intercept, r_value, p_value, std_err = linregress(sequence, y)
 
 line = f'Y = {slope:.2f}X + {intercept:.2f}'
 
-plt.plot(x_values, y_values, 'o', label='Data', color='#6600ff')
-plt.plot(x_values, slope * np.array(x_values) + intercept, color='orange', label=f'Regression: {line}')
+plt.plot(sequence, y, 'o', label='Data', color='#6600ff')
+plt.plot(sequence, slope * np.array(sequence) + intercept, color='orange', label=f'Regression: {line}')
 
 plt.legend()
 plt.show()
