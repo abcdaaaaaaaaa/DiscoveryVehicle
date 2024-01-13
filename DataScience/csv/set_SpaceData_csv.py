@@ -7,11 +7,9 @@ mode = input("Do you want to (a)dd data or (w)rite data to a new file? (a/w): ")
 while True:
     print(f"Data {data_number}:")
     data = input("Data: ")
-    space_data = input("SpaceData: ")
 
     data_entry = {
         'Data': data,
-        'SpaceData': space_data
     }
 
     data_list.append(data_entry)
@@ -23,7 +21,7 @@ while True:
     data_number += 1
 
 with open('SpaceData.csv', mode, newline='') as file:
-    fieldnames = ['Data', 'SpaceData']
+    fieldnames = ['Data']
     writer = csv.DictWriter(file, fieldnames=fieldnames)
     
     if mode == 'w':
