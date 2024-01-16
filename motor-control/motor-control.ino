@@ -216,47 +216,47 @@ default:
 }
 
 void vites(){
-      if (xox == "L"){ 
-      minimum = 25;  // 49.02 RPM // (49.02+/-49.02)
-      maximum = 25;
-     }     
-      else if (xox == "A"){  
-      minimum = 25;  // 98.04 RPM // (196.08+/-49.02)
-      maximum = 100;
-     }
-      else if (xox == "B"){ 
-      minimum = 25;  // 122.55 RPM // (294.12+/-49.02)
-      maximum = 150;
-      }
-      else if (xox == "C"){ 
-      minimum = 25;  // 147.06 RPM // (392.16+/-49.02)
-      maximum = 200;
-      }
-      else if (xox == "D"){
-      minimum = 25;  // 171.57 RPM // (500+/-49.02)
-      maximum = 255;
-      }
-      else if (xox == "E"){
-      minimum = 65;  // 204.90 RPM // (500+/-127.45)
-      maximum = 255;
-      }
-      else if (xox == "F"){
-      minimum = 105;  // 237.25 RPM // (500+/-205.88)
-      maximum = 255;
-      }
-      else if (xox == "G"){
-      minimum = 145;  // 269.61 RPM // (500+/-282.35)
-      maximum = 255;
-      }
-      else if (xox == "H"){  
-      minimum = 255;  // 269.61 RPM // (500+/-500) 
-      maximum = 255;
-      }
-      else{
-      minimum = 25;
-      maximum = 255;
-      now = 0;
-      }
+if (xox == "D"){
+minimum = 25;  // 171.57 RPM // (500+/-49.02)
+maximum = 255;
+}
+else if (xox == "L"){ 
+minimum = 25;  // 49.02 RPM // (49.02+/-49.02)
+maximum = 25;
+}     
+else if (xox == "A"){  
+minimum = 25;  // 98.04 RPM // (196.08+/-49.02)
+maximum = 100;
+}
+else if (xox == "B"){ 
+minimum = 25;  // 122.55 RPM // (294.12+/-49.02)
+maximum = 150;
+}
+else if (xox == "C"){ 
+minimum = 25;  // 147.06 RPM // (392.16+/-49.02)
+maximum = 200;
+}
+else if (xox == "E"){
+minimum = 65;  // 204.90 RPM // (500+/-127.45)
+maximum = 255;
+}
+else if (xox == "F"){
+minimum = 105;  // 237.25 RPM // (500+/-205.88)
+maximum = 255;
+}
+else if (xox == "G"){
+minimum = 145;  // 269.61 RPM // (500+/-282.35)
+maximum = 255;
+}
+else if (xox == "H"){  
+minimum = 255;  // 269.61 RPM // (500+/-500) 
+maximum = 255;
+}
+else{
+minimum = 25;
+maximum = 255;
+now = 0;
+}
 }
 
 float pixyCheck() {
