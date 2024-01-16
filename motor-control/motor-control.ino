@@ -195,7 +195,7 @@ else {
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
    analogWrite(ENB,70); 
-   rpm = 70;
+   rpm = 137;
 }
  delay(1); 
 } 
