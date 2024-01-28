@@ -29,7 +29,7 @@ gas_count = int(input("\nEnter the number of gases: "))
 gas_names = [input(f"Enter name for Gas-{i + 1}: ") for i in range(gas_count)]
 gas_values = [int(input(f"Enter Rs/Ro level in ppm for {gas} at point {clean_air} ppm of the sensor: ")) for gas in gas_names]
 
-percentile_values = [round(value / RSRoMQAir * 100, 4) for value in gas_values]
+percentile_values = [round(value / RSRoMQAir * 100, 2) for value in gas_values]
 
 print("\nPercentile Values for Each Gas:")
 for gas, percentile in zip(gas_names, percentile_values):
