@@ -1,4 +1,4 @@
-RSRoMQAir = int(input("Define your MQAir RS/Ro: ")) # RS/Ro VALUE
+RSRoMQAir = int(input("Enter the MQAir RS/Ro: ")) # RS/Ro VALUE
 
 """
 ---RS/Ro VALUE---
