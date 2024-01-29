@@ -246,15 +246,15 @@ CO     | 5.277   | -0.2622
 
 //**************************************MQ-137**************************************
 
-float HelloSensor::MQ137DataCO(){_va = 5.2245;_vb = -0.2617;return limitValue200(readValue());}
-float HelloSensor::MQ137DataEthanol(){_va = 6.3348;_vb = -0.3978;return limitValue200(readValue());}
-float HelloSensor::MQ137DataNH3(){_va = 2.7756;_vb = -0.2837;return limitValue200(readValue());}
+float HelloSensor::MQ137DataCO(){_va = 5.277;_vb = -0.2622;return limitValue200(readValue());}
+float HelloSensor::MQ137DataEthanol(){_va = 6.4463;_vb = -0.4028;return limitValue200(readValue());}
+float HelloSensor::MQ137DataNH3(){_va = 2.7684;_vb = -0.2832;return limitValue200(readValue());}
 
 /*
 Gas    | a       | b
-CO     | 5.2245  | -0.2617
-Ethanol| 6.3348  | -0.3978
-NH3    | 2.7756  | -0.2837
+CO     | 5.277   | -0.2622
+Ethanol| 6.4463  | -0.4028
+NH3    | 2.7684  | -0.2832
  */
 
 //**************************************MQ-303A**************************************
