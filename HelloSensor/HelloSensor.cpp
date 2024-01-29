@@ -1,16 +1,20 @@
 #include "HelloSensor.h"
 #include "Arduino.h"
 
-HelloSensor::HelloSensor(int bitadc, float Rload, byte pin)
+HelloSensor::HelloSensor(int bitadc, byte pin)
 {
   _pin=pin;
-  _Rload=Rload;
   _bitadc= pow(2,bitadc)-1;
 }
 
 void HelloSensor::begin()
 {
   pinMode(_pin,INPUT);
+}
+
+void HelloSensor::setRL(float Rload)
+{
+ _Rload=Rload;
 }
 
 void HelloSensor::RSRoMQAir(float RSRo)
