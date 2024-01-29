@@ -7,7 +7,6 @@
 #include "TM1637.h"
 #include "HelloSensor.h"
 
-#define Rload         (47)
 #define ADC_BIT_RESU  (12)
 #define space1        (12)
 #define space2        (14)
@@ -21,8 +20,8 @@
 TM1637 tm1637(CLK,DIO);
 TFLI2C tflI2C;
 
-HelloSensor MQ(ADC_BIT_RESU, Rload, space1);
-HelloSensor other(ADC_BIT_RESU, Rload, space2);
+HelloSensor MQ(ADC_BIT_RESU, space1);
+HelloSensor other(ADC_BIT_RESU, space2);
 GeigerCounterPin Radyoactivite(GeigerPin1,LOG_PERIOD1);
 
 HardwareSerial neogps(1); 
@@ -98,6 +97,7 @@ case (2):
 {
 normal();
 MQ.RSRoMQAir(9.8);
+MQ.setRL(20);
 MQ.dangerousPer(10.2); 
 value1 = MQ.MQ2DataH2();
 MQ.dangerousPer(7.96);
@@ -119,6 +119,7 @@ case (3):
 {
 normal();
 MQ.RSRoMQAir(60.53);
+MQ.setRL(200);
 MQ.dangerousPer(48.97);
 value1 = MQ.MQ3DataLPG();
 MQ.dangerousPer(74.69);
@@ -138,6 +139,7 @@ case (4):
 {
 normal();
 MQ.RSRoMQAir(4.4);
+MQ.setRL(20);
 MQ.dangerousPer(64.43);
 value1 = MQ.MQ4DataH2();
 MQ.dangerousPer(34.32);
@@ -157,6 +159,7 @@ case (5):
 {
 normal();
 MQ.RSRoMQAir(6.5);
+MQ.setRL(20);
 MQ.dangerousPer(15.12);
 value1 = MQ.MQ5DataH2();
 MQ.dangerousPer(5.54);
@@ -175,6 +178,7 @@ case (6):
 {
 normal();
 MQ.RSRoMQAir(10);
+MQ.setRL(20);
 MQ.dangerousPer(33.7);
 value1 = MQ.MQ6DataH2();
 MQ.dangerousPer(10);
@@ -193,6 +197,7 @@ case (7):
 {
 normal();
 MQ.RSRoMQAir(26);
+MQ.setRL(10);
 MQ.dangerousPer(3.08);
 value1 = MQ.MQ7DataH2();
 MQ.dangerousPer(30.77);
@@ -211,6 +216,7 @@ case (8):
 {
 normal();
 MQ.RSRoMQAir(70);
+MQ.setRL(10);
 MQ.dangerousPer(1.43);
 value1 = MQ.MQ8DataH2();
 MQ.dangerousPer(27.53);
@@ -229,6 +235,7 @@ case (9):
 {
 normal();
 MQ.RSRoMQAir(9.7);
+MQ.setRL(20);
 MQ.dangerousPer(10.31);
 value1 = MQ.MQ9DataLPG();
 MQ.dangerousPer(18.04);
@@ -246,6 +253,7 @@ tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
 MQ.RSRoMQAir(12);
+MQ.setRL(100);
 MQ.dangerousPer(23.75);
 value1 = MQ.MQ131DataNOx();
 MQ.dangerousPer(8.33);
@@ -263,6 +271,7 @@ tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
 MQ.RSRoMQAir(3.54);
+MQ.setRL(20);
 MQ.dangerousPer(40.68);
 value1 = MQ.MQ136DataH2S();
 MQ.dangerousPer(72);
@@ -280,6 +289,7 @@ tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
 MQ.RSRoMQAir(3.54);
+MQ.setRL(47);
 MQ.dangerousPer(81.64);
 value1 = MQ.MQ137DataCO();
 MQ.dangerousPer(72);
@@ -297,6 +307,7 @@ tm1637.display(2,3);
 tm1637.display(1,0);
 tm1637.display(0,3);
 MQ.RSRoMQAir(1);
+MQ.setRL(47);
 MQ.dangerousPer(17);
 value1 = MQ.MQ303ADataIso();
 MQ.dangerousPer(13);
@@ -314,6 +325,7 @@ tm1637.display(2,9);
 tm1637.display(1,0);
 tm1637.display(0,3);
 MQ.RSRoMQAir(11);
+MQ.setRL(50);
 MQ.dangerousPer(11.4545);
 value1 = MQ.MQ309ADataH2();
 MQ.dangerousPer(9.0909);
@@ -464,6 +476,7 @@ tm1637.display(2,3);
 tm1637.display(1,1);
 tm1637.display(0,0);
 MQ.RSRoMQAir(3.6);
+MQ.setRL(20);
 MQ.dangerousPer(42.5);
 value1 = MQ.MQ135DataCO();
 MQ.dangerousPer(25.55);
