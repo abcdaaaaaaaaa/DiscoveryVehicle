@@ -22,7 +22,7 @@ TFLI2C tflI2C;
 
 HelloSensor MQ(ADC_BIT_RESU, space1);
 HelloSensor other(ADC_BIT_RESU, space2);
-GeigerCounterPin Radyoactivite(GeigerPin1,LOG_PERIOD1);
+GeigerCounterPin Radyoactivite(GeigerPin1, LOG_PERIOD1);
 
 HardwareSerial neogps(1); 
 TinyGPSPlus gps;
