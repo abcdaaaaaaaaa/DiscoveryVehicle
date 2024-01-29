@@ -81,8 +81,7 @@ void setup() {
   Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
   
-  ThingSpeak.begin(client);  
-
+  ThingSpeak.begin(client);
 }
 
 void loop() {
@@ -392,7 +391,6 @@ Average = (Angle0 + Angle30 + Angle60 + Angle90 + Angle120 + Angle150 + Angle180
 int angles[] = {Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180};
 for (int i = 0; i < 7; i++) {if (angles[i] > maxAngle) (maxAngle = angles[i]);}
 if (Average < maxAngle)(Average = maxAngle);
-    
     }
 
 Radyoactivite.radyoactivite();
