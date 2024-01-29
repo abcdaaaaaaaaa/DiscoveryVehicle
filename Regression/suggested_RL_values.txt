@@ -10,5 +10,5 @@
 10kΩ-47kΩ   MQ-135 20kΩ
 10kΩ-47kΩ   MQ-136 20kΩ
 10kΩ-100kΩ  MQ-137 47kΩ
-            MQ303A 47kΩ
-            MQ309A 10kΩ
+(Variable>47kΩ) MQ303A 47kΩ
+(not available) MQ309A 50kΩ (?? %5)
