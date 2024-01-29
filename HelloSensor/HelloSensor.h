@@ -23,8 +23,9 @@ class HelloSensor
   float limitValue200(float Sensorvalue);
   float limitValue100(float Sensorvalue);
   public:
-  HelloSensor(int bitadc, float Rload, byte pin);
+  HelloSensor(int bitadc, byte pin);
   void begin();
+  void setRL(float Rload);
   void dangerousPer(float per);
   void RSRoMQAir(float RSRo);
   int MQData100();
