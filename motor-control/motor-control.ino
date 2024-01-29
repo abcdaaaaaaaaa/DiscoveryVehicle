@@ -171,31 +171,31 @@ if(turn> -deadZone && turn < deadZone){
 if (turn < 0) {
    digitalWrite(IN2,LOW); 
    digitalWrite(IN1,HIGH);
-   analogWrite(ENA,80); 
+   analogWrite(ENA,41); 
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
-   analogWrite(ENB,170); 
-   rpm = 177;
+   analogWrite(ENB,87); 
+   rpm = 90;
 }
 
 else if (turn > 0) {
    digitalWrite(IN2,HIGH); 
    digitalWrite(IN1,LOW);
-   analogWrite(ENA,170); 
+   analogWrite(ENA,87); 
    digitalWrite(IN4,LOW);
    digitalWrite(IN3,HIGH);
-   analogWrite(ENB,80); 
-   rpm = 177;
+   analogWrite(ENB,41); 
+   rpm = 90;
 }
 
 else {
    digitalWrite(IN2,HIGH); 
    digitalWrite(IN1,LOW);
-   analogWrite(ENA,70); 
+   analogWrite(ENA,36); 
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
-   analogWrite(ENB,70); 
-   rpm = 137;
+   analogWrite(ENB,36); 
+   rpm = 70;
 }
  delay(1); 
 } 
