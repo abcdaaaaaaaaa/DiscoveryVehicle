@@ -12,7 +12,7 @@
 <img width="720" alt="googlemaps" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/c27ba182-a6e3-46c2-9380-26590962cee2">
 
 
-### 2D Lidar Scale
+### 2D Lidar Scale with 2D lidar Data Mapping System
 <img width="720" alt="2d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/05bd9a6a-a161-4b1d-8352-50ed33bea459">
 
 ### Saving Values to the Database with Plug-Unplug Feature
@@ -21,7 +21,7 @@
 ### SQL for MQ-135
 <img width="720" alt="sqlmq135" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/6c2cebf4-0374-407e-ad1d-11fa5e66ecd4">
 
-### SQL for Lidar
+### SQL for 2D lidar Data Mapping System
 <img width="720" alt="sqllidar" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/1d061a9e-4aaa-46dc-aada-fa791481853f">
 
 ### Real-time Object Tracking With AI Based Pixy2
