@@ -13,10 +13,11 @@ MQ-136
 MQ-137
 MQ303A
 MQ309A
-4.7kΩ resistance
 10kΩ resistance
 20kΩ resistance
 47kΩ resistance
+50kΩ resistance
+100kΩ resistance
 200kΩ resistance
 For Radioactivity
 Portable Handle Geiger Counter 0.01 μSv/h DIY Kit Nuclear Radiation Detector with Miller GM Tube Gamma Beta Ray Suit for Arduino
