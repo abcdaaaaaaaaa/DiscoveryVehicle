@@ -8,7 +8,7 @@
 ### Data Calculation System for MQ-7
 <img width="720" alt="DataCalculationSystem" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/f2089218-0115-4b09-9225-12beb93f028e">
 
-### Data Calculation System with Google Maps
+### Google Maps with Data Calculation System
 <img width="720" alt="googlemaps" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/c27ba182-a6e3-46c2-9380-26590962cee2">
 
 
