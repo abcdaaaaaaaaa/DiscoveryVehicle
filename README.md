@@ -1,4 +1,4 @@
-# Adjustable with Plug-Unplug System Multi-Purpose Discovery Vehicle with Nuclear and Chemical Data System
+# Adjustable System with Plug-Unplug System Multi-Purpose Modular Discovery Vehicle with Nuclear and Chemical Data System
 ## You can access the project's article <a href="https://github.com/abcdaaaaaaaaa/Chernobyl/wiki">here
 <img width="191" alt="SpaceRover" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/5c79de09-41b3-4e51-b2ba-a0353fad612d"></img>
 
@@ -7,6 +7,10 @@
 ### Nuclear and Chemical Data Calculation System with Plug-Unplug Systematics
 ### Data Calculation System for MQ-7
 <img width="720" alt="DataCalculationSystem" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/f2089218-0115-4b09-9225-12beb93f028e">
+
+### Data Calculation System with Google Maps
+<img width="720" alt="googlemaps" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/c27ba182-a6e3-46c2-9380-26590962cee2">
+
 
 ### 2D Lidar Scale
 <img width="720" alt="2d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/05bd9a6a-a161-4b1d-8352-50ed33bea459">
