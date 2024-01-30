@@ -28,7 +28,7 @@
 
 ### Data Science with Python
 ### Data Science for MQ-3
-<img width="720" alt="MQ3datascience" src="https://github.com/abcdaaaaaaaaa/2204al/assets/108553778/f7046caf-c410-4dac-862b-3b4c05d54c0a">
+<img width="720" alt="MQ3datascience" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/f7046caf-c410-4dac-862b-3b4c05d54c0a">
 
 ### AI Based Webcam with Esp32 Camera
 <img width="720" alt="esp32ai" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/d1e77b26-ceab-4c27-be33-aa2b8839a22b">
