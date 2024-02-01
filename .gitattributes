@@ -14,8 +14,8 @@ Deep-Learning-Platform/detect.py linguist-detectable=false
 # Pixy2Setup/ZumoMotors/ZumoMotors.h linguist-detectable=false
 Pixy2Setup/**/ linguist-detectable=false
 !Pixy2Setup/changing_code.cpp
-models/**/ linguist-detectable=false
-utils/**/ linguist-detectable=false
+models/ linguist-detectable=false
+utils/ linguist-detectable=false
 
 
 
