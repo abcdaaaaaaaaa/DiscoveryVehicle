@@ -29,6 +29,7 @@ class HelloSensor
   void dangerousPer(float per);
   void RSRoMQAir(float RSRo);
   int MQData100();
+  int read();
   float readValue();
   //int MQ2DataAir();
   int MQ3DataAir();
