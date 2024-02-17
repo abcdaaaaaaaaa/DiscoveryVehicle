@@ -80,8 +80,8 @@ void setup(){
 }
 
 void loop(){
-  veri1 = map(analogRead(2),0,4095,0,100);
-  veri2 = map(analogRead(4),0,4095,0,100);
+  veri1 = map(analogRead(35),0,4095,0,100);
+  veri2 = map(analogRead(34),0,4095,0,100);
   
   xox = httpGETRequest(serverNamepot);    
   if (xox == "X")(now = 1);
