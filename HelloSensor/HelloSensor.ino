@@ -8,11 +8,11 @@
 #include "HelloSensor.h"
 
 #define ADC_BIT_RESU  (12)
-#define space1        (12)
-#define space2        (14)
+#define space1        (35)
+#define space2        (34)
 
 #define LOG_PERIOD1 (30000)
-#define GeigerPin1  (27)
+#define GeigerPin1  (33)
 
 #define CLK (18)
 #define DIO (15)
@@ -85,7 +85,7 @@ void setup() {
 }
 
 void loop() {
-sec = map(analogRead(13),0,4096,1,14);
+sec = map(analogRead(13),0,(1 << ADC_BIT_RESU) - 1,1,14);
 switch(sec){
 case (1):
 {
@@ -491,11 +491,11 @@ value6 = MQ.MQ135DataAceton();
 value7 = MQ.MQ135DataAir();
 }
 
-// GPS : [GND --> GND] [TX --> D4] [RX --> D2] [VCC --> 3.3V]
-// Geiger Counter: [PIN --> D27] [GND --> GND] [VCC --> 5V]
+// GPS : [GND --> GND] [TX --> D3] [RX --> D1] [VCC --> 3.3V]
+// Geiger Counter: [PIN --> D33] [GND --> GND] [VCC --> 5V]
 // TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND] 
-// MQ-X: [PIN --> D12, D2 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
-// Other Sensor: [PIN --> D14, D4 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
-// Potentiometer: [PIN --> D13] [GND --> GND] [VCC --> 3.3V]
+// MQ-X: [PIN --> D35, D35 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
+// Other Sensor: [PIN --> D34, D34 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
+// Potentiometer: [PIN --> D32] [GND --> GND] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D15] [VCC --> 5V] [GND --> GND]
 // Servo: [PIN --> D26] [VCC --> 5V] [GND --> GND]
