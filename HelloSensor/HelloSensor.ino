@@ -12,7 +12,7 @@
 #define space2        (34)
 
 #define LOG_PERIOD1 (30000)
-#define GeigerPin1  (33)
+#define GeigerPin1  (39)
 
 #define CLK (18)
 #define DIO (15)
@@ -498,4 +498,4 @@ value7 = MQ.MQ135DataAir();
 // Other Sensor: [PIN --> D34, D34 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
 // Potentiometer: [PIN --> D32] [GND --> GND] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D15] [VCC --> 5V] [GND --> GND]
-// Servo: [PIN --> D26] [VCC --> 5V] [GND --> GND]
+// Servo: [PIN --> D32] [VCC --> 5V] [GND --> GND]
