@@ -492,7 +492,7 @@ value7 = MQ.MQ135DataAir();
 }
 
 // GPS : [GND --> GND] [TX --> D3] [RX --> D1] [VCC --> 3.3V]
-// Geiger Counter: [PIN --> D33] [GND --> GND] [VCC --> 5V]
+// Geiger Counter: [PIN --> D39] [GND --> GND] [VCC --> 5V]
 // TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND] 
 // MQ-X: [PIN --> D35, D35 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
 // Other Sensor: [PIN --> D34, D34 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
