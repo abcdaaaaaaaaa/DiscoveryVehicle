@@ -41,7 +41,7 @@ float HelloSensor::readValue()
 //**************************************ppm Values**************************************
 
 int HelloSensor::MQData100(){return map(read(),0,(_bitadc),0,100);}
-//int HelloSensor::MQ2DataAir(){return map(read(),1,(_bitadc),200,10000);}
+// int HelloSensor::MQ2DataAir(){return map(read(),1,(_bitadc),200,10000);}
 int HelloSensor::MQ3DataAir(){return map(read(),1,(_bitadc),25,500);}
 int HelloSensor::MQ4DataAir(){return map(read(),1,(_bitadc),200,10000);}
 int HelloSensor::MQ5DataAir(){return map(read(),1,(_bitadc),200,10000);}
@@ -54,7 +54,8 @@ int HelloSensor::MQ135DataAir(){return map(read(),1,(_bitadc),10,200);}
 int HelloSensor::MQ136DataAir(){return map(read(),1,(_bitadc),10,200);}
 int HelloSensor::MQ137DataAir(){return map(read(),1,(_bitadc),10,200);}
 int HelloSensor::MQ303ADataAir(){return (map(read(),1,(_bitadc),12,345));}
-//float HelloSensor::MQ303ADataAir(){return (map(read(),1,(_bitadc),12,345))/10;}
+// _MQ303AAir = map(read(),1,(_bitadc),12,345); (private: float _MQ303AAir;)
+// float HelloSensor::MQ303ADataAir(){return _MQ303AAir/10}
 int HelloSensor::MQ309ADataAir(){return map(read(),1,(_bitadc),160,260);}
 
 //**************************************Limit Values**************************************
