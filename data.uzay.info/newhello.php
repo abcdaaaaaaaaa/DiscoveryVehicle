@@ -13,10 +13,6 @@
         $value6 = $_COOKIE["value6"];
         $value7 = $_COOKIE["value7"];
         $char1  = $_COOKIE["value8"];
-        $value9 = $_COOKIE["value9"];
-        $value10 = $_COOKIE["value10"];
-        $value11 = $_COOKIE["value11"];
-        $value12 = $_COOKIE["value12"];
         $value13 = $_COOKIE["value13"];
         $value14 = $_COOKIE["value14"];
         $value15 = $_COOKIE["value15"];
@@ -26,92 +22,94 @@ switch ( $char1 ) {
 
 case 1 :
   
-$sql = "INSERT INTO MQ135 (CO, Alcohol, CO2, Toluen,  NH4, Aceton, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ135 (CO, Alcohol, CO2, Toluen,  NH4, Aceton, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', " . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 2 :
   
-$sql = "INSERT INTO MQ2 (H2, LPG, CO, Alcohol, Propane, CH4, Smoke, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . (98*$value13+200) . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ2 (H2, LPG, CO, Alcohol, Propane, CH4, Smoke, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . (98*$value13+200) . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 3 :
   
-$sql = "INSERT INTO MQ3 (LPG, CH4, CO, Alcohol, Benzene, Hexane, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ3 (LPG, CH4, CO, Alcohol, Benzene, Hexane, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 4 :
   
-$sql = "INSERT INTO MQ4 (H2, LPG, CH4, CO, Alcohol, Smoke, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ4 (H2, LPG, CH4, CO, Alcohol, Smoke, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 5 :
   
-$sql = "INSERT INTO MQ5 (H2, LPG, CH4, CO,  Alcohol, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ5 (H2, LPG, CH4, CO,  Alcohol, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 6 :
   
-$sql = "INSERT INTO MQ6 (H2, LPG, CH4, CO,  Alcohol, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ6 (H2, LPG, CH4, CO,  Alcohol, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 7 :
   
-$sql = "INSERT INTO MQ7 (H2, LPG, CH4, CO,  Alcohol, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ7 (H2, LPG, CH4, CO,  Alcohol, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 8 :
   
-$sql = "INSERT INTO MQ8 (H2, LPG, CH4, CO,  Alcohol, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ8 (H2, LPG, CH4, CO,  Alcohol, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 9 :
   
-$sql = "INSERT INTO MQ9 (LPG, CH4, CO, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ9 (LPG, CH4, CO, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 10 :
   
-$sql = "INSERT INTO MQ131 (NOx, CL2, O3, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ131 (NOx, CL2, O3, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 11 :
   
-$sql = "INSERT INTO MQ136 (H2S, NH4, CO, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ136 (H2S, NH4, CO, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 12 :
   
-$sql = "INSERT INTO MQ137 (CO, Ethanol, NH3, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ137 (CO, Ethanol, NH3, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 13 :
+    
+$value4 = $value4/10;
   
-$sql = "INSERT INTO MQ303A (Isobutane, Hydrogen, Ethanol, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4/10 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ303A (Isobutane, Hydrogen, Ethanol, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 case 14 :
   
-$sql = "INSERT INTO MQ309A (H2, CH4, CO, Alcohol, LowCO, SecondH2, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ309A (H2, CH4, CO, Alcohol, LowCO, SecondH2, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 default:
   
-$sql = "INSERT INTO MQ135 (CO, Alcohol, CO2, Toluen,  NH4, Aceton, Air, usvhr, Avg1, sdCPM, CPMCount, SpaceData100, SpaceData200, lat, lng)
-        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value9 . "', '" . $value10 . "', '" . $value11 . "', '" . $value12 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
+$sql = "INSERT INTO MQ135 (CO, Alcohol, CO2, Toluen,  NH4, Aceton, Air, SpaceData100, SpaceData200, lat, lng)
+        VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value5 . "', '" . $value6 . "', '" . $value7 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
 break;
 
 }
@@ -124,4 +122,4 @@ break;
     
         $conn->close();
 
-?>   
+?>
