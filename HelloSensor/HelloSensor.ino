@@ -67,8 +67,8 @@ void setup() {
   Radyoactivite.begin();
   tm1637.init();
   tm1637.set(BRIGHT_TYPICAL);
-  myservo.attach(26);
-  neogps.begin(9600, SERIAL_8N1, 4, 2); 
+  myservo.attach(32);
+  neogps.begin(9600, SERIAL_8N1, 3, 1); 
   Wire.begin();
   delay(8000);
   WiFi.mode(WIFI_STA);  Serial.println("Connecting to WiFi ");
