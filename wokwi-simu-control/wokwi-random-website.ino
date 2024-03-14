@@ -64,6 +64,8 @@ int number14 = 140;
     ThingSpeak.setField(4, number12);
     ThingSpeak.setField(5, number13);
     ThingSpeak.setField(6, number14);
+    ThingSpeak.setField(7, 40032287);
+    ThingSpeak.setField(8, 35220634);
   int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
      Serial.println("döngü biti");
     lastTime = millis();
