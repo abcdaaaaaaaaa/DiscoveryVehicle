@@ -94,7 +94,7 @@ break;
 
 case 13 :
     
-$value4 = $value4/10;
+$value4 = $value4 / 100;
   
 $sql = "INSERT INTO MQ303A (Isobutane, Hydrogen, Ethanol, Air, SpaceData100, SpaceData200, lat, lng)
         VALUES ('" . $value1 . "', '" . $value2 . "', '" . $value3 . "', '" . $value4 . "', '" . $value13 . "', '" . $value14 . "', '" . $value15 . "', '" . $value16 . "')";
