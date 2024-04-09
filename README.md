@@ -12,7 +12,7 @@
 <img width="720" alt="googlemaps" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/c27ba182-a6e3-46c2-9380-26590962cee2">
 
 ### 3D Lidar Scale with 3D lidar Data Mapping System
-<img width="155" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/4f58646d-2f96-4f20-9235-3b5c94207b4a">
+<img width="300" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/4f58646d-2f96-4f20-9235-3b5c94207b4a">
 <img width="960" alt="3d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/da190886-74a1-4498-b4bc-2de4d5cf3859">
 <img width="960" alt="lidar1" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/da036a88-8f63-4abf-abd7-3119f42e0d8a">
 <img width="960" alt="lidar2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/64624799-bb95-48d1-8383-6536b695b14b">
