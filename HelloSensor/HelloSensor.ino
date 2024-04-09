@@ -20,16 +20,19 @@
 TM1637 tm1637(CLK,DIO);
 TFLI2C tflI2C;
 
-HelloSensor MQ(ADC_BIT_RESU, space1);
-HelloSensor other(ADC_BIT_RESU, space2);
+HelloSensor MQ(ADC_BIT_RESU, space1), other(ADC_BIT_RESU, space2);
 GeigerCounterPin Radyoactivite(GeigerPin1, LOG_PERIOD1);
 
 HardwareSerial neogps(1); 
 TinyGPSPlus gps;
-Servo myservo;
+Servo myservo, secondservo;
 
-int value1, value2, value3, value4, value5, value6, value7, sec, Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180, maxAngle,  
-Green0, Green30, Green60, Green90, Green120, Green150, Green180, Temp0, Temp30, Temp60, Temp90, Temp120, Temp150, Temp180, Average;
+int value1, value2, value3, value4, value5, value6, value7, sec, Angle0, Angle15, Angle30, Angle45, Angle60, Angle75, Angle90, 
+Angle105, Angle120, Angle135, Angle150, Angle165, Angle180, Angle195, Angle210, Angle225, Angle240, Angle255, Angle270, Angle285, 
+Angle300, Angle315, Angle330, Angle345, maxAngle, Green0, Green15, Green30, Green45, Green60, Green75, Green90, Green105, 
+Green120, Green135, Green150, Green165, Green180, Green195, Green210, Green225, Green240, Green255, Green270, Green285, Green300, 
+Green315, Green330, Green345, Average, Temp0, Temp15, Temp30, Temp45, Temp60, Temp75, Temp90, Temp105, Temp120, Temp135, 
+Temp150, Temp165, Temp180, Temp195, Temp210, Temp225, Temp240, Temp255, Temp270, Temp285, Temp300, Temp315, Temp330, Temp345;
 int lidcontrol, gpscontrol = 0;
 
 String latitude, longitude;
@@ -45,17 +48,19 @@ const char* ssid = "REPLACE_WİTH_YOUR_SSID";
 const char* password = "REPLACE_WİTH_YOUR_PASSWORD";
 WiFiClient  client;
 
-unsigned long int hello5 = 5;
-unsigned long int hello4 = 4;
-unsigned long int hello3 = 3;
-unsigned long int hello2 = 2;
-unsigned long int hello1 = 1;
+unsigned int hello6 = 6;
+unsigned int hello5 = 5;
+unsigned int hello4 = 4;
+unsigned int hello3 = 3;
+unsigned int hello2 = 2;
+unsigned int hello1 = 1;
 
 static const char * myWriteAPIKey1 = "J2UEIZSZTC5568NM";
 static const char * myWriteAPIKey2 = "ZVZ3UYIV4PTYA6XP";
 static const char * myWriteAPIKey3 = "0HSEW6FQ65NWH2EP";
 static const char * myWriteAPIKey4 = "JCBZHB1KUX0Y09LX";
 static const char * myWriteAPIKey5 = "QP8J57RU9BY9NAVE";
+static const char * myWriteAPIKey6 = "YSXKFJYHCZGW00DT";
 
 unsigned long int lastTime = 0;
 unsigned long int timerDelay = 15000;
@@ -67,11 +72,14 @@ void setup() {
   Radyoactivite.begin();
   tm1637.init();
   tm1637.set(BRIGHT_TYPICAL);
-  myservo.attach(32);
-  neogps.begin(9600, SERIAL_8N1, 3, 1); 
+  myservo.attach(33);
+  secondservo.attach(32);
+  neogps.begin(9600, SERIAL_8N1, 3, 1);
   Wire.begin();
-  delay(8000);
-  WiFi.mode(WIFI_STA);  Serial.println("Connecting to WiFi ");
+  myservo.write(0);
+  delay(10000);
+  secondservo.write(0);
+  WiFi.mode(WIFI_STA); Serial.println("Connecting to WiFi ");
   WiFi.begin(ssid, password);
   while(WiFi.status() != WL_CONNECTED) { 
     delay(500);
@@ -85,7 +93,7 @@ void setup() {
 }
 
 void loop() {
-sec = map(analogRead(13),0,(1 << ADC_BIT_RESU) - 1,1,14);
+sec = map(analogRead(36),0,(1 << ADC_BIT_RESU) - 1,1,14);
 switch(sec){
 case (1):
 {
@@ -351,47 +359,140 @@ break;
 
     if(tflI2C.getData( tfDist, tfFlux, tfTemp, tfAddr))
     {
-        tfTemp = int16_t( tfTemp / 100);
-        myservo.write(0);
-        Angle0 = tfDist;   
+        tfTemp = int16_t( tfTemp / 100 + 20);
+        tfFlux = int16_t( tfFlux + 10000);
+        tfDist = int16_t( tfDist + 1000);
+        
+        Angle0 = tfDist;
         Green0 = tfFlux;
-        Temp0 = tfTemp;
-        delay(0.5);        
-        myservo.write(30);
-        Angle30 = tfDist;   
+        Temp0  = tfTemp;
+        delay(10);
+        secondservo.write(15);
+        Angle15 = tfDist;
+        Green15 = tfFlux;
+        Temp15  = tfTemp;
+        delay(10);
+        secondservo.write(30);
+        Angle30 = tfDist;
         Green30 = tfFlux;
-        Temp30 = tfTemp;
-        delay(0.5);        
-        myservo.write(60);
-        Angle60 = tfDist;   
+        Temp30  = tfTemp;
+        delay(10);
+        secondservo.write(45);
+        Angle45 = tfDist;
+        Green45 = tfFlux;
+        Temp45  = tfTemp;
+        delay(10);
+        secondservo.write(60);
+        Angle60 = tfDist;
         Green60 = tfFlux;
-        Temp60 = tfTemp;
-        delay(0.5);        
-        myservo.write(90);
-        Angle90 = tfDist;   
+        Temp60  = tfTemp;
+        delay(10);
+        secondservo.write(75);
+        Angle75 = tfDist;
+        Green75 = tfFlux;
+        Temp75  = tfTemp;
+        delay(10);
+        secondservo.write(90);
+        Angle90 = tfDist;
         Green90 = tfFlux;
-        Temp90 = tfTemp;
-        delay(0.5);        
-        myservo.write(120);
-        Angle120 = tfDist;   
+        Temp90  = tfTemp;
+        delay(10);
+        secondservo.write(105);
+        Angle105 = tfDist;
+        Green105 = tfFlux;
+        Temp105  = tfTemp;
+        delay(10);
+        secondservo.write(120);
+        Angle120 = tfDist;
         Green120 = tfFlux;
-        Temp120 = tfTemp;
-        delay(0.5);        
-        myservo.write(150);
-        Angle150 = tfDist;   
+        Temp120  = tfTemp;
+        delay(10);
+        secondservo.write(135);
+        Angle135 = tfDist;
+        Green135 = tfFlux;
+        Temp135  = tfTemp;
+        delay(10);  
+        secondservo.write(150);
+        Angle150 = tfDist;
         Green150 = tfFlux;
-        Temp150 = tfTemp;
-        delay(0.5);        
-        myservo.write(180);
-        Angle180 = tfDist;   
+        Temp150  = tfTemp;
+        delay(10);
+        secondservo.write(165);
+        Angle165 = tfDist;
+        Green165 = tfFlux;
+        Temp165  = tfTemp;
+        delay(10);
+        secondservo.write(180);
+        Angle180 = tfDist;
         Green180 = tfFlux;
-        Temp180 = tfTemp;
-        delay(0.5);   
+        Temp180  = tfTemp;
+        delay(10);
+        myservo.write(180);
+        secondservo.write(165);
+        Angle195 = tfDist;
+        Green195 = tfFlux;
+        Temp195  = tfTemp;
+        delay(10);
+        secondservo.write(150);
+        Angle210 = tfDist;
+        Green210 = tfFlux;
+        Temp210  = tfTemp;
+        delay(10);
+        secondservo.write(135);
+        Angle225 = tfDist;
+        Green225 = tfFlux;
+        Temp225  = tfTemp;
+        delay(10);
+        secondservo.write(120);
+        Angle240 = tfDist;
+        Green240 = tfFlux;
+        Temp240  = tfTemp;
+        delay(10);
+        secondservo.write(105);
+        Angle255 = tfDist;
+        Green255 = tfFlux;
+        Temp255  = tfTemp;
+        delay(10);
+        secondservo.write(90);
+        Angle270 = tfDist;
+        Green270 = tfFlux;
+        Temp270  = tfTemp;
+        delay(10);
+        secondservo.write(75);
+        Angle285 = tfDist;
+        Green285 = tfFlux;
+        Temp285  = tfTemp;
+        delay(10);
+        secondservo.write(60);
+        Angle300 = tfDist;
+        Green300 = tfFlux;
+        Temp300  = tfTemp;
+        delay(10);
+        secondservo.write(45);
+        Angle315 = tfDist;
+        Green315 = tfFlux;
+        Temp315  = tfTemp;
+        delay(10);
+        secondservo.write(30);
+        Angle330 = tfDist;
+        Green330 = tfFlux;
+        Temp330  = tfTemp;
+        delay(10);  
+        secondservo.write(15);
+        Angle345 = tfDist;
+        Green345 = tfFlux;
+        Temp345  = tfTemp;
+        delay(10);
+        myservo.write(0);
+        secondservo.write(0);
         lidcontrol = 1;
-Average = (Angle0 + Angle30 + Angle60 + Angle90 + Angle120 + Angle150 + Angle180)/3.5;
-int angles[] = {Angle0, Angle30, Angle60, Angle90, Angle120, Angle150, Angle180};
-for (int i = 0; i < 7; i++) {if (angles[i] > maxAngle) (maxAngle = angles[i]);}
+Average = (Angle0 + Angle15 + Angle30 + Angle45 + Angle60 + Angle75 + Angle90 + Angle105 + Angle120 + Angle135 + Angle150 + Angle165 + Angle180 +
+Angle195 + Angle210 + Angle225 + Angle240 + Angle255 + Angle270 + Angle285 + Angle300 + Angle315 + Angle330 + Angle345) / 12;
+int angles[] = {Angle0, Angle15, Angle30, Angle45, Angle60, Angle75, Angle90, Angle105, Angle120, Angle135, Angle150, Angle165, Angle180,
+Angle195, Angle210, Angle225, Angle240, Angle255, Angle270, Angle285, Angle300, Angle315, Angle330, Angle345};
+for (int i = 0; i < 24; i++) {if (angles[i] > maxAngle) (maxAngle = angles[i]);}
 if (Average < maxAngle)(Average = maxAngle);
+Average += 1000
     }
 
 Radyoactivite.radyoactivite();
@@ -430,31 +531,37 @@ Radyoactivite.radyoactivite();
     }
     int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
     if (lidcontrol == 1){ 
-    ThingSpeak.setField(1, Green0);
-    ThingSpeak.setField(2, Green30);
-    ThingSpeak.setField(3, Green60);
-    ThingSpeak.setField(4, Green90);
-    ThingSpeak.setField(5, Green120);
-    ThingSpeak.setField(6, Green150);
-    ThingSpeak.setField(7, Green180);
+    ThingSpeak.setField(1, String(Green0)+String(Green15));
+    ThingSpeak.setField(2, String(Green30)+String(Green45));
+    ThingSpeak.setField(3, String(Green60)+String(Green75));
+    ThingSpeak.setField(4, String(Green90)+String(Green105));
+    ThingSpeak.setField(5, String(Green120)+String(Green135));
+    ThingSpeak.setField(6, String(Green150)+String(Green165));
+    ThingSpeak.setField(7, String(Green180)+String(Green195));
+    ThingSpeak.setField(8, String(Green210)+String(Green225));
   int c = ThingSpeak.writeFields(hello3, myWriteAPIKey3);
-    ThingSpeak.setField(1, Angle0);
-    ThingSpeak.setField(2, Angle30);
-    ThingSpeak.setField(3, Angle60);
-    ThingSpeak.setField(4, Angle90);
-    ThingSpeak.setField(5, Angle120);
-    ThingSpeak.setField(6, Angle150);
-    ThingSpeak.setField(7, Angle180);
-    ThingSpeak.setField(8, Average);
+    ThingSpeak.setField(1, String(Green0)+String(Green255));
+    ThingSpeak.setField(2, String(Green30)+String(Green285));
+    ThingSpeak.setField(3, String(Green60)+String(Green315));
+    ThingSpeak.setField(4, String(Green90)+String(Green345));
+    ThingSpeak.setField(5, String(Average)+String(Temp0)+String(Temp15)+String(Temp30));
+    ThingSpeak.setField(6, String(Temp45)+String(Angle0)+String(Angle15));
+    ThingSpeak.setField(7, String(Temp60)+String(Angle30)+String(Angle45));
+    ThingSpeak.setField(8, String(Temp75)+String(Angle60)+String(Angle75));
   int d = ThingSpeak.writeFields(hello4, myWriteAPIKey4);
-    ThingSpeak.setField(1, Temp0);
-    ThingSpeak.setField(2, Temp30);
-    ThingSpeak.setField(3, Temp60);
-    ThingSpeak.setField(4, Temp90);
-    ThingSpeak.setField(5, Temp120);
-    ThingSpeak.setField(6, Temp150);
-    ThingSpeak.setField(7, Temp180);
+    ThingSpeak.setField(1, String(Temp90)+String(Angle90)+String(Angle105));
+    ThingSpeak.setField(2, String(Temp105)+String(Angle120)+String(Angle135));
+    ThingSpeak.setField(3, String(Temp120)+String(Angle150)+String(Angle165));
+    ThingSpeak.setField(4, String(Temp135)+String(Angle180)+String(Angle195));
+    ThingSpeak.setField(5, String(Temp150)+String(Angle210)+String(Angle225));
+    ThingSpeak.setField(6, String(Temp165)+String(Angle240)+String(Angle255));
+    ThingSpeak.setField(7, String(Temp180)+String(Angle270)+String(Angle285));
+    ThingSpeak.setField(8, String(Temp195)+String(Angle300)+String(Angle315));
   int e = ThingSpeak.writeFields(hello5, myWriteAPIKey5);
+    ThingSpeak.setField(1, String(Temp210)+String(Angle330)+String(Angle345));
+    ThingSpeak.setField(2, String(Temp225)+String(Temp240)+String(Temp255)+String(Temp270)+String(Temp285));
+    ThingSpeak.setField(3, String(Temp300)+String(Temp315)+String(Temp330)+String(Temp345));
+  int f = ThingSpeak.writeFields(hello6, myWriteAPIKey6);
     }
     lastTime = millis();
     gpscontrol = 0;
@@ -496,6 +603,7 @@ value7 = MQ.MQ135DataAir();
 // TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND] 
 // MQ-X: [PIN --> D35, D35 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
 // Other Sensor: [PIN --> D34, D34 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
-// Potentiometer: [PIN --> D32] [GND --> GND] [VCC --> 3.3V]
+// Potentiometer: [PIN --> D36] [GND --> GND] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D15] [VCC --> 5V] [GND --> GND]
-// Servo: [PIN --> D32] [VCC --> 5V] [GND --> GND]
+// Servo: [PIN --> D33] [VCC --> 5V] [GND --> GND]
+// Servo2: [PIN --> D32] [VCC --> 5V] [GND --> GND]
