@@ -3,8 +3,8 @@
 
 HelloSensor::HelloSensor(int bitadc, byte pin)
 {
-  _pin=pin;
-  _bitadc= pow(2,bitadc)-1;
+  _pin = pin;
+  _bitadc = pow(2,bitadc)-1;
 }
 
 void HelloSensor::begin()
@@ -14,7 +14,7 @@ void HelloSensor::begin()
 
 void HelloSensor::setRL(float Rload)
 {
- _Rload=Rload;
+ _Rload = Rload;
 }
 
 void HelloSensor::RSRoMQAir(float RSRo)
@@ -53,9 +53,15 @@ int HelloSensor::MQ131DataAir(){return map(read(),1,(_bitadc),5,100);}
 int HelloSensor::MQ135DataAir(){return map(read(),1,(_bitadc),10,200);}
 int HelloSensor::MQ136DataAir(){return map(read(),1,(_bitadc),10,200);}
 int HelloSensor::MQ137DataAir(){return map(read(),1,(_bitadc),10,200);}
-// _MQ303AAir = map(read(),1,(_bitadc),12,345); (private: float _MQ303AAir;)
-// float HelloSensor::MQ303ADataAir(){return _MQ303AAir/10}
-int HelloSensor::MQ303ADataAir(){return map(read(),1,(_bitadc),12,345);}
+/*
+float MQSpaceData::MQ303ADataAir()
+{
+_MQ303AAir = map(read(),1,(_bitadc),120,345);
+return _MQ303AAir/100;
+}
+// https://wokwi.com/projects/394502355682092033 (MQ303A Details)
+*/
+int HelloSensor::MQ303ADataAir(){return map(read(),1,(_bitadc),120,345);}
 int HelloSensor::MQ309ADataAir(){return map(read(),1,(_bitadc),160,260);}
 
 //**************************************Limit Values**************************************
