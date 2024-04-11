@@ -492,7 +492,7 @@ int angles[] = {Angle0, Angle15, Angle30, Angle45, Angle60, Angle75, Angle90, An
 Angle195, Angle210, Angle225, Angle240, Angle255, Angle270, Angle285, Angle300, Angle315, Angle330, Angle345};
 for (int i = 0; i < 24; i++) {if (angles[i] > maxAngle) (maxAngle = angles[i]);}
 if (Average < maxAngle)(Average = maxAngle);
-Average += 1000
+Average += 1000;
     }
 
 Radyoactivite.radyoactivite();
