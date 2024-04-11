@@ -1,1 +1,2 @@
 https://github.com/WongKinYiu/yolov7
+https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/data
