@@ -15,7 +15,7 @@
 #define GeigerPin1  (39)
 
 #define CLK (18)
-#define DIO (15)
+#define DIO (5)
 
 TM1637 tm1637(CLK,DIO);
 TFLI2C tflI2C;
