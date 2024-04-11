@@ -56,8 +56,8 @@ void setup() {
 
 void loop() {
   
-   x = map(analogRead(34),0,4095,0,10); //Ury->34 // BUTTON->33
-   y = map(analogRead(35),0,4095,0,10); //Urx->35 // BUTTON->32
+   x = map(analogRead(34),0,4095,0,10); // Ury->34 // BUTTON->33
+   y = map(analogRead(35),0,4095,0,10); // Urx->35 // BUTTON->32
    
   if (button1 == 0){delay(250); result1++;}
   if (result1 == 2)(result1 = 0);
@@ -74,20 +74,16 @@ void loop() {
       pixytime = httpGETRequest(serverNamepixy);
       RPM = httpGETRequest(serverNameRPM);
   
-    LCD_I2C_0x27.setCursor(1 - 1, 1 - 1);
-    LCD_I2C_0x27.print("MQ: %");
-    LCD_I2C_0x27.print(Data1);
-    LCD_I2C_0x27.setCursor(11 - 1, 1 - 1);
-    LCD_I2C_0x27.print(RPM); 
-    LCD_I2C_0x27.print("RPM");
-    LCD_I2C_0x27.setCursor(1 - 1, 2 - 1);
-    LCD_I2C_0x27.print("SD: %");
-    LCD_I2C_0x27.print(Data2);
-    LCD_I2C_0x27.setCursor(11 - 1, 2 - 1);
+    LCD_I2C_0x27.setCursor(0, 0);
+    LCD_I2C_0x27.print("MQ: %" + Data1);
+    LCD_I2C_0x27.setCursor(13 - RPM.length(), 0);
+    LCD_I2C_0x27.print(RPM + "RPM"); 
+    LCD_I2C_0x27.setCursor(0, 1);
+    LCD_I2C_0x27.print("SD: %" + Data2);
+    LCD_I2C_0x27.setCursor(10, 1);
     LCD_I2C_0x27.print(mod);
-    LCD_I2C_0x27.setCursor(15 - 1, 2 - 1);
-    LCD_I2C_0x27.print(potnormal); 
-    LCD_I2C_0x27.print(pixytime);
+    LCD_I2C_0x27.setCursor(14, 1);
+    LCD_I2C_0x27.print(potnormal + pixytime); 
   }
   
 void modayar(){
