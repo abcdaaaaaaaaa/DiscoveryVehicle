@@ -1,15 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, send_file
 from werkzeug.utils import secure_filename
 import os
+import shutil
 import subprocess
 import zipfile
-import shutil
 
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'inference/images'
 UPLOAD_FOLDER2 = 'inference/results'
 RESULT_FOLDER = 'runs/detect/exp'
+CLEAN_RESULT_FOLDER = 'runs/detect'
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
@@ -17,9 +18,13 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def clean_folders(*folders):
     for folder_path in folders:
-        for filename in os.listdir(folder_path):
-            file_path = os.path.join(folder_path, filename)
-            os.remove(file_path)
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+            for folder in dirs:
+                dir_path = os.path.join(root, folder)
+                shutil.rmtree(dir_path)
 
 @app.route('/')
 def index():
@@ -38,7 +43,7 @@ def upload_file():
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 filenames.append(filename)
 
-        subprocess.run(["python", "detect.py"])
+                subprocess.run(["python", "detect.py"])
 
         zip_path = 'inference/results/' + zip_name + '.zip'
         with zipfile.ZipFile(zip_path, 'w') as zipf:
@@ -57,8 +62,7 @@ def download_file(zip_name):
 @app.route('/delete')
 def perform_delete():
     try:
-        clean_folders(UPLOAD_FOLDER, UPLOAD_FOLDER2)  
-        shutil.rmtree(RESULT_FOLDER)
+        clean_folders(UPLOAD_FOLDER, UPLOAD_FOLDER2, CLEAN_RESULT_FOLDER)
     except Exception as e:
         print(f"Delete Error: {e}")
     
