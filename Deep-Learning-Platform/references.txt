@@ -1,3 +1,5 @@
 https://github.com/WongKinYiu/yolov7
 https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/data
 https://www.kaggle.com/code/momiradzemovic/animal-detection-yolov8
+
+The architecture of reference 1 was used when creating the deep learning architecture. At the same time, in the animal data set process, all of reference 3 and the first 3 animals from reference 2 were marked with the labelimg program, making a total of 83 animal classes.
