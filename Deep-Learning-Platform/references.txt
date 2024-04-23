@@ -1,10 +1,11 @@
-https://github.com/WongKinYiu/yolov7
-https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt
-https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/data
-https://www.kaggle.com/code/momiradzemovic/animal-detection-yolov8
-https://colab.research.google.com/
+[1] https://github.com/WongKinYiu/yolov7
+[2] https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt
+[3] https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/data
+[4] https://www.kaggle.com/code/momiradzemovic/animal-detection-yolov8
+[5] https://colab.research.google.com/
+[6] https://github.com/tzutalin/labelImg
 
-The architecture of Reference 1 was used when creating the deep learning architecture. At the same time, in the animal data set process, all of Reference 3 and the first 3 animals from Reference 4 were marked with the labelimg program (Reference 5), making a total of 83 animal classes.
+The architecture of Reference 1 was used when creating the deep learning architecture. At the same time, in the animal data set process, all of Reference 3 and the first 3 animals from Reference 4 were marked with the labelimg program (Reference 6), making a total of 83 animal classes.
 
 When using the data set in Reference 3, the labels files were created from scratch and the file names were changed to be regular from rename_files.py.
 
