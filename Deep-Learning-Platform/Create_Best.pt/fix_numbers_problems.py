@@ -10,7 +10,7 @@ def fix_labels_in_folder(folder_path):
                 for line in lines:
                     # Round the label values
                     parts = line.strip().split()
-                    rounded_parts = [str(round(float(part), 2)) if '.' in part and not part.isdigit() else part for part in parts]
+                    rounded_parts = [str(round(float(part) / 1024, 6)) if '.' in part and not part.isdigit() else part for part in parts]
                     new_line = ' '.join(rounded_parts) + '\n'
                     file.write(new_line)
                 file.truncate()
@@ -18,4 +18,3 @@ def fix_labels_in_folder(folder_path):
 # Fix all .txt files in the folder where this script is located
 current_folder = os.path.dirname(os.path.abspath(__file__))
 fix_labels_in_folder(current_folder)
-
