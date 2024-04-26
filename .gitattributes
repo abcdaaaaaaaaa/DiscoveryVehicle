@@ -9,13 +9,11 @@
 *.yaml text
 ESP32Camera/app_httpd.cpp linguist-detectable=false
 Deep-Learning-Platform/detect.py linguist-detectable=false
+Deep-Learning-Platform/export.py linguist-detectable=false
+Deep-Learning-Platform/models/** linguist-detectable=false
+Deep-Learning-Platform/utils/** linguist-detectable=false
 # Pixy2Setup/Pixy2SPI_SS.h linguist-detectable=false
 # Pixy2Setup/ZumoMotors.cpp linguist-detectable=false
 # Pixy2Setup/ZumoMotors/ZumoMotors.h linguist-detectable=false
 Pixy2Setup/** linguist-detectable=false
 Pixy2Setup/changing_code.cpp linguist-detectable=true
-Deep-Learning-Platform/models/** linguist-detectable=false
-Deep-Learning-Platform/utils/** linguist-detectable=false
-
-
-
