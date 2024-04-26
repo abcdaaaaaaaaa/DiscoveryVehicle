@@ -48,7 +48,7 @@
 ### Regressions for MQ-6
 <img width="720" alt="MQ6curve" src="https://github.com/abcdaaaaaaaaa/Chernobyl/assets/108553778/a42cfe50-c597-4e03-929a-77d94a57f4ce">
 
-### Deep-Learning with yolov7
+### Deep-Learning with yolov9
 
 
 
