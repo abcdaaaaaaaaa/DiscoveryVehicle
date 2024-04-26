@@ -1,2 +1,3 @@
-ESP32-IO x2 (for controller and sensor system)
+ESP32 (for controller)
+ESP32-IO x2 (for motor-control and sensor system)
 Deneyap Kart 1A (for esp32camera)
