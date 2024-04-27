@@ -73,8 +73,9 @@
 
 ### Real-time Object Tracking With AI Based Pixy2
 
-### Data Science and Regression
-## Formulla 
+## Data Science and Regression
+
+### Formulla 
 
 1) ppm = a*ratio^b (a: valuea b: valueb)
 2) ppm = 10^[(log10(ratio)-b)/m] (m: logm b: logb)
@@ -159,7 +160,7 @@ b = log10(y) - m*log10(x)
 The first formula is determined according to all points, while the second formula is determined according to the first and last point. Therefore, in order to collect them all in the same formula and to increase the accuracy rate, we used the method in the second formula and took the logarithm (if R^2 = 1 (%100) always: logm = valueb, logb = log10(valuea)) for slopes greater than 99.95% and collected them all in the first formula, thus increasing the accuracy rate without having to use 2 different formulas.
 
 ## MQDataScience
-"The first and only Arduino library where Geiger Counter and MQ Sensors combine with Data Science"
+
 ![MQ3datascience](https://github.com/abcdaaaaaaaaa/MQSpaceData.h/assets/108553778/49a65210-5921-4a4c-acce-3c3c476c2d21)
 
 ## MQ-2
