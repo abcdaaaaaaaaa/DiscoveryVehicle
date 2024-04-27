@@ -1,6 +1,6 @@
 # Adjustable with Plug-Unplug Systematics Multi-Purpose Modular Discovery Vehicle with Nuclear and Chemical Data Calculation System
-## You can access the project's article <a href="https://github.com/abcdaaaaaaaaa/2204a/wiki">here
-<img width="191" alt="SpaceRover" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/5c79de09-41b3-4e51-b2ba-a0353fad612d"></img>
+## You can access the project's article <a href="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/wiki">here
+<img width="191" alt="SpaceRover" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/5c79de09-41b3-4e51-b2ba-a0353fad612d"></img>
 
 ### Discovery Vehicle
 
@@ -9,11 +9,36 @@
 ### Adjustable Data System
 
 ### MQ-135
+<img width="960" alt="MQ-135" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/86d5e95c-e81a-49d9-a65f-30c2d6dcace7">
 
-<img width="720" alt="DataCalculationSystem" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/f2089218-0115-4b09-9225-12beb93f028e">
+<img width="959" alt="MQ-2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/6208eb37-a1de-449d-86e8-7b8ed02dc90e">
+
+<img width="957" alt="MQ-3" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/bd2f5443-c878-463b-93fd-f6cdfc637f26">
+
+<img width="959" alt="MQ-4" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/41ba7498-6125-428b-8ef3-7455295c854d">
+
+<img width="960" alt="MQ-5" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/6a8daeaa-5319-4a83-8f19-c71f389e4e8a">
+
+<img width="960" alt="MQ-6" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/2d975d33-b0cf-439b-98bd-ab6aa782e5a9">
+
+<img width="720" alt="MQ-7" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/f2089218-0115-4b09-9225-12beb93f028e">
+
+<img width="960" alt="MQ-8" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/bfdd4038-57dc-4139-b73a-84ffd35a8e82">
+
+<img width="960" alt="MQ-9" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/bbafee0f-0bcd-4c4c-a890-5c87ef69d73b">
+
+<img width="960" alt="MQ131" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/54dce225-025c-44ba-928f-65981065a050">
+
+<img width="959" alt="MQ-136" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/5588ecce-1613-45f2-a99a-1315fc06cf6a">
+
+<img width="960" alt="MQ-137" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/d6550f5e-69d6-42e0-8df3-d660b9e09b22">
+
+<img width="960" alt="MQ303A" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/7f46f919-d26a-4c65-91ae-f5a9f4f47e08">
+
+<img width="958" alt="MQ309A" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/03f69e6c-95b6-45f3-b61c-010143e65686">
 
 ### Google Maps with Data Calculation System
-<img width="720" alt="googlemaps" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/c27ba182-a6e3-46c2-9380-26590962cee2">
+<img width="720" alt="GoogleMaps" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/c27ba182-a6e3-46c2-9380-26590962cee2">
 
 ### 3D Lidar Scale with 3D lidar Data Mapping System
 <img width="200" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/05083965-ea67-460e-a983-8de7f9470b6e">
