@@ -16,7 +16,7 @@ else:
 for class_folder in os.listdir(data_folder_path):
     class_folder_path = os.path.join(data_folder_path, class_folder)
     # Find the path of the label folder inside each class folder
-    label_folder_path = os.path.join(class_folder_path, 'label')
+    label_folder_path = os.path.join(class_folder_path, 'labels')
     # If the label folder exists
     if os.path.exists(label_folder_path):
         # Traverse through all files in the label folder
