@@ -6,8 +6,6 @@ from pathlib import Path
 
 import torch
 
-import sys
-
 sys.dont_write_bytecode = True
 
 FILE = Path(__file__).resolve()
