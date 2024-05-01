@@ -5,7 +5,7 @@
 [5] https://colab.research.google.com/
 [6] https://github.com/tzutalin/labelImg
 
-The architecture of Reference 1 was used when creating the deep learning architecture. At the same time, in the animal data set process, all of Reference 3 and the first 3 animals from Reference 4 were marked with the labelimg program (Reference 6), making a total of 83 animal classes.
+The architecture of Reference 1 was used when creating the deep learning architecture. At the same time, in the animal data set process, all of Reference 3 and the first 3 animals from Reference 4 were marked with the labelimg program (Reference 6), making a total of 47 animal classes.
 
 When using the data set in Reference 3, the labels files were created from scratch and the file names were changed to be regular from rename_files.py.
 
