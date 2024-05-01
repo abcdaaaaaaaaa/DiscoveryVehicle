@@ -1,5 +1,0 @@
-train: ../data/train/images/
-val: ../data/val/images/
-
-nc: 47
-names: ['Antelope', 'Bear', 'Cheetah', 'Chimpanzee', 'Coyote', 'Crocodile', 'Deer', 'Elephant', 'Flamingo', 'Fox', 'Giraffe', 'Gorilla', 'Hedgehog', 'Hippopotamus', 'Hornbill', 'Horse', 'Hummingbird', 'Hyena', 'Kangaroo', 'Koala', 'Leopard', 'Lion', 'Meerkat', 'Mole', 'Monkey', 'Moose', 'Okapi', 'Orangutan', 'Ostrich', 'Otter', 'Panda', 'Pelecaniformes', 'Porcupine', 'Raccoon', 'Reindeer', 'Rhino', 'Rhinoceros', 'Snake', 'Squirrel', 'Swan', 'Tiger', 'Turkey', 'Wolf', 'Woodpecker', 'Zebra', 'Badger', 'Bat']
