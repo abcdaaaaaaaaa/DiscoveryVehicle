@@ -604,6 +604,6 @@ value7 = MQ.MQ135DataAir();
 // MQ-X: [PIN --> D35, D35 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
 // Other Sensor: [PIN --> D34, D34 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
 // Potentiometer: [PIN --> D36] [GND --> GND] [VCC --> 3.3V]
-// TM1637: [CLK --> D18] [DIO --> D15] [VCC --> 5V] [GND --> GND]
+// TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 5V] [GND --> GND]
 // Servo: [PIN --> D33] [VCC --> 5V] [GND --> GND]
 // Servo2: [PIN --> D32] [VCC --> 5V] [GND --> GND]
