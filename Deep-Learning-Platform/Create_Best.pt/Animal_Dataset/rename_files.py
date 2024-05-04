@@ -21,8 +21,7 @@ def rename_files(folder_path, start_index=1):
             _, extension = os.path.splitext(file)
             
             # Determine the prefix for the folder name
-            if folder_path.endswith("labels"):
-                prefix = os.path.basename(os.path.dirname(folder_path))
+            prefix = os.path.basename(os.path.dirname(folder_path))
             
             # Create the new file name
             new_name = f"{prefix}{index}{extension}"
@@ -43,8 +42,5 @@ current_directory = os.getcwd()
 folder_path = current_directory
 start_index = 1
 
-# Rename the files for images
+# Rename the files for images and labels
 rename_files(folder_path, start_index)
-
-# Rename the files for the Label folder
-rename_files(os.path.join(folder_path, "labels"), start_index)
