@@ -57,10 +57,9 @@
 <img width="200" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/05083965-ea67-460e-a983-8de7f9470b6e">
 <img width="960" alt="3d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/da190886-74a1-4498-b4bc-2de4d5cf3859">
 <img width="960" alt="lidar1" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/debcf2d8-a3ec-4dc1-a37c-4770cd88704e">
-<img width="960" alt="lidar2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/1662b075-3a11-49e1-963f-16a5ac1985b6">
-<img width="960" alt="lidar3" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/972ea54f-d956-4abb-aecd-377f0807cd63">
-<img width="960" alt="lidar4" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/d26e9333-b879-4f95-ae1d-15a4ded1e33d">
-<img width="960" alt="lidar5" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/9c9b3e5f-3f84-4e25-a578-e98ca8fd1a06">
+<img width="960" alt="lidar2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/972ea54f-d956-4abb-aecd-377f0807cd63">
+<img width="960" alt="lidar3" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/d26e9333-b879-4f95-ae1d-15a4ded1e33d">
+<img width="960" alt="lidar4" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/9c9b3e5f-3f84-4e25-a578-e98ca8fd1a06">
 
 ### Saving Values to the Database with Plug-Unplug Feature
 <img width="720" alt="sqlfordata" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/abafc524-1340-465d-ba4b-f3179d9aaf2d">
