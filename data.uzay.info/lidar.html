@@ -209,34 +209,37 @@
     <div class="face3 color285 bottom"></div>
 		</div>
     </div>
+    
     <div class="blue-rectangle"></div>
 
 <script>
 
-const Angle0 = Math.floor(Math.random() * 8001);
-const Angle15 = Math.floor(Math.random() * 8001);
-const Angle30 = Math.floor(Math.random() * 8001);
-const Angle45 = Math.floor(Math.random() * 8001);
-const Angle60 = Math.floor(Math.random() * 8001);
-const Angle75 = Math.floor(Math.random() * 8001);
-const Angle90 = Math.floor(Math.random() * 8001);
-const Angle105 = Math.floor(Math.random() * 8001);
-const Angle120 = Math.floor(Math.random() * 8001);
-const Angle135 = Math.floor(Math.random() * 8001);
-const Angle150 = Math.floor(Math.random() * 8001);
-const Angle165 = Math.floor(Math.random() * 8001);
-const Angle180 = Math.floor(Math.random() * 8001);
-const NoAngle15 = Math.floor(Math.random() * 8001);
-const NoAngle30 = Math.floor(Math.random() * 8001);
-const NoAngle45 = Math.floor(Math.random() * 8001);
-const NoAngle60 = Math.floor(Math.random() * 8001);
-const NoAngle75 = Math.floor(Math.random() * 8001);
-const NoAngle90 = Math.floor(Math.random() * 8001);
-const NoAngle105 = Math.floor(Math.random() * 8001);
-const NoAngle120 = Math.floor(Math.random() * 8001);
-const NoAngle135 = Math.floor(Math.random() * 8001);
-const NoAngle150 = Math.floor(Math.random() * 8001);
-const NoAngle165 = Math.floor(Math.random() * 8001);
+const MaxDistance = 8000 + 1; // 8000 + 1 (for Math.random())
+
+const Angle0 = Math.floor(Math.random() * MaxDistance);
+const Angle15 = Math.floor(Math.random() * MaxDistance);
+const Angle30 = Math.floor(Math.random() * MaxDistance);
+const Angle45 = Math.floor(Math.random() * MaxDistance);
+const Angle60 = Math.floor(Math.random() * MaxDistance);
+const Angle75 = Math.floor(Math.random() * MaxDistance);
+const Angle90 = Math.floor(Math.random() * MaxDistance);
+const Angle105 = Math.floor(Math.random() * MaxDistance);
+const Angle120 = Math.floor(Math.random() * MaxDistance);
+const Angle135 = Math.floor(Math.random() * MaxDistance);
+const Angle150 = Math.floor(Math.random() * MaxDistance);
+const Angle165 = Math.floor(Math.random() * MaxDistance);
+const Angle180 = Math.floor(Math.random() * MaxDistance);
+const NoAngle15 = Math.floor(Math.random() * MaxDistance);
+const NoAngle30 = Math.floor(Math.random() * MaxDistance);
+const NoAngle45 = Math.floor(Math.random() * MaxDistance);
+const NoAngle60 = Math.floor(Math.random() * MaxDistance);
+const NoAngle75 = Math.floor(Math.random() * MaxDistance);
+const NoAngle90 = Math.floor(Math.random() * MaxDistance);
+const NoAngle105 = Math.floor(Math.random() * MaxDistance);
+const NoAngle120 = Math.floor(Math.random() * MaxDistance);
+const NoAngle135 = Math.floor(Math.random() * MaxDistance);
+const NoAngle150 = Math.floor(Math.random() * MaxDistance);
+const NoAngle165 = Math.floor(Math.random() * MaxDistance);
 
 const angles = [Angle0, Angle15, Angle30, Angle45, Angle60, Angle75, Angle90, Angle105, Angle120, Angle135, Angle150, Angle165, Angle180, NoAngle15, NoAngle30, NoAngle45, NoAngle60, NoAngle75, NoAngle90, NoAngle105, NoAngle120, NoAngle135, NoAngle150, NoAngle165];
 
@@ -274,12 +277,12 @@ const customMap = (value, inMin, inMax, outMin, outMax) => {
 let rgb0, rgb15, rgb30, rgb45, rgb60, rgb75, rgb90, rgb105, rgb120, rgb135, rgb150, rgb165, rgb180, rgb195, rgb210, rgb225, rgb240, rgb255, rgb270, rgb285, rgb300, rgb315, rgb330, rgb345;
 
 // In reality too, the temperature value is equalized at a fixed place because it will not vary rapidly depending on the object, such as the force.
-const RB = Math.random() * (originalMax + originalMin) - originalMin; 
+const RB = Math.random() * (originalMax + originalMin + 1) - originalMin; 
 
 for (let i = 0; i <= 360; i += 15) {
     const Rtemp = customMap(RB, originalMin, originalMax, newMin, newMax);
     const Btemp = customMap(RB, originalMax, originalMin, newMin, newMax);
-    const Green = customMap(Math.random() * originalMax2, originalMin2, originalMax2, newMax, newMin);
+    const Green = customMap(Math.random() * (originalMax2 + 1), originalMin2, originalMax2, newMax, newMin);
     
     const rgb = `rgb(${Math.round(Rtemp)}, ${Math.round(Green)}, ${Math.round(Btemp)})`;
     
