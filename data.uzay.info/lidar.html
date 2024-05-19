@@ -281,7 +281,7 @@ const RB = Math.random() * (originalMax + originalMin + 1) - originalMin;
 
 for (let i = 0; i <= 360; i += 15) {
     const Rtemp = customMap(RB, originalMin, originalMax, newMin, newMax);
-    const Btemp = customMap(RB, originalMax, originalMin, newMin, newMax);
+    const Btemp = customMap(RB, originalMin, originalMax, newMax, newMin);
     const Green = customMap(Math.random() * (originalMax2 + 1), originalMin2, originalMax2, newMax, newMin);
     
     const rgb = `rgb(${Math.round(Rtemp)}, ${Math.round(Green)}, ${Math.round(Btemp)})`;
