@@ -273,14 +273,15 @@ const customMap = (value, inMin, inMax, outMin, outMax) => {
 
 let rgb0, rgb15, rgb30, rgb45, rgb60, rgb75, rgb90, rgb105, rgb120, rgb135, rgb150, rgb165, rgb180, rgb195, rgb210, rgb225, rgb240, rgb255, rgb270, rgb285, rgb300, rgb315, rgb330, rgb345;
 
-const RB = Math.random() * (originalMax + originalMin) - originalMin;
+// In reality too, the temperature value is equalized at a fixed place because it will not vary rapidly depending on the object, such as the force.
+const RB = Math.random() * (originalMax + originalMin) - originalMin; 
 
 for (let i = 0; i <= 360; i += 15) {
     const Rtemp = customMap(RB, originalMin, originalMax, newMin, newMax);
     const Btemp = customMap(RB, originalMax, originalMin, newMin, newMax);
     const Green = customMap(Math.random() * originalMax2, originalMin2, originalMax2, newMax, newMin);
     
-    const rgb = `rgb(${Math.round(Rtemp)}, ${Math.round(Green)}, ${Math.round(Btemp)})`; // In reality too, the temperature value is equalized at a fixed place because it will not vary rapidly depending on the object, such as the force.
+    const rgb = `rgb(${Math.round(Rtemp)}, ${Math.round(Green)}, ${Math.round(Btemp)})`;
     
     switch(i) {
         case 0: rgb0 = rgb; break;
