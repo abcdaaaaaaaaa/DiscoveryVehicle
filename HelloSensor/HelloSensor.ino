@@ -29,12 +29,11 @@ Servo myservo, secondservo;
 
 int value1, value2, value3, value4, value5, value6, value7, sec, Angle0, Angle15, Angle30, Angle45, Angle60, Angle75, Angle90, 
 Angle105, Angle120, Angle135, Angle150, Angle165, Angle180, Angle195, Angle210, Angle225, Angle240, Angle255, Angle270, Angle285, 
-Angle300, Angle315, Angle330, Angle345, maxAngle, Green0, Green15, Green30, Green45, Green60, Green75, Green90, Green105, 
-Green120, Green135, Green150, Green165, Green180, Green195, Green210, Green225, Green240, Green255, Green270, Green285, Green300, 
-Green315, Green330, Green345, Average, Temp0, Temp15, Temp30, Temp45, Temp60, Temp75, Temp90, Temp105, Temp120, Temp135, 
-Temp150, Temp165, Temp180, Temp195, Temp210, Temp225, Temp240, Temp255, Temp270, Temp285, Temp300, Temp315, Temp330, Temp345;
-int lidcontrol, gpscontrol = 0;
+Angle300, Angle315, Angle330, Angle345, maxAngle, Green0, Green15, Green30, Green45, Green60, Green75, Green90, Green105, Green120, 
+Green135, Green150, Green165, Green180, Green195, Green210, Green225, Green240, Green255, Green270, Green285, Green300, Green315, 
+Green330, Green345, Temp, Average;
 
+int lidcontrol, gpscontrol = 0;
 String latitude, longitude;
 
 int16_t  tfAddr = TFL_DEF_ADR;   
@@ -48,7 +47,6 @@ const char* ssid = "REPLACE_WİTH_YOUR_SSID";
 const char* password = "REPLACE_WİTH_YOUR_PASSWORD";
 WiFiClient  client;
 
-unsigned int hello6 = 6;
 unsigned int hello5 = 5;
 unsigned int hello4 = 4;
 unsigned int hello3 = 3;
@@ -60,10 +58,9 @@ static const char * myWriteAPIKey2 = "ZVZ3UYIV4PTYA6XP";
 static const char * myWriteAPIKey3 = "0HSEW6FQ65NWH2EP";
 static const char * myWriteAPIKey4 = "JCBZHB1KUX0Y09LX";
 static const char * myWriteAPIKey5 = "QP8J57RU9BY9NAVE";
-static const char * myWriteAPIKey6 = "YSXKFJYHCZGW00DT";
 
 unsigned long int lastTime = 0;
-unsigned long int timerDelay = 15000;
+unsigned long int timerDelay = 15000; 
 
 void setup() {
   Serial.begin(115200);  
@@ -362,137 +359,108 @@ break;
         tfTemp = int16_t( tfTemp / 100 + 20);
         tfFlux = int16_t( tfFlux + 10000);
         tfDist = int16_t( tfDist + 1000);
-        
+
+        Temp = tfTemp;
+
         Angle0 = tfDist;
         Green0 = tfFlux;
-        Temp0  = tfTemp;
         delay(10);
         secondservo.write(15);
         Angle15 = tfDist;
         Green15 = tfFlux;
-        Temp15  = tfTemp;
         delay(10);
         secondservo.write(30);
         Angle30 = tfDist;
         Green30 = tfFlux;
-        Temp30  = tfTemp;
         delay(10);
         secondservo.write(45);
         Angle45 = tfDist;
         Green45 = tfFlux;
-        Temp45  = tfTemp;
         delay(10);
         secondservo.write(60);
         Angle60 = tfDist;
         Green60 = tfFlux;
-        Temp60  = tfTemp;
         delay(10);
         secondservo.write(75);
         Angle75 = tfDist;
         Green75 = tfFlux;
-        Temp75  = tfTemp;
         delay(10);
         secondservo.write(90);
         Angle90 = tfDist;
         Green90 = tfFlux;
-        Temp90  = tfTemp;
         delay(10);
         secondservo.write(105);
         Angle105 = tfDist;
         Green105 = tfFlux;
-        Temp105  = tfTemp;
         delay(10);
         secondservo.write(120);
         Angle120 = tfDist;
         Green120 = tfFlux;
-        Temp120  = tfTemp;
         delay(10);
         secondservo.write(135);
         Angle135 = tfDist;
         Green135 = tfFlux;
-        Temp135  = tfTemp;
         delay(10);  
         secondservo.write(150);
         Angle150 = tfDist;
         Green150 = tfFlux;
-        Temp150  = tfTemp;
         delay(10);
         secondservo.write(165);
         Angle165 = tfDist;
         Green165 = tfFlux;
-        Temp165  = tfTemp;
         delay(10);
         secondservo.write(180);
         Angle180 = tfDist;
         Green180 = tfFlux;
-        Temp180  = tfTemp;
         delay(10);
         myservo.write(180);
         secondservo.write(165);
         Angle195 = tfDist;
         Green195 = tfFlux;
-        Temp195  = tfTemp;
         delay(10);
         secondservo.write(150);
         Angle210 = tfDist;
         Green210 = tfFlux;
-        Temp210  = tfTemp;
         delay(10);
         secondservo.write(135);
         Angle225 = tfDist;
         Green225 = tfFlux;
-        Temp225  = tfTemp;
         delay(10);
         secondservo.write(120);
         Angle240 = tfDist;
         Green240 = tfFlux;
-        Temp240  = tfTemp;
         delay(10);
         secondservo.write(105);
         Angle255 = tfDist;
         Green255 = tfFlux;
-        Temp255  = tfTemp;
         delay(10);
         secondservo.write(90);
         Angle270 = tfDist;
         Green270 = tfFlux;
-        Temp270  = tfTemp;
         delay(10);
         secondservo.write(75);
         Angle285 = tfDist;
         Green285 = tfFlux;
-        Temp285  = tfTemp;
         delay(10);
         secondservo.write(60);
         Angle300 = tfDist;
         Green300 = tfFlux;
-        Temp300  = tfTemp;
         delay(10);
         secondservo.write(45);
         Angle315 = tfDist;
         Green315 = tfFlux;
-        Temp315  = tfTemp;
         delay(10);
         secondservo.write(30);
         Angle330 = tfDist;
         Green330 = tfFlux;
-        Temp330  = tfTemp;
         delay(10);  
         secondservo.write(15);
         Angle345 = tfDist;
         Green345 = tfFlux;
-        Temp345  = tfTemp;
         delay(10);
         myservo.write(0);
         secondservo.write(0);
         lidcontrol = 1;
-Average = (Angle0 + Angle15 + Angle30 + Angle45 + Angle60 + Angle75 + Angle90 + Angle105 + Angle120 + Angle135 + Angle150 + Angle165 + Angle180 +
-Angle195 + Angle210 + Angle225 + Angle240 + Angle255 + Angle270 + Angle285 + Angle300 + Angle315 + Angle330 + Angle345) / 12;
-int angles[] = {Angle0, Angle15, Angle30, Angle45, Angle60, Angle75, Angle90, Angle105, Angle120, Angle135, Angle150, Angle165, Angle180,
-Angle195, Angle210, Angle225, Angle240, Angle255, Angle270, Angle285, Angle300, Angle315, Angle330, Angle345};
-for (int i = 0; i < 24; i++) {if (angles[i] > maxAngle) (maxAngle = angles[i]);}
-if (Average < maxAngle)(Average = maxAngle);
-Average += 1000;
     }
 
 Radyoactivite.radyoactivite();
@@ -519,9 +487,9 @@ Radyoactivite.radyoactivite();
     ThingSpeak.setField(7, value7);
     ThingSpeak.setField(8, sec);
   int a = ThingSpeak.writeFields(hello1, myWriteAPIKey1);
-    ThingSpeak.setField(1, Radyoactivite.usvhr*100);
-    ThingSpeak.setField(2, Radyoactivite.Avg*100); // 10 +/- 11
-    ThingSpeak.setField(3, Radyoactivite.sdCPM*100); // 10 +/- 11
+    ThingSpeak.setField(1, Radyoactivite.usvhr * 100);
+    ThingSpeak.setField(2, Radyoactivite.Avg * 100); // 10 +/- 11
+    ThingSpeak.setField(3, Radyoactivite.sdCPM * 100); // 10 +/- 11
     ThingSpeak.setField(4, Radyoactivite.count);    
     ThingSpeak.setField(5, MQ.MQData100());    
     ThingSpeak.setField(6, other.MQData100());   
@@ -531,37 +499,33 @@ Radyoactivite.radyoactivite();
     }
     int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
     if (lidcontrol == 1){ 
-    ThingSpeak.setField(1, String(Green0)+String(Green15));
-    ThingSpeak.setField(2, String(Green30)+String(Green45));
-    ThingSpeak.setField(3, String(Green60)+String(Green75));
-    ThingSpeak.setField(4, String(Green90)+String(Green105));
-    ThingSpeak.setField(5, String(Green120)+String(Green135));
-    ThingSpeak.setField(6, String(Green150)+String(Green165));
-    ThingSpeak.setField(7, String(Green180)+String(Green195));
-    ThingSpeak.setField(8, String(Green210)+String(Green225));
+    ThingSpeak.setField(1, String(Green0)+String(Angle0));
+    ThingSpeak.setField(2, String(Green15)+String(Angle15));
+    ThingSpeak.setField(3, String(Green30)+String(Angle30));
+    ThingSpeak.setField(4, String(Green45)+String(Angle45));
+    ThingSpeak.setField(5, String(Green60)+String(Angle60));
+    ThingSpeak.setField(6, String(Green75)+String(Angle75));
+    ThingSpeak.setField(7, String(Green90)+String(Angle90));
+    ThingSpeak.setField(8, String(Green105)+String(Angle105));
   int c = ThingSpeak.writeFields(hello3, myWriteAPIKey3);
-    ThingSpeak.setField(1, String(Green0)+String(Green255));
-    ThingSpeak.setField(2, String(Green30)+String(Green285));
-    ThingSpeak.setField(3, String(Green60)+String(Green315));
-    ThingSpeak.setField(4, String(Green90)+String(Green345));
-    ThingSpeak.setField(5, String(Average)+String(Temp0)+String(Temp15)+String(Temp30));
-    ThingSpeak.setField(6, String(Temp45)+String(Angle0)+String(Angle15));
-    ThingSpeak.setField(7, String(Temp60)+String(Angle30)+String(Angle45));
-    ThingSpeak.setField(8, String(Temp75)+String(Angle60)+String(Angle75));
+    ThingSpeak.setField(1, String(Green120)+String(Angle120));
+    ThingSpeak.setField(2, String(Green135)+String(Angle135));
+    ThingSpeak.setField(3, String(Green150)+String(Angle150));
+    ThingSpeak.setField(4, String(Green165)+String(Angle165));
+    ThingSpeak.setField(5, String(Green180)+String(Angle180));
+    ThingSpeak.setField(6, String(Green195)+String(Angle195));
+    ThingSpeak.setField(7, String(Green210)+String(Angle210));
+    ThingSpeak.setField(8, String(Green225)+String(Angle225));
   int d = ThingSpeak.writeFields(hello4, myWriteAPIKey4);
-    ThingSpeak.setField(1, String(Temp90)+String(Angle90)+String(Angle105));
-    ThingSpeak.setField(2, String(Temp105)+String(Angle120)+String(Angle135));
-    ThingSpeak.setField(3, String(Temp120)+String(Angle150)+String(Angle165));
-    ThingSpeak.setField(4, String(Temp135)+String(Angle180)+String(Angle195));
-    ThingSpeak.setField(5, String(Temp150)+String(Angle210)+String(Angle225));
-    ThingSpeak.setField(6, String(Temp165)+String(Angle240)+String(Angle255));
-    ThingSpeak.setField(7, String(Temp180)+String(Angle270)+String(Angle285));
-    ThingSpeak.setField(8, String(Temp195)+String(Angle300)+String(Angle315));
+    ThingSpeak.setField(1, String(Green240)+String(Angle240));
+    ThingSpeak.setField(2, String(Green255)+String(Angle255));
+    ThingSpeak.setField(3, String(Green270)+String(Angle270));
+    ThingSpeak.setField(4, String(Green285)+String(Angle285));
+    ThingSpeak.setField(5, String(Green300)+String(Angle300));
+    ThingSpeak.setField(6, String(Green315)+String(Angle315));
+    ThingSpeak.setField(7, String(Green330)+String(Green345));
+    ThingSpeak.setField(8, String(Angle330)+String(Angle345)+String(Temp));
   int e = ThingSpeak.writeFields(hello5, myWriteAPIKey5);
-    ThingSpeak.setField(1, String(Temp210)+String(Angle330)+String(Angle345));
-    ThingSpeak.setField(2, String(Temp225)+String(Temp240)+String(Temp255)+String(Temp270)+String(Temp285));
-    ThingSpeak.setField(3, String(Temp300)+String(Temp315)+String(Temp330)+String(Temp345));
-  int f = ThingSpeak.writeFields(hello6, myWriteAPIKey6);
     }
     lastTime = millis();
     gpscontrol = 0;
