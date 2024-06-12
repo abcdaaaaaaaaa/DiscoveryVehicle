@@ -56,10 +56,14 @@
 ### 3D Lidar Scale with 3D lidar Data Mapping System
 <img width="200" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/05083965-ea67-460e-a983-8de7f9470b6e">
 <img width="960" alt="3d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/da190886-74a1-4498-b4bc-2de4d5cf3859">
-<img width="960" alt="lidar1" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/debcf2d8-a3ec-4dc1-a37c-4770cd88704e">
-<img width="960" alt="lidar2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/972ea54f-d956-4abb-aecd-377f0807cd63">
-<img width="960" alt="lidar3" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/d26e9333-b879-4f95-ae1d-15a4ded1e33d">
-<img width="960" alt="lidar4" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/9c9b3e5f-3f84-4e25-a578-e98ca8fd1a06">
+
+<img width="960" alt="lidar1" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/7ce4a15e-34cf-4eb9-8189-17e9a0a99493">
+<img width="960" alt="lidar2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/2ab509bd-31ed-471f-bc58-556e0142cd89">
+<img width="960" alt="lidar3" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/85d8e897-20db-4a7c-bdfe-6722b8077d1b">
+<img width="960" alt="lidar4" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/a424c68e-e07a-4f3b-b725-997a353515ff">
+<img width="960" alt="lidar5" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/a4c13c0e-d5b0-4e03-ac90-551f95a7af72">
+<img width="960" alt="lidar6" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/19b140b5-7fdd-4251-aba6-bc6ab2770e0b">
+
 
 ### Saving Values to the Database with Plug-Unplug Feature
 <img width="720" alt="sqlfordata" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/abafc524-1340-465d-ba4b-f3179d9aaf2d">
