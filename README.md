@@ -185,7 +185,7 @@ The first formula is determined according to all points, while the second formul
 ### NewCurve:
 ![MQ5curve](https://github.com/abcdaaaaaaaaa/MQSpaceData.h/assets/108553778/4c6dfc36-8bfd-438e-bbf8-a03c7be40f2f)
 ### OldCurve:
-![MQ5curve](https://github.com/abcdaaaaaaaaa/MQSpaceData.h/assets/108553778/5cb6f4f4-2d24-4e10-be19-849f186f0332
+![MQ5curve](https://github.com/abcdaaaaaaaaa/MQSpaceData.h/assets/108553778/5cb6f4f4-2d24-4e10-be19-849f186f0332)
 ## MQ-6
 ### NewCurve:
 ![MQ6curve](https://github.com/abcdaaaaaaaaa/MQSpaceData.h/assets/108553778/9eea767a-6f66-43f8-affd-6fac06999dd7)
