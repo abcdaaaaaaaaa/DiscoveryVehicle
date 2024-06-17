@@ -55,15 +55,14 @@
 
 ### 3D Lidar Scale with 3D lidar Data Mapping System
 <img width="200" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/05083965-ea67-460e-a983-8de7f9470b6e">
-<img width="960" alt="3d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/da190886-74a1-4498-b4bc-2de4d5cf3859">
+<img width="960" alt="3d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/3ac51550-a7cc-4414-8357-7162942ce49b">
 
-<img width="960" alt="lidar1" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/7ce4a15e-34cf-4eb9-8189-17e9a0a99493">
-<img width="960" alt="lidar2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/2ab509bd-31ed-471f-bc58-556e0142cd89">
-<img width="960" alt="lidar3" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/85d8e897-20db-4a7c-bdfe-6722b8077d1b">
-<img width="960" alt="lidar4" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/a424c68e-e07a-4f3b-b725-997a353515ff">
-<img width="960" alt="lidar5" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/a4c13c0e-d5b0-4e03-ac90-551f95a7af72">
-<img width="960" alt="lidar6" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/19b140b5-7fdd-4251-aba6-bc6ab2770e0b">
-
+<img width="960" alt="lid1" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/e8df69ee-90cd-4175-b136-b9b813b793bf">
+<img width="960" alt="lid2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/c9b73c3c-b6d6-4a02-bc73-0bed23f14bf0">
+<img width="960" alt="lid3" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/55ac949f-11be-4eb6-b735-773e775cf5ad">
+<img width="959" alt="lid4" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/d199f561-9e65-43be-99b7-9eba88b9af49">
+<img width="960" alt="lid5" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/184340d1-fcaf-47b7-8517-7360597c9198">
+<img width="960" alt="lid6" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/dd3d8a3d-9415-4a0b-942d-e5c40ae6f74d">
 
 ### Saving Values to the Database with Plug-Unplug Feature
 <img width="720" alt="sqlfordata" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/abafc524-1340-465d-ba4b-f3179d9aaf2d">
