@@ -325,6 +325,20 @@ break;
 case (14):
 {
 tm1637.display(3,10);
+tm1637.display(2,7);
+tm1637.display(1,0);
+tm1637.display(0,3);
+MQ.setRL(50);
+MQ.RSRoMQAir(100);
+MQ.dangerousPer(0.96); 
+value1 = MQ.MQ307ADataCO();
+MQ.dangerousPer(56.107);
+value2 = MQ.MQ307ADataH2();
+}
+break;
+case (15):
+{
+tm1637.display(3,10);
 tm1637.display(2,9);
 tm1637.display(1,0);
 tm1637.display(0,3);
