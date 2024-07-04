@@ -4,8 +4,6 @@ CREATE TABLE MQ309A (
     CH4 VARCHAR(10),
     CO VARCHAR(10),
     Alcohol VARCHAR(10),
-    LowCO VARCHAR(10),
-    SecondH2 VARCHAR(10),
     Air VARCHAR(10),
     usvhr VARCHAR(10),
     Avg1 VARCHAR(10),
