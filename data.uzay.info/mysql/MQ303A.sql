@@ -1,9 +1,9 @@
 CREATE TABLE MQ303A (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Isobutane VARCHAR(10),
-    Hydrogen VARCHAR(10),
-    Ethanol VARCHAR(10),
-    Air VARCHAR(10),
+    Isobutane VARCHAR(5),
+    Hydrogen VARCHAR(5),
+    Ethanol VARCHAR(5),
+    Air VARCHAR(5),
     usvhr VARCHAR(7),
     Avg1 VARCHAR(7),
     sdCPM VARCHAR(7),
