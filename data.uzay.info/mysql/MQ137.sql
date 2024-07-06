@@ -1,9 +1,9 @@
 CREATE TABLE MQ137 (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    CO VARCHAR(10),
-    Ethanol VARCHAR(10),
-    NH3 VARCHAR(10),
-    Air VARCHAR(10),
+    CO VARCHAR(3),
+    Ethanol VARCHAR(3),
+    NH3 VARCHAR(3),
+    Air VARCHAR(3),
     usvhr VARCHAR(7),
     Avg1 VARCHAR(7),
     sdCPM VARCHAR(7),
