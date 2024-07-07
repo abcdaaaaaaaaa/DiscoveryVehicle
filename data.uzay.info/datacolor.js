@@ -127,7 +127,7 @@ not = 'MQ307A';
 return ['CO', 'H2']
 break;
 
-case 14:
+case 15:
 not = 'MQ309A'; 
 return ['H2', 'CH4', 'CO', 'Alcohol', 'Air']
 break;
