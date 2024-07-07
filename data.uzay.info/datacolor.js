@@ -6,7 +6,7 @@ function lightpurple(data) {return('rgba(153, 102, 255,' + ' ' + String(data) + 
 function bluepurple(data) {return('rgba(0, 0, 255,' + ' ' + String(data) + ')')};
 function purple(data) {return('rgba(58, 51, 255,' + ' ' + String(data) + ')')};
 
-function three(data){return([blue(data), green(data)])}
+function two(data){return([blue(data), green(data)])}
 function three(data){return([blue(data), green(data), lightpurple(data)])}
 function four(data){return([blue(data), green(data), lightpurple(data), bluepurple(data)])}
 function five(data){return([red(data), blue(data), green(data), lightpurple(data), bluepurple(data)])}
