@@ -6,6 +6,7 @@ function lightpurple(data) {return('rgba(153, 102, 255,' + ' ' + String(data) + 
 function bluepurple(data) {return('rgba(0, 0, 255,' + ' ' + String(data) + ')')};
 function purple(data) {return('rgba(58, 51, 255,' + ' ' + String(data) + ')')};
 
+function three(data){return([blue(data), green(data)])}
 function three(data){return([blue(data), green(data), lightpurple(data)])}
 function four(data){return([blue(data), green(data), lightpurple(data), bluepurple(data)])}
 function five(data){return([red(data), blue(data), green(data), lightpurple(data), bluepurple(data)])}
@@ -118,8 +119,13 @@ return ['Isobutane', 'Hydrogen', 'Ethanol',  'Air']
 break;
 
 case 14:
+not = 'MQ307A'; 
+return ['CO', 'H2']
+break;
+
+case 14:
 not = 'MQ309A'; 
-return ['H2', 'CH4', 'CO', 'Alcohol', 'LowCO', 'SecondH2', 'Air']
+return ['H2', 'CH4', 'CO', 'Alcohol', 'Air']
 break;
 
 default:
