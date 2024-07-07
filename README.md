@@ -56,7 +56,7 @@
 ### Google Maps with Data Calculation System
 <img width="720" alt="GoogleMaps" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/c27ba182-a6e3-46c2-9380-26590962cee2">
 
-### 3D Lidar Scale with 3D lidar Data Mapping System
+## 3D Lidar Scale with 3D lidar Data Mapping System
 <img width="200" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/05083965-ea67-460e-a983-8de7f9470b6e">
 <img width="960" alt="3d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/3ac51550-a7cc-4414-8357-7162942ce49b">
 
@@ -67,7 +67,7 @@
 <img width="960" alt="lid5" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/184340d1-fcaf-47b7-8517-7360597c9198">
 <img width="960" alt="lid2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/c9b73c3c-b6d6-4a02-bc73-0bed23f14bf0">
 
-### Saving Values to the Database with Plug-Unplug Feature
+## Saving Values to the Database with Plug-Unplug Feature
 <img width="720" alt="sqlfordata" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/abafc524-1340-465d-ba4b-f3179d9aaf2d">
 
 
@@ -117,8 +117,6 @@ b = (0−0.5972)(2.3026−1.5958)+(0.6931−0.5972)(1.3863−1.5958)+(1.0986−0
 ln(a) = − ln ˉ (y) - b ln ˉ (x) ≈ 1.5958−(−1.2)⋅0.5972≈2.31244
 
 a=e^2.31244 ≈ 9.947
-
-![loghello](https://github.com/abcdaaaaaaaaa/MQSpaceData.h/assets/108553778/76cb0263-3cbf-4c50-a446-616039d5fbba)
 
 # b  ≈ -1.2
 
