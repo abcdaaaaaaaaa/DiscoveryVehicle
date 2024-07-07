@@ -15,10 +15,14 @@ function seven(data){return([red(data), orange(data), blue(data), green(data), p
 
 let not, liste; 
 let same =  ['H2', 'LPG', 'CH4', 'CO', 'Alcohol', 'Air'];
-let sov = [toplam1, toplam2, toplam3, toplam4, toplam5, toplam6, toplam7];
 
 function earth(data , color){
 switch(data){
+case 2:
+liste = [toplam1, toplam2];
+return two(color)
+break;
+		
 case 3:
 liste = [toplam1, toplam2, toplam3];
 return three(color)
@@ -40,12 +44,12 @@ return six(color)
 break;
 
 case 7:
-liste = sov;
+liste = [toplam1, toplam2, toplam3, toplam4, toplam5, toplam6, toplam7];
 return seven(color)
 break;
 
 default:
-liste = sov;
+liste = [toplam1, toplam2, toplam3, toplam4, toplam5, toplam6, toplam7];
 return seven(color)
 break;
 }
