@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Mammography Report Reading System</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='bluespace.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='toggleswitch.css') }}">
+</head>
+<body>
+    <div class="container">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file[]" multiple>
+            <label for="isohips"></label>
+            <label class="switch">
+                <input type="checkbox" id="isohips" name="isohips" checked>
+                <span class="slider round"></span>
+            </label>
+            <input type="text" name="zip_name" placeholder="Enter ZIP file name">
+            <input type="submit" value="Upload">
+            <a href="/clean" class="button">Clean</a>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
