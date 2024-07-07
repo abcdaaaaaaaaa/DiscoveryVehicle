@@ -352,12 +352,7 @@ MQ.dangerousPer(54.5454);
 value3 = MQ.MQ309ADataCO();
 MQ.dangerousPer(49.0909);
 value4 = MQ.MQ309ADataAlcohol();
-MQ.RSRoMQAir(100);
-MQ.dangerousPer(0.15); 
-value5 = MQ.MQ309ADataLowCO();
-MQ.dangerousPer(81.9);
-value6 = MQ.MQ309ADataSecondH2();
-value7 = MQ.MQ309ADataAir();
+value5 = MQ.MQ309ADataAir();
 }
 break;
 default:
