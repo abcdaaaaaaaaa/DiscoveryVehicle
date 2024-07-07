@@ -1,6 +1,0 @@
-[1] https://github.com/WongKinYiu/yolov9
-[2] https://github.com/WongKinYiu/yolov9/releases/download/v0.1/gelan-e.pt
-[3] https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/data
-[4] https://universe.roboflow.com/ecowatchai-fqwmb/ecowatchai/dataset/5
-[5] https://universe.roboflow.com/ws-qwbuh/constellation-dsphi
-[6] https://colab.research.google.com/
