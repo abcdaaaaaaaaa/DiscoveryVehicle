@@ -297,6 +297,5 @@ The first formula is determined according to all points (OldCurve.py, OldCurve),
 ### Deep-Learning with yolov9
 ![animal](https://github.com/user-attachments/assets/ccb9bc6d-3ee1-4ae6-8ead-f67fc50c8fb8)
 ![isohipsanimal](https://github.com/user-attachments/assets/b5f9b363-3e6d-4e96-bee8-beadec5cc1c1)
-
-
-
+![space1)](https://github.com/user-attachments/assets/461da4a9-0591-43ad-a562-a179b52c68a7)
+![space2](https://github.com/user-attachments/assets/8c0ff39c-f5fd-4ac2-b812-6e6e5023c331)
