@@ -295,6 +295,8 @@ The first formula is determined according to all points (OldCurve.py, OldCurve),
 ![MQ309AScience](https://github.com/abcdaaaaaaaaa/MQSpaceData.h/assets/108553778/b90a7427-7779-4ae4-ae2c-a44fcb82070c)
 
 ### Deep-Learning with yolov9
+![animal](https://github.com/user-attachments/assets/ccb9bc6d-3ee1-4ae6-8ead-f67fc50c8fb8)
+![isohipsanimal](https://github.com/user-attachments/assets/b5f9b363-3e6d-4e96-bee8-beadec5cc1c1)
 
 
 
