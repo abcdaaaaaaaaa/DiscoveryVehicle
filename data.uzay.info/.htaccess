@@ -1,8 +1,6 @@
 RewriteEngine on
 AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
 RewriteRule ^example$ example.html [L,NC]
-RewriteRule ^examplelidar$ lidar.html [L,NC]
-RewriteRule ^lidar$ lidar.php [L,NC]
 RewriteRule ^mysql - [F,L]
 ErrorDocument 404 https://data.uzay.info
 ErrorDocument 403 https://data.uzay.info
