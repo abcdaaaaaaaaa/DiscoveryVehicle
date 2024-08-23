@@ -29,8 +29,8 @@ int value1, value2, value3, value4, value5, value6, value7, sec, Average;
 int gpscontrol = 0;
 String latitude, longitude;
 
-const char* ssid = "A.Mert iPhone'u";  
-const char* password = "bugungunlerdenoyun";
+const char* ssid = "REPLACE_WİTH_YOUR_SSID";  
+const char* password = "REPLACE_WİTH_YOUR_PASSWORD";
 WiFiClient  client;
 
 unsigned int hello2 = 2;
