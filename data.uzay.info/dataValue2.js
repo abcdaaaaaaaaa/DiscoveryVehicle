@@ -31,8 +31,8 @@ const toplam11 = parseInt(field3Values)/100;
 const toplam12 = parseInt(field4Values);
 const toplam13 = parseInt(field5Values);    
 const toplam14 = parseInt(field6Values);   
-const toplam15 = parseInt(field7Values)/Math.pow(10, 6);   
-const toplam16 = parseInt(field8Values)/Math.pow(10, 6);   
+const toplam15 = parseInt(field7Values);   
+const toplam16 = parseInt(field8Values);   
 
    
 document.cookie = "value9="+toplam9;
