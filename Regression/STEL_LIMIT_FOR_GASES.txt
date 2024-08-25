@@ -1,5 +1,5 @@
 H2S 5ppm
-Benene 5ppm
+Benzene 5ppm
 Hexane 50ppm
 CH4 1000ppm
 CO 200ppm
@@ -14,6 +14,6 @@ CL2 1ppm
 NH4 35ppm
 Ethanol 1000ppm
 IsoButane 1000ppm
-CO2 30000
-Toulen 150ppm (Türkiye)
+CO2 30000ppm
+Toluen 150ppm (Türkiye)
 H2 NO STEL BUT WE CAN DEFINE 1000ppm
