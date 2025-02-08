@@ -87,7 +87,19 @@
 
 // The robot can be used in both manual and object tracking mode. (motor-control && controller)
 
-// MQ
+### MQDataScience
+
+## Advanced Data Science System for Regression Calculations
+![MQ-135_gas_curves](https://github.com/user-attachments/assets/e8d6e1bf-6f61-40c8-9cc8-fd0cd7189c22)
+
+## Correction Coefficients for Gas Sensors
+![MQ-135_correction_coefficient](https://github.com/user-attachments/assets/8783b3a5-7956-47f1-a61b-ae300041e047)
+
+## Comparison of theoretical "Ratio" measurements and practical "Sensor" measurements in 3D graphics
+![MQ135_CO2_3D)](https://github.com/user-attachments/assets/241854b0-1124-4703-86c5-df4e0371a257)
+
+## Slope Estimation in Time-Dependent 4D Space
+![4D_Slope_Estimation](https://github.com/user-attachments/assets/a36ccd40-86a3-4f7d-b94f-a4f1f1609eb6)
 
 ## Deep-Learning Platform Flask System with yolov9
 
