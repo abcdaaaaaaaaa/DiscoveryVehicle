@@ -1,0 +1,8 @@
+RewriteEngine on
+AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+
+RewriteRule ^mysql - [F,L]
+
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
