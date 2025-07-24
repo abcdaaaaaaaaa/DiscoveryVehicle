@@ -11,9 +11,6 @@ unsigned long int hello1 = 1;
 static const char * myWriteAPIKey1 = "J2UEIZSZTC5568NM";
 static const char * myWriteAPIKey2 = "ZVZ3UYIV4PTYA6XP";
 
-const long int number15 = 40032287;
-const long int number16 = 35220634;
-
 unsigned long lastTime = 0;
 unsigned long timerDelay = 15000;
 
@@ -67,8 +64,8 @@ int number14 = random(x,101);
     ThingSpeak.setField(4, number12);
     ThingSpeak.setField(5, number13);
     ThingSpeak.setField(6, number14);
-    ThingSpeak.setField(7, number15);
-    ThingSpeak.setField(8, number16);
+    ThingSpeak.setField(7, (random(-90, 90) + (random(0, pow(10, 6) + 1) / pow(10, 6)) + 90) * pow(10,6));
+    ThingSpeak.setField(8, (random(-180, 180) + (random(0, pow(10, 6) + 1) / pow(10, 6)) + 180) * pow(10,6));
   int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
      Serial.println("döngü biti");
     lastTime = millis();
