@@ -1,4 +1,4 @@
-// DiscoveryVechile Sensor Simulation: https://wokwi.com/projects/406652935863084033
+// DiscoveryVechile Sensor Simulation: https://wokwi.com/projects/437363944717980673
 
 #include <WiFi.h>
 #include <DHT.h>
@@ -175,14 +175,14 @@ void loop() {
     ThingSpeak.setField(4, (dht.readHumidity() + 100) * 10);
     ThingSpeak.setField(5, analogRead(gasPin));
 
-    latitude  = String((random(-90, 90) + (random(0, pow(10, 6) + 1) / pow(10, 6)) + 90) * pow(10,6)); 
-    longitude = String((random(-180, 180) + (random(0, pow(10, 6) + 1) / pow(10, 6)) + 180) * pow(10,6)); 
+    latitude  = String((random(-90, 90) + (random(0, pow(10, 6) + 1) / pow(10, 7)) + 90) * pow(10,6)); 
+    longitude = String((random(-180, 180) + (random(0, pow(10, 6) + 1) / pow(10, 7)) + 180) * pow(10,6)); 
     if (neogps.available()) {
       char c = neogps.read();
       if (gps.encode(c)) {
         if (gps.location.isValid()) {
-         latitude  = String((gps.location.lat() + 90) * pow(10,6)); 
-         longitude = String((gps.location.lng() + 180) * pow(10,6)); 
+         latitude  = String((gps.location.lat() + 90) * pow(10, 7)); 
+         longitude = String((gps.location.lng() + 180) * pow(10, 7)); 
         }
       }
     }
