@@ -22,8 +22,8 @@
         $value10 = $_COOKIE["value10"];
         $DHT = ($_COOKIE["value11"]) . '°C %' . ($_COOKIE["value12"]);
         $value13 = $_COOKIE["value13"];
-        $value14 = $_COOKIE["value14"] * pow(10,-6) - 90;
-        $value15 = $_COOKIE["value15"] * pow(10,-6) - 180;
+        $value14 = $_COOKIE["value14"] * pow(10,-7) - 90;
+        $value15 = $_COOKIE["value15"] * pow(10,-7) - 180;
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
