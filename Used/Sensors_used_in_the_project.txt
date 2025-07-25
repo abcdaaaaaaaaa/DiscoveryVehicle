@@ -27,6 +27,8 @@ MQ309A
 20kΩ resistance
 47kΩ resistance
 200kΩ resistance
+For Correction Coefficient % Temperature and Relative Humidity
+DHT22
 For Radioactivity
 Portable Handle Geiger Counter 0.01 μSv/h DIY Kit Nuclear Radiation Detector with Miller GM Tube Gamma Beta Ray Suit for Arduino
 For Camera
