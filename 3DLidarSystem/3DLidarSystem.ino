@@ -21,8 +21,8 @@ int16_t  tfDist = 0;
 int16_t  tfFlux = 0;  
 int16_t  tfTemp = 0;  
 
-const char* ssid = "A.Mert iPhone'u";  
-const char* password = "bugungunlerdenoyun";
+const char* ssid = "REPLACE_WİTH_YOUR_SSID";  
+const char* password = "REPLACE_WİTH_YOUR_PASSWORD";
 WiFiClient  client;
 
 unsigned int hello3 = 3;
