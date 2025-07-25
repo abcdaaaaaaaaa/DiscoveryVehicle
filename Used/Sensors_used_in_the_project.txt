@@ -11,13 +11,15 @@ MQ131
 MQ-135
 MQ-136
 MQ-137
+MQ-138
 MQ303A
 MQ309A
+50Ω resistance
+1kΩ resistance
+5kΩ resistance
 10kΩ resistance
 20kΩ resistance
 47kΩ resistance
-50kΩ resistance
-100kΩ resistance
 200kΩ resistance
 For Radioactivity
 Portable Handle Geiger Counter 0.01 μSv/h DIY Kit Nuclear Radiation Detector with Miller GM Tube Gamma Beta Ray Suit for Arduino
@@ -34,3 +36,5 @@ Joystick x2
 For Adjustable System
 20K Potentiometer 
 TM1637 Led Display Module
+For Lidar System
+TFluna Lidar 0.2-8m x2
