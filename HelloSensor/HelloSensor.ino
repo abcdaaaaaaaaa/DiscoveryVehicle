@@ -1,3 +1,6 @@
+// ESP32 Wrover Module
+// Partition Scheme: "Huge APP (3MB No OTA/1MB SPIFFS)"
+
 #include <WiFi.h>
 #include <DHT.h>
 #include <ThingSpeak.h>
@@ -19,11 +22,11 @@ DHT dht(DHTPIN, DHT22);
 
 GeigerCounter Radioactive(30000, GeigerPin);
 
-int sec, lat, lng;
+int sec;
 String DhtValues;
 
-const char* ssid = "REPLACE_WİTH_YOUR_SSID";  
-const char* password = "REPLACE_WİTH_YOUR_PASSWORD";
+const char* ssid = "A.Mert iPhone'u";  
+const char* password = "bugungunlerdenoyun";
 WiFiClient  client;
 
 unsigned long int hello1 = 1;
@@ -168,9 +171,9 @@ void loop() {
     ThingSpeak.setField(5, analogRead(gasPin));
 
     GPS.readGPS(RMC);
-    lat = (GPS.readLocationLat() + 90) * pow(10 , 7);
-    lng = (GPS.readLocationLng() + 180) * pow(10 , 7);
-  
+    long lat = (long)((GPS.readLocationLat() + 90.0) * 10000000);
+    long lng = (long)((GPS.readLocationLng() + 180.0) * 10000000);
+
     ThingSpeak.setField(6, lat);
     ThingSpeak.setField(7, lng);
     int a = ThingSpeak.writeFields(hello1, myWriteAPIKey1);
