@@ -203,8 +203,8 @@ tm.display(1,sec);
 tm.display(0,sec);
 }
 
-// MQ-X: [PIN --> D35, D35 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
-// Other Sensor: [PIN --> D34, D34 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
+// MQ-X: [PIN --> D35 (main-esp32), D35 (motor-control esp32)] [GND --> GND (main-esp32), GND (motor-control esp32)] [VCC --> 3.3V (main-esp32)]
+// Other Sensor: [PIN --> D34 (main-esp32), D34 (motor-control esp32)] [GND --> GND (main-esp32), GND (motor-control esp32)] [VCC --> 3.3V (main-esp32)]
 // Potentiometer: [PIN --> D32] [GND --> GND] [VCC --> 3.3V]
 
 // DHT22: [GND --> GND] [PIN --> D33] [VCC --> 3.3V]
