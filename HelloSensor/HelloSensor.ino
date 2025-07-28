@@ -49,8 +49,9 @@ void setup() {
   tm.display(2, 3);
   tm.display(3, 4);
   dht.begin();
-  pinMode(33, INPUT);
-  pinMode(34, INPUT);
+  pinMode(potPin, INPUT);
+  pinMode(gasPin, INPUT);
+  pinMode(analogPin, INPUT);
   Radioactive.begin();
   if (!GPS.begin(0x2F)) {
       delay(3000);
