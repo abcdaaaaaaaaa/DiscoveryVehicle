@@ -207,7 +207,7 @@ tm.display(0,sec);
 // Other Sensor: [PIN --> D34, D34 (motor-control)] [GND --> GND, GND (motor-control] [VCC --> 3.3V (motor-control)]
 // Potentiometer: [PIN --> D32] [GND --> GND] [VCC --> 3.3V]
 
-// DHT22: [GND --> GND] [PIN --> D33] [VCC --> 5V]
-// GPS: [GND --> GND] [SCL --> D22] [SDA --> D21] [VCC --> 5V]
-// TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 5V] [GND --> GND]
-// Geiger Counter: [GND --> GND] [PIN --> VN] [VCC --> 5V]
+// DHT22: [GND --> GND] [PIN --> D33] [VCC --> 3.3V]
+// GPS: [GND --> GND] [SCL --> D22] [SDA --> D21] [VCC --> 3.3V]
+// TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 3.3V] [GND --> GND]
+// Geiger Counter: [GND --> GND] [PIN --> VN] [VCC --> 3.3V]
