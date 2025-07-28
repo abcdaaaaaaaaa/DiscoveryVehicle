@@ -11,14 +11,14 @@
 #define GeigerPin  (39)
 #define analogPin  (35)
 #define gasPin     (34)
-#define DHTPIN     (33)
-#define potpin     (32)
+#define dhtPin     (33)
+#define potPin     (32)
 #define CLK        (18)
 #define DIO        (5)
 
 GPS GPS;
 TM1637 tm(CLK,DIO);
-DHT dht(DHTPIN, DHT22);
+DHT dht(dhtPin, DHT22);
 
 GeigerCounter Radioactive(30000, GeigerPin);
 
@@ -72,7 +72,7 @@ void setup() {
 void loop() {
   Radioactive.radioactive();
 
-  sec = map(analogRead(32), 0, (1 << 12) - 1, 1, 19);
+  sec = map(analogRead(potPin), 0, (1 << 12) - 1, 1, 19);
 
   switch(sec){
   case (1):
