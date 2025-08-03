@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$dbname = "uzayinfo_spacedata";
-$username = "uzayinfo_spaceuser";
-$password = "space2500";
+$dbname = "uzayinfo_lidar";
+$username = "uzayinfo_lidaruser";
+$password = "yumak345";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
 
