@@ -73,13 +73,13 @@ $Average = round($sum / 12);
 $maxDist = round(max($Distances));
 if ($Average < $maxDist) $Average = $maxDist;
 
-$sql1 = "INSERT INTO LidarDistance (Average, Dist0, Dist15, Dist30, Dist45, Dist60, Dist75, Dist90, Dist105, Dist120, Dist135, Dist150, Dist165, Dist180, Dist195, Dist210, Dist225, Dist240, Dist255, Dist270, Dist285, Dist300, Dist315, Dist330, Dist345)
+$sql1 = "INSERT INTO LidarDistance_X (Average, Dist0, Dist15, Dist30, Dist45, Dist60, Dist75, Dist90, Dist105, Dist120, Dist135, Dist150, Dist165, Dist180, Dist195, Dist210, Dist225, Dist240, Dist255, Dist270, Dist285, Dist300, Dist315, Dist330, Dist345)
 VALUES ('$Average', '$Dist0', '$Dist15', '$Dist30', '$Dist45', '$Dist60', '$Dist75', '$Dist90', '$Dist105', '$Dist120', '$Dist135', '$Dist150', '$Dist165', '$Dist180', '$Dist195', '$Dist210', '$Dist225', '$Dist240', '$Dist255', '$Dist270', '$Dist285', '$Dist300', '$Dist315', '$Dist330', '$Dist345')";
 
-$sql2 = "INSERT INTO LidarFlux (Temperature, Flux0, Flux15, Flux30, Flux45, Flux60, Flux75, Flux90, Flux105, Flux120, Flux135, Flux150, Flux165, Flux180, Flux195, Flux210, Flux225, Flux240, Flux255, Flux270, Flux285, Flux300, Flux315, Flux330, Flux345)
+$sql2 = "INSERT INTO LidarFlux_X (Temperature, Flux0, Flux15, Flux30, Flux45, Flux60, Flux75, Flux90, Flux105, Flux120, Flux135, Flux150, Flux165, Flux180, Flux195, Flux210, Flux225, Flux240, Flux255, Flux270, Flux285, Flux300, Flux315, Flux330, Flux345)
 VALUES ('$temp', '$Flux0', '$Flux15', '$Flux30', '$Flux45', '$Flux60', '$Flux75', '$Flux90', '$Flux105', '$Flux120', '$Flux135', '$Flux150', '$Flux165', '$Flux180', '$Flux195', '$Flux210', '$Flux225', '$Flux240', '$Flux255', '$Flux270', '$Flux285', '$Flux300', '$Flux315', '$Flux330', '$Flux345')";
 
-$sql3 = "INSERT INTO LidarRGB (Temperature, rgb0, rgb15, rgb30, rgb45, rgb60, rgb75, rgb90, rgb105, rgb120, rgb135, rgb150, rgb165, rgb180, rgb195, rgb210, rgb225, rgb240, rgb255, rgb270, rgb285, rgb300, rgb315, rgb330, rgb345)
+$sql3 = "INSERT INTO LidarRGB_X (Temperature, rgb0, rgb15, rgb30, rgb45, rgb60, rgb75, rgb90, rgb105, rgb120, rgb135, rgb150, rgb165, rgb180, rgb195, rgb210, rgb225, rgb240, rgb255, rgb270, rgb285, rgb300, rgb315, rgb330, rgb345)
 VALUES ('$temp', '$rgb0', '$rgb15', '$rgb30', '$rgb45', '$rgb60', '$rgb75', '$rgb90', '$rgb105', '$rgb120', '$rgb135', '$rgb150', '$rgb165', '$rgb180', '$rgb195', '$rgb210', '$rgb225', '$rgb240', '$rgb255', '$rgb270', '$rgb285', '$rgb300', '$rgb315', '$rgb330', '$rgb345')";
 
 if ($conn->query($sql1) === TRUE && $conn->query($sql2) === TRUE && $conn->query($sql3) === TRUE) {} 
