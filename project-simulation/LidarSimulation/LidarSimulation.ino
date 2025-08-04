@@ -9,9 +9,17 @@ unsigned int hello3 = 3;
 unsigned int hello2 = 2;
 unsigned int hello1 = 1;
 
+// horizontal
 static const char * myWriteAPIKey1 = "0HSEW6FQ65NWH2EP";
 static const char * myWriteAPIKey2 = "JCBZHB1KUX0Y09LX";
 static const char * myWriteAPIKey3 = "QP8J57RU9BY9NAVE";
+
+// vertical
+/*
+static const char * myWriteAPIKey1 = "YSXKFJYHCZGW00DT";
+static const char * myWriteAPIKey2 = "X0TOV3MUEEQQD4HK";
+static const char * myWriteAPIKey3 = "1KKGE6BY2468X6VN";
+*/
 
 unsigned long int lastTime = 0;
 unsigned long int timerDelay = 15000; 
@@ -64,4 +72,5 @@ void loop() {
     Serial.println("döngü bitti");
     lastTime = millis();
 }
+
 }
