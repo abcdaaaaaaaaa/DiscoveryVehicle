@@ -9,7 +9,7 @@
 ## Adjustable Data System
 
 ### MQ-135
-<img width="720" alt="MQ-135" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/86d5e95c-e81a-49d9-a65f-30c2d6dcace7">
+<img width="720" alt="MQ-135" src="https://github.com/user-attachments/assets/3779f490-62aa-4076-93d8-19956daec47a" />
 
 ### MQ-2
 <img width="720" alt="MQ-2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/6208eb37-a1de-449d-86e8-7b8ed02dc90e">
