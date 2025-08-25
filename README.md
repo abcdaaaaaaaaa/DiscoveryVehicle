@@ -89,20 +89,26 @@
 
 ### MQDataScience
 
-## Advanced Data Science System for Regression Calculations
+## 1) Advanced Data Science System for Regression Calculations
 ![MQ-135_gas_curves](https://github.com/user-attachments/assets/e8d6e1bf-6f61-40c8-9cc8-fd0cd7189c22)
 
-## Correction Coefficients for Gas Sensors
+## 2) Ppm Analysis of Different Model Gases
+![MQ303A_Ppm_Analysis](https://github.com/user-attachments/assets/91be952f-5374-41a7-a64f-4d0e24a1af0e)
+
+## 3) Formulated Correction Coefficients depending on Temperature and Humidity
 ![MQ-135_correction_coefficient](https://github.com/user-attachments/assets/8783b3a5-7956-47f1-a61b-ae300041e047)
 
-## Comparison of theoretical "Ratio" measurements and practical "Sensor" measurements in 3D graphics
-![MQ135_CO2_3D)](https://github.com/user-attachments/assets/241854b0-1124-4703-86c5-df4e0371a257)
+## 4) 3D Surface Diagram for MQ Gases
+![MQ135_CO2_3D)](https://github.com/user-attachments/assets/5295ad32-65e2-4e4a-bbdb-d2a98b173e86)
 
-## Slope Estimation in Time-Dependent 4D Space
-![4D_Slope_Estimation](https://github.com/user-attachments/assets/ba30e03c-0052-45e7-ae33-4a39a64d103e)
+## 5) Slope Estimation in Time-Dependent 4D Space
+![4D_Slope_Estimation](https://github.com/user-attachments/assets/82f412d6-53f8-409c-9ce6-84a03cc2b30f)
+
+## 4D Axis Features:
+
+<img width="750" alt="4dformullas" src="https://github.com/user-attachments/assets/7c5a1464-fcb9-4a8f-9693-c2c473f1ec1a" />
 
 ## Deep-Learning Platform Flask System with yolov9
-
 <img width="960" alt="flask" src="https://github.com/user-attachments/assets/4d325f16-9c28-4845-a4fa-21222194d8dd">
 
 ### Constellation:
