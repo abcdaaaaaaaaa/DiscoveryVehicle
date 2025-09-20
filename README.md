@@ -24,7 +24,7 @@
 <img width="720" alt="MQ-5" src="https://github.com/user-attachments/assets/41c57448-6d84-42a9-a83f-0698c0c53325" />
 
 ### MQ-6
-<img width="720" alt="MQ-6" src="https://github.com/user-attachments/assets/61aab5e8-1e0c-4fda-8639-98c7e04b0cb4" />
+<img width="720" alt="MQ-6" src="https://github.com/user-attachments/assets/579b60f3-2f0a-499a-b1fa-c80508c5d0be" />
 
 ### MQ-7
 <img width="720" alt="MQ-7" src="https://github.com/user-attachments/assets/d8d1582c-71f2-42f2-97b1-aa9e04bf07ce" />
@@ -36,13 +36,16 @@
 <img width="720" alt="MQ-9" src="https://github.com/user-attachments/assets/3b916af0-45c6-4a66-94a3-dcb90f5ba035" />
 
 ### MQ131
-<img width="720" alt="MQ131" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/54dce225-025c-44ba-928f-65981065a050">
+<img width="720" alt="MQ131" src="https://github.com/user-attachments/assets/0e887c0a-1b76-4d04-8759-4755bcb8fbcd" />
+
+### MQ-131 LOW
+<img width="720" alt="MQ-131 LOW" src="https://github.com/user-attachments/assets/4f02f1aa-5b64-4b92-b2f1-f6ba49f4162e" />
 
 ### MQ-136
-<img width="720" alt="MQ-136" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/5588ecce-1613-45f2-a99a-1315fc06cf6a">
+<img width="720" alt="MQ-136" src="https://github.com/user-attachments/assets/955d1b24-8c06-4da1-a7b2-e40166fbc36b" />
 
 ### MQ-137
-<img width="720" alt="MQ-137" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/d6550f5e-69d6-42e0-8df3-d660b9e09b22">
+<img width="720" alt="MQ-137" src="https://github.com/user-attachments/assets/5742395d-fb7a-40c3-8513-f6148229c464" />
 
 ### MQ303A
 <img width="720" alt="MQ303A" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/7f46f919-d26a-4c65-91ae-f5a9f4f47e08">
