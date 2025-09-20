@@ -63,7 +63,8 @@
 <img width="720" alt="MQ309A" src="https://github.com/user-attachments/assets/dc80cc8f-24b8-4f0b-a3eb-a3cebce06ba1" />
 
 ### Google Maps with Data Calculation System
-<img width="720" alt="GoogleMaps" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/c27ba182-a6e3-46c2-9380-26590962cee2">
+<img width="720" alt="GoogleMaps" src="https://github.com/user-attachments/assets/860e2bf0-1e2b-41c7-a7cf-28a8902146dc" />
+
 
 ## 3D Lidar Scale with 3D lidar Data Mapping System
 <img width="200" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/05083965-ea67-460e-a983-8de7f9470b6e">
