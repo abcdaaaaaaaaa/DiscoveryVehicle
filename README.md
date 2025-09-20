@@ -65,6 +65,8 @@
 ### Google Maps with Data Calculation System
 <img width="720" alt="GoogleMaps" src="https://github.com/user-attachments/assets/860e2bf0-1e2b-41c7-a7cf-28a8902146dc" />
 
+### Radiation Metrics System
+<img width="720" alt="RadiationMetrics" src="https://github.com/user-attachments/assets/1bb526ec-1227-4249-ba1b-5738f503dc5f" />
 
 ## 3D Lidar Scale with 3D lidar Data Mapping System
 <img width="200" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/05083965-ea67-460e-a983-8de7f9470b6e">
