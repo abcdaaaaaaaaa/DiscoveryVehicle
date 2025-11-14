@@ -56,7 +56,6 @@ void setup() {
 }
 
 void loop() {
-
     Serial.println("will connect");
       if(tflI2C.getData( tfDist, tfFlux, tfTemp, tfAddr))
       {
@@ -199,3 +198,4 @@ void loop() {
 
 // TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND] 
 // MG996R Servo 360: [PIN --> D32] [VCC --> 5V] [GND --> GND]
+
