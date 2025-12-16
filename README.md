@@ -69,7 +69,8 @@
 <img width="960" alt="RadiationMetrics" src="https://github.com/user-attachments/assets/1bb526ec-1227-4249-ba1b-5738f503dc5f" />
 
 ## 3D Lidar Scale with 3D lidar Data Mapping System
-<img width="200" alt="tab" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/05083965-ea67-460e-a983-8de7f9470b6e">
+<img width="400" alt="tab" src="https://github.com/user-attachments/assets/8d345242-7138-4e6d-80a4-aea848b9621f" />
+
 <img width="960" alt="3d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/3ac51550-a7cc-4414-8357-7162942ce49b">
 
 <img width="960" alt="lid4" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/d199f561-9e65-43be-99b7-9eba88b9af49">
