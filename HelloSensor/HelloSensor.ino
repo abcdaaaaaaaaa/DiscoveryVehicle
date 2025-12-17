@@ -224,6 +224,4 @@ tm.display(0,sec);
 // DHT22: [GND --> GND] [PIN --> D33] [VCC --> 3.3V]
 // GPS: [GND --> GND] [SCL --> D22] [SDA --> D21] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 3.3V] [GND --> GND]
-// Geiger Counter: [GND --> GND] [PIN --> VN] [VCC --> 3.3V]
-
-
+// Geiger Counter: [GND --> GND] [PIN --> VIN] [VCC --> 3.3V]
