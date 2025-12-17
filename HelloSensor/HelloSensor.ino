@@ -73,7 +73,7 @@ void setup() {
 void loop() {
   Radioactive.radioactive();
 
-  sec = map(analogRead(potPin), 0, (1 << 12) - 1, 1, 19);
+  sec = map(analogRead(potPin), 0, (1 << 12) - 1, 1, 21);
 
   switch(sec){
   case (1):
@@ -211,3 +211,4 @@ tm.display(0,sec);
 // GPS: [GND --> GND] [SCL --> D22] [SDA --> D21] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 3.3V] [GND --> GND]
 // Geiger Counter: [GND --> GND] [PIN --> VN] [VCC --> 3.3V]
+
