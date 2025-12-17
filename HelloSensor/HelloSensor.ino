@@ -75,7 +75,7 @@ void loop() {
 
   sec = map(analogRead(potPin), 0, (1 << 12) - 1, 1, 21);
 
-  switch(sec){
+ switch(sec){
   case (1):
   {
   tm.display(3,5);
@@ -90,7 +90,7 @@ void loop() {
   tm.display(3,1);
   tm.display(2,3);
   tm.display(1,1);
-  tm.display(0,0);
+  tm.display(0,1);
   }
   break;
   case (11):
@@ -98,7 +98,7 @@ void loop() {
   tm.display(3,1);
   tm.display(2,3);
   tm.display(1,1);
-  tm.display(0,1);
+  tm.display(0,0);
   }
   break;
   case (12):
@@ -135,15 +135,15 @@ void loop() {
   break;
   case (16):
   {
-  tm.display(3,10);
-  tm.display(2,3);
-  tm.display(1,0);
-  tm.display(0,3);
+  tm.display(3,6);
+  tm.display(2,1);
+  tm.display(1,2);
+  tm.display(0,0);
   }
   break;
   case (17):
   {
-  tm.display(3,11);
+  tm.display(3,10);
   tm.display(2,3);
   tm.display(1,0);
   tm.display(0,3);
@@ -151,13 +151,27 @@ void loop() {
   break;
   case (18):
   {
-  tm.display(3,10);
-  tm.display(2,7);
+  tm.display(3,11);
+  tm.display(2,3);
   tm.display(1,0);
   tm.display(0,3);
   }
   break;
   case (19):
+  {
+  tm.display(3,10);
+  tm.display(2,6);
+  tm.display(1,0);
+  tm.display(0,3);
+  }
+  case (20):
+  {
+  tm.display(3,10);
+  tm.display(2,7);
+  tm.display(1,0);
+  tm.display(0,3);
+  }
+  case (21):
   {
   tm.display(3,10);
   tm.display(2,9);
@@ -211,4 +225,5 @@ tm.display(0,sec);
 // GPS: [GND --> GND] [SCL --> D22] [SDA --> D21] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 3.3V] [GND --> GND]
 // Geiger Counter: [GND --> GND] [PIN --> VN] [VCC --> 3.3V]
+
 
