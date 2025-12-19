@@ -56,7 +56,7 @@ void setup() {
   if (!GPS.begin(0x2F)) {
       delay(3000);
       Serial.println("I2C connection failed.");
-      while (1);
+      // while (1);
   }
   WiFi.mode(WIFI_STA); Serial.println("Connecting to WiFi ");
   WiFi.begin(ssid, password);
@@ -225,3 +225,4 @@ tm.display(0,sec);
 // GPS: [GND --> GND] [SCL --> D22] [SDA --> D21] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 3.3V] [GND --> GND]
 // Geiger Counter: [GND --> GND] [PIN --> VIN] [VCC --> 3.3V]
+
