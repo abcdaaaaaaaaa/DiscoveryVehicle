@@ -53,7 +53,6 @@
         if (isset($toplam3)) echo "const toplam3 = $toplam3;\n\t";
         if (isset($toplam4)) echo "const toplam4 = $toplam4;\n\t";
         if (isset($toplam5)) echo "const toplam5 = $toplam5;\n\t";
-        if (isset($value2)) echo "const value2 = $value2;\n\t";
         if (isset($value3)) echo "const value3 = $value3;\n\t";
         if (isset($value4)) echo "const value4 = $value4;\n\t";
         if (isset($value5)) echo "const value5 = $value5;\n\t";
@@ -62,11 +61,6 @@
         if (isset($value8)) echo "const value8 = $value8;\n\t";
         if (isset($value9)) echo "const value9 = $value9;\n\t";
         if (isset($value10)) echo "const value10 = $value10;\n\t";
-        if (isset($value11)) echo "const value12 = $value11;\n\t";
-        if (isset($value12)) echo "const value13 = $value12;\n\t";
-        if (isset($value13)) echo "const value13 = $value13;\n\t";
-        if (isset($value14)) echo "const value14 = $value14;\n\t";
-        if (isset($value15)) echo "const value15 = $value15;\n\t";
     ?>
 </script>
 
