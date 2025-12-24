@@ -74,6 +74,7 @@ void setup() {
   Serial.println(WiFi.localIP());
   
   ThingSpeak.begin(client);
+  neogps.begin(9600, SERIAL_8N1, RX2, TX2);
 }
 
 void loop() {
@@ -237,3 +238,4 @@ tm.display(0,sec);
 // Potentiometer: [PIN --> D32] [GND --> GND] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 5V] [GND --> GND]
 // Geiger Counter: [GND --> GND] [PIN --> VIN]
+
