@@ -1,76 +1,130 @@
 #include <WiFi.h>
+#include <ESP32Servo.h>
 #include "ThingSpeak.h"
 
-const char* ssid = "Wokwi-GUEST";  
+int in1 = 23;
+int in2 = 19;
+int in3 = 18;
+int in4 = 5;
+
+int steps[8][4] = {
+	{1,0,0,0},
+	{1,1,0,0},
+	{0,1,0,0},
+	{0,1,1,0},
+	{0,0,1,0},
+	{0,0,1,1},
+	{0,0,0,1},
+	{1,0,0,1}
+};
+
+int stepIndex = 0;
+int servoX = 180;
+
+Servo scanServo;
+WiFiClient client;
+
+int Angle[24];
+int Green[24];
+int Temp;
+
+unsigned long lastTime = 0;
+unsigned long timerDelay = 15000;
+
+unsigned int ch1 = 1;
+unsigned int ch2 = 2;
+unsigned int ch3 = 3;
+
+static const char* verticalKey1 = "YSXKFJYHCZGW00DT";
+static const char* verticalKey2 = "X0TOV3MUEEQQD4HK";
+static const char* verticalKey3 = "1KKGE6BY2468X6VN";
+
+static const char* horizontalKey1 = "0HSEW6FQ65NWH2EP";
+static const char* horizontalKey2 = "JCBZHB1KUX0Y09LX";
+static const char* horizontalKey3 = "QP8J57RU9BY9NAVE";
+
+const char* ssid = "Wokwi-GUEST";
 const char* password = "";
-WiFiClient  client;
-
-unsigned int hello3 = 3;
-unsigned int hello2 = 2;
-unsigned int hello1 = 1;
-
-// horizontal
-static const char * myWriteAPIKey1 = "0HSEW6FQ65NWH2EP";
-static const char * myWriteAPIKey2 = "JCBZHB1KUX0Y09LX";
-static const char * myWriteAPIKey3 = "QP8J57RU9BY9NAVE";
-
-// vertical
-/*
-static const char * myWriteAPIKey1 = "YSXKFJYHCZGW00DT";
-static const char * myWriteAPIKey2 = "X0TOV3MUEEQQD4HK";
-static const char * myWriteAPIKey3 = "1KKGE6BY2468X6VN";
-*/
-
-unsigned long int lastTime = 0;
-unsigned long int timerDelay = 15000; 
 
 void setup() {
-  Serial.begin(115200);  
-  WiFi.mode(WIFI_STA); Serial.println("Connecting to WiFi ");
-  WiFi.begin(ssid, password);
-  while(WiFi.status() != WL_CONNECTED) { 
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Connected to WiFi network with IP Address: ");
-  Serial.println(WiFi.localIP());
-  
-  ThingSpeak.begin(client);
+	Serial.begin(115200);
+
+	pinMode(in1, OUTPUT);
+	pinMode(in2, OUTPUT);
+	pinMode(in3, OUTPUT);
+	pinMode(in4, OUTPUT);
+
+	scanServo.attach(32);
+	scanServo.write(servoX);
+
+	WiFi.mode(WIFI_STA); Serial.println("Connecting to WiFi ");
+	WiFi.begin(ssid, password);
+	while(WiFi.status() != WL_CONNECTED) { 
+		delay(500);
+		Serial.print(".");
+	}
+	Serial.println("");
+	Serial.print("Connected to WiFi network with IP Address: ");
+	Serial.println(WiFi.localIP());
+	
+	ThingSpeak.begin(client);
+
+	randomSeed(millis());
 }
 
 void loop() {
-  if ((millis() - lastTime) > timerDelay) { 
-    Serial.println("Started!");
-    ThingSpeak.setField(1, String(1000 + 10000) + String(10 + 1000));
-    ThingSpeak.setField(2, String(2000 + 10000) + String(20 + 1000));
-    ThingSpeak.setField(3, String(3000 + 10000) + String(30 + 1000));
-    ThingSpeak.setField(4, String(4000 + 10000) + String(40 + 1000));
-    ThingSpeak.setField(5, String(5000 + 10000) + String(50 + 1000));
-    ThingSpeak.setField(6, String(6000 + 10000) + String(60 + 1000));
-    ThingSpeak.setField(7, String(7000 + 10000) + String(70 + 1000));
-    ThingSpeak.setField(8, String(8000 + 10000) + String(80 + 1000));
-  int a = ThingSpeak.writeFields(hello1, myWriteAPIKey1);
-    ThingSpeak.setField(1, String(7500 + 10000) + String(90 + 1000));
-    ThingSpeak.setField(2, String(6500 + 10000) + String(100 + 1000));
-    ThingSpeak.setField(3, String(5500 + 10000) + String(110 + 1000));
-    ThingSpeak.setField(4, String(4500 + 10000) + String(120 + 1000));
-    ThingSpeak.setField(5, String(3500 + 10000) + String(130 + 1000));
-    ThingSpeak.setField(6, String(2500 + 10000) + String(140 + 1000));
-    ThingSpeak.setField(7, String(1500 + 10000)+String(150 + 1000));
-    ThingSpeak.setField(8, String(500 + 10000)+String(160 + 1000));
-  int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
-    ThingSpeak.setField(1, String(250 + 10000) + String(170 + 1000));
-    ThingSpeak.setField(2, String(1250 + 10000) + String(180 + 1000));
-    ThingSpeak.setField(3, String(2250 + 10000) + String(190 + 1000));
-    ThingSpeak.setField(4, String(3250 + 10000) + String(200 + 1000));
-    ThingSpeak.setField(5, String(4250 + 10000) + String(210 + 1000));
-    ThingSpeak.setField(6, String(5250 + 10000) + String(220 + 1000));
-    ThingSpeak.setField(7, String(6250 + 10000) + String(7250 + 10000));
-    ThingSpeak.setField(8, String(230 + 1000) + String(240 + 1000)+String(55 + 20));
-  int c = ThingSpeak.writeFields(hello3, myWriteAPIKey3);
-    Serial.println("döngü bitti");
-    lastTime = millis();
+
+	if ((millis() - lastTime) < timerDelay) return;
+
+	Temp = random(-10, 61);
+
+	for (int section = 0; section < 24; section++) {
+
+		for (int i = 0; i < 171; i++) {
+			stepMotor(stepIndex);
+			stepIndex = (stepIndex + 1) % 8;
+			delayMicroseconds(1500);
+		}
+
+		Angle[section] = random(20, 801);
+		Green[section] = random(0, 65536);
+	}
+
+	for (int i = 0; i < 4096; i++) {
+		stepIndex = (stepIndex - 1 + 8) % 8;
+		stepMotor(stepIndex);
+		delayMicroseconds(800);
+	}
+
+	const char* key1 = (servoX == 180) ? verticalKey1 : horizontalKey1;
+	const char* key2 = (servoX == 180) ? verticalKey2 : horizontalKey2;
+	const char* key3 = (servoX == 180) ? verticalKey3 : horizontalKey3;
+
+	for (int i = 0; i < 8; i++)
+		ThingSpeak.setField(i + 1, String(Green[i]) + String(Angle[i]));
+	ThingSpeak.writeFields(ch1, key1);
+
+	for (int i = 8; i < 16; i++)
+		ThingSpeak.setField(i - 7, String(Green[i]) + String(Angle[i]));
+	ThingSpeak.writeFields(ch2, key2);
+
+	for (int i = 16; i < 23; i++)
+		ThingSpeak.setField(i - 15, String(Green[i]) + String(Angle[i]));
+
+	ThingSpeak.setField(8, String(Green[23]) + String(Angle[23]) + String(Temp));
+	ThingSpeak.writeFields(ch3, key3);
+
+	lastTime = millis();
+
+	servoX = (servoX == 180) ? 90 : 180;
+	scanServo.write(servoX);
 }
 
+void stepMotor(int s) {
+	digitalWrite(in1, steps[s][0]);
+	digitalWrite(in2, steps[s][1]);
+	digitalWrite(in3, steps[s][2]);
+	digitalWrite(in4, steps[s][3]);
 }
+
+// TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND]
