@@ -154,3 +154,5 @@ void stepMotor(int s) {
   digitalWrite(in3, steps[s][2]);
   digitalWrite(in4, steps[s][3]);
 }
+
+// TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND]
