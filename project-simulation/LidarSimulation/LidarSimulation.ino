@@ -90,7 +90,7 @@ void loop() {
 		Green[section] = random(0, 65536);
 	}
 
-	for (int i = 0; i < 4096; i++) {
+	for (int i = 0; i < 4104; i++) {
 		stepIndex = (stepIndex - 1 + 8) % 8;
 		stepMotor(stepIndex);
 		delayMicroseconds(800);
@@ -128,3 +128,4 @@ void stepMotor(int s) {
 }
 
 // TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND]
+
