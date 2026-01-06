@@ -1,0 +1,340 @@
+body {
+    background-image: url("hello1.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 100vh;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 0%;
+}
+
+.blue-rectangle {
+    width: 30px;
+    height: 30px;
+    background-color: #3498db;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: calc(24 * 8000 + 500);
+}
+
+.right-long-rectangle,
+.left-long-rectangle
+ {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    transition: left 0.3s ease-in-out, right 0.3s ease-in-out;
+}
+
+
+.forward-long-rectangle,
+.forward-long-rectangle45,
+.forward-long-rectangle60,
+.forward-long-rectangle75,
+.forward-long-rectangle105,
+.forward-long-rectangle120,
+.forward-long-rectangle135,
+.no-forward-long-rectangle,
+.no-forward-long-rectangle45,
+.no-forward-long-rectangle60,
+.no-forward-long-rectangle75,
+.no-forward-long-rectangle105,
+.no-forward-long-rectangle120,
+.no-forward-long-rectangle135  
+{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: top 0.3s ease-in-out;    
+}
+
+.right-long-rectangle15,
+.right-long-rectangle30,
+.left-long-rectangle15,
+.left-long-rectangle30,
+.no-right-long-rectangle15,
+.no-right-long-rectangle30,
+.no-left-long-rectangle15,
+.no-left-long-rectangle30
+ {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: left 0.3s ease-in-out, right 0.3s ease-in-out;
+}
+
+.left-long-rectangle {
+    right: var(--LeftrectanglePosition);
+    bottom: var(--UnitDistance);
+    background-color: var(--rgb0);
+    z-index: calc(13 * (8000 - var(--Angle0)) + 49);
+}
+
+.left-long-rectangle15 {
+    right: var(--LeftrectanglePosition15);
+    bottom: var(--Blue15);
+    background-color: var(--rgb15);
+	transform: rotateX(105deg) rotateY(105deg) scale(1, calc(1 / var(--sin15)));
+    z-index: calc(13 * (8000 - var(--Angle15)) + 47);
+}
+
+.left-long-rectangle30 {
+    right: var(--LeftrectanglePosition30);
+    bottom: var(--Blue30);
+    background-color: var(--rgb30);
+	transform: rotateX(120deg) rotateY(120deg) scale(1, calc(1 / var(--sin30)));
+    z-index: calc(13 * (8000 - var(--Angle30)) + 45);
+}
+
+.forward-long-rectangle45 {
+    right: var(--Blue45);
+    bottom: var(--ForwardrectanglePosition45);
+    background-color: var(--rgb45);
+	transform: rotateX(135deg) rotateY(135deg) scale(1, calc(1 / var(--sin45))); 
+    z-index: calc(13 * (8000 - var(--Angle45)) + 43);
+}
+
+.forward-long-rectangle60 {
+    right: var(--Blue60);
+    bottom: var(--ForwardrectanglePosition60);
+    background-color: var(--rgb60);
+	transform: rotateX(150deg) rotateY(150deg) scale(1, calc(1 / var(--sin60))); 
+    z-index: calc(13 * (8000 - var(--Angle60)) + 41);
+}
+
+.forward-long-rectangle75 {
+    right: var(--Blue75);
+    bottom: var(--ForwardrectanglePosition75);
+    background-color: var(--rgb75);
+	transform: rotateX(165deg) rotateY(165deg) scale(1, calc(1 / var(--sin75))); 
+    z-index: calc(13 * (8000 - var(--Angle75)) + 39);
+}
+
+.forward-long-rectangle {
+    bottom: var(--ForwardrectanglePosition);
+    background-color: var(--rgb90);
+    z-index: calc(13 * (8000 - var(--Angle90)) + 37);
+}
+
+.forward-long-rectangle105 {
+    left: var(--Blue105);
+    bottom: var(--ForwardrectanglePosition105);
+    background-color: var(--rgb105);
+	transform: rotateX(15deg) rotateY(15deg) scale(1, calc(1 / var(--sin75)));
+    z-index: calc(13 * (8000 - var(--Angle105)) + 38);
+}
+
+.forward-long-rectangle120 {
+    left: var(--Blue120);
+    bottom: var(--ForwardrectanglePosition120);
+    background-color: var(--rgb120);
+	transform: rotateX(30deg) rotateY(30deg) scale(1, calc(1 / var(--sin60)));
+    z-index: calc(13 * (8000 - var(--Angle120)) + 40);
+}
+
+.forward-long-rectangle135 {
+    left: var(--Blue135);
+    bottom: var(--ForwardrectanglePosition135); 
+    background-color: var(--rgb135);
+	transform: rotateX(45deg) rotateY(45deg) scale(1, calc(1 / var(--sin45)));
+    z-index: calc(13 * (8000 - var(--Angle135)) + 42);
+}
+
+.right-long-rectangle30 {
+    left: var(--RightrectanglePosition30);
+    bottom: var(--Blue150);
+    background-color: var(--rgb150);
+	transform: rotateX(60deg) rotateY(60deg) scale(1, calc(1 / var(--sin30))); 
+    z-index: calc(13 * (8000 - var(--Angle150)) + 44);
+}
+
+.right-long-rectangle15 {
+    left: var(--RightrectanglePosition15);
+    bottom: var(--Blue165);
+    background-color: var(--rgb165);
+	transform: rotateX(75deg) rotateY(75deg) scale(1, calc(1 / var(--sin15))); 
+    z-index: calc(13 * (8000 - var(--Angle165)) + 46);
+}
+
+.right-long-rectangle {
+    left: var(--RightrectanglePosition);
+    bottom: var(--UnitDistance);
+    z-index: calc(13 * (8000 - var(--Angle180)) + 48);
+}
+
+.no-left-long-rectangle15 {
+    left: var(--NoLeftrectanglePosition15);
+    top: var(--NoBlue15);
+    background-color: var(--rgb195);
+	transform: rotateX(105deg) rotateY(105deg) scale(1, calc(1 / var(--sin15))); 
+    z-index: calc(11 * var(--NoAngle15) + 13 * 8000 + 91);
+}
+
+.no-left-long-rectangle30 {
+    left: var(--NoLeftrectanglePosition30);
+    top: var(--NoBlue30);
+    background-color: var(--rgb210);
+	transform: rotateX(120deg) rotateY(120deg) scale(1, calc(1 / var(--sin30))); 
+    z-index: calc(11 * var(--NoAngle30) + 13 * 8000 + 93);
+}
+
+.no-forward-long-rectangle45 {
+    left: var(--NoBlue45);
+    top: var(--NoForwardrectanglePosition45);
+    background-color: var(--rgb225);
+	transform: rotateX(135deg) rotateY(135deg) scale(1, calc(1 / var(--sin45))); 
+    z-index: calc(11 * var(--NoAngle45) + 13 * 8000 + 95);
+}
+
+.no-forward-long-rectangle60 {
+    left: var(--NoBlue60);
+    top: var(--NoForwardrectanglePosition60);
+    background-color: var(--rgb240);
+	transform: rotateX(150deg) rotateY(150deg) scale(1, calc(1 / var(--sin60))); 
+    z-index: calc(11 * var(--NoAngle60) + 13 * 8000 + 97);
+}
+
+.no-forward-long-rectangle75 {
+    left: var(--NoBlue75);
+    top: var(--NoForwardrectanglePosition75);
+    background-color: var(--rgb255);
+	transform: rotateX(165deg) rotateY(165deg) scale(1, calc(1 / var(--sin75))); 
+    z-index: calc(11 * var(--NoAngle75) + 13 * 8000 + 99);
+}
+
+.no-forward-long-rectangle {
+    left: var(--screenWidth);
+    top: var(--NoForwardrectanglePosition);
+    background-color: var(--rgb270);
+    z-index: calc(11 * var(--NoAngle90) + 13 * 8000 + 100);
+}
+
+.no-forward-long-rectangle105 {
+    right: var(--NoBlue105);
+    top: var(--NoForwardrectanglePosition105);
+    background-color: var(--rgb285);
+	transform: rotateX(15deg) rotateY(15deg) scale(1, calc(1 / var(--sin75))); 
+    z-index: calc(11 * var(--NoAngle105) + 13 * 8000 + 98);
+}
+
+.no-forward-long-rectangle120 {
+    right: var(--NoBlue120);
+    top: var(--NoForwardrectanglePosition120);
+    background-color: var(--rgb300);
+	transform: rotateX(30deg) rotateY(30deg) scale(1, calc(1 / var(--sin60)));
+    z-index: calc(11 * var(--NoAngle120) + 13 * 8000 + 96);
+}
+
+.no-forward-long-rectangle135 {
+    right: var(--NoBlue135);
+    top: var(--NoForwardrectanglePosition135); 
+    background-color: var(--rgb315);
+	transform: rotateX(45deg) rotateY(45deg) scale(1, calc(1 / var(--sin45)));	
+    z-index: calc(11 * var(--NoAngle135) + 13 * 8000 + 94);
+}
+
+.no-right-long-rectangle30 {
+    right: var(--NoRightrectanglePosition30);
+    top: var(--NoBlue150);
+    background-color: var(--rgb330);
+	transform: rotateX(60deg) rotateY(60deg) scale(1, calc(1 / var(--sin30))); 
+    z-index: calc(11 * var(--NoAngle150) + 13 * 8000 + 92);
+}
+
+.no-right-long-rectangle15 {
+    right: var(--NoRightrectanglePosition15);
+    top: var(--NoBlue165);
+    background-color: var(--rgb345);
+	transform: rotateX(75deg) rotateY(75deg) scale(1, calc(1 / var(--sin15))); 
+    z-index: calc(11 * var(--NoAngle165) + 13 * 8000 + 90);
+}
+
+.color0 { background-color: var(--rgb0); }
+.color15 { background-color: var(--rgb15); }
+.color30 { background-color: var(--rgb30); }
+.color45 { background-color: var(--rgb45); }
+.color60 { background-color: var(--rgb60); }
+.color75 { background-color: var(--rgb75); }
+.color90 { background-color: var(--rgb90); }
+.color105 { background-color: var(--rgb105); }
+.color120 { background-color: var(--rgb120); }
+.color135 { background-color: var(--rgb135); }
+.color150 { background-color: var(--rgb150); }
+.color165 { background-color: var(--rgb165); }
+.color180 { background-color: var(--rgb180); }
+.color195 { background-color: var(--rgb195); }
+.color210 { background-color: var(--rgb210); }
+.color225 { background-color: var(--rgb225); }
+.color240 { background-color: var(--rgb240); }
+.color255 { background-color: var(--rgb255); }
+.color270 { background-color: var(--rgb270); }
+.color285 { background-color: var(--rgb285); }
+.color300 { background-color: var(--rgb300); }
+.color315 { background-color: var(--rgb315); }
+.color330 { background-color: var(--rgb330); }
+.color345 { background-color: var(--rgb345); }
+
+/*
+    .face {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(100,100,100,0.4);		
+        border: 1px solid blue;
+    }
+    .front { transform: translateZ(15px); }
+    .back { transform: rotateY(180deg) translateZ(15px); }
+    .right { transform: rotateY(90deg) translateZ(15px); }
+    .left { transform: rotateY(-90deg) translateZ(15px); }
+    .top { transform: rotateX(90deg) translateZ(15px); }
+    .bottom { transform: rotateX(-90deg) translateZ(15px); }
+*/
+
+    .face1 {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+    }
+	
+    .face2 {
+        position: absolute;
+        width: 15px;
+        height: 30px;
+    }
+	
+    .face3 {
+        position: absolute;
+        width: 30px;
+        height: 15px;
+    }
+	
+    .front { transform: translateZ(-7.5px); }
+    .back { transform: rotateY(180deg) translateZ(-7.5px); }
+    .right { transform: rotateY(90deg) translateZ(22.5px); }
+    .left { transform: rotateY(-90deg) translateZ(7.5px); }
+    .top { transform: rotateX(90deg) translateZ(7.5px); }
+    .bottom { transform: rotateX(-90deg) translateZ(22.5px); }
+    
