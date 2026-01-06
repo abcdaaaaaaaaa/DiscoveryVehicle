@@ -1,0 +1,14 @@
+RewriteEngine on
+AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+
+RewriteRule ^lidar$ verticallidar.php [L,NC]
+RewriteRule ^simulatex$ simuhorizontal.html [L,NC]
+RewriteRule ^simulatey$ simuvertical.html [L,NC]
+
+RewriteRule ^mysql - [F,L]
+ErrorDocument 404 https://lidar.uzay.info
+ErrorDocument 403 https://lidar.uzay.info
+
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
