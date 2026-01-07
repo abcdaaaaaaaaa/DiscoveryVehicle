@@ -11,8 +11,18 @@ include_once 'xaxsis.php';
     <link rel="shortcut icon" href="lidar.ico">
     <title id="pageTitle">3D Lidar</title>
     <link rel="stylesheet" href="horizontallidar.css">
+    <link rel="stylesheet" href="slider.css">
 </head>
 <body>
+    <form method="POST">
+        <div class="switch-container">
+            <label class="switch">
+                <input type="checkbox" id="saveData" name="saveData">
+                <span class="slider"></span>
+            </label>
+            <input type="submit" id="saveButton" value="Save Data">
+        </div>
+    </form>
     <div class="container1">
 		<div class="forward-long-rectangle105">
     <div class="face1 color105 front"></div>
@@ -270,10 +280,5 @@ const rgb330 = '<?php echo $rgb330; ?>';
 const rgb345 = '<?php echo $rgb345; ?>';
 </script>
 <script src="lidar.js"></script>
-<script>
-setTimeout(() => {
-  window.location.reload(true);
-}, 20000)
-</script>
 </body>
 </html>
