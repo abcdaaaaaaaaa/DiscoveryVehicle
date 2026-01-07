@@ -39,7 +39,7 @@ static const char* verticalKey1 = "YSXKFJYHCZGW00DT";
 static const char* verticalKey2 = "X0TOV3MUEEQQD4HK";
 static const char* verticalKey3 = "1KKGE6BY2468X6VN";
 
-static const char* horizontalKey1 = "0HSEW6FQ65NWH2EP";
+static const char* horizontalKey1 = "DKH2JAX5CLOA7D83";
 static const char* horizontalKey2 = "JCBZHB1KUX0Y09LX";
 static const char* horizontalKey3 = "QP8J57RU9BY9NAVE";
 
@@ -68,17 +68,19 @@ void setup() {
 	Serial.println(WiFi.localIP());
 	
 	ThingSpeak.begin(client);
-
-	randomSeed(millis());
 }
 
 void loop() {
 
 	if ((millis() - lastTime) < timerDelay) return;
 
-	Temp = random(-10, 61);
+	randomSeed(micros() + lastTime);
+
+	Temp = random(-10, 61) + 20;
 
 	for (int section = 0; section < 24; section++) {
+
+		randomSeed(micros() + section * 37);
 
 		for (int i = 0; i < 171; i++) {
 			stepMotor(stepIndex);
@@ -86,8 +88,8 @@ void loop() {
 			delayMicroseconds(1500);
 		}
 
-		Angle[section] = random(20, 801);
-		Green[section] = random(0, 65536);
+		Angle[section] = random(20, 801) + 1000;
+		Green[section] = random(0, 65536) + 10000;
 	}
 
 	for (int i = 0; i < 4104; i++) {
@@ -108,11 +110,14 @@ void loop() {
 		ThingSpeak.setField(i - 7, String(Green[i]) + String(Angle[i]));
 	ThingSpeak.writeFields(ch2, key2);
 
-	for (int i = 16; i < 23; i++)
+	for (int i = 16; i < 22; i++)
 		ThingSpeak.setField(i - 15, String(Green[i]) + String(Angle[i]));
 
-	ThingSpeak.setField(8, String(Green[23]) + String(Angle[23]) + String(Temp));
+	ThingSpeak.setField(7, String(Green[22]) + String(Green[23]));
+	ThingSpeak.setField(8, String(Angle[22]) + String(Angle[23]) + String(Temp));
 	ThingSpeak.writeFields(ch3, key3);
+
+	Serial.println("sent!");
 
 	lastTime = millis();
 
@@ -128,4 +133,3 @@ void stepMotor(int s) {
 }
 
 // TfLuna Lidar: [VCC --> 5V] [SDA --> D21] [SCL --> D22] [GND --> GND] [I2C --> GND]
-
