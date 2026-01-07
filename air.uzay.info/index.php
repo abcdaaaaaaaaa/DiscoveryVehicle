@@ -65,9 +65,9 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
-<script src="../datacolor.js"></script>
-<script src="../chart2.js"></script>
-<script src="../slider.js"></script>
+<script src="datacolor.js"></script>
+<script src="chart2.js"></script>
+<script src="slider.js"></script>
 
 <script>
  const ctx = document.getElementById('barchart').getContext('2d');
