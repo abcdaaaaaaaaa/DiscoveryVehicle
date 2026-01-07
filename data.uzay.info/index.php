@@ -39,6 +39,6 @@
             <canvas id="chart4"></canvas>
         </div>
     </div>
-    <script src="../slider.js"></script>
+    <script src="slider.js"></script>
 </body>
 </html>
