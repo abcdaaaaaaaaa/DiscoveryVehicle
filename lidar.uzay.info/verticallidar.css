@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: flex-end;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .container1 {
