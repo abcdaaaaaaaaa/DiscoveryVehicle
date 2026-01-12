@@ -1,0 +1,16 @@
+CREATE TABLE MQ3 (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    DHT VARCHAR(15),
+    SpaceData100 VARCHAR(7),
+    Air VARCHAR(3),
+    Alcohol VARCHAR(3),
+    Benzene VARCHAR(3),
+    Hexane VARCHAR(3),
+    LPG VARCHAR(3),
+    CO VARCHAR(3),
+    CH4 VARCHAR(3),
+    SpaceData200 VARCHAR(7),
+    lat VARCHAR(12),
+    lng VARCHAR(12),
+    reading_time TIMESTAMP DEFAULT UTC_TIMESTAMP
+);
