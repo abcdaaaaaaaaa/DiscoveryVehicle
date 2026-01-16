@@ -9,6 +9,9 @@ int in2 = 19;
 int in3 = 18;
 int in4 = 5;
 
+int servoPin = 32;
+int servoX = 90;
+
 int steps[8][4] = {
   {1,0,0,0},
   {1,1,0,0},
@@ -21,7 +24,6 @@ int steps[8][4] = {
 };
 
 int stepIndex = 0;
-int servoX = 180;
 
 Servo scanServo;
 TFLI2C tflI2C;
@@ -40,9 +42,6 @@ int16_t tfDist = 0;
 int16_t tfFlux = 0;
 int16_t tfTemp = 0;
 
-unsigned long lastTime = 0;
-unsigned long timerDelay = 15000;
-
 unsigned int ch1 = 1;
 unsigned int ch2 = 2;
 unsigned int ch3 = 3;
@@ -55,8 +54,8 @@ static const char* horizontalKey1 = "DKH2JAX5CLOA7D83";
 static const char* horizontalKey2 = "JCBZHB1KUX0Y09LX";
 static const char* horizontalKey3 = "QP8J57RU9BY9NAVE";
 
-const char* ssid = "REPLACE_WİTH_YOUR_SSID";  
-const char* password = "REPLACE_WİTH_YOUR_PASSWORD";  
+const char* ssid = "A.Mert iPhone'u";
+const char* password = "bugungunlerdenoyun";
 
 void setup() {
   Serial.begin(115200);
@@ -66,63 +65,60 @@ void setup() {
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
 
-  scanServo.attach(32);
+  scanServo.attach(servoPin);
   scanServo.write(servoX);
 
   Wire.begin();
 
-  Serial.println("Connecting to WiFi ");
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Connected to WiFi network with IP Address: ");
-  Serial.println(WiFi.localIP());
+  while (WiFi.status() != WL_CONNECTED) delay(500);
 
   ThingSpeak.begin(client);
 }
 
 void loop() {
-
-  if ((millis() - lastTime) < timerDelay) return;
-
   lidcontrol = 0;
 
   if (tflI2C.getData(tfDist, tfFlux, tfTemp, tfAddr)) {
-
-    tfTemp = int16_t(tfTemp / 100 + 20);
-    tfFlux = int16_t(tfFlux + 10000);
-    tfDist = int16_t(tfDist + 1000);
-
+    tfTemp = tfTemp / 100 + 20;
     Temp = tfTemp;
     lidcontrol = 1;
-
-    for (int section = 0; section < 24; section++) {
-
-      for (int i = 0; i < 171; i++) {
-        stepMotor(stepIndex);
-        stepIndex = (stepIndex + 1) % 8;
-        delayMicroseconds(1500);
-      }
-
-      Angle[section] = tfDist;
-      Green[section] = tfFlux;
-    }
-
   } else {
-    Serial.print("-");
+    lidcontrol = 0;
   }
 
   if (!lidcontrol) return;
+
+  for (int section = 0; section < 24; section++) {
+
+    for (int i = 0; i < 171; i++) {
+      stepMotor(stepIndex);
+      stepIndex = (stepIndex + 1) % 8;
+      delayMicroseconds(1500);
+    }
+
+    if (tflI2C.getData(tfDist, tfFlux, tfTemp, tfAddr)) {
+      tfFlux = int16_t(tfFlux + 10000);
+      tfDist = int16_t(tfDist + 1000);
+      Angle[section] = tfDist;
+      Green[section] = tfFlux;
+    } else {
+      lidcontrol = 0;
+      break;
+    }
+  }
 
   for (int i = 0; i < 4104; i++) {
     stepIndex = (stepIndex - 1 + 8) % 8;
     stepMotor(stepIndex);
     delayMicroseconds(800);
   }
+
+  servoX = (servoX == 180) ? 90 : 180;
+  scanServo.write(servoX);
+
+  if (!lidcontrol) return;
 
   const char* key1 = (servoX == 180) ? verticalKey1 : horizontalKey1;
   const char* key2 = (servoX == 180) ? verticalKey2 : horizontalKey2;
@@ -143,10 +139,6 @@ void loop() {
   ThingSpeak.setField(8, String(Angle[22]) + String(Angle[23]) + String(Temp));
   ThingSpeak.writeFields(ch3, key3);
 
-  lastTime = millis();
-
-  servoX = (servoX == 180) ? 90 : 180;
-  scanServo.write(servoX);
 }
 
 void stepMotor(int s) {
