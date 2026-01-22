@@ -73,7 +73,8 @@ void loop() {
       Data2 = httpGETRequest(serverNameData2);
       pixytime = httpGETRequest(serverNamepixy);
       RPM = httpGETRequest(serverNameRPM);
-  
+
+    LCD_I2C_0x27.clear();
     LCD_I2C_0x27.setCursor(0, 0);
     LCD_I2C_0x27.print("MQ: %" + Data1);
     LCD_I2C_0x27.setCursor(13 - RPM.length(), 0);
@@ -143,3 +144,4 @@ String httpGETRequest(const char* serverName) {
 
   return payload;
 }
+
