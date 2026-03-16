@@ -61,7 +61,7 @@ void setup(){
   pixy.init();
 
   server.on("/pixy", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send_P(200, "text/plain", String(pixy.ccc.numBlocks).c_str());
+    request->send_P(200, "text/plain", String(pixy.ccc.getBlocks()).c_str());
   });
 
   server.on("/data1", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -264,7 +264,7 @@ float pixyCheck() {
  int j;
  uint16_t blocks;
  char buf[32];
- blocks = pixy.ccc.numBlocks;
+ blocks = pixy.ccc.getBlocks();
 
  if(blocks)
  {
