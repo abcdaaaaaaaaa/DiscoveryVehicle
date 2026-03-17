@@ -90,9 +90,8 @@
 
 <img width="720" alt="pixy2images" src="https://github.com/user-attachments/assets/334d9354-0c8d-432b-a3ef-b26eb130bc88">
 
-// The image above is shown as an example
-
-// The robot can be used in both manual and object tracking mode. (motor-control && controller)
+### The image above is shown as an example
+### The robot can be used in both manual and object tracking mode. (motor-control && controller)
 
 # MQDataScience
 
