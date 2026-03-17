@@ -3,10 +3,10 @@
 <img width="191" alt="SpaceRover" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/5c79de09-41b3-4e51-b2ba-a0353fad612d"></img>
 
 ### Discovery Vehicle
-<img height="500" alt="rover" src="https://github.com/user-attachments/assets/56a26039-35c5-44ad-b565-15dbd55294c6" />
+<img height="600" alt="rover" src="https://github.com/user-attachments/assets/56a26039-35c5-44ad-b565-15dbd55294c6" />
 
 ### Controller
-<img height="100" alt="controller" src="https://github.com/user-attachments/assets/36b928df-011d-48b0-acc0-f2720f01ce10" />
+<img height="200" alt="controller" src="https://github.com/user-attachments/assets/36b928df-011d-48b0-acc0-f2720f01ce10" />
 
 ## Adjustable Data System
 ### Nuclear and Chemical Data Calculation System with Plug-Unplug Systematics:
