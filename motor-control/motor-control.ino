@@ -162,7 +162,7 @@ else {
   
  case 1:
 {
-  Serial.println("pixy yapay zeka modu:");  
+  Serial.println("Pixy AI Modu:");  
   float turn = pixyCheck();
 if(turn> -deadZone && turn < deadZone){
  turn = 0;
@@ -171,31 +171,31 @@ if(turn> -deadZone && turn < deadZone){
 if (turn < 0) {
    digitalWrite(IN2,LOW); 
    digitalWrite(IN1,HIGH);
-   analogWrite(ENA,41); 
+   analogWrite(ENA,80); 
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
-   analogWrite(ENB,87); 
-   rpm = 90;
+   analogWrite(ENB,170); 
+   rpm = 333;
 }
 
 else if (turn > 0) {
    digitalWrite(IN2,HIGH); 
    digitalWrite(IN1,LOW);
-   analogWrite(ENA,87); 
+   analogWrite(ENA,170); 
    digitalWrite(IN4,LOW);
    digitalWrite(IN3,HIGH);
-   analogWrite(ENB,41); 
-   rpm = 90;
+   analogWrite(ENB,80); 
+   rpm = 333;
 }
 
 else {
    digitalWrite(IN2,HIGH); 
    digitalWrite(IN1,LOW);
-   analogWrite(ENA,36); 
+   analogWrite(ENA,70); 
    digitalWrite(IN4,HIGH);
    digitalWrite(IN3,LOW);
-   analogWrite(ENB,36); 
-   rpm = 70;
+   analogWrite(ENB,70); 
+   rpm = 137;
 }
  delay(1); 
 } 
