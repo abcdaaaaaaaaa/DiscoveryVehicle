@@ -5,9 +5,11 @@
 ### Discovery Vehicle
 <img height="500" alt="rover" src="https://github.com/user-attachments/assets/56a26039-35c5-44ad-b565-15dbd55294c6" />
 
-### Nuclear and Chemical Data Calculation System with Plug-Unplug Systematics
+### Controller
+<img height="100" alt="controller" src="https://github.com/user-attachments/assets/36b928df-011d-48b0-acc0-f2720f01ce10" />
 
 ## Adjustable Data System
+### Nuclear and Chemical Data Calculation System with Plug-Unplug Systematics:
 
 ### MQ-135
 <img width="720" alt="MQ-135" src="https://github.com/user-attachments/assets/3779f490-62aa-4076-93d8-19956daec47a" />
