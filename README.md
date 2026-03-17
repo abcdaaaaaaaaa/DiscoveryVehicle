@@ -3,6 +3,7 @@
 <img width="191" alt="SpaceRover" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/5c79de09-41b3-4e51-b2ba-a0353fad612d"></img>
 
 ### Discovery Vehicle
+<img height="500" alt="rover" src="https://github.com/user-attachments/assets/56a26039-35c5-44ad-b565-15dbd55294c6" />
 
 ### Nuclear and Chemical Data Calculation System with Plug-Unplug Systematics
 
