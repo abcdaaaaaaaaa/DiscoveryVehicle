@@ -1,7 +1,7 @@
 # Adjustable with Plug-Unplug Systematics Multi-Purpose Modular Discovery Vehicle with Nuclear and Chemical Data Calculation System
 ## You can access the project's article <a href="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/wiki">here
 
-# 1) Air Analysis System
+# Air Analysis System
 
 ## MQ-135
 <img width="720" alt="MQ-135" src="https://github.com/user-attachments/assets/3779f490-62aa-4076-93d8-19956daec47a" />
@@ -60,10 +60,10 @@
 ## Google Maps with Data Calculation System
 <img width="720" alt="GoogleMaps" src="https://github.com/user-attachments/assets/860e2bf0-1e2b-41c7-a7cf-28a8902146dc" />
 
-# 2) Radiation Metrics System
+# Radiation Metrics System
 <img width="960" alt="RadiationMetrics" src="https://github.com/user-attachments/assets/1bb526ec-1227-4249-ba1b-5738f503dc5f" />
 
-# 3) 3D Lidar Scale with 3D lidar Data Mapping System
+# 3D Lidar Scale with 3D lidar Data Mapping System
 <img width="400" alt="tab" src="https://github.com/user-attachments/assets/8d345242-7138-4e6d-80a4-aea848b9621f" />
 
 <img width="960" alt="3d-lidar-scale" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/3ac51550-a7cc-4414-8357-7162942ce49b">
@@ -75,7 +75,7 @@
 <img width="960" alt="lid5" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/184340d1-fcaf-47b7-8517-7360597c9198">
 <img width="960" alt="lid2" src="https://github.com/abcdaaaaaaaaa/DiscoveryVehicle/assets/108553778/c9b73c3c-b6d6-4a02-bc73-0bed23f14bf0">
 
-# 4) Saving Values to the Database with Plug-Unplug Feature
+# Saving Values to the Database with Plug-Unplug Feature
 <img width="720" alt="sqlfordata" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/abafc524-1340-465d-ba4b-f3179d9aaf2d">
 
 ## SQL for MQ-135
@@ -84,7 +84,7 @@
 ## SQL for 3D lidar Data Mapping System
 <img width="720" alt="sqllidar" src="https://github.com/abcdaaaaaaaaa/2204a/assets/108553778/1d061a9e-4aaa-46dc-aada-fa791481853f">
 
-# 5) Control DiscoveryVechile
+# Control DiscoveryVechile
 
 ## Real-time Object Tracking With AI Based Pixy2
 
@@ -94,7 +94,7 @@
 
 // The robot can be used in both manual and object tracking mode. (motor-control && controller)
 
-# 6) MQDataScience
+# MQDataScience
 
 ## Advanced Data Science System for Regression Calculations:
 ![MQ-135_gas_curves](https://github.com/user-attachments/assets/e8d6e1bf-6f61-40c8-9cc8-fd0cd7189c22)
@@ -115,7 +115,7 @@
 
 <img width="750" alt="4dformullas" src="https://github.com/user-attachments/assets/7c5a1464-fcb9-4a8f-9693-c2c473f1ec1a" />
 
-# 7) Deep-Learning Platform Flask System with yolov9
+# Deep-Learning Platform Flask System with yolov9
 <img width="960" alt="flask" src="https://github.com/user-attachments/assets/4d325f16-9c28-4845-a4fa-21222194d8dd">
 
 ## Constellation:
@@ -126,7 +126,7 @@
 ## Isohips:
 ![isohipsanimal](https://github.com/user-attachments/assets/b5f9b363-3e6d-4e96-bee8-beadec5cc1c1)
 
-# 8) 3D Design of the Project
+# 3D Design of the Project
 
 ## Discovery Vehicle
 <img height="600" alt="rover" src="https://github.com/user-attachments/assets/56a26039-35c5-44ad-b565-15dbd55294c6" />
