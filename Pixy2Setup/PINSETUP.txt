@@ -5,23 +5,8 @@ yellow ->  19
 green  ->  18
 blue   ->  5
 
-purple  top left       (PU)
-grey    middle left    (GY)
-white   bottom left    (WH)
-
-yellow  top right      (YL)
-green   middle right   (GR)  
-blue    bottom right   (BL)
-
-
- ESP32
-   ^
-   |
-   |
-   |
-(PU)(YL)<-----
-(GY)(GR)     |
-(WH)(BL)     |
+           ESP32
+             ^
              |
  Pixy2       |
 (1)(2)       |
