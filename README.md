@@ -128,7 +128,8 @@
 # 3D Design of the Project
 
 ## Discovery Vehicle
-<img height="600" alt="rover" src="https://github.com/user-attachments/assets/56a26039-35c5-44ad-b565-15dbd55294c6" />
+
+<img width="500" alt="rover" src="https://github.com/user-attachments/assets/9fd13a91-3ed7-40f9-9dd4-14b16d1b01cd" />
 
 ## Controller
-<img height="200" alt="controller" src="https://github.com/user-attachments/assets/36b928df-011d-48b0-acc0-f2720f01ce10" />
+<img height="100" alt="controller" src="https://github.com/user-attachments/assets/36b928df-011d-48b0-acc0-f2720f01ce10" />
