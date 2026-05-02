@@ -104,7 +104,7 @@
 ## Formulated Correction Coefficients depending on Temperature and Humidity:
 ![MQ-135_correction_coefficient](https://github.com/user-attachments/assets/8783b3a5-7956-47f1-a61b-ae300041e047)
 
-## 3D Surface Diagram for MQ Gases:
+## 3D Ppm Surface Diagram for MQ Sensors Gases:
 ![MQ135_CO2_3D)](https://github.com/user-attachments/assets/5295ad32-65e2-4e4a-bbdb-d2a98b173e86)
 
 ## Slope Estimation in Time-Dependent 4D Space:
@@ -128,7 +128,6 @@
 # 3D Design of the Project
 
 ## Discovery Vehicle
-
 <img width="500" alt="rover" src="https://github.com/user-attachments/assets/9fd13a91-3ed7-40f9-9dd4-14b16d1b01cd" />
 
 ## Controller
