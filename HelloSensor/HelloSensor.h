@@ -7,7 +7,6 @@ class GeigerCounter
 {
 private:
   byte _pin2;
-  int _LOG_PERIOD;
   float _averageCPM, _sdCPM;
   float _CPMArray[100];
   int _currentCPM;
@@ -17,7 +16,7 @@ private:
   float outputSieverts(float x);
 
 public:
-  GeigerCounter(int LOG_PERIOD1, byte pin2);
+  GeigerCounter(byte pin2);
   void begin();
   void radioactive();
   float usvhr;
