@@ -37,7 +37,7 @@ unsigned long int lastTime1 = 0;
 unsigned long int timerDelay1 = 15000;
 
 unsigned long int lastTime2 = 0;
-unsigned long int timerDelay2 = 15000;
+unsigned long int timerDelay2 = 30000;
 
 void setup() {
   Serial.begin(115200);
