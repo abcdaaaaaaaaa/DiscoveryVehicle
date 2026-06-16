@@ -10,7 +10,6 @@ private:
   float _averageCPM, _sdCPM;
   float _CPMArray[100];
   int _currentCPM;
-  unsigned long previousMillis;
   unsigned long _counts;
 
   float outputSieverts(float x);
