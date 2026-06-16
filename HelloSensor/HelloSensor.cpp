@@ -5,7 +5,6 @@ GeigerCounter::GeigerCounter(byte pin2)
   _pin2 = pin2;
   _counts = 0;
   _currentCPM = 0;
-  previousMillis = 0;
 }
 
 float GeigerCounter::outputSieverts(float x) {
@@ -26,22 +25,26 @@ void GeigerCounter::begin()
 }
 
 void GeigerCounter::radioactive() {
+  noInterrupts();
   _counts = interruptCounts;
+  interruptCounts = 0;
+  interrupts();
+
   count = _counts;
 
-  previousMillis = currentMillis;
   _CPMArray[_currentCPM] = _counts * 2;
   usvhr = outputSieverts(_CPMArray[_currentCPM]);
 
-  interruptCounts = 0;
-  _averageCPM = 0; 
+  _averageCPM = 0;
   _sdCPM = 0;
 
   for (int i = 0; i <= _currentCPM; i++) _averageCPM += _CPMArray[i];
   _averageCPM /= (_currentCPM + 1);
 
   for (int i = 0; i <= _currentCPM; i++) _sdCPM += sq(_CPMArray[i] - _averageCPM);
-  _sdCPM = sqrt(_sdCPM / _currentCPM) / sqrt(_currentCPM + 1);
+
+  if (_currentCPM > 0) _sdCPM = sqrt(_sdCPM / _currentCPM) / sqrt(_currentCPM + 1);
+  else _sdCPM = 0;
 
   Avg = outputSieverts(_averageCPM);
   sdCPM = outputSieverts(_sdCPM);
