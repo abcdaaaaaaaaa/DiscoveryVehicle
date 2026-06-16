@@ -3,8 +3,7 @@
 
 #include <WiFi.h>
 #include <DHT.h>
-#include <HTTPClient.h>
-#include <NetworkClientSecure.h>
+#include <ThingSpeak.h>
 #include <TM1637.h>
 #include "HelloSensor.h"
 #include <Deneyap_GPSveGLONASSkonumBelirleyici.h>
@@ -25,12 +24,14 @@ GeigerCounter Radioactive(GeigerPin);
 
 const char* ssid = "REPLACE_WITH_YOUR_SSID";  
 const char* password = "REPLACE_WITH_YOUR_PASSWORD";
-const char* serverName1 = "https://air.uzay.info/datareceiver.php";
-const char* serverName2 = "https://data.uzay.info/datareceiver.php";
+WiFiClient  client;
 
 int sec;
 
+unsigned long int hello1 = 1;
 static const char * myWriteAPIKey1 = "J2UEIZSZTC5568NM";
+
+unsigned long int hello2 = 2;
 static const char * myWriteAPIKey2 = "ZVZ3UYIV4PTYA6XP";
 
 unsigned long int lastTime1 = 0;
@@ -66,10 +67,12 @@ void setup() {
   Serial.println("");
   Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
+  ThingSpeak.begin(client);
 }
 
 void loop() {
   Radioactive.radioactive();
+
   sec = map(analogRead(potPin), 0, (1 << 12) - 1, 1, 21);
 
  switch(sec){
@@ -81,8 +84,7 @@ void loop() {
   tm.display(0,0);
   }
   break;
-  case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: normal();
-  break;
+  case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: normal(); break;
   case (10):
   {
   tm.display(3,1);
@@ -180,51 +182,30 @@ void loop() {
   }
 
   if ((millis() - lastTime1) > timerDelay1) {
+    ThingSpeak.setField(1, sec);
+    ThingSpeak.setField(2, analogRead(analogPin));
+    ThingSpeak.setField(3, (dht.readTemperature() + 140) * 10);
+    ThingSpeak.setField(4, (dht.readHumidity() + 100) * 10);
+    ThingSpeak.setField(5, analogRead(gasPin));
+
     GPS.readGPS(RMC);
     long lat = (long)((GPS.readLocationLat() + 90.0) * 10000000);
     long lng = (long)((GPS.readLocationLng() + 180.0) * 10000000);
 
-    String httpRequestData = "api_key=" + String(myWriteAPIKey1) + 
-                             "&field1=" + String(sec) + 
-                             "&field2=" + String(analogRead(analogPin)) + 
-                             "&field3=" + String((dht.readTemperature() + 140) * 10) + 
-                             "&field4=" + String((dht.readHumidity() + 100) * 10) + 
-                             "&field5=" + String(analogRead(gasPin)) + 
-                             "&field6=" + String(lat) + 
-                             "&field7=" + String(lng);
+    ThingSpeak.setField(6, lat);
+    ThingSpeak.setField(7, lng);
+    int a = ThingSpeak.writeFields(hello1, myWriteAPIKey1);
 
-    NetworkClientSecure *client = new NetworkClientSecure;
-    if(client) {
-        client->setInsecure();
-        HTTPClient http;
-        if (http.begin(*client, serverName1)) {
-            http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-            int httpResponseCode = http.POST(httpRequestData);
-            http.end();
-        }
-        delete client;
-    }
     lastTime1 = millis();
   }
 
   if ((millis() - lastTime2) > timerDelay2) {
-    String httpRequestData = "api_key=" + String(myWriteAPIKey2) + 
-                             "&field1=" + String((long)(Radioactive.usvhr * 10000)) + 
-                             "&field2=" + String((long)(Radioactive.Avg * 10000)) + 
-                             "&field3=" + String((long)(Radioactive.sdCPM * 10000)) + 
-                             "&field4=" + String((long)(Radioactive.count));
+    ThingSpeak.setField(1, (long)(Radioactive.usvhr * 10000));
+    ThingSpeak.setField(2, (long)(Radioactive.Avg * 10000));
+    ThingSpeak.setField(3, (long)(Radioactive.sdCPM * 10000));
+    ThingSpeak.setField(4, (long)(Radioactive.count));
+    int b = ThingSpeak.writeFields(hello2, myWriteAPIKey2);
 
-    NetworkClientSecure *client = new NetworkClientSecure;
-    if(client) {
-        client->setInsecure();
-        HTTPClient http;
-        if (http.begin(*client, serverName2)) {
-            http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-            int httpResponseCode = http.POST(httpRequestData);
-            http.end();
-        }
-        delete client;
-    }
     lastTime2 = millis();
   }
 }
