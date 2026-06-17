@@ -2,7 +2,8 @@
 #include <Wire.h>
 #include <TFLI2C.h>
 #include <ESP32Servo.h>
-#include "ThingSpeak.h"
+#include <HTTPClient.h>
+#include <NetworkClientSecure.h>
 
 int in1 = 23;
 int in2 = 19;
@@ -27,7 +28,6 @@ int stepIndex = 0;
 
 Servo scanServo;
 TFLI2C tflI2C;
-WiFiClient client;
 
 int Angle[24];
 int Green[24];
@@ -42,10 +42,6 @@ int16_t tfDist = 0;
 int16_t tfFlux = 0;
 int16_t tfTemp = 0;
 
-unsigned int ch1 = 1;
-unsigned int ch2 = 2;
-unsigned int ch3 = 3;
-
 static const char* verticalKey1 = "YSXKFJYHCZGW00DT";
 static const char* verticalKey2 = "X0TOV3MUEEQQD4HK";
 static const char* verticalKey3 = "1KKGE6BY2468X6VN";
@@ -54,8 +50,9 @@ static const char* horizontalKey1 = "DKH2JAX5CLOA7D83";
 static const char* horizontalKey2 = "JCBZHB1KUX0Y09LX";
 static const char* horizontalKey3 = "QP8J57RU9BY9NAVE";
 
-const char* ssid = "A.Mert iPhone'u";
-const char* password = "bugungunlerdenoyun";
+const char* ssid = "Replace";
+const char* password = "Replace";
+const char* serverName = "https://lidar.uzay.info/datareceiver.php";
 
 void setup() {
   Serial.begin(115200);
@@ -73,8 +70,6 @@ void setup() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) delay(500);
-
-  ThingSpeak.begin(client);
 }
 
 void loop() {
@@ -124,21 +119,43 @@ void loop() {
   const char* key2 = (servoX == 180) ? verticalKey2 : horizontalKey2;
   const char* key3 = (servoX == 180) ? verticalKey3 : horizontalKey3;
 
-  for (int i = 0; i < 8; i++)
-    ThingSpeak.setField(i + 1, String(Green[i]) + String(Angle[i]));
-  ThingSpeak.writeFields(ch1, key1);
+  sendData(key1, 0, 8);
+  sendData(key2, 8, 16);
+  sendData3(key3);
+}
 
-  for (int i = 8; i < 16; i++)
-    ThingSpeak.setField(i - 7, String(Green[i]) + String(Angle[i]));
-  ThingSpeak.writeFields(ch2, key2);
+void sendData(const char* key, int startIdx, int endIdx) {
+  String httpRequestData = "api_key=" + String(key);
+  for (int i = startIdx; i < endIdx; i++) {
+    int fieldNum = i - startIdx + 1;
+    httpRequestData += "&field" + String(fieldNum) + "=" + String(Green[i]) + String(Angle[i]);
+  }
+  postData(httpRequestData);
+}
 
-  for (int i = 16; i < 22; i++)
-    ThingSpeak.setField(i - 15, String(Green[i]) + String(Angle[i]));
+void sendData3(const char* key) {
+  String httpRequestData = "api_key=" + String(key);
+  for (int i = 16; i < 22; i++) {
+    int fieldNum = i - 15;
+    httpRequestData += "&field" + String(fieldNum) + "=" + String(Green[i]) + String(Angle[i]);
+  }
+  httpRequestData += "&field7=" + String(Green[22]) + String(Green[23]);
+  httpRequestData += "&field8=" + String(Angle[22]) + String(Angle[23]) + String(Temp);
+  postData(httpRequestData);
+}
 
-  ThingSpeak.setField(7, String(Green[22]) + String(Green[23]));
-  ThingSpeak.setField(8, String(Angle[22]) + String(Angle[23]) + String(Temp));
-  ThingSpeak.writeFields(ch3, key3);
-
+void postData(String httpRequestData) {
+  NetworkClientSecure *client = new NetworkClientSecure;
+  if(client) {
+      client->setInsecure();
+      HTTPClient http;
+      if (http.begin(*client, serverName)) {
+          http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+          int httpResponseCode = http.POST(httpRequestData);
+          http.end();
+      }
+      delete client;
+  }
 }
 
 void stepMotor(int s) {
