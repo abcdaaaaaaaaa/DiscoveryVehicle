@@ -50,8 +50,8 @@ static const char* horizontalKey1 = "DKH2JAX5CLOA7D83";
 static const char* horizontalKey2 = "JCBZHB1KUX0Y09LX";
 static const char* horizontalKey3 = "QP8J57RU9BY9NAVE";
 
-const char* ssid = "Replace";
-const char* password = "Replace";
+const char* ssid = "REPLACE_WITH_YOUR_SSID";  
+const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 const char* serverName = "https://lidar.uzay.info/datareceiver.php";
 
 void setup() {
