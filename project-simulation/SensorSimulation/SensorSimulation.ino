@@ -9,13 +9,13 @@
 #include "HelloSensor.h"
 
 #define ADC_BIT_RESU (12)
-#define GeigerPin  (39)
-#define analogPin  (35)
-#define gasPin     (34)
-#define dhtPin     (33)
-#define potPin     (32)
-#define CLK        (18)
-#define DIO        (5)
+#define GeigerPin    (39)
+#define analogPin    (35)
+#define gasPin       (34)
+#define dhtPin       (33)
+#define potPin       (32)
+#define CLK          (18)
+#define DIO          (5)
 
 TM1637 tm(CLK,DIO);
 HardwareSerial neogps(2); 
