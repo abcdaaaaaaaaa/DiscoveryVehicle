@@ -8,6 +8,7 @@
 #include <TM1637.h>
 #include "HelloSensor.h"
 
+#define ADC_BIT_RESU (12)
 #define GeigerPin  (39)
 #define analogPin  (35)
 #define gasPin     (34)
@@ -67,7 +68,7 @@ void setup() {
 }
 
 void loop() {
-  sec = map(analogRead(potPin), 0, (1 << 12) - 1, 1, 21);
+  sec = map(analogRead(potPin), 0, (1 << ADC_BIT_RESU) - 1, 1, 21);
   switch(sec){
   case (1):
   {
