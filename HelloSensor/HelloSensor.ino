@@ -8,13 +8,14 @@
 #include "HelloSensor.h"
 #include <Deneyap_GPSveGLONASSkonumBelirleyici.h>
 
-#define GeigerPin  (39)
-#define analogPin  (35)
-#define gasPin     (34)
-#define dhtPin     (33)
-#define potPin     (32)
-#define CLK        (18)
-#define DIO        (5)
+#define ADC_BIT_RESU (12)
+#define GeigerPin    (39)
+#define analogPin    (35)
+#define gasPin       (34)
+#define dhtPin       (33)
+#define potPin       (32)
+#define CLK          (18)
+#define DIO          (5)
 
 GPS GPS;
 TM1637 tm(CLK,DIO);
@@ -73,7 +74,7 @@ void setup() {
 void loop() {
   Radioactive.radioactive();
 
-  sec = map(analogRead(potPin), 0, (1 << 12) - 1, 1, 21);
+  sec = map(analogRead(potPin), 0, (1 << ADC_BIT_RESU) - 1, 1, 21);
 
  switch(sec){
   case (1):
@@ -220,7 +221,6 @@ tm.display(0,sec);
 // MQ-X: [PIN --> D35 (main-esp32), D35 (motor-control esp32)] [GND --> GND (main-esp32), GND (motor-control esp32)] [VCC --> 3.3V (main-esp32)]
 // Other Sensor: [PIN --> D34 (main-esp32), D34 (motor-control esp32)] [GND --> GND (main-esp32), GND (motor-control esp32)] [VCC --> 3.3V (main-esp32)]
 // Potentiometer: [PIN --> D32] [GND --> GND] [VCC --> 3.3V]
-
 // DHT22: [GND --> GND] [PIN --> D33] [VCC --> 3.3V]
 // GPS: [GND --> GND] [SCL --> D22] [SDA --> D21] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 3.3V] [GND --> GND]
