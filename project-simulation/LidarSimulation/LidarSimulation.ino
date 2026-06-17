@@ -2,7 +2,8 @@
 
 #include <WiFi.h>
 #include <ESP32Servo.h>
-#include "ThingSpeak.h"
+#include <HTTPClient.h>
+#include <NetworkClientSecure.h>
 
 int in1 = 23;
 int in2 = 19;
@@ -24,7 +25,6 @@ int stepIndex = 0;
 int servoX = 180;
 
 Servo scanServo;
-WiFiClient client;
 
 int Angle[24];
 int Green[24];
@@ -32,10 +32,6 @@ int Temp;
 
 unsigned long lastTime = 0;
 unsigned long timerDelay = 15000;
-
-unsigned int ch1 = 1;
-unsigned int ch2 = 2;
-unsigned int ch3 = 3;
 
 static const char* verticalKey1 = "YSXKFJYHCZGW00DT";
 static const char* verticalKey2 = "X0TOV3MUEEQQD4HK";
@@ -47,6 +43,7 @@ static const char* horizontalKey3 = "QP8J57RU9BY9NAVE";
 
 const char* ssid = "Wokwi-GUEST";
 const char* password = "";
+const char* serverName = "https://lidar.uzay.info/datareceiver.php";
 
 void setup() {
 	Serial.begin(115200);
@@ -68,8 +65,6 @@ void setup() {
 	Serial.println("");
 	Serial.print("Connected to WiFi network with IP Address: ");
 	Serial.println(WiFi.localIP());
-	
-	ThingSpeak.begin(client);
 }
 
 void loop() {
@@ -104,20 +99,9 @@ void loop() {
 	const char* key2 = (servoX == 180) ? verticalKey2 : horizontalKey2;
 	const char* key3 = (servoX == 180) ? verticalKey3 : horizontalKey3;
 
-	for (int i = 0; i < 8; i++)
-		ThingSpeak.setField(i + 1, String(Green[i]) + String(Angle[i]));
-	ThingSpeak.writeFields(ch1, key1);
-
-	for (int i = 8; i < 16; i++)
-		ThingSpeak.setField(i - 7, String(Green[i]) + String(Angle[i]));
-	ThingSpeak.writeFields(ch2, key2);
-
-	for (int i = 16; i < 22; i++)
-		ThingSpeak.setField(i - 15, String(Green[i]) + String(Angle[i]));
-
-	ThingSpeak.setField(7, String(Green[22]) + String(Green[23]));
-	ThingSpeak.setField(8, String(Angle[22]) + String(Angle[23]) + String(Temp));
-	ThingSpeak.writeFields(ch3, key3);
+	sendData(key1, 0, 8);
+	sendData(key2, 8, 16);
+	sendData3(key3);
 
 	Serial.println("sent!");
 
@@ -125,6 +109,40 @@ void loop() {
 
 	servoX = (servoX == 180) ? 90 : 180;
 	scanServo.write(servoX);
+}
+
+void sendData(const char* key, int startIdx, int endIdx) {
+  String httpRequestData = "api_key=" + String(key);
+  for (int i = startIdx; i < endIdx; i++) {
+    int fieldNum = i - startIdx + 1;
+    httpRequestData += "&field" + String(fieldNum) + "=" + String(Green[i]) + String(Angle[i]);
+  }
+  postData(httpRequestData);
+}
+
+void sendData3(const char* key) {
+  String httpRequestData = "api_key=" + String(key);
+  for (int i = 16; i < 22; i++) {
+    int fieldNum = i - 15;
+    httpRequestData += "&field" + String(fieldNum) + "=" + String(Green[i]) + String(Angle[i]);
+  }
+  httpRequestData += "&field7=" + String(Green[22]) + String(Green[23]);
+  httpRequestData += "&field8=" + String(Angle[22]) + String(Angle[23]) + String(Temp);
+  postData(httpRequestData);
+}
+
+void postData(String httpRequestData) {
+  NetworkClientSecure *client = new NetworkClientSecure;
+  if(client) {
+      client->setInsecure();
+      HTTPClient http;
+      if (http.begin(*client, serverName)) {
+          http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+          int httpResponseCode = http.POST(httpRequestData);
+          http.end();
+      }
+      delete client;
+  }
 }
 
 void stepMotor(int s) {
