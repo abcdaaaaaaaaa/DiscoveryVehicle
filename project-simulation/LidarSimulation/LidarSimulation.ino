@@ -33,19 +33,15 @@ int Temp;
 unsigned long lastTime = 0;
 unsigned long timerDelay = 15000;
 
-static const char* verticalKey1 = "YSXKFJYHCZGW00DT";
-static const char* verticalKey2 = "X0TOV3MUEEQQD4HK";
-static const char* verticalKey3 = "1KKGE6BY2468X6VN";
-
-static const char* horizontalKey1 = "DKH2JAX5CLOA7D83";
-static const char* horizontalKey2 = "JCBZHB1KUX0Y09LX";
-static const char* horizontalKey3 = "QP8J57RU9BY9NAVE";
+static const char* verticalKey = "YSXKFJYHCZGW00DT";
+static const char* horizontalKey = "DKH2JAX5CLOA7D83";
 
 const char* ssid = "Wokwi-GUEST";
 const char* password = "";
 const char* serverName = "https://lidar.uzay.info/datareceiver.php";
 
 void setup() {
+
 	Serial.begin(115200);
 
 	pinMode(in1, OUTPUT);
@@ -56,14 +52,15 @@ void setup() {
 	scanServo.attach(32);
 	scanServo.write(servoX);
 
-	WiFi.mode(WIFI_STA); Serial.println("Connecting to WiFi ");
+	WiFi.mode(WIFI_STA);
 	WiFi.begin(ssid, password);
-	while(WiFi.status() != WL_CONNECTED) { 
+
+	while (WiFi.status() != WL_CONNECTED) {
 		delay(500);
 		Serial.print(".");
 	}
+
 	Serial.println("");
-	Serial.print("Connected to WiFi network with IP Address: ");
 	Serial.println(WiFi.localIP());
 }
 
@@ -95,15 +92,18 @@ void loop() {
 		delayMicroseconds(800);
 	}
 
-	const char* key1 = (servoX == 180) ? verticalKey1 : horizontalKey1;
-	const char* key2 = (servoX == 180) ? verticalKey2 : horizontalKey2;
-	const char* key3 = (servoX == 180) ? verticalKey3 : horizontalKey3;
+	const char* key = (servoX == 180) ? verticalKey : horizontalKey;
 
-	sendData(key1, 0, 8);
-	sendData(key2, 8, 16);
-	sendData3(key3);
+	String httpRequestData = "api_key=" + String(key);
 
-	Serial.println("sent!");
+	for (int i = 0; i < 22; i++) {
+		httpRequestData += "&field" + String(i + 1) + "=" + String(Green[i]) + String(Angle[i]);
+	}
+
+	httpRequestData += "&field23=" + String(Green[22]) + String(Green[23]);
+	httpRequestData += "&field24=" + String(Angle[22]) + String(Angle[23]) + String(Temp);
+
+	postData(httpRequestData);
 
 	lastTime = millis();
 
@@ -111,38 +111,22 @@ void loop() {
 	scanServo.write(servoX);
 }
 
-void sendData(const char* key, int startIdx, int endIdx) {
-  String httpRequestData = "api_key=" + String(key);
-  for (int i = startIdx; i < endIdx; i++) {
-    int fieldNum = i - startIdx + 1;
-    httpRequestData += "&field" + String(fieldNum) + "=" + String(Green[i]) + String(Angle[i]);
-  }
-  postData(httpRequestData);
-}
-
-void sendData3(const char* key) {
-  String httpRequestData = "api_key=" + String(key);
-  for (int i = 16; i < 22; i++) {
-    int fieldNum = i - 15;
-    httpRequestData += "&field" + String(fieldNum) + "=" + String(Green[i]) + String(Angle[i]);
-  }
-  httpRequestData += "&field7=" + String(Green[22]) + String(Green[23]);
-  httpRequestData += "&field8=" + String(Angle[22]) + String(Angle[23]) + String(Temp);
-  postData(httpRequestData);
-}
-
 void postData(String httpRequestData) {
-  NetworkClientSecure *client = new NetworkClientSecure;
-  if(client) {
-      client->setInsecure();
-      HTTPClient http;
-      if (http.begin(*client, serverName)) {
-          http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-          int httpResponseCode = http.POST(httpRequestData);
-          http.end();
-      }
-      delete client;
-  }
+
+	NetworkClientSecure *client = new NetworkClientSecure;
+
+	if (client) {
+		client->setInsecure();
+
+		HTTPClient http;
+		if (http.begin(*client, serverName)) {
+			http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+			http.POST(httpRequestData);
+			http.end();
+		}
+
+		delete client;
+	}
 }
 
 void stepMotor(int s) {
