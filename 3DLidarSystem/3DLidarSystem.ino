@@ -42,15 +42,10 @@ int16_t tfDist = 0;
 int16_t tfFlux = 0;
 int16_t tfTemp = 0;
 
-static const char* verticalKey1 = "YSXKFJYHCZGW00DT";
-static const char* verticalKey2 = "X0TOV3MUEEQQD4HK";
-static const char* verticalKey3 = "1KKGE6BY2468X6VN";
+static const char* verticalKey = "YSXKFJYHCZGW00DT";
+static const char* horizontalKey = "DKH2JAX5CLOA7D83";
 
-static const char* horizontalKey1 = "DKH2JAX5CLOA7D83";
-static const char* horizontalKey2 = "JCBZHB1KUX0Y09LX";
-static const char* horizontalKey3 = "QP8J57RU9BY9NAVE";
-
-const char* ssid = "REPLACE_WITH_YOUR_SSID";  
+const char* ssid = "REPLACE_WITH_YOUR_SSID";
 const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 const char* serverName = "https://lidar.uzay.info/datareceiver.php";
 
@@ -69,18 +64,17 @@ void setup() {
 
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
+
   while (WiFi.status() != WL_CONNECTED) delay(500);
 }
 
 void loop() {
+
   lidcontrol = 0;
 
   if (tflI2C.getData(tfDist, tfFlux, tfTemp, tfAddr)) {
-    tfTemp = tfTemp / 100 + 20;
-    Temp = tfTemp;
+    Temp = tfTemp / 100 + 20;
     lidcontrol = 1;
-  } else {
-    lidcontrol = 0;
   }
 
   if (!lidcontrol) return;
@@ -96,6 +90,7 @@ void loop() {
     if (tflI2C.getData(tfDist, tfFlux, tfTemp, tfAddr)) {
       tfFlux = int16_t(tfFlux + 10000);
       tfDist = int16_t(tfDist + 1000);
+
       Angle[section] = tfDist;
       Green[section] = tfFlux;
     } else {
@@ -115,46 +110,40 @@ void loop() {
 
   if (!lidcontrol) return;
 
-  const char* key1 = (servoX == 180) ? verticalKey1 : horizontalKey1;
-  const char* key2 = (servoX == 180) ? verticalKey2 : horizontalKey2;
-  const char* key3 = (servoX == 180) ? verticalKey3 : horizontalKey3;
-
-  sendData(key1, 0, 8);
-  sendData(key2, 8, 16);
-  sendData3(key3);
+  sendData();
 }
 
-void sendData(const char* key, int startIdx, int endIdx) {
-  String httpRequestData = "api_key=" + String(key);
-  for (int i = startIdx; i < endIdx; i++) {
-    int fieldNum = i - startIdx + 1;
-    httpRequestData += "&field" + String(fieldNum) + "=" + String(Green[i]) + String(Angle[i]);
-  }
-  postData(httpRequestData);
-}
+void sendData() {
 
-void sendData3(const char* key) {
+  const char* key = (servoX == 180) ? verticalKey : horizontalKey;
+
   String httpRequestData = "api_key=" + String(key);
-  for (int i = 16; i < 22; i++) {
-    int fieldNum = i - 15;
-    httpRequestData += "&field" + String(fieldNum) + "=" + String(Green[i]) + String(Angle[i]);
+
+  for (int i = 0; i < 22; i++) {
+    httpRequestData += "&field" + String(i + 1) + "=" + String(Green[i]) + String(Angle[i]);
   }
-  httpRequestData += "&field7=" + String(Green[22]) + String(Green[23]);
-  httpRequestData += "&field8=" + String(Angle[22]) + String(Angle[23]) + String(Temp);
+
+  httpRequestData += "&field23=" + String(Green[22]) + String(Green[23]);
+  httpRequestData += "&field24=" + String(Angle[22]) + String(Angle[23]);
+  httpRequestData += "&field25=" + String(Temp);
+
   postData(httpRequestData);
 }
 
 void postData(String httpRequestData) {
   NetworkClientSecure *client = new NetworkClientSecure;
-  if(client) {
-      client->setInsecure();
-      HTTPClient http;
-      if (http.begin(*client, serverName)) {
-          http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-          int httpResponseCode = http.POST(httpRequestData);
-          http.end();
-      }
-      delete client;
+
+  if (client) {
+    client->setInsecure();
+
+    HTTPClient http;
+    if (http.begin(*client, serverName)) {
+      http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+      http.POST(httpRequestData);
+      http.end();
+    }
+
+    delete client;
   }
 }
 
