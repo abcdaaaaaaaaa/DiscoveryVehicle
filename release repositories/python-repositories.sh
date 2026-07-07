@@ -1,5 +1,6 @@
 python -m pip install opencv-python==4.1.1
 python -m pip install pyautogui==0.9.54
+python -m pip install plotly==5.25.1
 python -m pip install matplotlib==3.8.3
 python -m pip install csv==0.0.13
 python -m pip install numpy==1.23.5
