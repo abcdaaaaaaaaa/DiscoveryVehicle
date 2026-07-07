@@ -248,4 +248,4 @@ tm.display(0,sec);
 // Other Sensor: [PIN --> D34] [GND --> GND] [VCC --> 3.3V]
 // Potentiometer: [PIN --> D32] [GND --> GND] [VCC --> 3.3V]
 // TM1637: [CLK --> D18] [DIO --> D5] [VCC --> 5V] [GND --> GND]
-// Geiger Counter: [GND --> GND] [PIN --> VIN]
+// Geiger Counter: [PIN --> D39] [GND --> GND] [VCC --> 5V]
