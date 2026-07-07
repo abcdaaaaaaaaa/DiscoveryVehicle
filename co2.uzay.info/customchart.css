@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("hello1.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 200px;
+}
+
+.secondcontainer {
+  display: inline-block;
+}
+
+.solorta {
+  position: absolute;
+  left: 453px;
+}
+
+.sagkose {
+  position: absolute;
+  left: 965px;
+}
+
+.create {
+  width: 300px;
+  height: 166px;
+  position: absolute;
+  background-image: url("minispace.png");
+}
+
+.bigcreate {
+  width: 300px;
+  height: 445px;
+  position: absolute;
+  left: 965px;
+}
+
+.spacecreate1 {
+  left: 170px;
+  top: 20px;
+  position: absolute;
+}
+
+.spacecreate2 {
+  left: 170px;
+  top: 70px;
+  position: absolute;
+}
+
+.spacecreate3 {
+  left: 170px;
+  top: 113.5px;
+  position: absolute;
+}
